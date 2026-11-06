@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClientGraph AI · 本地原型 v0.1.0</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--blue:#1f6feb;--bw:#e8f1ff;--ink:#1c2430;--muted:#6b7785;--line:#e3e9f0;--bg:#f6f9fc;--warn:#b45309;--danger:#b42318;--ok:#0f766e;--r:12px}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14px}
+.app{display:flex;height:100vh;min-width:960px}
+.rail{width:196px;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;padding:18px 12px;flex-shrink:0}
+.brand{font-size:16px;font-weight:700;padding:4px 8px 18px}
+.brand small{display:block;font-weight:400;color:var(--muted);font-size:11px;margin-top:4px}
+.nav{display:flex;flex-direction:column;gap:4px}
+.nav button{display:flex;align-items:center;gap:9px;border:0;background:transparent;color:#42505f;padding:9px 10px;border-radius:9px;cursor:pointer;text-align:left;font-size:13.5px}
+.nav button:hover{background:#f2f6fb}
+.nav button.on{background:var(--bw);color:var(--blue);font-weight:600}
+.nav svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.foot{margin-top:auto;font-size:11px;color:#8b97a5;line-height:1.6;padding:8px}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.top{height:54px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;flex-shrink:0}
+.crumb{font-size:13px;color:var(--muted)}.crumb b{color:var(--ink);margin-left:6px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;padding:4px 9px;border-radius:999px;background:#eef7f2;color:var(--ok);border:1px solid #d6ece2}
+.pill.gray{background:#f4f6f9;color:#5b6876;border-color:#e6ebf1}
+.views{flex:1;overflow:auto;padding:22px}
+.view{display:none;max-width:1180px;margin:0 auto}.view.on{display:block}
+h1{font-size:20px;margin:0 0 4px}.sub{color:var(--muted);font-size:12.5px;margin-bottom:16px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.kpi .n{font-size:26px;font-weight:700}.kpi .l{color:var(--muted);font-size:12px;margin-top:4px}.kpi .h{font-size:11px;color:#9aa6b3;margin-top:2px}
+.grid2{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.card h3{margin:0 0 12px;font-size:14px}
+.cust{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed #edf1f6}
+.cust:last-child{border-bottom:0}.cust .name{font-weight:600}
+.meta{color:var(--muted);font-size:12px;margin-top:4px;line-height:1.6}
+.tag{display:inline-block;font-size:11px;padding:2px 7px;border-radius:6px;background:#f2f6fb;color:#4a5a6a;margin-right:5px;border:1px solid #e8eef6}
+.tag.blue{background:var(--bw);color:#1b5fc4;border-color:#d8e7ff}
+.tag.warn{background:#fff6e8;color:var(--warn);border-color:#f5e3c6}
+.tag.danger{background:#fef3f2;color:var(--danger);border-color:#f7d9d6}
+.qa-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:14px}
+.qa-row{display:flex;gap:9px}
+.qa-row input{flex:1;border:1px solid #d9e2ec;border-radius:9px;padding:11px 13px;font-size:14px;outline:none;background:#fbfdff}
+.qa-row input:focus{border-color:#8fb8f0;box-shadow:0 0 0 3px rgba(31,111,235,.08)}
+.btn{border:0;background:var(--blue);color:#fff;border-radius:9px;padding:0 18px;cursor:pointer;font-size:14px}
+.btn:hover{background:#1a60cc}
+.chips{margin-top:10px;display:flex;gap:7px;flex-wrap:wrap}
+.chips button{border:1px solid #dfe8f2;background:#fff;color:#4a5a6a;font-size:12px;padding:5px 10px;border-radius:999px;cursor:pointer}
+.chips button:hover{border-color:#b9d2f2;color:var(--blue)}
+.answer{min-height:120px}
+.ans-note{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.6}
+.ev{display:flex;gap:10px;border:1px solid var(--line);border-radius:10px;padding:12px 13px;margin-bottom:9px;cursor:pointer;background:#fff}
+.ev:hover{border-color:#bfd6f2;box-shadow:0 2px 10px rgba(31,111,235,.06)}
+.ev .bar{width:3px;border-radius:2px;background:var(--blue);flex-shrink:0}
+.ev .body{min-width:0;flex:1}
+.ev .src{font-size:11.5px;color:var(--muted);margin-bottom:5px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ev .txt{line-height:1.65;font-size:13.5px}
+.loc{font-family:Consolas,monospace;font-size:11px;color:#7d8a99}
+.empty{border:1px dashed #dbe4ee;border-radius:10px;padding:22px;text-align:center;color:var(--muted);background:#fbfdff}
+.refuse{border:1px solid #f3d5d1;background:#fff8f7;border-radius:10px;padding:16px}
+.refuse b{color:var(--danger)}
+.gap{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #f0f4f8}.gap:last-child{border-bottom:0}
+.gap .pri{width:74px;flex-shrink:0}.gap .t{font-weight:600;margin-bottom:4px}
+.gap .d{color:var(--muted);font-size:12.5px;line-height:1.6}
+.evchips{margin-top:7px;display:flex;gap:6px;flex-wrap:wrap}
+.evchips button{font-size:11px;border:1px solid #e0e8f1;background:#f8fbff;color:#42627f;padding:3px 8px;border-radius:6px;cursor:pointer}
+.table{width:100%;border-collapse:collapse;font-size:12.5px}
+.table th{text-align:left;color:var(--muted);font-weight:500;border-bottom:1px solid var(--line);padding:8px 6px;white-space:nowrap}
+.table td{border-bottom:1px solid #f2f5f9;padding:9px 6px;vertical-align:top}
+.drawer{position:fixed;inset:0;background:rgba(15,23,32,.28);display:none;z-index:20}.drawer.on{display:block}
+.drawer .panel{position:absolute;right:0;top:0;height:100%;width:440px;background:#fff;box-shadow:-10px 0 30px rgba(20,40,70,.12);padding:20px;overflow:auto}
+.drawer h3{margin:6px 0 4px;font-size:16px}
+.drawer .kv{font-size:12px;color:var(--muted);line-height:1.9;margin:10px 0}
+.drawer .quote{background:#f7faff;border-left:3px solid var(--blue);padding:12px;line-height:1.7;font-size:13.5px;border-radius:0 8px 8px 0}
+.drawer .close{float:right;border:0;background:#f1f5fa;border-radius:8px;width:30px;height:30px;cursor:pointer;color:#536273}
+.hint{font-size:11.5px;color:#93a0ae;margin-top:8px}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="rail">
+    <div class="brand">ClientGraph AI<small>本地原型 v0.1.0</small></div>
+    <nav class="nav">
+      <button class="on" data-view="overview" data-testid="nav-overview"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>概览</button>
+      <button data-view="qa" data-testid="nav-qa"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 9h8M8 13h5"/></svg>资料问答</button>
+      <button data-view="customers" data-testid="nav-customers"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>客户与项目</button>
+      <button data-view="gaps" data-testid="nav-gaps"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>缺口与冲突<span class="tag warn" style="margin-left:auto">5</span></button>
+    </nav>
+    <div class="foot">本地规则原型<br>无模型调用 · 无网络请求<br>演示数据均为虚构</div>
+  </aside>
+  <div class="main">
+    <header class="top">
+      <div class="crumb">ClientGraph AI<b id="crumb">概览</b></div>
+      <div style="display:flex;gap:8px;align-items:center"><span class="pill gray">检索式问答</span><span class="pill">本地运行</span></div>
+    </header>
+    <div class="views">
+      <section class="view on" id="view-overview">
+        <h1>今日概览</h1>
+        <div class="sub">资料已按客户与项目归档；以下数字由当前原型数据集实时统计。</div>
+        <div class="kpis">
+          <div class="kpi"><div class="n" id="kpi-materials" data-testid="kpi-materials">12</div><div class="l">已归档资料</div><div class="h">聊天 / 通话 / 邮件 / 文档 / 表格 / 扫描件</div></div>
+          <div class="kpi"><div class="n" id="kpi-customers" data-testid="kpi-customers">2</div><div class="l">客户</div><div class="h">均有在跟进项目</div></div>
+          <div class="kpi"><div class="n" id="kpi-projects" data-testid="kpi-projects">3</div><div class="l">项目</div><div class="h">2 个进行中，1 个预研</div></div>
+          <div class="kpi"><div class="n" id="kpi-gaps" data-testid="kpi-gaps">5</div><div class="l">待确认 / 冲突</div><div class="h">3 项必须先确认</div></div>
+        </div>
+        <div class="grid2">
+          <div class="card"><h3>客户</h3><div id="cust-list"></div></div>
+          <div class="card"><h3>最近资料</h3><div id="recent-list"></div></div>
+        </div>
+      </section>
+      <section class="view" id="view-qa">
+        <h1>资料问答</h1>
+        <div class="sub">只检索已归档资料并返回原文依据；不生成、不推测。点击证据可查看来源定位。</div>
+        <div class="qa-box">
+          <div class="qa-row"><input id="q" data-testid="input-q" placeholder="例如：预算多少？巡检项怎么配置？" autocomplete="off"><button class="btn" id="ask" data-testid="btn-ask">提问</button></div>
+          <div class="chips">
+            <button data-q="预算">预算</button><button data-q="巡检项每个车间不一样">巡检项配置</button>
+            <button data-q="上线时间">上线时间</button><button data-q="决策人">决策人</button>
+            <button data-q="有没有提到海外部署">未知问题</button><button data-q="陈晓岚的手机号是多少">敏感信息</button>
+          </div>
+          <div class="hint">匹配阈值：低于阈值的提问返回“未找到依据”，不做猜测。</div>
+        </div>
+        <div id="answer" class="answer" data-testid="answer"><div class="empty">输入问题开始检索。原型不会调用任何模型。</div></div>
+      </section>
+      <section class="view" id="view-customers">
+        <h1>客户与项目</h1>
+        <div class="sub">客户、项目、资料与需求的关联视图；项目下可看到需求状态与最近沟通。</div>
+        <div id="cust-cards" class="grid2"></div>
+        <div class="card" style="margin-top:14px"><h3>需求清单</h3>
+          <table class="table" data-testid="req-table"><thead><tr><th>编号</th><th>需求</th><th>项目</th><th>状态</th><th>优先级</th><th>来源</th></tr></thead><tbody id="req-body"></tbody></table>
+        </div>
+      </section>
+      <section class="view" id="view-gaps">
+        <h1>缺口与冲突</h1>
+        <div class="sub">按“是否阻塞范围 / 报价 / 工期”排序；每条都带双方证据，不做自动裁定。</div>
+        <div class="card"><div id="gap-list" data-testid="gap-list"></div></div>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="drawer" id="drawer" data-testid="drawer"><div class="panel">
+  <button class="close" id="drawer-close" data-testid="drawer-close">×</button>
+  <div class="tag blue" id="d-type">资料</div><h3 id="d-title">来源</h3>
+  <div class="kv" id="d-meta"></div><div class="quote" id="d-quote"></div>
+  <div class="kv"><span style="color:#8b97a5">定位符</span><br><span class="loc" id="d-loc"></span></div>
+  <div class="hint">证据定位用于回到原文；原型不打开原始文件。</div>
+</div></div>
+<script>
+const CUSTOMERS=[
+ {id:"c1",name:"青岚智能装备（虚构）",contact:"陈晓岚 · 信息化负责人",industry:"工业设备制造",last:"2026-10-16",tags:["重点客户","制造业"]},
+ {id:"c2",name:"恒晟精工（虚构）",contact:"周明远 · 供应链总监",industry:"精密加工",last:"2026-10-09",tags:["预研"]}
+];
+const PROJECTS=[
+ {id:"p1",customerId:"c1",name:"设备巡检小程序（一期）",status:"进行中",budget:"8–10 万",due:"2026-11-15",progress:"需求已评审，报价待确认"},
+ {id:"p2",customerId:"c1",name:"售后工单系统升级",status:"线索",budget:"未评估",due:"未定",progress:"客户口头提及，未立项"},
+ {id:"p3",customerId:"c2",name:"供应链协同平台（预研）",status:"预研",budget:"未报价",due:"未定",progress:"等待 11 月初交流"}
+];
+const TYPES={
+ chat:{label:"微信聊天",icon:"💬"},call:{label:"电话转写",icon:"☎"},email:{label:"邮件",icon:"✉"},
+ doc:{label:"会议纪要",icon:"▤"},docx:{label:"需求文档",icon:"▤"},quote:{label:"报价记录",icon:"▤"},
+ scan:{label:"扫描件",icon:"▣"},xlsx:{label:"Excel 清单",icon:"▦"},ppt:{label:"PPT 方案",icon:"▤"},image:{label:"图片",icon:"◇"}
+};
+const MATERIALS=[
+ {id:"M01",type:"chat",title:"微信聊天 · 陈晓岚",customerId:"c1",projectId:"p1",date:"2026-09-22",locator:"chat://M01",blocks:[
+  {id:"m1b1",at:"09:14",text:"上次电话后我们内部过了一版，巡检这块大家没意见"},
+  {id:"m1b2",at:"09:16",text:"但领导提了个审批，巡检发现异常之后要能走审批"},
+  {id:"m1b3",at:"09:17",text:"先按异常工单加审批吧，具体我再确认"},
+  {id:"m1b4",at:"09:19",text:"预算还是 8 万左右，能不能再压一压"},
+  {id:"m1b5",at:"09:20",text:"我们按 8 到 10 万准备，最后以正式报价为准"},
+  {id:"m1b6",at:"09:21",text:"另外售后工单系统也想升级，等这个做完再聊"},
+  {id:"m1b7",at:"09:25",text:"[图片] 车间设备铭牌照片"}]},
+ {id:"M02",type:"call",title:"电话转写 · 陈晓岚",customerId:"c1",projectId:"p1",date:"2026-09-18",locator:"file://M02",blocks:[
+  {id:"m2b1",at:"00:35",text:"我们厂里现在 120 台设备，分布在五个车间，台账还是 Excel"},
+  {id:"m2b2",at:"02:10",text:"预算大概 8 万左右，不能超太多"},
+  {id:"m2b3",at:"03:40",text:"希望 10 月底能上线，年底要审计"},
+  {id:"m2b4",at:"05:20",text:"这个项目张总拍板，李副总那边管信息化"},
+  {id:"m2b5",at:"07:40",text:"编号、名称、车间、型号、状态，还有上次巡检时间"},
+  {id:"m2b6",at:"14:20",text:"巡检项每个车间不一样，要能配置"},
+  {id:"m2b7",at:"21:10",text:"审批这块先不加，先把巡检跑起来"},
+  {id:"m2b8",at:"28:30",text:"下周把需求文档发您，确认后再报价"}]},
+ {id:"M03",type:"doc",title:"需求评审会纪要",customerId:"c1",projectId:"p1",date:"2026-09-25",locator:"doc://M03",blocks:[
+  {id:"m3b1",at:"结论 2",text:"审批流不进入一期，客户内部流程尚未定稿"},
+  {id:"m3b2",at:"结论 3",text:"一期上线时间定为 2026-11-15，客户原希望 10 月底"},
+  {id:"m3b3",at:"结论 4",text:"设备台账由客户提供，10 月 8 日前给到完整清单"},
+  {id:"m3b4",at:"结论 5",text:"报价在 10 月 12 日前出具"},
+  {id:"m3b5",at:"待确认",text:"一期预算上限是 8 万还是 10 万，客户内部尚未统一"},
+  {id:"m3b6",at:"待确认",text:"设备总数口径：客户口头说 120 台，需以清单核对"},
+  {id:"m3b7",at:"决策链",text:"李副总牵头信息化，张总终审，日常对接陈晓岚"}]},
+ {id:"M04",type:"email",title:"邮件 · 需求文档 v1.0 请确认",customerId:"c1",projectId:"p1",date:"2026-09-29",locator:"mail://M04",blocks:[
+  {id:"m4b1",at:"正文",text:"请确认一期范围是否为 5 项功能，审批流确认不进入本期"},
+  {id:"m4b2",at:"正文",text:"上线时间是否按 11 月 15 日安排"},
+  {id:"m4b3",at:"正文",text:"预算区间按 8–10 万准备是否可行"},
+  {id:"m4b4",at:"抄送",text:"李副总在抄送列表，署名分管信息化"}]},
+ {id:"M05",type:"docx",title:"需求规格说明书 v1.0",customerId:"c1",projectId:"p1",date:"2026-09-29",locator:"doc://M05",blocks:[
+  {id:"m5b1",at:"第 4 节",text:"一期范围 5 项：设备台账与二维码、巡检计划、扫码巡检、异常上报、统计看板"},
+  {id:"m5b2",at:"第 5 节",text:"不在本期：审批流、备件库存、独立 App、多语言、历史纸质记录迁移"},
+  {id:"m5b3",at:"第 8 节",text:"验收标准：118 台在册设备全部可扫码查看档案"},
+  {id:"m5b4",at:"待确认 Q1",text:"一期预算上限：客户口头 8 万，报价 10 万"},
+  {id:"m5b5",at:"待确认 Q3",text:"最终决策人：张总终审 / 李副总牵头，方案确认链未闭合"},
+  {id:"m5b6",at:"待确认 Q5",text:"设备总数口径：口头 120 台，清单 118 台 + 2 台待定"}]},
+ {id:"M06",type:"quote",title:"报价沟通记录（第二轮）",customerId:"c1",projectId:"p1",date:"2026-10-12",locator:"doc://M06",blocks:[
+  {id:"m6b1",at:"报价明细",text:"第二轮合计 100,000 元，含税 6%"},
+  {id:"m6b2",at:"差异",text:"第一轮 86,000 元已作废"},
+  {id:"m6b3",at:"备注",text:"审批流不含在本报价内，如增加按 15 人天、22,500 元另计"},
+  {id:"m6b4",at:"商务条款",text:"付款方式：签订 40%，上线 40%，验收 20%"}]},
+ {id:"M07",type:"scan",title:"合同首页扫描件",customerId:"c1",projectId:"p1",date:"2026-10-16",locator:"pdf://M07",blocks:[
+  {id:"m7b1",at:"第 1 页",text:"合同金额 人民币壹拾万元整（¥100,000.00，含税）"},
+  {id:"m7b2",at:"第 1 页",text:"建设周期 2026-10-20 至 2026-11-15"},
+  {id:"m7b3",at:"第 1 页",text:"甲方 青岚智能装备（虚构）有限公司；乙方 示例科技（虚构）有限公司"}]},
+ {id:"M08",type:"xlsx",title:"设备清单",customerId:"c1",projectId:"p1",date:"2026-10-08",locator:"xls://M08",blocks:[
+  {id:"m8b1",at:"设备清单!A1",text:"清单共 118 台设备，其中 2 台状态为待定"},
+  {id:"m8b2",at:"统计!B3",text:"客户口头口径 120 台，与清单相差 2 台，需澄清"},
+  {id:"m8b3",at:"统计!B4",text:"车间数 5，一至五车间"}]},
+ {id:"M09",type:"ppt",title:"建设方案汇报 v1.0",customerId:"c1",projectId:"p1",date:"2026-09-30",locator:"ppt://M09",blocks:[
+  {id:"m9b1",at:"第 7 页",text:"报价合计 100,000 元，含税 6%，付款 4:4:2"},
+  {id:"m9b2",at:"第 6 页",text:"实施计划 4 周，上线目标 2026-11-15"},
+  {id:"m9b3",at:"第 8 页",text:"待确认：预算上限、最终决策人、设备数量口径"}]},
+ {id:"M10",type:"email",title:"邮件 · 供应链协同预研",customerId:"c2",projectId:"p3",date:"2026-10-09",locator:"mail://M10",blocks:[
+  {id:"m10b1",at:"正文",text:"我们这边在做供应链协同的预研，想了解供应商门户和采购订单协同怎么做权限隔离"},
+  {id:"m10b2",at:"正文",text:"和现有 ERP 对接，通常需要客户提供什么"},
+  {id:"m10b3",at:"正文",text:"一期大概的周期和投入区间，10 月下旬或 11 月初方便交流吗"}]},
+ {id:"M11",type:"chat",title:"微信聊天 · 转发提及恒晟",customerId:"c1",projectId:"p1",date:"2026-10-10",locator:"chat://M11",blocks:[
+  {id:"m11b1",at:"11:02",text:"转发：周明远（恒晟精工）说他们也想上供应链协同，问我们有没有类似案例"},
+  {id:"m11b2",at:"11:04",text:"没问题，不过恒晟那边我单独对接，别混在这个项目里"}]},
+ {id:"M12",type:"image",title:"车间设备铭牌照片",customerId:"c1",projectId:"p1",date:"2026-09-18",locator:"img://M12",blocks:[
+  {id:"m12b1",at:"OCR",text:"图片未识别出可用文字，已保留原图；不参与问答检索"}]}
+];
+const REQUIREMENTS=[
+ {id:"F1",title:"设备台账与二维码",projectId:"p1",status:"已确认",priority:"P0",source:"M05"},
+ {id:"F2",title:"巡检计划",projectId:"p1",status:"已确认",priority:"P0",source:"M05"},
+ {id:"F3",title:"扫码巡检与拍照",projectId:"p1",status:"已确认",priority:"P0",source:"M05"},
+ {id:"F4",title:"异常上报",projectId:"p1",status:"已确认",priority:"P0",source:"M05"},
+ {id:"F5",title:"统计看板",projectId:"p1",status:"待确认",priority:"P1",source:"M05"},
+ {id:"F6",title:"巡检异常审批流",projectId:"p1",status:"已取消（本期）",priority:"P2",source:"M01"}
+];
+const GAPS=[
+ {id:"G1",level:"必须先确认",title:"预算口径不一致",detail:"客户口头 8 万；第二轮报价 10 万；合同 10 万。三个口径未统一，影响范围裁剪。",ev:["M02","M06","M07"]},
+ {id:"G2",level:"必须先确认",title:"最终决策人未闭合",detail:"通话称张总拍板；邮件由李副总分管信息化；会议为李副总牵头、张总终审，方案确认链仍不清晰。",ev:["M02","M04","M03"]},
+ {id:"G3",level:"必须先确认",title:"设备数量口径差异",detail:"客户口头 120 台；清单 118 台，其中 2 台待定；验收标准写 118 台。",ev:["M02","M08","M05"]},
+ {id:"G4",level:"重要",title:"上线时间存在期望差",detail:"客户原希望 10 月底；会议定为 11 月 15 日，客户已口头同意顺延，但未书面确认。",ev:["M02","M03"]},
+ {id:"G5",level:"重要",title:"审批范围前后变化",detail:"9 月 18 日通话明确不加审批；9 月 22 日聊天提出要加；9 月 25 日会议决定不进一期。旧结论需保留。",ev:["M02","M01","M03"]}
+];
+const state={view:"overview",lastResults:[]};
+const el=id=>document.getElementById(id);
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const custName=id=>{const c=CUSTOMERS.find(x=>x.id===id);return c?c.name:""};
+const projName=id=>{const p=PROJECTS.find(x=>x.id===id);return p?p.name:""};
+const matById=id=>MATERIALS.find(m=>m.id===id);
+
+function renderOverview(){
+ el("kpi-materials").textContent=MATERIALS.length;el("kpi-customers").textContent=CUSTOMERS.length;
+ el("kpi-projects").textContent=PROJECTS.length;el("kpi-gaps").textContent=GAPS.length;
+ el("cust-list").innerHTML=CUSTOMERS.map(c=>{
+  const ms=MATERIALS.filter(m=>m.customerId===c.id),ps=PROJECTS.filter(p=>p.customerId===c.id);
+  return `<div class="cust"><div><div class="name">${esc(c.name)}</div><div class="meta">${esc(c.contact)}<br>${esc(c.industry)} · 最近沟通 ${c.last}</div></div>
+  <div style="text-align:right;white-space:nowrap"><span class="tag blue">${ps.length} 个项目</span><span class="tag">${ms.length} 份资料</span><div class="meta">${c.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div></div></div>`;
+ }).join("");
+ el("recent-list").innerHTML=MATERIALS.slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,6).map(m=>`
+  <div class="cust" data-testid="recent-item"><div><div class="name" style="font-weight:500">${TYPES[m.type].icon} ${esc(m.title)}</div>
+  <div class="meta">${esc(custName(m.customerId))} · ${esc(projName(m.projectId))}</div></div>
+  <div class="meta" style="white-space:nowrap">${m.date}<br><span class="tag">${TYPES[m.type].label}</span></div></div>`).join("");
+}
+function renderCustomers(){
+ el("cust-cards").innerHTML=CUSTOMERS.map(c=>{
+  const ps=PROJECTS.filter(p=>p.customerId===c.id);
+  return `<div class="card"><h3>${esc(c.name)}</h3><div class="sub" style="margin-bottom:8px">${esc(c.contact)} · ${esc(c.industry)}</div>
+  ${ps.map(p=>`<div style="padding:10px 0;border-top:1px solid #f1f5f9"><div style="display:flex;justify-content:space-between;gap:8px">
+  <b style="font-size:13px">${esc(p.name)}</b><span class="tag ${p.status==="进行中"?"blue":""}">${p.status}</span></div>
+  <div class="meta">预算 ${esc(p.budget)} · 目标 ${p.due}<br>${esc(p.progress)}</div></div>`).join("")}</div>`;
+ }).join("");
+ el("req-body").innerHTML=REQUIREMENTS.map(r=>`<tr data-testid="req-row"><td>${r.id}</td><td>${esc(r.title)}</td><td>${esc(projName(r.projectId))}</td>
+  <td><span class="tag ${r.status==="已确认"?"blue":r.status==="待确认"?"warn":""}">${r.status}</span></td><td>${r.priority}</td><td class="loc">${r.source}</td></tr>`).join("");
+}
+function renderGaps(){
+ el("gap-list").innerHTML=GAPS.map(g=>`<div class="gap" data-testid="gap-item"><div class="pri"><span class="tag ${g.level==="必须先确认"?"danger":"warn"}">${g.level}</span></div>
+  <div style="flex:1"><div class="t">${esc(g.title)}</div><div class="d">${esc(g.detail)}</div>
+  <div class="evchips">${g.ev.map(id=>`<button data-ev="${id}">${id} · ${esc(matById(id).title)}</button>`).join("")}</div></div></div>`).join("");
+}
+function bigrams(s){
+ const clean=s.toLowerCase().replace(/[^\u4e00-\u9fa5a-z0-9]/g,"");
+ const out=new Set();
+ for(const part of clean.match(/[\u4e00-\u9fa5]+|[a-z0-9]+/g)||[]){
+  if(/[\u4e00-\u9fa5]/.test(part)){for(let i=0;i<part.length-1;i++)out.add(part.slice(i,i+2));if(part.length===1)out.add(part);}
+  else if(part.length>1)out.add(part);
+ }
+ return [...out];
+}
+function buildIndex(){
+ const docs=[];MATERIALS.forEach(m=>m.blocks.forEach(b=>docs.push({m,b,text:(m.title+" "+b.text+" "+b.at).toLowerCase()})));
+ const df={};docs.forEach(d=>{for(const g of new Set(bigrams(d.text)))df[g]=(df[g]||0)+1});
+ return {docs,df,N:docs.length};
+}
+const INDEX=buildIndex();
+function isSensitive(q){
+ if(/(手机号|手机号码|身份证|银行卡|密码|账号|联系方式)/.test(q))return true;
+ if(/1[3-9]\d{9}/.test(q))return true;
+ if(/\d{17}[\dXx]/.test(q))return true;
+ if(/\d{16,19}/.test(q))return true;
+ return false;
+}
+const STOP=["有没有","是否","提到","哪些","什么","怎么","多少","如何","请问","想问","想了解","一下","相关","类似","我们","他们","这个","那个","可以","能否","以及","还有","吗","呢","的","了","是","有","没"];
+function queryTerms(q){let s=q;for(const w of STOP)s=s.split(w).join(" ");return bigrams(s);}
+function search(q){
+ const qs=queryTerms(q).filter(x=>x.length>1);if(!qs.length)return [];
+ const scored=INDEX.docs.map(d=>{let s=0;for(const g of qs){if(d.text.includes(g))s+=Math.log(1+INDEX.N/(1+(INDEX.df[g]||0)));}return {...d,score:s};}).filter(x=>x.score>0);
+ scored.sort((a,b)=>b.score-a.score);
+ const best=scored.length?scored[0].score:0;if(best<0.9)return [];
+ const seen=new Set(),out=[];
+ for(const r of scored){if(r.score<Math.max(0.9,best*0.35))break;if(seen.has(r.b.id))continue;seen.add(r.b.id);out.push(r);if(out.length>=4)break;}
+ return out;
+}
+function renderAnswer(q,results){
+ if(!results.length){
+  el("answer").innerHTML=`<div class="empty" data-testid="unknown"><b>未在工作台资料中找到依据。</b><br>
+  已检索 ${MATERIALS.length} 份资料、${INDEX.docs.length} 个片段；建议换用客户姓名、设备、预算、巡检等关键词。
+  <div class="hint">原型不推测、不补写；找不到就明确返回未知。</div></div>`;return;
+ }
+ el("answer").innerHTML=`<div class="ans-note">检索到 ${results.length} 条依据，按匹配度排序；“${esc(q)}”。原型只做摘录，不做结论生成。</div>`+
+ results.map((r,i)=>`<div class="ev" data-testid="citation-${i}" data-mat="${r.m.id}" data-block="${r.b.id}"><div class="bar"></div><div class="body">
+  <div class="src"><span class="tag blue">${TYPES[r.m.type].icon} ${TYPES[r.m.type].label}</span><span>${esc(r.m.title)}</span><span>·</span><span>${r.m.date}</span><span class="loc">${r.m.locator}#${r.b.at}</span></div>
+  <div class="txt">${esc(r.b.text)}</div></div></div>`).join("");
+ state.lastResults=results;
+}
+function ask(){
+ const q=el("q").value.trim();if(!q){el("q").focus();return;}
+ if(isSensitive(q)){el("answer").innerHTML=`<div class="refuse" data-testid="refusal"><b>该请求涉及个人敏感信息，原型按策略拒绝回答。</b>
+  <div class="hint" style="margin-top:8px">检测到手机号 / 身份证 / 银行卡 / 账号等字段。可改为询问脱敏后的合作信息，或查看客户档案中的掩码字段。</div>
+  <div class="hint">策略码：SENSITIVE_REFUSAL · 未检索、未返回任何号码。</div></div>`;return;}
+ renderAnswer(q,search(q));
+}
+function openDrawer(mid,at){
+ const m=matById(mid);if(!m)return;const b=m.blocks.find(x=>x.at===at)||m.blocks[0];
+ el("d-type").textContent=TYPES[m.type].label;el("d-title").textContent=m.title;
+ el("d-meta").innerHTML=`客户：${esc(custName(m.customerId))}<br>项目：${esc(projName(m.projectId))}<br>日期：${m.date}`;
+ el("d-quote").textContent=b.text;el("d-loc").textContent=`${m.locator}#${b.at}`;el("drawer").classList.add("on");
+}
+document.querySelectorAll(".nav button").forEach(btn=>btn.addEventListener("click",()=>{
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));btn.classList.add("on");
+ const v=btn.dataset.view;state.view=v;
+ document.querySelectorAll(".view").forEach(s=>s.classList.remove("on"));el("view-"+v).classList.add("on");
+ el("crumb").textContent=btn.textContent.trim().split("\n")[0];
+}));
+document.querySelectorAll(".chips button").forEach(b=>b.addEventListener("click",()=>{el("q").value=b.dataset.q;ask()}));
+el("ask").addEventListener("click",ask);
+el("q").addEventListener("keydown",e=>{if(e.key==="Enter")ask()});
+document.addEventListener("click",e=>{
+ const ev=e.target.closest(".ev");
+ if(ev)openDrawer(ev.dataset.mat,ev.querySelector(".loc").textContent.split("#")[1]);
+ const chip=e.target.closest("[data-ev]");if(chip)openDrawer(chip.dataset.ev,matById(chip.dataset.ev).blocks[0].at);
+});
+el("drawer-close").addEventListener("click",()=>el("drawer").classList.remove("on"));
+el("drawer").addEventListener("click",e=>{if(e.target.id==="drawer")el("drawer").classList.remove("on")});
+renderOverview();renderCustomers();renderGaps();
+window.__cg={ask,search,MATERIALS,GAPS,REQUIREMENTS,INDEX};
+</script>
+</body>
+</html>
+
