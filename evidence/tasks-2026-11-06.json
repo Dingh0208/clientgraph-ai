@@ -1,0 +1,352 @@
+{
+  "generated_at": "2026-11-06T08:07:24.112829+00:00",
+  "now": "2026-11-06T09:30:00+08:00",
+  "tasks": [
+    {
+      "id": "T1",
+      "title": "请在 2026-10-15 前确认预算",
+      "owner": null,
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）"
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）"
+      },
+      "due_at": "2026-10-15",
+      "due_status": "explicit",
+      "priority": "P0",
+      "status": "open",
+      "risk": {
+        "level": "high",
+        "note": "已逾期 22 天"
+      },
+      "source": {
+        "file": "chat_1010.txt",
+        "source_type": "chat",
+        "locator": "chat://chat_1010.txt#I1",
+        "occurred_at": "2026-10-20T09:00:00+08:00",
+        "text": "请在 2026-10-15 前确认预算"
+      },
+      "pending": [
+        {
+          "type": "owner_missing",
+          "question": "该动作未指定负责人，请确认由谁负责。"
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "title": "王工，请在 2026-11-06 前把报价发给陈晓岚",
+      "owner": "王工",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）"
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）"
+      },
+      "due_at": "2026-11-06",
+      "due_status": "explicit",
+      "priority": "P2",
+      "status": "open",
+      "risk": {
+        "level": "high",
+        "note": "今天到期"
+      },
+      "source": {
+        "file": "mail_1101.eml",
+        "source_type": "email",
+        "locator": "email://mail_1101.eml#I2",
+        "occurred_at": "2026-10-20T09:00:00+08:00",
+        "text": "王工，请在 2026-11-06 前把报价发给陈晓岚"
+      },
+      "pending": []
+    },
+    {
+      "id": "T3",
+      "title": "下周给一版原型",
+      "owner": null,
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）"
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）"
+      },
+      "due_at": null,
+      "due_status": "pending_vague",
+      "priority": "P2",
+      "status": "open",
+      "risk": {
+        "level": "low",
+        "note": "常规跟进"
+      },
+      "source": {
+        "file": "chat_1102.txt",
+        "source_type": "chat",
+        "locator": "chat://chat_1102.txt#I3",
+        "occurred_at": "2026-10-20T09:00:00+08:00",
+        "text": "下周给一版原型"
+      },
+      "pending": [
+        {
+          "type": "due_vague",
+          "question": "“下周”不是明确日期，请确认具体截止时间（年-月-日）。"
+        },
+        {
+          "type": "owner_missing",
+          "question": "该动作未指定负责人，请确认由谁负责。"
+        }
+      ]
+    },
+    {
+      "id": "T4",
+      "title": "尽快回复恒晟的预研问题",
+      "owner": null,
+      "customer": {
+        "id": "c2",
+        "name": "恒晟精工（虚构）"
+      },
+      "project": {
+        "id": "p3",
+        "name": "供应链协同平台（预研）"
+      },
+      "due_at": null,
+      "due_status": "pending_vague",
+      "priority": "P2",
+      "status": "open",
+      "risk": {
+        "level": "low",
+        "note": "常规跟进"
+      },
+      "source": {
+        "file": "mail_0929.eml",
+        "source_type": "email",
+        "locator": "email://mail_0929.eml#I4",
+        "occurred_at": "2026-09-29T10:12:00+08:00",
+        "text": "尽快回复恒晟的预研问题"
+      },
+      "pending": [
+        {
+          "type": "due_vague",
+          "question": "“尽快”不是明确日期，请确认具体截止时间（年-月-日）。"
+        },
+        {
+          "type": "owner_missing",
+          "question": "该动作未指定负责人，请确认由谁负责。"
+        }
+      ]
+    },
+    {
+      "id": "T5",
+      "title": "2026-11-10 前提交验收材料",
+      "owner": null,
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）"
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）"
+      },
+      "due_at": "2026-11-10",
+      "due_status": "explicit",
+      "priority": "P2",
+      "status": "open",
+      "risk": {
+        "level": "low",
+        "note": "常规跟进"
+      },
+      "source": {
+        "file": "req.docx",
+        "source_type": "document",
+        "locator": "document://req.docx#I5",
+        "occurred_at": "2026-10-20T09:00:00+08:00",
+        "text": "2026-11-10 前提交验收材料"
+      },
+      "pending": [
+        {
+          "type": "owner_missing",
+          "question": "该动作未指定负责人，请确认由谁负责。"
+        }
+      ]
+    }
+  ],
+  "reminders": {
+    "sent": [
+      {
+        "key": "task:T1:2026-11-06",
+        "type": "task_overdue",
+        "message": "已逾期 22 天：请在 2026-10-15 前确认预算",
+        "task_id": "T1",
+        "customer_id": "c1",
+        "sent_at": "2026-11-06T09:30:00+08:00",
+        "delivery": "windows"
+      },
+      {
+        "key": "task:T2:2026-11-06",
+        "type": "task_due",
+        "message": "今天到期：王工，请在 2026-11-06 前把报价发给陈晓岚",
+        "task_id": "T2",
+        "customer_id": "c1",
+        "sent_at": "2026-11-06T09:30:00+08:00",
+        "delivery": "windows"
+      },
+      {
+        "key": "customer:c2:2026-11-06",
+        "type": "customer_no_follow_up",
+        "message": "客户 恒晟精工（虚构） 已 28 天无跟进",
+        "task_id": null,
+        "customer_id": "c2",
+        "sent_at": "2026-11-06T09:30:00+08:00",
+        "delivery": "windows"
+      }
+    ],
+    "dedupe_second_tick": 0,
+    "quiet_skipped": "quiet_hours",
+    "inactive_skipped": "app_inactive",
+    "catch_up": [
+      {
+        "key": "task:T1:2026-11-07",
+        "type": "task_overdue",
+        "task_id": "T1",
+        "title": "请在 2026-10-15 前确认预算",
+        "customer_id": "c1",
+        "project_id": "p1",
+        "due_at": "2026-10-15",
+        "days": 23,
+        "message": "已逾期 23 天：请在 2026-10-15 前确认预算",
+        "delivery": "in_app",
+        "sent_at": null
+      },
+      {
+        "key": "task:T2:2026-11-07",
+        "type": "task_overdue",
+        "task_id": "T2",
+        "title": "王工，请在 2026-11-06 前把报价发给陈晓岚",
+        "customer_id": "c1",
+        "project_id": "p1",
+        "due_at": "2026-11-06",
+        "days": 1,
+        "message": "已逾期 1 天：王工，请在 2026-11-06 前把报价发给陈晓岚",
+        "delivery": "in_app",
+        "sent_at": null
+      },
+      {
+        "key": "customer:c2:2026-11-07",
+        "type": "customer_no_follow_up",
+        "customer_id": "c2",
+        "project_id": null,
+        "due_at": null,
+        "days": 29,
+        "message": "客户 恒晟精工（虚构） 已 29 天无跟进",
+        "delivery": "in_app",
+        "sent_at": null
+      }
+    ],
+    "failure": {
+      "sent": [
+        {
+          "key": "task:T2:2026-11-06",
+          "type": "task_due",
+          "message": "今天到期：王工，请在 2026-11-06 前把报价发给陈晓岚",
+          "task_id": "T2",
+          "customer_id": "c1",
+          "sent_at": "2026-11-06T09:30:00+08:00",
+          "delivery": "windows"
+        },
+        {
+          "key": "customer:c2:2026-11-06",
+          "type": "customer_no_follow_up",
+          "message": "客户 恒晟精工（虚构） 已 28 天无跟进",
+          "task_id": null,
+          "customer_id": "c2",
+          "sent_at": "2026-11-06T09:30:00+08:00",
+          "delivery": "windows"
+        }
+      ],
+      "failures": [
+        {
+          "key": "task:T1:2026-11-06",
+          "message": "已逾期 22 天：请在 2026-10-15 前确认预算"
+        }
+      ],
+      "skipped": null,
+      "candidates": [
+        {
+          "key": "task:T1:2026-11-06",
+          "type": "task_overdue",
+          "task_id": "T1",
+          "title": "请在 2026-10-15 前确认预算",
+          "customer_id": "c1",
+          "project_id": "p1",
+          "due_at": "2026-10-15",
+          "days": 22,
+          "message": "已逾期 22 天：请在 2026-10-15 前确认预算"
+        },
+        {
+          "key": "task:T2:2026-11-06",
+          "type": "task_due",
+          "task_id": "T2",
+          "title": "王工，请在 2026-11-06 前把报价发给陈晓岚",
+          "customer_id": "c1",
+          "project_id": "p1",
+          "due_at": "2026-11-06",
+          "days": 0,
+          "message": "今天到期：王工，请在 2026-11-06 前把报价发给陈晓岚"
+        },
+        {
+          "key": "customer:c2:2026-11-06",
+          "type": "customer_no_follow_up",
+          "customer_id": "c2",
+          "project_id": null,
+          "due_at": null,
+          "days": 28,
+          "message": "客户 恒晟精工（虚构） 已 28 天无跟进"
+        }
+      ]
+    }
+  },
+  "stats": {
+    "total": 5,
+    "status": {
+      "done": 2,
+      "open": 3
+    }
+  },
+  "checks": {
+    "task_count": true,
+    "overdue_explicit": true,
+    "overdue_risk": true,
+    "owner_extracted": true,
+    "due_today_risk": true,
+    "vague_no_due": true,
+    "vague_question": true,
+    "other_customer": true,
+    "future_explicit": true,
+    "complete": true,
+    "postpone": true,
+    "reopen": true,
+    "batch_success": true,
+    "batch_status": true,
+    "postpone_vague_rejected": true,
+    "reminder_count": true,
+    "overdue_reminder": true,
+    "due_reminder": true,
+    "no_follow_up": true,
+    "task_reminder_recorded": true,
+    "dedupe": true,
+    "quiet_hours": true,
+    "app_inactive_skip": true,
+    "no_fake_sent": true,
+    "catch_up_in_app": true,
+    "catch_up_no_mutation": true,
+    "notifier_failure": true,
+    "failure_not_marked": true
+  },
+  "all_passed": true
+}

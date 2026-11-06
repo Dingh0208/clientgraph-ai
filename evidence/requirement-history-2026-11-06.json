@@ -1,0 +1,570 @@
+{
+  "generated_at": "2026-11-06T07:48:50.724912+00:00",
+  "environment": {
+    "python": "3.12.13",
+    "platform": "win32"
+  },
+  "project": {
+    "name": "设备巡检小程序（一期）",
+    "versions": [
+      {
+        "version": 1,
+        "occurred_at": "2026-09-18T14:10:00+08:00",
+        "budget": [
+          80000
+        ],
+        "deadline": {
+          "value": null,
+          "status": "pending_vague",
+          "raw": "10 月底",
+          "evidence": [
+            {
+              "file": "chat_0918.txt",
+              "source_type": "chat",
+              "locator": "chat://chat_0918.txt#E3",
+              "occurred_at": "2026-09-18T14:12:00+08:00",
+              "text": "希望 10 月底上线"
+            }
+          ]
+        },
+        "scope": [
+          "上线时间",
+          "设备台账"
+        ],
+        "acceptance": [],
+        "changes": [],
+        "change_reason": "首次出现"
+      },
+      {
+        "version": 2,
+        "occurred_at": "2026-09-25T14:00:00+08:00",
+        "budget": [
+          80000
+        ],
+        "deadline": {
+          "value": "2026-11-15",
+          "status": "explicit",
+          "raw": "2026-11-15",
+          "evidence": [
+            {
+              "file": "minutes_0925.docx",
+              "source_type": "document",
+              "locator": "document://minutes_0925.docx#E5",
+              "occurred_at": "2026-09-25T14:00:00+08:00",
+              "text": "上线时间定为 2026-11-15"
+            }
+          ]
+        },
+        "scope": [
+          "上线时间",
+          "设备台账",
+          "审批流",
+          "巡检计划",
+          "异常上报"
+        ],
+        "acceptance": [
+          "118 台设备全部可扫码查看档案"
+        ],
+        "changes": [
+          "scope",
+          "deadline",
+          "acceptance"
+        ],
+        "change_reason": "范围新增 审批流、巡检计划、异常上报；工期由 未确定（10 月底） 改为 2026-11-15；验收标准更新"
+      },
+      {
+        "version": 3,
+        "occurred_at": "2026-10-12T15:00:00+08:00",
+        "budget": [
+          100000
+        ],
+        "deadline": {
+          "value": "2026-12-01",
+          "status": "explicit",
+          "raw": "2026-12-01",
+          "evidence": [
+            {
+              "file": "quote_1012.docx",
+              "source_type": "document",
+              "locator": "document://quote_1012.docx#E9",
+              "occurred_at": "2026-10-12T15:00:00+08:00",
+              "text": "上线时间调整为 2026-12-01"
+            }
+          ]
+        },
+        "scope": [
+          "上线时间",
+          "设备台账",
+          "审批流",
+          "巡检计划",
+          "异常上报",
+          "统计看板"
+        ],
+        "acceptance": [
+          "118 台设备全部可扫码查看档案，统计看板数据与明细一致"
+        ],
+        "changes": [
+          "scope",
+          "budget",
+          "deadline",
+          "acceptance"
+        ],
+        "change_reason": "范围新增 统计看板；预算由 80,000 元 改为 100,000 元；工期由 2026-11-15 改为 2026-12-01；验收标准更新"
+      }
+    ]
+  },
+  "requirements": [
+    {
+      "key": "上线时间",
+      "current_status": "pending",
+      "current_owner": null,
+      "current_deadline": {
+        "value": "2026-12-01",
+        "status": "explicit",
+        "raw": "2026-12-01",
+        "evidence": [
+          {
+            "file": "quote_1012.docx",
+            "source_type": "document",
+            "locator": "document://quote_1012.docx#E9",
+            "occurred_at": "2026-10-12T15:00:00+08:00",
+            "text": "上线时间调整为 2026-12-01"
+          }
+        ]
+      },
+      "versions": [
+        {
+          "version": 1,
+          "change_type": "created",
+          "status": "pending",
+          "description": "希望 10 月底上线",
+          "owner": null,
+          "deadline": {
+            "value": null,
+            "status": "pending_vague",
+            "raw": "10 月底",
+            "evidence": [
+              {
+                "file": "chat_0918.txt",
+                "source_type": "chat",
+                "locator": "chat://chat_0918.txt#E3",
+                "occurred_at": "2026-09-18T14:12:00+08:00",
+                "text": "希望 10 月底上线"
+              }
+            ]
+          },
+          "occurred_at": "2026-09-18T14:10:00+08:00",
+          "change_reason": "首次出现",
+          "sources": [
+            "chat_0918.txt"
+          ]
+        },
+        {
+          "version": 2,
+          "change_type": "modified",
+          "status": "pending",
+          "description": "上线时间定为 2026-11-15",
+          "owner": null,
+          "deadline": {
+            "value": "2026-11-15",
+            "status": "explicit",
+            "raw": "2026-11-15",
+            "evidence": [
+              {
+                "file": "minutes_0925.docx",
+                "source_type": "document",
+                "locator": "document://minutes_0925.docx#E5",
+                "occurred_at": "2026-09-25T14:00:00+08:00",
+                "text": "上线时间定为 2026-11-15"
+              }
+            ]
+          },
+          "occurred_at": "2026-09-25T14:00:00+08:00",
+          "change_reason": "需求描述更新；截止时间由 未确定（10 月底） 改为 2026-11-15",
+          "sources": [
+            "minutes_0925.docx"
+          ]
+        },
+        {
+          "version": 3,
+          "change_type": "modified",
+          "status": "pending",
+          "description": "上线时间调整为 2026-12-01",
+          "owner": null,
+          "deadline": {
+            "value": "2026-12-01",
+            "status": "explicit",
+            "raw": "2026-12-01",
+            "evidence": [
+              {
+                "file": "quote_1012.docx",
+                "source_type": "document",
+                "locator": "document://quote_1012.docx#E9",
+                "occurred_at": "2026-10-12T15:00:00+08:00",
+                "text": "上线时间调整为 2026-12-01"
+              }
+            ]
+          },
+          "occurred_at": "2026-10-12T15:00:00+08:00",
+          "change_reason": "需求描述更新；截止时间由 2026-11-15 改为 2026-12-01",
+          "sources": [
+            "quote_1012.docx"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "设备台账",
+      "current_status": "confirmed",
+      "current_owner": "陈经理",
+      "current_deadline": {
+        "value": null,
+        "status": "missing",
+        "raw": null,
+        "evidence": [
+          {
+            "file": "contract_1012.docx",
+            "source_type": "document",
+            "locator": "document://contract_1012.docx#E12",
+            "occurred_at": "2026-10-12T17:00:00+08:00",
+            "text": "设备台账负责人：陈经理，需求已确认"
+          }
+        ]
+      },
+      "versions": [
+        {
+          "version": 1,
+          "change_type": "created",
+          "status": "pending",
+          "description": "设备台账要能扫码查看档案",
+          "owner": null,
+          "deadline": {
+            "value": null,
+            "status": "missing",
+            "raw": null,
+            "evidence": [
+              {
+                "file": "chat_0918.txt",
+                "source_type": "chat",
+                "locator": "chat://chat_0918.txt#E1",
+                "occurred_at": "2026-09-18T14:10:00+08:00",
+                "text": "设备台账要能扫码查看档案"
+              }
+            ]
+          },
+          "occurred_at": "2026-09-18T14:10:00+08:00",
+          "change_reason": "首次出现",
+          "sources": [
+            "chat_0918.txt"
+          ]
+        },
+        {
+          "version": 2,
+          "change_type": "modified",
+          "status": "pending",
+          "description": "一期范围：设备台账与二维码",
+          "owner": null,
+          "deadline": {
+            "value": null,
+            "status": "missing",
+            "raw": null,
+            "evidence": [
+              {
+                "file": "minutes_0925.docx",
+                "source_type": "document",
+                "locator": "document://minutes_0925.docx#E4",
+                "occurred_at": "2026-09-25T14:00:00+08:00",
+                "text": "一期范围：设备台账与二维码、巡检计划、异常上报"
+              }
+            ]
+          },
+          "occurred_at": "2026-09-25T14:00:00+08:00",
+          "change_reason": "需求描述更新",
+          "sources": [
+            "minutes_0925.docx"
+          ]
+        },
+        {
+          "version": 3,
+          "change_type": "confirmed",
+          "status": "confirmed",
+          "description": "设备台账负责人：陈经理，需求已确认",
+          "owner": "陈经理",
+          "deadline": {
+            "value": null,
+            "status": "missing",
+            "raw": null,
+            "evidence": [
+              {
+                "file": "contract_1012.docx",
+                "source_type": "document",
+                "locator": "document://contract_1012.docx#E12",
+                "occurred_at": "2026-10-12T17:00:00+08:00",
+                "text": "设备台账负责人：陈经理，需求已确认"
+              }
+            ]
+          },
+          "occurred_at": "2026-10-12T15:00:00+08:00",
+          "change_reason": "需求描述更新；负责人由 未指定 改为 陈经理；状态由 待确认 改为 已确认",
+          "sources": [
+            "contract_1012.docx"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "审批流",
+      "current_status": "cancelled",
+      "current_owner": null,
+      "current_deadline": {
+        "value": null,
+        "status": "missing",
+        "raw": null,
+        "evidence": [
+          {
+            "file": "chat_1012.txt",
+            "source_type": "chat",
+            "locator": "chat://chat_1012.txt#E11",
+            "occurred_at": "2026-10-12T16:20:00+08:00",
+            "text": "审批流取消，不进入一期"
+          }
+        ]
+      },
+      "versions": [
+        {
+          "version": 1,
+          "change_type": "created",
+          "status": "pending",
+          "description": "审批流要加在异常工单上",
+          "owner": null,
+          "deadline": {
+            "value": null,
+            "status": "missing",
+            "raw": null,
+            "evidence": [
+              {
+                "file": "chat_0925.txt",
+                "source_type": "chat",
+                "locator": "chat://chat_0925.txt#E7",
+                "occurred_at": "2026-09-25T15:10:00+08:00",
+                "text": "审批流要加在异常工单上"
+              }
+            ]
+          },
+          "occurred_at": "2026-09-25T14:00:00+08:00",
+          "change_reason": "首次出现",
+          "sources": [
+            "chat_0925.txt"
+          ]
+        },
+        {
+          "version": 2,
+          "change_type": "cancelled",
+          "status": "cancelled",
+          "description": "审批流取消，不进入一期",
+          "owner": null,
+          "deadline": {
+            "value": null,
+            "status": "missing",
+            "raw": null,
+            "evidence": [
+              {
+                "file": "chat_1012.txt",
+                "source_type": "chat",
+                "locator": "chat://chat_1012.txt#E11",
+                "occurred_at": "2026-10-12T16:20:00+08:00",
+                "text": "审批流取消，不进入一期"
+              }
+            ]
+          },
+          "occurred_at": "2026-10-12T15:00:00+08:00",
+          "change_reason": "需求描述更新；状态由 待确认 改为 已取消",
+          "sources": [
+            "chat_1012.txt"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "巡检计划",
+      "current_status": "pending",
+      "current_owner": null,
+      "current_deadline": {
+        "value": null,
+        "status": "missing",
+        "raw": null,
+        "evidence": [
+          {
+            "file": "minutes_0925.docx",
+            "source_type": "document",
+            "locator": "document://minutes_0925.docx#E4",
+            "occurred_at": "2026-09-25T14:00:00+08:00",
+            "text": "一期范围：设备台账与二维码、巡检计划、异常上报"
+          }
+        ]
+      },
+      "versions": [
+        {
+          "version": 1,
+          "change_type": "created",
+          "status": "pending",
+          "description": "一期范围：巡检计划",
+          "owner": null,
+          "deadline": {
+            "value": null,
+            "status": "missing",
+            "raw": null,
+            "evidence": [
+              {
+                "file": "minutes_0925.docx",
+                "source_type": "document",
+                "locator": "document://minutes_0925.docx#E4",
+                "occurred_at": "2026-09-25T14:00:00+08:00",
+                "text": "一期范围：设备台账与二维码、巡检计划、异常上报"
+              }
+            ]
+          },
+          "occurred_at": "2026-09-25T14:00:00+08:00",
+          "change_reason": "首次出现",
+          "sources": [
+            "minutes_0925.docx"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "异常上报",
+      "current_status": "pending",
+      "current_owner": null,
+      "current_deadline": {
+        "value": null,
+        "status": "missing",
+        "raw": null,
+        "evidence": [
+          {
+            "file": "minutes_0925.docx",
+            "source_type": "document",
+            "locator": "document://minutes_0925.docx#E4",
+            "occurred_at": "2026-09-25T14:00:00+08:00",
+            "text": "一期范围：设备台账与二维码、巡检计划、异常上报"
+          }
+        ]
+      },
+      "versions": [
+        {
+          "version": 1,
+          "change_type": "created",
+          "status": "pending",
+          "description": "一期范围：异常上报",
+          "owner": null,
+          "deadline": {
+            "value": null,
+            "status": "missing",
+            "raw": null,
+            "evidence": [
+              {
+                "file": "minutes_0925.docx",
+                "source_type": "document",
+                "locator": "document://minutes_0925.docx#E4",
+                "occurred_at": "2026-09-25T14:00:00+08:00",
+                "text": "一期范围：设备台账与二维码、巡检计划、异常上报"
+              }
+            ]
+          },
+          "occurred_at": "2026-09-25T14:00:00+08:00",
+          "change_reason": "首次出现",
+          "sources": [
+            "minutes_0925.docx"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "统计看板",
+      "current_status": "pending",
+      "current_owner": null,
+      "current_deadline": {
+        "value": null,
+        "status": "missing",
+        "raw": null,
+        "evidence": [
+          {
+            "file": "quote_1012.docx",
+            "source_type": "document",
+            "locator": "document://quote_1012.docx#E10",
+            "occurred_at": "2026-10-12T15:00:00+08:00",
+            "text": "统计看板新增，完成率与明细一致"
+          }
+        ]
+      },
+      "versions": [
+        {
+          "version": 1,
+          "change_type": "created",
+          "status": "pending",
+          "description": "统计看板新增，完成率与明细一致",
+          "owner": null,
+          "deadline": {
+            "value": null,
+            "status": "missing",
+            "raw": null,
+            "evidence": [
+              {
+                "file": "quote_1012.docx",
+                "source_type": "document",
+                "locator": "document://quote_1012.docx#E10",
+                "occurred_at": "2026-10-12T15:00:00+08:00",
+                "text": "统计看板新增，完成率与明细一致"
+              }
+            ]
+          },
+          "occurred_at": "2026-10-12T15:00:00+08:00",
+          "change_reason": "首次出现",
+          "sources": [
+            "quote_1012.docx"
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "batches": 3,
+    "requirements": 6,
+    "total_versions": 11,
+    "modified_versions": 3,
+    "confirmed_versions": 1,
+    "cancelled_versions": 1,
+    "project_versions": 3
+  },
+  "checks": {
+    "three_project_versions": true,
+    "v1_budget_8w": true,
+    "v1_deadline_pending": true,
+    "v1_scope": true,
+    "v2_budget_carried": true,
+    "v2_deadline": true,
+    "v2_scope_added": true,
+    "v2_acceptance": true,
+    "v3_budget_10w": true,
+    "v3_deadline": true,
+    "v3_scope_stats": true,
+    "v3_acceptance_changed": true,
+    "v3_changes": true,
+    "v3_reason": true,
+    "dev_versions": true,
+    "dev_first_immutable": true,
+    "dev_current_confirmed": true,
+    "dev_owner": true,
+    "dev_confirmed_version": true,
+    "online_values": true,
+    "online_vague_raw": true,
+    "approval_cancelled": true,
+    "approval_versions": true,
+    "stats_new": true,
+    "stats_one_version": true,
+    "version_source": true,
+    "version_status": true,
+    "stats_total": true
+  },
+  "all_passed": true
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "clientgraph.customer360.verify.v1",
+  "generated_at": "2026-11-06T06:52:00Z",
+  "environment": {"platform": "Windows x64", "browser": "Chromium 156", "viewport": "996x938"},
+  "c1": {
+    "name": "青岚智能装备（虚构）",
+    "contact": "陈晓岚 · 信息化负责人",
+    "phone": "13800001024",
+    "email": "chen.xiaolan@example.com",
+    "wechat": "demo_qinglan_chen",
+    "projects": ["设备巡检小程序（一期）", "售后工单系统升级"],
+    "requirements": {"total": 7, "confirmed": 4, "pending": 2, "cancelled": 1},
+    "risks": 5,
+    "actions": [
+      {"title": "确认一期预算上限", "due": "2026-10-15", "label": "逾期 22 天"},
+      {"title": "发送澄清问题清单", "due": "2026-11-03", "label": "逾期 3 天"},
+      {"title": "补充设备台账 2 台待定", "due": "2026-11-08", "label": "2 天后"}
+    ],
+    "reminder": "确认一期预算上限 · 逾期 22 天 · 陈晓岚 · 来源 M06",
+    "evidence_count": 12,
+    "missing_time_count": 1,
+    "timeline": ["M07", "M13", "M06", "M11", "M08", "M09", "M04", "M05", "M03", "M01", "M02", "M12"],
+    "missing_time": ["M12"],
+    "p2_material": "M13",
+    "excluded": ["M10", "供应链协同平台（预研）"]
+  },
+  "c2": {
+    "name": "恒晟精工（虚构）",
+    "projects": ["供应链协同平台（预研）"],
+    "requirements": 0,
+    "risks": 0,
+    "actions": [{"title": "回复供应链预研问题", "due": "2026-11-05", "label": "逾期 1 天"}],
+    "timeline": ["M10"],
+    "excluded": ["M07", "M13", "M01"]
+  },
+  "evidence_jump": {"material": "M07", "locator": "pdf://M07#第 1 页", "drawer_opened": true},
+  "timeline_sorted_desc": true,
+  "cross_customer_isolated": true,
+  "cross_project_isolated": true,
+  "console_errors": 0,
+  "all_passed": true
+}

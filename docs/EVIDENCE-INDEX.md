@@ -1,37 +1,46 @@
-# 证据索引 v0.2.0
+# 证据索引 v0.3.0
 
 > 发布日期：2026-11-06
 > 仓库：`github.com/Dingh0208/clientgraph-ai`
-> 版本标识：tag `v0.2.0`（分支 `main`）
+> 版本标识：tag `v0.3.0`（分支 `main`）
 > 原则：只登记本仓库真实存在的文件；不登记截图、密钥、客户资料或未执行的结果。
 
 ## 1. 回归证据
 
 | 文件 | 内容 | 结论 |
 |---|---|---|
-| `evidence/audio-pipeline-2026-11-06.json` | 长音频/短音频/空音频/切片失败/超时/部分重试 | 7/7 |
-| `evidence/media-pipeline-2026-11-06.json` | 视频音轨、PDF 文本层、扫描 OCR、低清/空白/失败 | 8/8 |
-| `evidence/document-pipeline-2026-11-06.json` | DOCX/XLSX/XLS/PPTX/EML/TXT/HTML/JSON/聊天 | 13/13 |
-| `evidence/evidence-layer-2026-11-06.json` | 证据归一化与合并隔离 | 22/22 |
-| `evidence/archive-workflow-2026-11-06.json` | 待归档逐条/批量/忽略恢复/审计 | 通过 |
-| `evidence/performance-diagnostics-2026-11-06.json` | 性能采样与本地诊断/启动策略 | 通过 |
-| `evidence/regression-09-15-2026-11-06.json` | 第 09–15 轮汇总 | 通过 |
+| `evidence/integration-v0.3.0-2026-11-06.json` | 2 客户/3 项目/多来源集成 | 29 项通过 |
+| `evidence/customer360-2026-11-06.json` | 客户 360 多项目/多来源 | 通过 |
+| `evidence/extraction-2026-11-06.json` | 需求/预算/工期/验收抽取 | 23 项通过 |
+| `evidence/requirement-history-2026-11-06.json` | 三次沟通版本演化 | 28 项通过 |
+| `evidence/conflicts-2026-11-06.json` | 八类冲突 | 22 项通过 |
+| `evidence/tasks-2026-11-06.json` | 待办/延期/重开/提醒 | 28 项通过 |
+| `evidence/relationship-view-2026-11-06.json` | 关系图/同名/共享文件 | 26 项通过 |
+| `evidence/unified-search-2026-11-06.json` | 三类自然语言问答 | 27 项通过 |
+| `evidence/audio-pipeline-2026-11-06.json` | 长音频/切片/超时 | 7/7 |
+| `evidence/media-pipeline-2026-11-06.json` | 视频音轨/PDF/OCR | 8/8 |
+| `evidence/document-pipeline-2026-11-06.json` | Office/邮件/聊天解析 | 13/13 |
+| `evidence/evidence-layer-2026-11-06.json` | 证据归一化 | 22/22 |
+| `evidence/archive-workflow-2026-11-06.json` | 待归档 | 通过 |
+| `evidence/performance-diagnostics-2026-11-06.json` | 性能/诊断 | 通过 |
+| `evidence/regression-09-15-2026-11-06.json` | 09–15 轮汇总 | 通过 |
 
 ## 2. 代码与文档
 
 | 路径 | 内容 |
 |---|---|
-| `prototype/index.html` | 交互原型（导入、待归档、诊断等） |
-| `audio_pipeline/` | 长音频切片与 ASR |
-| `media_pipeline/` | 视频音轨、PDF/OCR |
-| `document_pipeline/` | Office/邮件/文本/聊天解析 |
-| `evidence_layer/` | 证据归一化与合并 |
-| `ops/` | 本地诊断与 API 服务 |
-| `scripts/verify_*.py` | 四组可复现验证 |
-| `docs/解析矩阵-v1.0.md` | 输入类型、保留内容、错误码 |
-| `docs/性能记录-v1.0.md` | 实测耗时与界面估算 |
-| `docs/已知限制-v1.0.md` | 当前限制汇总 |
-| `docs/回归记录-09-15.md` | 真实输入输出与失败案例 |
+| `customer360/` | 客户 360 聚合 |
+| `extraction/` | 需求抽取 |
+| `requirement_history/` | 版本演化 |
+| `conflict_detection/` | 八类冲突 |
+| `task_center/` | 待办与提醒策略 |
+| `relationship_view/` | 可解释关系图 |
+| `unified_search/` | 统一检索与问答 |
+| `ops/` | 本地诊断 |
+| `docs/数据模型-v0.3.0.md` | 实体、关系、隔离规则 |
+| `docs/搜索测试矩阵-v1.0.md` | 关键词/自然语言/跨客户矩阵 |
+| `docs/失败案例-v0.3.0.md` | 真实失败路径与已修复缺陷 |
+| `docs/RELEASE-NOTES-v0.3.0.md` | 版本说明 |
 
 ## 3. 原则
 

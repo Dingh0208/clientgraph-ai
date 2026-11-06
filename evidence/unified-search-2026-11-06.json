@@ -1,0 +1,524 @@
+{
+  "generated_at": "2026-11-06T08:32:40.893873+00:00",
+  "environment": {
+    "python": "3.12.13",
+    "platform": "win32"
+  },
+  "keyword": {
+    "count": 6,
+    "results": [
+      {
+        "entity_type": "project",
+        "entity_id": "p1",
+        "label": "设备巡检小程序（一期）",
+        "snippet": "设备巡检小程序（一期）",
+        "locator": "call://m2#t=120000",
+        "occurred_at": null,
+        "customer": {
+          "id": "c1",
+          "name": "青岚智能装备（虚构）"
+        },
+        "project": {
+          "id": "p1",
+          "name": "设备巡检小程序（一期）"
+        },
+        "score": 4.0,
+        "matched_terms": [
+          "小程",
+          "程序"
+        ]
+      },
+      {
+        "entity_type": "requirement",
+        "entity_id": "r1",
+        "label": "设备巡检小程序",
+        "snippet": "设备巡检小程序 扫码巡检与设备台账",
+        "locator": "doc://d1#page=2",
+        "occurred_at": null,
+        "customer": {
+          "id": "c1",
+          "name": "青岚智能装备（虚构）"
+        },
+        "project": {
+          "id": "p1",
+          "name": "设备巡检小程序（一期）"
+        },
+        "score": 4.0,
+        "matched_terms": [
+          "小程",
+          "程序"
+        ]
+      },
+      {
+        "entity_type": "communication",
+        "entity_id": "m1",
+        "label": "微信聊天-需求",
+        "snippet": "我们想开发一个小程序做设备巡检",
+        "locator": "chat://m1#msg=1",
+        "occurred_at": "2026-09-18T14:10:00+08:00",
+        "customer": {
+          "id": "c1",
+          "name": "青岚智能装备（虚构）"
+        },
+        "project": {
+          "id": "p1",
+          "name": "设备巡检小程序（一期）"
+        },
+        "score": 4.0,
+        "matched_terms": [
+          "小程",
+          "程序"
+        ]
+      },
+      {
+        "entity_type": "evidence",
+        "entity_id": "e1",
+        "label": "e1",
+        "snippet": "我们想开发一个小程序做设备巡检",
+        "locator": "chat://m1#msg=1",
+        "occurred_at": "2026-09-18T14:10:00+08:00",
+        "customer": {
+          "id": "c1",
+          "name": "青岚智能装备（虚构）"
+        },
+        "project": {
+          "id": "p1",
+          "name": "设备巡检小程序（一期）"
+        },
+        "score": 4.0,
+        "matched_terms": [
+          "小程",
+          "程序"
+        ]
+      },
+      {
+        "entity_type": "document",
+        "entity_id": "d1",
+        "label": "设备巡检小程序需求文档",
+        "snippet": "设备巡检小程序需求文档 v1.0",
+        "locator": "doc://d1#page=1",
+        "occurred_at": "2026-09-29T09:00:00+08:00",
+        "customer": {
+          "id": "c1",
+          "name": "青岚智能装备（虚构）"
+        },
+        "project": {
+          "id": "p1",
+          "name": "设备巡检小程序（一期）"
+        },
+        "score": 4.0,
+        "matched_terms": [
+          "小程",
+          "程序"
+        ]
+      },
+      {
+        "entity_type": "evidence",
+        "entity_id": "e2",
+        "label": "e2",
+        "snippet": "设备巡检小程序需求文档",
+        "locator": "doc://d1#page=1",
+        "occurred_at": "2026-09-29T09:00:00+08:00",
+        "customer": {
+          "id": "c1",
+          "name": "青岚智能装备（虚构）"
+        },
+        "project": {
+          "id": "p1",
+          "name": "设备巡检小程序（一期）"
+        },
+        "score": 4.0,
+        "matched_terms": [
+          "小程",
+          "程序"
+        ]
+      }
+    ]
+  },
+  "answers": {
+    "mentions": {
+      "query": "哪些客户提过小程序开发",
+      "intent": "customer_mentions",
+      "conclusion": "提过“小程序开发”的客户：青岚智能装备（虚构）",
+      "customers": [
+        {
+          "id": "c1",
+          "name": "青岚智能装备（虚构）"
+        }
+      ],
+      "projects": [
+        {
+          "id": "p1",
+          "name": "设备巡检小程序（一期）"
+        }
+      ],
+      "time": "2026-09-29T09:00:00+08:00",
+      "times": [
+        "2026-09-18T14:10:00+08:00",
+        "2026-09-29T09:00:00+08:00"
+      ],
+      "evidence": [
+        {
+          "type": "communication",
+          "label": "微信聊天-需求",
+          "locator": "chat://m1#msg=1",
+          "occurred_at": "2026-09-18T14:10:00+08:00",
+          "snippet": "我们想开发一个小程序做设备巡检"
+        },
+        {
+          "type": "requirement",
+          "label": "设备巡检小程序",
+          "locator": "doc://d1#page=2",
+          "occurred_at": null,
+          "snippet": "设备巡检小程序 扫码巡检与设备台账"
+        },
+        {
+          "type": "document",
+          "label": "设备巡检小程序需求文档",
+          "locator": "doc://d1#page=1",
+          "occurred_at": "2026-09-29T09:00:00+08:00",
+          "snippet": "设备巡检小程序需求文档 v1.0"
+        }
+      ],
+      "items": [
+        {
+          "entity_type": "communication",
+          "entity_id": "m1",
+          "label": "微信聊天-需求",
+          "snippet": "我们想开发一个小程序做设备巡检",
+          "locator": "chat://m1#msg=1",
+          "occurred_at": "2026-09-18T14:10:00+08:00",
+          "customer": {
+            "id": "c1",
+            "name": "青岚智能装备（虚构）"
+          },
+          "project": {
+            "id": "p1",
+            "name": "设备巡检小程序（一期）"
+          },
+          "score": 3.0,
+          "matched_terms": [
+            "小程",
+            "程序",
+            "开发"
+          ]
+        },
+        {
+          "entity_type": "evidence",
+          "entity_id": "e1",
+          "label": "e1",
+          "snippet": "我们想开发一个小程序做设备巡检",
+          "locator": "chat://m1#msg=1",
+          "occurred_at": "2026-09-18T14:10:00+08:00",
+          "customer": {
+            "id": "c1",
+            "name": "青岚智能装备（虚构）"
+          },
+          "project": {
+            "id": "p1",
+            "name": "设备巡检小程序（一期）"
+          },
+          "score": 3.0,
+          "matched_terms": [
+            "小程",
+            "程序",
+            "开发"
+          ]
+        },
+        {
+          "entity_type": "requirement",
+          "entity_id": "r1",
+          "label": "设备巡检小程序",
+          "snippet": "设备巡检小程序 扫码巡检与设备台账",
+          "locator": "doc://d1#page=2",
+          "occurred_at": null,
+          "customer": {
+            "id": "c1",
+            "name": "青岚智能装备（虚构）"
+          },
+          "project": {
+            "id": "p1",
+            "name": "设备巡检小程序（一期）"
+          },
+          "score": 2.0,
+          "matched_terms": [
+            "小程",
+            "程序"
+          ]
+        },
+        {
+          "entity_type": "document",
+          "entity_id": "d1",
+          "label": "设备巡检小程序需求文档",
+          "snippet": "设备巡检小程序需求文档 v1.0",
+          "locator": "doc://d1#page=1",
+          "occurred_at": "2026-09-29T09:00:00+08:00",
+          "customer": {
+            "id": "c1",
+            "name": "青岚智能装备（虚构）"
+          },
+          "project": {
+            "id": "p1",
+            "name": "设备巡检小程序（一期）"
+          },
+          "score": 2.0,
+          "matched_terms": [
+            "小程",
+            "程序"
+          ]
+        },
+        {
+          "entity_type": "evidence",
+          "entity_id": "e2",
+          "label": "e2",
+          "snippet": "设备巡检小程序需求文档",
+          "locator": "doc://d1#page=1",
+          "occurred_at": "2026-09-29T09:00:00+08:00",
+          "customer": {
+            "id": "c1",
+            "name": "青岚智能装备（虚构）"
+          },
+          "project": {
+            "id": "p1",
+            "name": "设备巡检小程序（一期）"
+          },
+          "score": 2.0,
+          "matched_terms": [
+            "小程",
+            "程序"
+          ]
+        }
+      ],
+      "uncertainty": {
+        "level": "low",
+        "reasons": [
+          "命中 2 条原始沟通/文档，可逐条定位"
+        ]
+      }
+    },
+    "change": {
+      "query": "设备巡检小程序最近一次变更是什么",
+      "intent": "project_change",
+      "conclusion": "项目“设备巡检小程序（一期）”最近一次变更为 v2：范围新增 统计看板；预算由 80,000 元 改为 100,000 元；工期由 2026-11-15 改为 2026-12-01",
+      "customers": [
+        {
+          "id": "c1",
+          "name": "青岚智能装备（虚构）"
+        }
+      ],
+      "projects": [
+        {
+          "id": "p1",
+          "name": "设备巡检小程序（一期）"
+        }
+      ],
+      "time": "2026-10-12T15:00:00+08:00",
+      "times": [
+        "2026-10-12T15:00:00+08:00"
+      ],
+      "evidence": [
+        {
+          "type": "source",
+          "label": "quote.docx",
+          "locator": "doc://d2#table=1&row=8",
+          "occurred_at": "2026-10-12T15:00:00+08:00",
+          "snippet": ""
+        }
+      ],
+      "items": [
+        {
+          "version": 2,
+          "changes": [
+            {
+              "field": "scope"
+            },
+            {
+              "field": "budget"
+            },
+            {
+              "field": "deadline"
+            }
+          ],
+          "change_reason": "范围新增 统计看板；预算由 80,000 元 改为 100,000 元；工期由 2026-11-15 改为 2026-12-01"
+        }
+      ],
+      "uncertainty": {
+        "level": "low",
+        "reasons": [
+          "版本记录含变更原因与来源"
+        ]
+      }
+    },
+    "overdue": {
+      "query": "哪些待办已逾期",
+      "intent": "overdue_tasks",
+      "conclusion": "已逾期 2 项：确认一期预算（逾期 22 天）、回复供应链预研问题（逾期 1 天）",
+      "customers": [
+        {
+          "id": "c1",
+          "name": "青岚智能装备（虚构）"
+        },
+        {
+          "id": "c2",
+          "name": "恒晟精工（虚构）"
+        }
+      ],
+      "projects": [
+        {
+          "id": "p1",
+          "name": "设备巡检小程序（一期）"
+        },
+        {
+          "id": "p3",
+          "name": "供应链协同平台（预研）"
+        }
+      ],
+      "time": "2026-11-05",
+      "times": [
+        "2026-10-15",
+        "2026-11-05"
+      ],
+      "evidence": [
+        {
+          "type": "evidence",
+          "label": "来源",
+          "locator": "chat://m1#msg=3",
+          "occurred_at": "2026-09-22T09:19:00+08:00",
+          "snippet": ""
+        },
+        {
+          "type": "evidence",
+          "label": "来源",
+          "locator": "mail://m3#part=text",
+          "occurred_at": "2026-10-09T16:40:00+08:00",
+          "snippet": ""
+        }
+      ],
+      "items": [
+        {
+          "id": "t1",
+          "title": "确认一期预算",
+          "due_at": "2026-10-15",
+          "days": 22
+        },
+        {
+          "id": "t3",
+          "title": "回复供应链预研问题",
+          "due_at": "2026-11-05",
+          "days": 1
+        }
+      ],
+      "uncertainty": {
+        "level": "low",
+        "reasons": [
+          "按待办状态与截止日期筛选"
+        ]
+      }
+    },
+    "unknown": {
+      "query": "有没有提到海外部署",
+      "intent": "keyword",
+      "conclusion": "未找到相关记录。",
+      "customers": [],
+      "projects": [],
+      "time": null,
+      "times": [],
+      "evidence": [],
+      "items": [],
+      "uncertainty": {
+        "level": "high",
+        "reasons": [
+          "关键词未命中"
+        ]
+      }
+    },
+    "fallback": {
+      "query": "报价",
+      "intent": "keyword",
+      "conclusion": "检索到 1 条相关记录；仅做关键词检索，未生成推断。",
+      "customers": [
+        {
+          "id": "c1",
+          "name": "青岚智能装备（虚构）"
+        }
+      ],
+      "projects": [
+        {
+          "id": "p1",
+          "name": "设备巡检小程序（一期）"
+        }
+      ],
+      "time": "2026-10-12T15:00:00+08:00",
+      "times": [
+        "2026-10-12T15:00:00+08:00"
+      ],
+      "evidence": [
+        {
+          "type": "document",
+          "label": "第二轮报价单",
+          "locator": "doc://d2#table=1&row=8",
+          "occurred_at": "2026-10-12T15:00:00+08:00",
+          "snippet": "报价合计 100,000 元"
+        }
+      ],
+      "items": [
+        {
+          "entity_type": "document",
+          "entity_id": "d2",
+          "label": "第二轮报价单",
+          "snippet": "报价合计 100,000 元",
+          "locator": "doc://d2#table=1&row=8",
+          "occurred_at": "2026-10-12T15:00:00+08:00",
+          "customer": {
+            "id": "c1",
+            "name": "青岚智能装备（虚构）"
+          },
+          "project": {
+            "id": "p1",
+            "name": "设备巡检小程序（一期）"
+          },
+          "score": 3.0,
+          "matched_terms": [
+            "报价"
+          ]
+        }
+      ],
+      "uncertainty": {
+        "level": "medium",
+        "reasons": [
+          "关键词检索结果，未做语义结论"
+        ]
+      }
+    }
+  },
+  "checks": {
+    "keyword_hits": true,
+    "keyword_locators": true,
+    "keyword_sources": true,
+    "mentions_intent": true,
+    "mentions_customer": true,
+    "mentions_project": true,
+    "mentions_evidence": true,
+    "mentions_conclusion": true,
+    "mentions_uncertainty": true,
+    "change_intent": true,
+    "change_project": true,
+    "change_conclusion": true,
+    "change_time": true,
+    "change_evidence": true,
+    "change_uncertainty": true,
+    "overdue_intent": true,
+    "overdue_items": true,
+    "overdue_conclusion": true,
+    "overdue_customers": true,
+    "overdue_evidence": true,
+    "overdue_uncertainty": true,
+    "unknown_high": true,
+    "unknown_conclusion": true,
+    "fallback_medium": true,
+    "answer_contract": true,
+    "answer_locators": true,
+    "answer_times": true
+  },
+  "all_passed": true
+}

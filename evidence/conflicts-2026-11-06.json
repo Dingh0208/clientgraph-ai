@@ -1,0 +1,390 @@
+{
+  "generated_at": "2026-11-06T07:58:41.134992+00:00",
+  "environment": {
+    "python": "3.12.13",
+    "platform": "win32"
+  },
+  "stats": {
+    "observations": 18,
+    "conflicts": 8,
+    "must_confirm": 8,
+    "dimensions": [
+      "acceptance",
+      "budget",
+      "interface",
+      "owner",
+      "permission",
+      "platform",
+      "scope",
+      "timeline"
+    ],
+    "multi_value": 1
+  },
+  "checks": {
+    "eight_conflicts": true,
+    "all_must_confirm": true,
+    "no_model_choice": true,
+    "write_blocked": true,
+    "input_unchanged": true,
+    "budget_three_values": true,
+    "budget_link": true,
+    "budget_task_link": true,
+    "timeline_values": true,
+    "timeline_requirement": true,
+    "timeline_task": true,
+    "timeline_sources": true,
+    "scope_entity": true,
+    "scope_values": true,
+    "scope_requirement": true,
+    "owner_values": true,
+    "owner_task": true,
+    "platform": true,
+    "interface": true,
+    "permission": true,
+    "acceptance": true,
+    "same_value_no_conflict": true
+  },
+  "all_passed": true,
+  "conflicts": [
+    {
+      "id": "K1",
+      "dimension": "budget",
+      "status": "must_confirm",
+      "value_a": {
+        "raw": "预算 8 万",
+        "normalized": "80000",
+        "source": {
+          "file": "call_0918.mp3",
+          "source_type": "asr",
+          "locator": "asr://call_0918.mp3#budget",
+          "occurred_at": "2026-09-18T14:05:00+08:00"
+        }
+      },
+      "value_b": {
+        "raw": "报价 100,000 元",
+        "normalized": "100000",
+        "source": {
+          "file": "quote_1012.docx",
+          "source_type": "document",
+          "locator": "document://quote_1012.docx#budget",
+          "occurred_at": "2026-10-12T15:00:00+08:00"
+        }
+      },
+      "question": "预算出现“预算 8 万”与“报价 100,000 元”两种口径，请确认以哪个为准。",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）"
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）"
+      },
+      "requirement": null,
+      "task_ids": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "resolution": null,
+      "model_choice": null
+    },
+    {
+      "id": "K2",
+      "dimension": "timeline",
+      "status": "must_confirm",
+      "value_a": {
+        "raw": "2026-11-15 上线",
+        "normalized": "2026-11-15",
+        "source": {
+          "file": "minutes_0925.docx",
+          "source_type": "document",
+          "locator": "document://minutes_0925.docx#timeline",
+          "occurred_at": "2026-09-25T14:00:00+08:00"
+        }
+      },
+      "value_b": {
+        "raw": "调整为 2026-12-01",
+        "normalized": "2026-12-01",
+        "source": {
+          "file": "quote_1012.docx",
+          "source_type": "document",
+          "locator": "document://quote_1012.docx#timeline",
+          "occurred_at": "2026-10-12T15:00:00+08:00"
+        }
+      },
+      "question": "工期出现“2026-11-15 上线”与“调整为 2026-12-01”两种口径，请确认以哪个为准。",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）"
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）"
+      },
+      "requirement": {
+        "id": "R1",
+        "key": "上线时间",
+        "title": "上线时间"
+      },
+      "task_ids": [
+        "T1"
+      ],
+      "resolution": null,
+      "model_choice": null
+    },
+    {
+      "id": "K3",
+      "dimension": "scope",
+      "status": "must_confirm",
+      "value_a": {
+        "raw": "一期包含审批流",
+        "normalized": "一期审批流:include",
+        "source": {
+          "file": "chat_0922.txt",
+          "source_type": "chat",
+          "locator": "chat://chat_0922.txt#scope",
+          "occurred_at": "2026-09-22T09:16:00+08:00"
+        }
+      },
+      "value_b": {
+        "raw": "审批流不进入一期",
+        "normalized": "审批流进入一期:exclude",
+        "source": {
+          "file": "minutes_0925.docx",
+          "source_type": "document",
+          "locator": "document://minutes_0925.docx#scope",
+          "occurred_at": "2026-09-25T14:00:00+08:00"
+        }
+      },
+      "question": "范围在“一期审批流”上出现包含与不包含两种口径，请确认以哪个为准。",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）"
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）"
+      },
+      "requirement": {
+        "id": "R2",
+        "key": "审批流",
+        "title": "审批流"
+      },
+      "task_ids": [],
+      "resolution": null,
+      "model_choice": null
+    },
+    {
+      "id": "K4",
+      "dimension": "owner",
+      "status": "must_confirm",
+      "value_a": {
+        "raw": "负责人：陈经理",
+        "normalized": "陈经理",
+        "source": {
+          "file": "mail_0925.eml",
+          "source_type": "email",
+          "locator": "email://mail_0925.eml#owner",
+          "occurred_at": "2026-09-25T11:00:00+08:00"
+        }
+      },
+      "value_b": {
+        "raw": "负责人：王工",
+        "normalized": "王工",
+        "source": {
+          "file": "req.docx",
+          "source_type": "document",
+          "locator": "document://req.docx#owner",
+          "occurred_at": "2026-09-29T09:00:00+08:00"
+        }
+      },
+      "question": "负责人出现“负责人：陈经理”与“负责人：王工”两种口径，请确认以哪个为准。",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）"
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）"
+      },
+      "requirement": {
+        "id": "R3",
+        "key": "设备台账",
+        "title": "设备台账"
+      },
+      "task_ids": [
+        "T2"
+      ],
+      "resolution": null,
+      "model_choice": null
+    },
+    {
+      "id": "K5",
+      "dimension": "platform",
+      "status": "must_confirm",
+      "value_a": {
+        "raw": "平台：微信小程序",
+        "normalized": "微信小程序",
+        "source": {
+          "file": "chat_0918.txt",
+          "source_type": "chat",
+          "locator": "chat://chat_0918.txt#platform",
+          "occurred_at": "2026-09-18T14:10:00+08:00"
+        }
+      },
+      "value_b": {
+        "raw": "客户希望做 App",
+        "normalized": "App",
+        "source": {
+          "file": "mail_0929.eml",
+          "source_type": "email",
+          "locator": "email://mail_0929.eml#platform",
+          "occurred_at": "2026-09-29T10:12:00+08:00"
+        }
+      },
+      "question": "平台出现“平台：微信小程序”与“客户希望做 App”两种口径，请确认以哪个为准。",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）"
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）"
+      },
+      "requirement": null,
+      "task_ids": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "resolution": null,
+      "model_choice": null
+    },
+    {
+      "id": "K6",
+      "dimension": "interface",
+      "status": "must_confirm",
+      "value_a": {
+        "raw": "接口：走 OA 单点登录",
+        "normalized": "OA",
+        "source": {
+          "file": "req.docx",
+          "source_type": "document",
+          "locator": "document://req.docx#interface",
+          "occurred_at": "2026-09-29T09:00:00+08:00"
+        }
+      },
+      "value_b": {
+        "raw": "接口：对接 ERP",
+        "normalized": "ERP",
+        "source": {
+          "file": "mail_0929.eml",
+          "source_type": "email",
+          "locator": "email://mail_0929.eml#interface",
+          "occurred_at": "2026-09-29T10:12:00+08:00"
+        }
+      },
+      "question": "接口出现“接口：走 OA 单点登录”与“接口：对接 ERP”两种口径，请确认以哪个为准。",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）"
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）"
+      },
+      "requirement": null,
+      "task_ids": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "resolution": null,
+      "model_choice": null
+    },
+    {
+      "id": "K7",
+      "dimension": "permission",
+      "status": "must_confirm",
+      "value_a": {
+        "raw": "权限：按车间隔离",
+        "normalized": "权限按车间隔离",
+        "source": {
+          "file": "req.docx",
+          "source_type": "document",
+          "locator": "document://req.docx#permission",
+          "occurred_at": "2026-09-29T09:00:00+08:00"
+        }
+      },
+      "value_b": {
+        "raw": "权限：全部可见",
+        "normalized": "权限全部可见",
+        "source": {
+          "file": "chat_1010.txt",
+          "source_type": "chat",
+          "locator": "chat://chat_1010.txt#permission",
+          "occurred_at": "2026-10-10T11:02:00+08:00"
+        }
+      },
+      "question": "权限出现“权限：按车间隔离”与“权限：全部可见”两种口径，请确认以哪个为准。",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）"
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）"
+      },
+      "requirement": {
+        "id": "R4",
+        "key": "权限",
+        "title": "权限"
+      },
+      "task_ids": [],
+      "resolution": null,
+      "model_choice": null
+    },
+    {
+      "id": "K8",
+      "dimension": "acceptance",
+      "status": "must_confirm",
+      "value_a": {
+        "raw": "验收：118 台全部可扫码",
+        "normalized": "验收118台全部可扫码",
+        "source": {
+          "file": "req.docx",
+          "source_type": "document",
+          "locator": "document://req.docx#acceptance",
+          "occurred_at": "2026-09-29T09:00:00+08:00"
+        }
+      },
+      "value_b": {
+        "raw": "验收：120 台全部可扫码",
+        "normalized": "验收120台全部可扫码",
+        "source": {
+          "file": "mail_1010.eml",
+          "source_type": "email",
+          "locator": "email://mail_1010.eml#acceptance",
+          "occurred_at": "2026-10-10T09:00:00+08:00"
+        }
+      },
+      "question": "验收标准出现“验收：118 台全部可扫码”与“验收：120 台全部可扫码”两种口径，请确认以哪个为准。",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）"
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）"
+      },
+      "requirement": null,
+      "task_ids": [
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "resolution": null,
+      "model_choice": null
+    }
+  ]
+}

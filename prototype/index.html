@@ -165,6 +165,24 @@ h1{font-size:20px;margin:0 0 4px}.sub{color:var(--muted);font-size:12.5px;margin
 .diag-actions button:disabled{opacity:.45;cursor:not-allowed}
 .diag-error{border:1px solid #f3d5d1;background:#fff8f7;border-radius:8px;padding:8px;font-size:11.5px;color:#8a2b22;margin-top:8px;white-space:pre-wrap;line-height:1.5}
 .diag-log{background:#0f1720;color:#cfe0f2;border-radius:8px;padding:10px;font-family:Consolas,monospace;font-size:11px;line-height:1.5;white-space:pre-wrap;max-height:320px;overflow:auto}
+.c360-top{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+.c360-top h1{margin-bottom:2px}
+.c360-reminder{border:1px solid #f5e3c6;background:#fff8ec;color:#8a5a12;border-radius:10px;padding:10px 12px;font-size:12.5px;margin-bottom:12px;line-height:1.6}
+.c360-reminder.ok{border-color:#d5ecdf;background:#f2fbf6;color:#14724a}
+.c360-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.c360-row{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px dashed #eef2f7;font-size:12.5px}
+.c360-row:last-child{border-bottom:0}
+.c360-row .l{color:var(--muted);flex-shrink:0}
+.c360-row .r{text-align:right;line-height:1.6}
+.c360-item{display:grid;grid-template-columns:132px minmax(0,1fr);gap:10px;padding:10px 0;border-bottom:1px solid #eef2f7}
+.c360-item:last-child{border-bottom:0}
+.c360-time{font-size:11.5px;color:#7d8a99;line-height:1.6}
+.c360-time.missing{color:#a86412;font-weight:600}
+.c360-item .t{font-size:13px;font-weight:500;margin-bottom:3px}
+.c360-item .m{font-size:11.5px;color:var(--muted);line-height:1.6}
+.c360-loc{font-family:Consolas,monospace;font-size:10.5px;color:#7d8a99;word-break:break-all}
+.c360-pill{display:inline-block;font-size:10.5px;padding:2px 7px;border-radius:999px;background:#f2f6fb;border:1px solid #e6edf5;color:#4a5a6a;margin-right:4px}
+@media (max-width:1100px){.c360-grid{grid-template-columns:1fr}.c360-item{grid-template-columns:1fr}}
 @media (max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.arch-stats{grid-template-columns:repeat(2,1fr)}.arch-item{grid-template-columns:24px 1fr}.diag-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -223,6 +241,27 @@ h1{font-size:20px;margin:0 0 4px}.sub{color:var(--muted);font-size:12.5px;margin
         <div id="cust-cards" class="grid2"></div>
         <div class="card" style="margin-top:14px"><h3>需求清单</h3>
           <table class="table" data-testid="req-table"><thead><tr><th>编号</th><th>需求</th><th>项目</th><th>状态</th><th>优先级</th><th>来源</th></tr></thead><tbody id="req-body"></tbody></table>
+        </div>
+      </section>
+      <section class="view" id="view-customer360">
+        <div class="c360-top">
+          <button class="rowbtn" id="c360-back" data-testid="c360-back">← 返回客户</button>
+          <div style="flex:1"><h1 id="c360-name">客户 360</h1><div class="sub" id="c360-sub" style="margin:2px 0 0"></div></div>
+          <div id="c360-tags"></div>
+        </div>
+        <div class="c360-reminder" id="c360-reminder" data-testid="c360-reminder"></div>
+        <div class="c360-grid">
+          <div class="card"><h3>客户身份与联系方式</h3><div id="c360-identity"></div></div>
+          <div class="card"><h3>最近沟通</h3><div id="c360-recent"></div></div>
+          <div class="card"><h3>当前项目</h3><div id="c360-projects"></div></div>
+          <div class="card"><h3>需求摘要</h3><div id="c360-reqs"></div></div>
+          <div class="card"><h3>风险</h3><div id="c360-risks"></div></div>
+          <div class="card"><h3>下一步动作</h3><div id="c360-actions"></div></div>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <div class="imp-head"><h3 style="margin:0">时间线</h3><span class="tag blue" id="c360-evcount" data-testid="c360-evcount"></span></div>
+          <div class="hint">按真实发生时间倒序；缺失时间明确标记，排在最后。点击任意条目查看来源证据。</div>
+          <div id="c360-timeline" data-testid="c360-timeline"></div>
         </div>
       </section>
       <section class="view" id="view-import">
@@ -431,8 +470,18 @@ const MATERIALS=[
   {id:"m11b1",at:"11:02",text:"转发：周明远（恒晟精工）说他们也想上供应链协同，问我们有没有类似案例"},
   {id:"m11b2",at:"11:04",text:"没问题，不过恒晟那边我单独对接，别混在这个项目里"}]},
  {id:"M12",type:"image",title:"车间设备铭牌照片",customerId:"c1",projectId:"p1",date:"2026-09-18",locator:"img://M12",blocks:[
-  {id:"m12b1",at:"OCR",text:"图片未识别出可用文字，已保留原图；不参与问答检索"}]}
+  {id:"m12b1",at:"OCR",text:"图片未识别出可用文字，已保留原图；不参与问答检索"}]},
+ {id:"M13",type:"chat",title:"售后工单需求-聊天",customerId:"c1",projectId:"p2",date:"2026-10-14",locator:"chat://M13",blocks:[
+  {id:"m13b1",at:"10:20",text:"售后工单也想加审批，先记下来，等巡检一期做完再排"},
+  {id:"m13b2",at:"10:22",text:"这块预算还没定，先不动"}]}
 ];
+const C360_TIMES={
+ M01:"2026-09-22T09:14:00+08:00",M02:"2026-09-18T14:05:00+08:00",M03:"2026-09-25T14:00:00+08:00",
+ M04:"2026-09-29T10:12:00+08:00",M05:"2026-09-29T09:00:00+08:00",M06:"2026-10-12T15:00:00+08:00",
+ M07:"2026-10-16T14:08:00+08:00",M08:"2026-10-08T11:00:00+08:00",M09:"2026-09-30T09:30:00+08:00",
+ M10:"2026-10-09T16:40:00+08:00",M11:"2026-10-10T11:02:00+08:00",M12:null,M13:"2026-10-14T10:20:00+08:00"
+};
+MATERIALS.forEach(m=>{m.occurredAt=Object.prototype.hasOwnProperty.call(C360_TIMES,m.id)?C360_TIMES[m.id]:null});
 const REQUIREMENTS=[
  {id:"F1",title:"设备台账与二维码",projectId:"p1",status:"已确认",priority:"P0",source:"M05"},
  {id:"F2",title:"巡检计划",projectId:"p1",status:"已确认",priority:"P0",source:"M05"},
@@ -441,12 +490,21 @@ const REQUIREMENTS=[
  {id:"F5",title:"统计看板",projectId:"p1",status:"待确认",priority:"P1",source:"M05"},
  {id:"F6",title:"巡检异常审批流",projectId:"p1",status:"已取消（本期）",priority:"P2",source:"M01"}
 ];
+REQUIREMENTS.push({id:"F7",title:"售后工单审批流",projectId:"p2",status:"待确认",priority:"P2",source:"M13"});
 const GAPS=[
  {id:"G1",level:"必须先确认",title:"预算口径不一致",detail:"客户口头 8 万；第二轮报价 10 万；合同 10 万。三个口径未统一，影响范围裁剪。",ev:["M02","M06","M07"]},
  {id:"G2",level:"必须先确认",title:"最终决策人未闭合",detail:"通话称张总拍板；邮件由李副总分管信息化；会议为李副总牵头、张总终审，方案确认链仍不清晰。",ev:["M02","M04","M03"]},
  {id:"G3",level:"必须先确认",title:"设备数量口径差异",detail:"客户口头 120 台；清单 118 台，其中 2 台待定；验收标准写 118 台。",ev:["M02","M08","M05"]},
  {id:"G4",level:"重要",title:"上线时间存在期望差",detail:"客户原希望 10 月底；会议定为 11 月 15 日，客户已口头同意顺延，但未书面确认。",ev:["M02","M03"]},
  {id:"G5",level:"重要",title:"审批范围前后变化",detail:"9 月 18 日通话明确不加审批；9 月 22 日聊天提出要加；9 月 25 日会议决定不进一期。旧结论需保留。",ev:["M02","M01","M03"]}
+];
+GAPS.forEach(g=>{g.customerId="c1"});
+const C360_TODAY="2026-11-06";
+const NEXT_ACTIONS=[
+ {id:"T1",customerId:"c1",projectId:"p1",title:"确认一期预算上限",due:"2026-10-15",owner:"陈晓岚",source:"M06"},
+ {id:"T2",customerId:"c1",projectId:"p1",title:"发送澄清问题清单",due:"2026-11-03",owner:"王工（我）",source:"M05"},
+ {id:"T3",customerId:"c1",projectId:"p1",title:"补充设备台账 2 台待定",due:"2026-11-08",owner:"陈晓岚",source:"M08"},
+ {id:"T4",customerId:"c2",projectId:"p3",title:"回复供应链预研问题",due:"2026-11-05",owner:"王工（我）",source:"M10"}
 ];
 const state={view:"overview",lastResults:[]};
 const el=id=>document.getElementById(id);
@@ -460,7 +518,7 @@ function renderOverview(){
  el("kpi-projects").textContent=PROJECTS.length;el("kpi-gaps").textContent=GAPS.length;
  el("cust-list").innerHTML=CUSTOMERS.map(c=>{
   const ms=MATERIALS.filter(m=>m.customerId===c.id),ps=PROJECTS.filter(p=>p.customerId===c.id);
-  return `<div class="cust"><div><div class="name">${esc(c.name)}</div><div class="meta">${esc(c.contact)}<br>${esc(c.industry)} · 最近沟通 ${c.last}</div></div>
+  return `<div class="cust" data-open-cust="${c.id}" style="cursor:pointer"><div><div class="name">${esc(c.name)}</div><div class="meta">${esc(c.contact)}<br>${esc(c.industry)} · 最近沟通 ${c.last}</div></div>
   <div style="text-align:right;white-space:nowrap"><span class="tag blue">${ps.length} 个项目</span><span class="tag">${ms.length} 份资料</span><div class="meta">${c.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div></div></div>`;
  }).join("");
  el("recent-list").innerHTML=MATERIALS.slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,6).map(m=>`
@@ -474,7 +532,8 @@ function renderCustomers(){
   return `<div class="card"><h3>${esc(c.name)}</h3><div class="sub" style="margin-bottom:8px">${esc(c.contact)} · ${esc(c.industry)}</div>
   ${ps.map(p=>`<div style="padding:10px 0;border-top:1px solid #f1f5f9"><div style="display:flex;justify-content:space-between;gap:8px">
   <b style="font-size:13px">${esc(p.name)}</b><span class="tag ${p.status==="进行中"?"blue":""}">${p.status}</span></div>
-  <div class="meta">预算 ${esc(p.budget)} · 目标 ${p.due}<br>${esc(p.progress)}</div></div>`).join("")}</div>`;
+  <div class="meta">预算 ${esc(p.budget)} · 目标 ${p.due}<br>${esc(p.progress)}</div></div>`).join("")}
+  <div style="margin-top:10px"><button class="rowbtn" data-open-cust="${c.id}" data-testid="open-cust-${c.id}">打开客户 360</button></div></div>`;
  }).join("");
  el("req-body").innerHTML=REQUIREMENTS.map(r=>`<tr data-testid="req-row"><td>${r.id}</td><td>${esc(r.title)}</td><td>${esc(projName(r.projectId))}</td>
   <td><span class="tag ${r.status==="已确认"?"blue":r.status==="待确认"?"warn":""}">${r.status}</span></td><td>${r.priority}</td><td class="loc">${r.source}</td></tr>`).join("");
@@ -1167,6 +1226,80 @@ document.addEventListener("click",e=>{
 el("diag-refresh").addEventListener("click",diagLoad);
 el("diag-drawer-close").addEventListener("click",()=>el("diag-drawer").classList.remove("on"));
 el("diag-drawer").addEventListener("click",e=>{if(e.target.id==="diag-drawer")el("diag-drawer").classList.remove("on")});
+
+function c360Time(iso){return iso?iso.slice(0,16).replace("T"," "):"时间未知"}
+function c360DueLabel(due){
+ const diff=Math.round((Date.parse(due+"T00:00:00+08:00")-Date.parse(C360_TODAY+"T00:00:00+08:00"))/86400000);
+ if(diff<0)return {text:`逾期 ${-diff} 天`,bad:true};
+ if(diff===0)return {text:"今天到期",bad:true};
+ return {text:`${diff} 天后`,bad:false};
+}
+function c360Render(cid){
+ const c=CUSTOMERS.find(x=>x.id===cid);if(!c)return;
+ const mats=MATERIALS.filter(m=>m.customerId===cid);
+ const ps=PROJECTS.filter(p=>p.customerId===cid);
+ const pids=ps.map(p=>p.id);
+ const reqs=REQUIREMENTS.filter(r=>pids.includes(r.projectId));
+ const risks=GAPS.filter(g=>g.customerId===cid);
+ const acts=NEXT_ACTIONS.filter(a=>a.customerId===cid);
+ const timeline=mats.map(m=>({...m,ts:m.occurredAt?Date.parse(m.occurredAt):null})).sort((a,b)=>{
+  if(a.ts===null&&b.ts===null)return a.id.localeCompare(b.id);
+  if(a.ts===null)return 1;
+  if(b.ts===null)return -1;
+  return b.ts-a.ts;
+ });
+ const missing=timeline.filter(m=>m.ts===null).length;
+ el("c360-name").textContent=c.name;
+ el("c360-sub").textContent=`${c.industry} · 最近沟通 ${c.last} · ${ps.length} 个项目 · ${mats.length} 份资料`;
+ el("c360-tags").innerHTML=(c.tags||[]).map(t=>`<span class="tag blue">${esc(t)}</span>`).join("");
+ el("c360-identity").innerHTML=[
+  ["公司",c.name],["联系人",c.contact],["手机",c.phone||"未记录"],["邮箱",c.email||"未记录"],["微信",c.wechat||"未记录"],["客户 ID",c.id]
+ ].map(([k,v])=>`<div class="c360-row"><span class="l">${esc(k)}</span><span class="r">${esc(v)}</span></div>`).join("");
+ const recent=timeline.filter(m=>m.ts!==null).slice(0,3);
+ el("c360-recent").innerHTML=recent.length?recent.map(m=>`<div class="c360-row"><span class="l">${esc(c360Time(m.occurredAt))}</span><span class="r">${esc(TYPES[m.type].label)} · ${esc(projName(m.projectId))}<br>${esc((m.blocks[0]||{}).text||m.title).slice(0,52)}</span></div>`).join(""):`<div class="hint">暂无带时间的沟通</div>`;
+ el("c360-projects").innerHTML=ps.length?ps.map(p=>{
+  const n=mats.filter(m=>m.projectId===p.id).length;
+  return `<div class="c360-row"><span class="l">${esc(p.name)}</span><span class="r"><span class="tag ${p.status==="进行中"?"blue":""}">${p.status}</span><br>预算 ${esc(p.budget)} · 目标 ${p.due} · ${n} 份资料<br>${esc(p.progress)}</span></div>`;
+ }).join(""):`<div class="hint">暂无项目</div>`;
+ const counts={};reqs.forEach(r=>counts[r.status]=(counts[r.status]||0)+1);
+ el("c360-reqs").innerHTML=`<div class="c360-row"><span class="l">共 ${reqs.length} 条</span><span class="r">${Object.entries(counts).map(([k,v])=>`<span class="tag">${esc(k)} ${v}</span>`).join("")}</span></div>`+
+  reqs.slice(0,7).map(r=>`<div class="c360-row"><span class="l">${r.id} · ${esc(projName(r.projectId))}</span><span class="r"><span class="tag ${r.status==="已确认"?"blue":r.status==="待确认"?"warn":""}">${r.status}</span> ${esc(r.title)}</span></div>`).join("");
+ el("c360-risks").innerHTML=risks.length?risks.map(g=>`<div class="c360-row"><span class="l"><span class="tag ${g.level==="必须先确认"?"danger":"warn"}">${g.level}</span></span><span class="r">${esc(g.title)}<br><span class="hint" style="margin:0">${g.ev.length} 条证据</span></span></div>`).join(""):`<div class="hint">暂无风险</div>`;
+ const overdue=acts.filter(a=>c360DueLabel(a.due).bad).sort((a,b)=>a.due.localeCompare(b.due));
+ const upcoming=acts.filter(a=>!c360DueLabel(a.due).bad).sort((a,b)=>a.due.localeCompare(b.due));
+ const rem=overdue[0]||upcoming[0];
+ const rb=el("c360-reminder");
+ if(rem){const d=c360DueLabel(rem.due);rb.className="c360-reminder";rb.innerHTML=`<b>最近跟进提醒：</b>${esc(rem.title)} · ${esc(d.text)} · 负责人 ${esc(rem.owner)} · 来源 <span class="loc">${esc(rem.source)}</span>`}
+ else{rb.className="c360-reminder ok";rb.textContent="暂无到期跟进事项"}
+ el("c360-actions").innerHTML=acts.length?acts.map(a=>{const d=c360DueLabel(a.due);return `<div class="c360-row"><span class="l">${esc(a.due)}</span><span class="r">${esc(a.title)}<br><span class="tag ${d.bad?"danger":"blue"}">${esc(d.text)}</span> ${esc(a.owner)}</span></div>`}).join(""):`<div class="hint">暂无下一步动作</div>`;
+ el("c360-evcount").textContent=`${mats.length} 条来源证据 · 缺失时间 ${missing} 条`;
+ el("c360-timeline").innerHTML=timeline.map(m=>{
+  const missingTime=m.ts===null;
+  return `<div class="c360-item" data-evidence-mid="${m.id}" data-at="${esc((m.blocks[0]||{}).at||"")}" data-testid="c360-evidence-${m.id}">
+   <div class="c360-time ${missingTime?"missing":""}">${esc(c360Time(m.occurredAt))}${missingTime?`<br>资料日期 ${esc(m.date)}，无精确时间`:""}</div>
+   <div><div class="t">${esc(m.title)} <span class="c360-pill">${esc(TYPES[m.type].label)}</span><span class="c360-pill">${esc(projName(m.projectId))}</span></div>
+   <div class="m">${esc((m.blocks[0]||{}).text||"")}</div>
+   <div class="c360-loc">${esc(m.locator)}</div></div></div>`;
+ }).join("");
+}
+function openCustomer360(cid){
+ if(!CUSTOMERS.find(c=>c.id===cid))return;
+ state.c360=cid;
+ c360Render(cid);
+ document.querySelectorAll(".view").forEach(s=>s.classList.remove("on"));
+ el("view-customer360").classList.add("on");
+ el("crumb").textContent="客户 360";
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("on",b.dataset.view==="customers"));
+}
+function closeCustomer360(){
+ document.querySelectorAll(".view").forEach(s=>s.classList.remove("on"));
+ el("view-customers").classList.add("on");
+ el("crumb").textContent="客户与项目";
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("on",b.dataset.view==="customers"));
+}
+el("c360-back").addEventListener("click",closeCustomer360);
+el("c360-timeline").addEventListener("click",e=>{const row=e.target.closest("[data-evidence-mid]");if(row)openDrawer(row.dataset.evidenceMid,row.dataset.at)});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-open-cust]");if(b){e.preventDefault();e.stopPropagation();openCustomer360(b.dataset.openCust)}});
 
 renderOverview();renderCustomers();renderGaps();
 window.__cg={ask,search,MATERIALS,GAPS,REQUIREMENTS,INDEX};

@@ -1,0 +1,422 @@
+{
+  "generated_at": "2026-11-06T08:12:46.418413+00:00",
+  "stats": {
+    "nodes": 18,
+    "edges": 32,
+    "direct_evidence": 28,
+    "semantic_similar": 3,
+    "manual_confirmed": 1,
+    "pending_confirmation": 3
+  },
+  "checks": {
+    "node_types": true,
+    "same_name_customers_kept": true,
+    "no_direct_customer_merge": true,
+    "customer_name_suggestion": true,
+    "same_name_projects_kept": true,
+    "project_name_suggestion": true,
+    "r1_own_project": true,
+    "r3_own_project": true,
+    "no_cross_project_attach": true,
+    "cross_customer_similarity": true,
+    "similarity_not_merged": true,
+    "file_multi_project": true,
+    "file_from_m1": true,
+    "file_from_m2": true,
+    "file_multi_evidence": true,
+    "direct_evidence_edge": true,
+    "evidence_points_file": true,
+    "risk_evidence": true,
+    "task_requirement": true,
+    "manual_confirmed": true,
+    "all_types": true,
+    "all_why": true,
+    "semantic_pending": true,
+    "direct_not_pending": true,
+    "stats": true,
+    "explain": true
+  },
+  "all_passed": true,
+  "nodes": [
+    {
+      "id": "customer:c1",
+      "type": "customer",
+      "label": "同名客户（虚构）"
+    },
+    {
+      "id": "customer:c2",
+      "type": "customer",
+      "label": "同名客户（虚构）"
+    },
+    {
+      "id": "project:p1",
+      "type": "project",
+      "label": "同名项目"
+    },
+    {
+      "id": "project:p2",
+      "type": "project",
+      "label": "同名项目"
+    },
+    {
+      "id": "project:p3",
+      "type": "project",
+      "label": "共享文件项目"
+    },
+    {
+      "id": "communication:m1",
+      "type": "communication",
+      "label": "合同沟通"
+    },
+    {
+      "id": "communication:m2",
+      "type": "communication",
+      "label": "补充沟通"
+    },
+    {
+      "id": "file:f1",
+      "type": "file",
+      "label": "共享合同.pdf"
+    },
+    {
+      "id": "file:f2",
+      "type": "file",
+      "label": "其他附件.pdf"
+    },
+    {
+      "id": "requirement:r1",
+      "type": "requirement",
+      "label": "设备台账要支持扫码查看档案"
+    },
+    {
+      "id": "requirement:r2",
+      "type": "requirement",
+      "label": "统计看板按车间筛选"
+    },
+    {
+      "id": "requirement:r3",
+      "type": "requirement",
+      "label": "设备台账需要扫码查看档案"
+    },
+    {
+      "id": "risk:k1",
+      "type": "risk",
+      "label": "预算未确认"
+    },
+    {
+      "id": "task:t1",
+      "type": "task",
+      "label": "确认预算"
+    },
+    {
+      "id": "evidence:ev1",
+      "type": "evidence",
+      "label": "设备台账..."
+    },
+    {
+      "id": "evidence:ev2",
+      "type": "evidence",
+      "label": "统计看板..."
+    },
+    {
+      "id": "evidence:ev3",
+      "type": "evidence",
+      "label": "扫码查看..."
+    },
+    {
+      "id": "evidence:ev4",
+      "type": "evidence",
+      "label": "设备台账..."
+    }
+  ],
+  "edges": [
+    {
+      "id": "E1",
+      "from": "customer:c1",
+      "to": "project:p1",
+      "type": "direct_evidence",
+      "why": "项目「同名项目」的 customer_id=c1，属于直接归属。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E2",
+      "from": "project:p1",
+      "to": "requirement:r1",
+      "type": "direct_evidence",
+      "why": "需求「设备台账要支持扫码查看档案」的 project_id=p1，来源：需求抽取。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E3",
+      "from": "customer:c1",
+      "to": "requirement:r1",
+      "type": "direct_evidence",
+      "why": "需求「设备台账要支持扫码查看档案」归属客户 c1（由项目归属推导）。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E4",
+      "from": "requirement:r1",
+      "to": "evidence:ev1",
+      "type": "direct_evidence",
+      "why": "需求 r1 显式引用证据 ev1。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E5",
+      "from": "requirement:r1",
+      "to": "evidence:ev3",
+      "type": "direct_evidence",
+      "why": "需求 r1 显式引用证据 ev3。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E6",
+      "from": "project:p3",
+      "to": "requirement:r2",
+      "type": "direct_evidence",
+      "why": "需求「统计看板按车间筛选」的 project_id=p3，来源：需求抽取。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E7",
+      "from": "customer:c1",
+      "to": "requirement:r2",
+      "type": "direct_evidence",
+      "why": "需求「统计看板按车间筛选」归属客户 c1（由项目归属推导）。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E8",
+      "from": "requirement:r2",
+      "to": "evidence:ev2",
+      "type": "direct_evidence",
+      "why": "需求 r2 显式引用证据 ev2。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E9",
+      "from": "project:p2",
+      "to": "requirement:r3",
+      "type": "direct_evidence",
+      "why": "需求「设备台账需要扫码查看档案」的 project_id=p2，来源：需求抽取。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E10",
+      "from": "customer:c2",
+      "to": "requirement:r3",
+      "type": "direct_evidence",
+      "why": "需求「设备台账需要扫码查看档案」归属客户 c2（由项目归属推导）。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E11",
+      "from": "requirement:r3",
+      "to": "evidence:ev4",
+      "type": "direct_evidence",
+      "why": "需求 r3 显式引用证据 ev4。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E12",
+      "from": "customer:c2",
+      "to": "project:p2",
+      "type": "direct_evidence",
+      "why": "项目「同名项目」的 customer_id=c2，属于直接归属。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E13",
+      "from": "evidence:ev1",
+      "to": "file:f1",
+      "type": "direct_evidence",
+      "why": "证据 ev1 的 locator=pdf://f1#page=1，指向文件 f1。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E14",
+      "from": "evidence:ev2",
+      "to": "file:f1",
+      "type": "direct_evidence",
+      "why": "证据 ev2 的 locator=pdf://f1#page=2，指向文件 f1。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E15",
+      "from": "evidence:ev3",
+      "to": "communication:m1",
+      "type": "direct_evidence",
+      "why": "证据 ev3 的 locator=chat://m1#msg=1，指向沟通 m1。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E16",
+      "from": "evidence:ev4",
+      "to": "file:f1",
+      "type": "direct_evidence",
+      "why": "证据 ev4 的 locator=pdf://f1#page=3，指向文件 f1。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E17",
+      "from": "project:p1",
+      "to": "risk:k1",
+      "type": "direct_evidence",
+      "why": "风险「预算未确认」的 project_id=p1。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E18",
+      "from": "risk:k1",
+      "to": "evidence:ev1",
+      "type": "direct_evidence",
+      "why": "风险 k1 显式引用证据 ev1。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E19",
+      "from": "project:p1",
+      "to": "task:t1",
+      "type": "direct_evidence",
+      "why": "待办「确认预算」的 project_id=p1。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E20",
+      "from": "task:t1",
+      "to": "requirement:r1",
+      "type": "direct_evidence",
+      "why": "待办 t1 的 requirement_id=r1。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E21",
+      "from": "task:t1",
+      "to": "evidence:ev1",
+      "type": "direct_evidence",
+      "why": "待办 t1 显式引用来源证据 ev1。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E22",
+      "from": "customer:c1",
+      "to": "project:p3",
+      "type": "direct_evidence",
+      "why": "项目「共享文件项目」的 customer_id=c1，属于直接归属。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E23",
+      "from": "customer:c1",
+      "to": "communication:m1",
+      "type": "direct_evidence",
+      "why": "沟通 m1 的 customer_id=c1，来源：导入归属。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E24",
+      "from": "project:p1",
+      "to": "communication:m1",
+      "type": "direct_evidence",
+      "why": "沟通 m1 的 project_id=p1，来源：导入归属。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E25",
+      "from": "communication:m1",
+      "to": "file:f1",
+      "type": "direct_evidence",
+      "why": "沟通 m1 引用文件 f1，属于直接来源。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E26",
+      "from": "customer:c1",
+      "to": "communication:m2",
+      "type": "direct_evidence",
+      "why": "沟通 m2 的 customer_id=c1，来源：导入归属。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E27",
+      "from": "project:p3",
+      "to": "communication:m2",
+      "type": "direct_evidence",
+      "why": "沟通 m2 的 project_id=p3，来源：导入归属。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E28",
+      "from": "communication:m2",
+      "to": "file:f1",
+      "type": "direct_evidence",
+      "why": "沟通 m2 引用文件 f1，属于直接来源。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    },
+    {
+      "id": "E29",
+      "from": "customer:c1",
+      "to": "customer:c2",
+      "type": "semantic_similar",
+      "why": "名称完全相同（“同名客户（虚构）”），疑似重复；仅作建议，不合并，需人工确认。",
+      "requires_confirmation": true,
+      "confidence": 1.0
+    },
+    {
+      "id": "E30",
+      "from": "project:p1",
+      "to": "project:p2",
+      "type": "semantic_similar",
+      "why": "名称完全相同（“同名项目”），疑似重复；仅作建议，不合并，需人工确认。",
+      "requires_confirmation": true,
+      "confidence": 1.0
+    },
+    {
+      "id": "E31",
+      "from": "requirement:r1",
+      "to": "requirement:r3",
+      "type": "semantic_similar",
+      "why": "文本相似度 0.56（共同片段：台账、备台、扫码、查看、案设）；仅作建议，不合并，需人工确认。",
+      "requires_confirmation": true,
+      "confidence": 0.562
+    },
+    {
+      "id": "E32",
+      "from": "customer:c1",
+      "to": "file:f1",
+      "type": "manual_confirmed",
+      "why": "人工确认：王工（我） 于 2026-11-06T10:00:00+08:00 关联；备注：合同由青岚提供。",
+      "requires_confirmation": false,
+      "confidence": 1.0
+    }
+  ]
+}

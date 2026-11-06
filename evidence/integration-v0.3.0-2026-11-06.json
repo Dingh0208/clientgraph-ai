@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-11-06T08:45:05.100082+00:00",
+  "environment": {
+    "python": "3.12.13",
+    "platform": "win32"
+  },
+  "customers": 2,
+  "projects": 3,
+  "checks": {
+    "extract_c1": true,
+    "extract_c2": true,
+    "extract_no_cross": true,
+    "history_versions": true,
+    "history_budget": true,
+    "conflict_two": true,
+    "conflict_projects": true,
+    "conflict_must": true,
+    "task_four": true,
+    "task_cross": true,
+    "task_vague": true,
+    "complete_isolated": true,
+    "reminder": true,
+    "inactive_no_sent": true,
+    "c360_projects": true,
+    "c360_no_cross_c1": true,
+    "c360_no_cross_c2": true,
+    "c360_missing_time": true,
+    "c360_requirements": true,
+    "graph_no_cross": true,
+    "graph_manual": true,
+    "graph_why": true,
+    "search_mentions": true,
+    "search_mentions_locator": true,
+    "search_c2": true,
+    "search_overdue": true,
+    "search_change": true,
+    "search_change_no_history": true,
+    "search_unknown": true
+  },
+  "all_passed": true,
+  "summary": {
+    "extraction_c1": [
+      "设备台账"
+    ],
+    "extraction_c2": [
+      "供应链协同平台需要支持ERP接口"
+    ],
+    "history_versions": 3,
+    "conflicts": 2,
+    "tasks": 4,
+    "reminders": 3,
+    "c360_c1": {
+      "projects": 2,
+      "requirements": 2,
+      "risks": 1,
+      "tasks": 3,
+      "timeline": 5,
+      "missing_time": 1,
+      "evidence": 2
+    },
+    "c360_c2": {
+      "projects": 1,
+      "requirements": 2,
+      "risks": 1,
+      "tasks": 1,
+      "timeline": 2,
+      "missing_time": 0,
+      "evidence": 2
+    },
+    "graph": {
+      "nodes": 27,
+      "edges": 23,
+      "direct_evidence": 22,
+      "semantic_similar": 0,
+      "manual_confirmed": 1,
+      "pending_confirmation": 0
+    },
+    "search_mentions": [
+      "青岚智能装备（虚构）"
+    ],
+    "search_overdue": [
+      "t1",
+      "t3"
+    ]
+  },
+  "failures": [
+    {
+      "case": "unknown search",
+      "level": "high"
+    },
+    {
+      "case": "vague task",
+      "due_at": null,
+      "status": "pending_vague"
+    },
+    {
+      "case": "notifications while app inactive",
+      "skipped": "app_inactive"
+    },
+    {
+      "case": "conflict unresolved",
+      "count": 2
+    },
+    {
+      "case": "project without history",
+      "query": "供应链协同最近一次变更",
+      "level": "high"
+    }
+  ]
+}

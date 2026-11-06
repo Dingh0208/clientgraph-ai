@@ -1,0 +1,514 @@
+{
+  "generated_at": "2026-11-06T07:05:49.786141+00:00",
+  "environment": {
+    "python": "3.12.13",
+    "platform": "win32"
+  },
+  "project": {
+    "id": "p1",
+    "name": "设备巡检小程序（一期）",
+    "stage": {
+      "value": "已签约",
+      "evidence": {
+        "file": "contract.docx",
+        "source_type": "document",
+        "locator": "document://contract.docx#E13",
+        "occurred_at": "2026-10-16T14:08:00+08:00",
+        "text": "合同签订，进入实施阶段"
+      }
+    },
+    "budget": {
+      "status": "conflict",
+      "values": [
+        {
+          "raw": "预算大概 8 万",
+          "amount": 80000,
+          "unit": "万",
+          "evidence": {
+            "file": "call_0918.mp3",
+            "source_type": "asr",
+            "locator": "asr://call_0918.mp3#E08",
+            "occurred_at": "2026-09-18T14:05:00+08:00",
+            "text": "预算大概 8 万左右"
+          }
+        },
+        {
+          "raw": "报价合计 100,000 元",
+          "amount": 100000,
+          "unit": "元",
+          "evidence": {
+            "file": "quote.docx",
+            "source_type": "document",
+            "locator": "document://quote.docx#E09",
+            "occurred_at": "2026-10-12T15:00:00+08:00",
+            "text": "第二轮报价合计 100,000 元，含税 6%"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "file": "call_0918.mp3",
+          "source_type": "asr",
+          "locator": "asr://call_0918.mp3#E08",
+          "occurred_at": "2026-09-18T14:05:00+08:00",
+          "text": "预算大概 8 万左右"
+        },
+        {
+          "file": "quote.docx",
+          "source_type": "document",
+          "locator": "document://quote.docx#E09",
+          "occurred_at": "2026-10-12T15:00:00+08:00",
+          "text": "第二轮报价合计 100,000 元，含税 6%"
+        }
+      ]
+    },
+    "acceptance_criteria": [
+      {
+        "text": "118 台设备全部可扫码查看档案",
+        "evidence": {
+          "file": "req.docx",
+          "source_type": "document",
+          "locator": "document://req.docx#E04",
+          "occurred_at": "2026-09-29T09:00:00+08:00",
+          "text": "验收标准：118 台设备全部可扫码查看档案"
+        }
+      }
+    ],
+    "evidence_count": 13
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "title": "上线时间",
+      "key": "上线时间",
+      "proposer": [
+        "李副总",
+        "王工"
+      ],
+      "owner": null,
+      "deadline": {
+        "value": "2026-11-15",
+        "status": "explicit",
+        "raw": "2026-11-15",
+        "evidence": [
+          {
+            "file": "mail_0929.eml",
+            "source_type": "email",
+            "locator": "email://mail_0929.eml#E07",
+            "occurred_at": "2026-09-29T10:12:00+08:00",
+            "text": "希望 10 月底上线，年底要审计"
+          },
+          {
+            "file": "minutes.docx",
+            "source_type": "document",
+            "locator": "document://minutes.docx#E12",
+            "occurred_at": "2026-09-25T14:00:00+08:00",
+            "text": "一期上线时间定为 2026-11-15"
+          }
+        ]
+      },
+      "merged_count": 2,
+      "evidence_files": [
+        "mail_0929.eml",
+        "minutes.docx"
+      ]
+    },
+    {
+      "id": "R2",
+      "title": "审批流",
+      "key": "审批流",
+      "proposer": [
+        "陈晓岚",
+        "王工"
+      ],
+      "owner": null,
+      "deadline": {
+        "value": null,
+        "status": "missing",
+        "raw": null,
+        "evidence": [
+          {
+            "file": "chat_0922.txt",
+            "source_type": "chat",
+            "locator": "chat://chat_0922.txt#E05",
+            "occurred_at": "2026-09-22T09:17:00+08:00",
+            "text": "审批流要加在异常工单上"
+          },
+          {
+            "file": "minutes.docx",
+            "source_type": "document",
+            "locator": "document://minutes.docx#E06",
+            "occurred_at": "2026-09-25T14:00:00+08:00",
+            "text": "审批流不进入一期，客户内部流程尚未定稿"
+          }
+        ]
+      },
+      "merged_count": 2,
+      "evidence_files": [
+        "chat_0922.txt",
+        "minutes.docx"
+      ]
+    },
+    {
+      "id": "R3",
+      "title": "巡检计划",
+      "key": "巡检计划",
+      "proposer": [
+        "王工"
+      ],
+      "owner": null,
+      "deadline": {
+        "value": null,
+        "status": "missing",
+        "raw": null,
+        "evidence": [
+          {
+            "file": "req.docx",
+            "source_type": "document",
+            "locator": "document://req.docx#E03",
+            "occurred_at": "2026-09-29T09:00:00+08:00",
+            "text": "一期范围 5 项：设备台账与二维码、巡检计划、扫码巡检、异常上报、统计看板"
+          }
+        ]
+      },
+      "merged_count": 1,
+      "evidence_files": [
+        "req.docx"
+      ]
+    },
+    {
+      "id": "R4",
+      "title": "异常上报",
+      "key": "异常上报",
+      "proposer": [
+        "王工"
+      ],
+      "owner": null,
+      "deadline": {
+        "value": null,
+        "status": "missing",
+        "raw": null,
+        "evidence": [
+          {
+            "file": "req.docx",
+            "source_type": "document",
+            "locator": "document://req.docx#E03",
+            "occurred_at": "2026-09-29T09:00:00+08:00",
+            "text": "一期范围 5 项：设备台账与二维码、巡检计划、扫码巡检、异常上报、统计看板"
+          }
+        ]
+      },
+      "merged_count": 1,
+      "evidence_files": [
+        "req.docx"
+      ]
+    },
+    {
+      "id": "R5",
+      "title": "扫码巡检",
+      "key": "扫码巡检",
+      "proposer": [
+        "王工"
+      ],
+      "owner": null,
+      "deadline": {
+        "value": null,
+        "status": "missing",
+        "raw": null,
+        "evidence": [
+          {
+            "file": "req.docx",
+            "source_type": "document",
+            "locator": "document://req.docx#E03",
+            "occurred_at": "2026-09-29T09:00:00+08:00",
+            "text": "一期范围 5 项：设备台账与二维码、巡检计划、扫码巡检、异常上报、统计看板"
+          }
+        ]
+      },
+      "merged_count": 1,
+      "evidence_files": [
+        "req.docx"
+      ]
+    },
+    {
+      "id": "R6",
+      "title": "统计看板",
+      "key": "统计看板",
+      "proposer": [
+        "王工",
+        "陈晓岚"
+      ],
+      "owner": null,
+      "deadline": {
+        "value": "2026-11-12",
+        "status": "user_confirmed",
+        "raw": "2026-11-12",
+        "evidence": [
+          {
+            "file": "req.docx",
+            "source_type": "document",
+            "locator": "document://req.docx#E03",
+            "occurred_at": "2026-09-29T09:00:00+08:00",
+            "text": "一期范围 5 项：设备台账与二维码、巡检计划、扫码巡检、异常上报、统计看板"
+          },
+          {
+            "file": "chat_1010.txt",
+            "source_type": "chat",
+            "locator": "chat://chat_1010.txt#E11",
+            "occurred_at": "2026-10-10T11:02:00+08:00",
+            "text": "统计看板下周给一版原型"
+          }
+        ]
+      },
+      "merged_count": 2,
+      "evidence_files": [
+        "chat_1010.txt",
+        "req.docx"
+      ]
+    },
+    {
+      "id": "R7",
+      "title": "设备台账",
+      "key": "设备台账",
+      "proposer": [
+        "陈晓岚",
+        "王工"
+      ],
+      "owner": "陈经理",
+      "deadline": {
+        "value": "2026-10-08",
+        "status": "explicit",
+        "raw": "2026-10-08",
+        "evidence": [
+          {
+            "file": "chat_0922.txt",
+            "source_type": "chat",
+            "locator": "chat://chat_0922.txt#E01",
+            "occurred_at": "2026-09-22T09:16:00+08:00",
+            "text": "设备台账要能扫码查看档案"
+          },
+          {
+            "file": "chat_0922b.txt",
+            "source_type": "chat",
+            "locator": "chat://chat_0922b.txt#E02",
+            "occurred_at": "2026-09-22T09:20:00+08:00",
+            "text": "台账这块要支持二维码，扫码就能看"
+          },
+          {
+            "file": "req.docx",
+            "source_type": "document",
+            "locator": "document://req.docx#E03",
+            "occurred_at": "2026-09-29T09:00:00+08:00",
+            "text": "一期范围 5 项：设备台账与二维码、巡检计划、扫码巡检、异常上报、统计看板"
+          },
+          {
+            "file": "mail_0925.eml",
+            "source_type": "email",
+            "locator": "email://mail_0925.eml#E10",
+            "occurred_at": "2026-09-25T11:00:00+08:00",
+            "text": "设备台账由客户提供，2026-10-08 前给到；负责人：陈经理"
+          }
+        ]
+      },
+      "merged_count": 4,
+      "evidence_files": [
+        "chat_0922.txt",
+        "chat_0922b.txt",
+        "mail_0925.eml",
+        "req.docx"
+      ]
+    }
+  ],
+  "pending": [
+    {
+      "id": "P1",
+      "type": "deadline_mismatch",
+      "question": "资料同时出现明确日期 2026-11-15 与模糊表达“10 月底”，请确认“上线时间”以哪个为准。",
+      "requirement_id": "R1",
+      "evidence": [
+        {
+          "file": "mail_0929.eml",
+          "source_type": "email",
+          "locator": "email://mail_0929.eml#E07",
+          "occurred_at": "2026-09-29T10:12:00+08:00",
+          "text": "希望 10 月底上线，年底要审计"
+        },
+        {
+          "file": "minutes.docx",
+          "source_type": "document",
+          "locator": "document://minutes.docx#E12",
+          "occurred_at": "2026-09-25T14:00:00+08:00",
+          "text": "一期上线时间定为 2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "type": "owner_missing",
+      "question": "“上线时间”未指定负责人，请确认由谁负责。",
+      "requirement_id": "R1",
+      "evidence": [
+        {
+          "file": "mail_0929.eml",
+          "source_type": "email",
+          "locator": "email://mail_0929.eml#E07",
+          "occurred_at": "2026-09-29T10:12:00+08:00",
+          "text": "希望 10 月底上线，年底要审计"
+        },
+        {
+          "file": "minutes.docx",
+          "source_type": "document",
+          "locator": "document://minutes.docx#E12",
+          "occurred_at": "2026-09-25T14:00:00+08:00",
+          "text": "一期上线时间定为 2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "type": "owner_missing",
+      "question": "“审批流”未指定负责人，请确认由谁负责。",
+      "requirement_id": "R2",
+      "evidence": [
+        {
+          "file": "chat_0922.txt",
+          "source_type": "chat",
+          "locator": "chat://chat_0922.txt#E05",
+          "occurred_at": "2026-09-22T09:17:00+08:00",
+          "text": "审批流要加在异常工单上"
+        },
+        {
+          "file": "minutes.docx",
+          "source_type": "document",
+          "locator": "document://minutes.docx#E06",
+          "occurred_at": "2026-09-25T14:00:00+08:00",
+          "text": "审批流不进入一期，客户内部流程尚未定稿"
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "type": "owner_missing",
+      "question": "“巡检计划”未指定负责人，请确认由谁负责。",
+      "requirement_id": "R3",
+      "evidence": [
+        {
+          "file": "req.docx",
+          "source_type": "document",
+          "locator": "document://req.docx#E03",
+          "occurred_at": "2026-09-29T09:00:00+08:00",
+          "text": "一期范围 5 项：设备台账与二维码、巡检计划、扫码巡检、异常上报、统计看板"
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "type": "owner_missing",
+      "question": "“异常上报”未指定负责人，请确认由谁负责。",
+      "requirement_id": "R4",
+      "evidence": [
+        {
+          "file": "req.docx",
+          "source_type": "document",
+          "locator": "document://req.docx#E03",
+          "occurred_at": "2026-09-29T09:00:00+08:00",
+          "text": "一期范围 5 项：设备台账与二维码、巡检计划、扫码巡检、异常上报、统计看板"
+        }
+      ]
+    },
+    {
+      "id": "P6",
+      "type": "owner_missing",
+      "question": "“扫码巡检”未指定负责人，请确认由谁负责。",
+      "requirement_id": "R5",
+      "evidence": [
+        {
+          "file": "req.docx",
+          "source_type": "document",
+          "locator": "document://req.docx#E03",
+          "occurred_at": "2026-09-29T09:00:00+08:00",
+          "text": "一期范围 5 项：设备台账与二维码、巡检计划、扫码巡检、异常上报、统计看板"
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "type": "owner_missing",
+      "question": "“统计看板”未指定负责人，请确认由谁负责。",
+      "requirement_id": "R6",
+      "evidence": [
+        {
+          "file": "req.docx",
+          "source_type": "document",
+          "locator": "document://req.docx#E03",
+          "occurred_at": "2026-09-29T09:00:00+08:00",
+          "text": "一期范围 5 项：设备台账与二维码、巡检计划、扫码巡检、异常上报、统计看板"
+        },
+        {
+          "file": "chat_1010.txt",
+          "source_type": "chat",
+          "locator": "chat://chat_1010.txt#E11",
+          "occurred_at": "2026-10-10T11:02:00+08:00",
+          "text": "统计看板下周给一版原型"
+        }
+      ]
+    },
+    {
+      "id": "P8",
+      "type": "budget_conflict",
+      "question": "预算出现 100,000 元、80,000 元 两种口径，请确认以哪个为准。",
+      "requirement_id": null,
+      "evidence": [
+        {
+          "file": "call_0918.mp3",
+          "source_type": "asr",
+          "locator": "asr://call_0918.mp3#E08",
+          "occurred_at": "2026-09-18T14:05:00+08:00",
+          "text": "预算大概 8 万左右"
+        },
+        {
+          "file": "quote.docx",
+          "source_type": "document",
+          "locator": "document://quote.docx#E09",
+          "occurred_at": "2026-10-12T15:00:00+08:00",
+          "text": "第二轮报价合计 100,000 元，含税 6%"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "items": 13,
+    "requirements": 7,
+    "merged_requirements": 4,
+    "pending": 8,
+    "explicit_deadlines": 2,
+    "user_confirmed_deadlines": 1,
+    "pending_deadlines": 0
+  },
+  "checks": {
+    "project_stage": true,
+    "stage_evidence": true,
+    "budget_conflict": true,
+    "budget_values": true,
+    "acceptance": true,
+    "seven_requirements": true,
+    "dev_merged": true,
+    "dev_evidence_files": true,
+    "dev_owner": true,
+    "dev_deadline": true,
+    "dev_proposers": true,
+    "explicit_deadline": true,
+    "vague_mismatch": true,
+    "online_merged": true,
+    "confirmed_deadline": true,
+    "confirmed_no_vague_pending": true,
+    "confirmed_evidence": true,
+    "owner_missing": true,
+    "approval_merged": true,
+    "vague_no_value": true,
+    "vague_question": true,
+    "no_guessed_date": true,
+    "proposer_unknown_call": true
+  },
+  "all_passed": true
+}
