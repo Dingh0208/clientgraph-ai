@@ -6,3 +6,8 @@ Thumbs.db
 screenshots/
 playwright-report/
 test-results/
+ops-logs/
+__pycache__/
+*.pyc
+.venv/
+demo-data/

@@ -1,0 +1,403 @@
+{
+  "generated_at": "2026-11-06T06:16:48.225859+00:00",
+  "environment": {
+    "python": "3.12.13",
+    "pymupdf": "2.1",
+    "ocr_engine": "rapidocr",
+    "ocr_version": "unknown",
+    "platform": "win32"
+  },
+  "fixtures": {
+    "text_pdf": {
+      "name": "text_layer.pdf",
+      "size": 19657711
+    },
+    "skew_pdf": {
+      "name": "scan_skew.pdf",
+      "size": 7141571
+    },
+    "blank_pdf": {
+      "name": "scan_blank.pdf",
+      "size": 518
+    },
+    "lowres": {
+      "name": "lowres.png",
+      "size": 3985
+    },
+    "mixed": {
+      "name": "mixed.png",
+      "size": 24094
+    },
+    "fail_pdf": {
+      "name": "ocr_fail.pdf",
+      "size": 13053846
+    },
+    "video": {
+      "name": "video_6s.mp4",
+      "size": 62571
+    },
+    "video_no_audio": {
+      "name": "video_no_audio.mp4",
+      "size": 4101
+    }
+  },
+  "scenarios": [
+    {
+      "name": "视频只提取音轨转写",
+      "summary": {
+        "status": "completed",
+        "kind": "video",
+        "text_chars": 83,
+        "blocks": 3,
+        "pages": 0,
+        "errors": [],
+        "warnings": [],
+        "stats": {
+          "duration_ms": 6000,
+          "has_audio": true,
+          "audio_codec": "aac",
+          "audio_channels": 1,
+          "audio_sample_rate": 16000,
+          "extracted_audio_ref": "audio.wav",
+          "asr_chunks": 1,
+          "asr_segments": 3,
+          "frame_ocr": false,
+          "processing_ms": 631
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "status_completed": true,
+        "kind_video": true,
+        "has_audio": true,
+        "audio_16k_mono": true,
+        "three_segments": true,
+        "segment_times_video": true,
+        "video_locator": true,
+        "no_frame_ocr": true,
+        "diarization_not_claimed": true,
+        "source_unchanged": true,
+        "extracted_audio_valid": true,
+        "search_finds_text": true
+      },
+      "details": {
+        "block_times": [
+          [
+            0,
+            1924
+          ],
+          [
+            1924,
+            4330
+          ],
+          [
+            4330,
+            6000
+          ]
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "PDF 文本层优先（中英混排）",
+      "summary": {
+        "status": "completed",
+        "kind": "pdf",
+        "text_chars": 67,
+        "blocks": 4,
+        "pages": 2,
+        "errors": [],
+        "warnings": [],
+        "stats": {
+          "page_count": 2,
+          "text_layer_pages": 2,
+          "ocr_pages": 0,
+          "empty_pages": 0,
+          "failed_pages": 0,
+          "block_count": 4,
+          "ocr_avg_confidence": null,
+          "processing_ms": 123
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "status_completed": true,
+        "two_text_pages": true,
+        "zero_ocr_pages": true,
+        "no_ocr_calls": true,
+        "chinese_and_english": true,
+        "page_numbers": true,
+        "bbox_present": true,
+        "text_confidence_none": true,
+        "source_unchanged": true,
+        "search_english": true
+      },
+      "details": {},
+      "passed": true
+    },
+    {
+      "name": "扫描件倾斜（2.5°）",
+      "summary": {
+        "status": "completed",
+        "kind": "pdf",
+        "text_chars": 45,
+        "blocks": 3,
+        "pages": 1,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "W_PDF_NO_TEXT_LAYER",
+            "message": "第 1 页无可用文本层，已转 OCR",
+            "page": 1
+          }
+        ],
+        "stats": {
+          "page_count": 1,
+          "text_layer_pages": 0,
+          "ocr_pages": 1,
+          "empty_pages": 0,
+          "failed_pages": 0,
+          "block_count": 3,
+          "ocr_avg_confidence": 0.9978,
+          "processing_ms": 17695
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "status_completed": true,
+        "ocr_page": true,
+        "has_blocks": true,
+        "page_number": true,
+        "confidence_present": true,
+        "bbox_px_present": true,
+        "image_ref_exists": true,
+        "image_sha_recorded": true,
+        "text_readable": true,
+        "no_text_layer_warning": true
+      },
+      "details": {
+        "avg_confidence": 0.9978,
+        "text": "设备巡检记录\nInspection Record 2026\n车间：一车间设备：EQ-001"
+      },
+      "passed": true
+    },
+    {
+      "name": "低清图片",
+      "summary": {
+        "status": "completed",
+        "kind": "image",
+        "text_chars": 0,
+        "blocks": 0,
+        "pages": 1,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "W_OCR_NO_TEXT",
+            "message": "OCR 未识别到文字，原图已保留"
+          }
+        ],
+        "stats": {
+          "page_count": 1,
+          "text_layer_pages": 0,
+          "ocr_pages": 1,
+          "empty_pages": 0,
+          "failed_pages": 0,
+          "block_count": 0,
+          "ocr_avg_confidence": null,
+          "processing_ms": 5510
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "status_completed": true,
+        "low_quality_flagged": true,
+        "no_crash": true
+      },
+      "details": {
+        "blocks": 0,
+        "avg_confidence": null
+      },
+      "passed": true
+    },
+    {
+      "name": "空白页",
+      "summary": {
+        "status": "completed",
+        "kind": "pdf",
+        "text_chars": 0,
+        "blocks": 0,
+        "pages": 1,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "W_EMPTY_PAGE",
+            "message": "第 1 页为空白页，未识别到文字",
+            "page": 1
+          }
+        ],
+        "stats": {
+          "page_count": 1,
+          "text_layer_pages": 0,
+          "ocr_pages": 0,
+          "empty_pages": 1,
+          "failed_pages": 0,
+          "block_count": 0,
+          "ocr_avg_confidence": null,
+          "processing_ms": 1030
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "status_completed": true,
+        "blank_page": true,
+        "no_blocks": true,
+        "no_ocr_calls": true,
+        "empty_warning": true,
+        "empty_searchable_text": true
+      },
+      "details": {},
+      "passed": true
+    },
+    {
+      "name": "混合中英文 OCR",
+      "summary": {
+        "status": "completed",
+        "kind": "image",
+        "text_chars": 29,
+        "blocks": 2,
+        "pages": 1,
+        "errors": [],
+        "warnings": [],
+        "stats": {
+          "page_count": 1,
+          "text_layer_pages": 0,
+          "ocr_pages": 1,
+          "empty_pages": 0,
+          "failed_pages": 0,
+          "block_count": 2,
+          "ocr_avg_confidence": 0.9965,
+          "processing_ms": 8691
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "status_completed": true,
+        "has_blocks": true,
+        "chinese_present": true,
+        "english_present": true,
+        "confidence_present": true
+      },
+      "details": {
+        "avg_confidence": 0.9965
+      },
+      "passed": true
+    },
+    {
+      "name": "OCR 失败隔离",
+      "summary": {
+        "status": "partial",
+        "kind": "pdf",
+        "text_chars": 18,
+        "blocks": 2,
+        "pages": 2,
+        "errors": [
+          {
+            "code": "E_OCR_FAILED",
+            "message": "第 2 页 OCR 失败：模拟 OCR 引擎异常",
+            "page": 2,
+            "hint": "可提高扫描分辨率、纠正倾斜后重试；原图已保留。",
+            "recoverable": true
+          }
+        ],
+        "warnings": [
+          {
+            "code": "W_PDF_NO_TEXT_LAYER",
+            "message": "第 1 页无可用文本层，已转 OCR",
+            "page": 1
+          },
+          {
+            "code": "W_PDF_NO_TEXT_LAYER",
+            "message": "第 2 页无可用文本层，已转 OCR",
+            "page": 2
+          },
+          {
+            "code": "W_PARTIAL",
+            "message": "1 页处理失败，已保留其余页面结果"
+          }
+        ],
+        "stats": {
+          "page_count": 2,
+          "text_layer_pages": 0,
+          "ocr_pages": 1,
+          "empty_pages": 0,
+          "failed_pages": 1,
+          "block_count": 2,
+          "ocr_avg_confidence": 0.9788,
+          "processing_ms": 20951
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "status_partial": true,
+        "one_error": true,
+        "ocr_failed_code": true,
+        "error_page_2": true,
+        "error_explained": true,
+        "page1_kept": true,
+        "page2_no_blocks": true,
+        "partial_warning": true
+      },
+      "details": {
+        "error": {
+          "code": "E_OCR_FAILED",
+          "message": "第 2 页 OCR 失败：模拟 OCR 引擎异常",
+          "page": 2,
+          "hint": "可提高扫描分辨率、纠正倾斜后重试；原图已保留。",
+          "recoverable": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "视频无音轨",
+      "summary": {
+        "status": "failed",
+        "kind": "video",
+        "text_chars": 0,
+        "blocks": 0,
+        "pages": 0,
+        "errors": [
+          {
+            "code": "E_VIDEO_NO_AUDIO",
+            "message": "视频中没有音频流，无法转写",
+            "hint": "本版只处理音轨，不做画面 OCR；请提供带音轨的视频。",
+            "recoverable": false
+          }
+        ],
+        "warnings": [],
+        "stats": {
+          "duration_ms": 3000,
+          "has_audio": false,
+          "audio_codec": null,
+          "audio_channels": 0,
+          "audio_sample_rate": 0,
+          "extracted_audio_ref": null,
+          "asr_chunks": 0,
+          "asr_segments": 0,
+          "frame_ocr": false,
+          "processing_ms": 300
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "status_failed": true,
+        "no_audio_code": true,
+        "no_blocks": true,
+        "has_audio_false": true
+      },
+      "details": {},
+      "passed": true
+    }
+  ],
+  "all_passed": true
+}

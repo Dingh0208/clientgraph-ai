@@ -1,67 +1,43 @@
-# 证据索引 v0.1.0
+# 证据索引 v0.2.0
 
 > 发布日期：2026-11-06
 > 仓库：`github.com/Dingh0208/clientgraph-ai`
-> 版本标识：tag `v0.1.0`（分支 `main`）
+> 版本标识：tag `v0.2.0`（分支 `main`）
 > 原则：只登记本仓库真实存在的文件；不登记截图、密钥、客户资料或未执行的结果。
 
-## 1. 交付物与哈希
+## 1. 回归证据
 
-| 路径 | 类型 | 字节 | SHA-256 |
-|---|---|---|---|
-| `prototype/index.html` | 原型（单文件） | 29,746 | `04151a9307331e1a1d1023c9fc6f440bdf04530d9e260985fde81e6b7333c442` |
-| `README.md` | 说明 | 3,648 | `5cc57a3e41ba776981489292e9d0b9aac27de93edc72e6411c1557d33de506f4` |
-| `docs/PRODUCT-BASELINE.md` | 产品基线 | 3,449 | `d9ba9323ee73ad0e3e86a4601c6a4c1e7f1f765ea60a4a45346e1b6d798346c6` |
-| `docs/DATA-DICTIONARY.md` | 数据字典 | 6,731 | `299199757bf165a0503408d9154467179f6818819fe6942ba227ce2afaf58ec9` |
-| `docs/ITERATION-LOG.md` | 迭代日志 | 2,474 | `ef75022aa7e17515e2acd19060066d4bf21c273caaa7fb7935211f14ffce3615` |
-| `docs/TEST-RECORD.md` | 测试记录 | 4,303 | `8a8b458e0a24c1e5cdd6b0f6b1993e29e6a7ead6581a2c385556642009227237` |
-| `docs/CONFIG.md` | 配置说明 | 1,536 | `f6f1c0f054a95fade1b2d9d252d9a41ae05926d767078df663141acbc631686e` |
-| `docs/MATERIALS.md` | 资料清单 | 3,323 | `2f8479194f4afe79190c224fe8e17872768aaea89968f51324bb450a660c2a05` |
-| `docs/LIMITATIONS.md` | 限制说明 | 2,729 | `d8d3183d7f6ed3a31df11d855837c50d70e16b7ff7f9cbcb46812f5b0d40151b` |
-| `tests/smoke-cases.md` | 冒烟用例 | 2,187 | `33b48850a95344c6377f99a3fe55d7a8911da46b5cc1cf63d6b762f5233ee0a8` |
-| `LICENSE` | 许可 | 659 | `2458aae63c3211bbaf375b1817978d88fe3de5e4daeb6ab561fdbe93202308a9` |
-| `.gitignore` | 忽略规则 | 93 | `a5a07c1388857622a0cf9aa51590c30cf7f6b20138c273e20f55c118115c59a2` |
-| `.gitattributes` | 行尾规则 | 19 | `d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c` |
-
-校验方式：
-
-```powershell
-Get-ChildItem -Recurse -File | ForEach-Object { (Get-FileHash $_.FullName -Algorithm SHA256).Hash + "  " + $_.FullName }
-```
-
-## 2. 测试证据
-
-| 项 | 证据 | 结果 |
+| 文件 | 内容 | 结论 |
 |---|---|---|
-| 冒烟用例 | `docs/TEST-RECORD.md` 第 2 节 | 7 / 7 通过 |
-| 控制台 | 同上第 3 节 | 0 error / 0 warning |
-| 修复记录 | 同上第 4 节 | D1 / D2 / D3 已修复并复验 |
-| 可复现步骤 | `tests/smoke-cases.md` | 7 个用例，含选择器与期望值 |
+| `evidence/audio-pipeline-2026-11-06.json` | 长音频/短音频/空音频/切片失败/超时/部分重试 | 7/7 |
+| `evidence/media-pipeline-2026-11-06.json` | 视频音轨、PDF 文本层、扫描 OCR、低清/空白/失败 | 8/8 |
+| `evidence/document-pipeline-2026-11-06.json` | DOCX/XLSX/XLS/PPTX/EML/TXT/HTML/JSON/聊天 | 13/13 |
+| `evidence/evidence-layer-2026-11-06.json` | 证据归一化与合并隔离 | 22/22 |
+| `evidence/archive-workflow-2026-11-06.json` | 待归档逐条/批量/忽略恢复/审计 | 通过 |
+| `evidence/performance-diagnostics-2026-11-06.json` | 性能采样与本地诊断/启动策略 | 通过 |
+| `evidence/regression-09-15-2026-11-06.json` | 第 09–15 轮汇总 | 通过 |
 
-说明：测试证据为页面文本与 DOM 状态的实际读取结果，**未使用截图**，避免以视觉材料代替断言。
+## 2. 代码与文档
 
-## 3. 数据与合规
-
-| 项 | 状态 |
+| 路径 | 内容 |
 |---|---|
-| 真实客户资料 | 未包含 |
-| 个人信息 | 未包含 |
-| 平台密钥 / 令牌 | 未包含 |
-| 虚构截图 / 演示图片 | 未包含 |
-| 演示语料 | 12 份 / 51 个片段，全部内嵌且标注“（虚构）” |
-| 网络请求 | 无 |
+| `prototype/index.html` | 交互原型（导入、待归档、诊断等） |
+| `audio_pipeline/` | 长音频切片与 ASR |
+| `media_pipeline/` | 视频音轨、PDF/OCR |
+| `document_pipeline/` | Office/邮件/文本/聊天解析 |
+| `evidence_layer/` | 证据归一化与合并 |
+| `ops/` | 本地诊断与 API 服务 |
+| `scripts/verify_*.py` | 四组可复现验证 |
+| `docs/解析矩阵-v1.0.md` | 输入类型、保留内容、错误码 |
+| `docs/性能记录-v1.0.md` | 实测耗时与界面估算 |
+| `docs/已知限制-v1.0.md` | 当前限制汇总 |
+| `docs/回归记录-09-15.md` | 真实输入输出与失败案例 |
 
-## 4. 版本对应
+## 3. 原则
 
-- 本索引对应 tag `v0.1.0`；提交哈希以该 tag 指向的提交为准。
-- 后续修订请新增版本段落，不覆盖本文件。
-
-## 5. 未登记内容
-
-以下内容不属于本次交付，故不登记：
-
-- 本地设计草稿、需求评审稿与演示数据集二进制；
-- 运行环境的临时目录与依赖缓存；
-- 任何截图、录屏或浏览器配置文件。
+- 测试证据为实际运行的 JSON 输出，不使用截图代替断言。
+- 未执行的 Qwen ASR、LibreOffice 转换、压缩包解压、微信数据库均明确标为未完成。
+- 仓库不包含真实客户资料、平台密钥、浏览器配置或本地运行目录。
+- 证据中的文件路径均为相对名称或运行目录内的派生名。
 
 > AI生成

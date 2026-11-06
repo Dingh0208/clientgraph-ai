@@ -76,7 +76,96 @@ h1{font-size:20px;margin:0 0 4px}.sub{color:var(--muted);font-size:12.5px;margin
 .drawer .quote{background:#f7faff;border-left:3px solid var(--blue);padding:12px;line-height:1.7;font-size:13.5px;border-radius:0 8px 8px 0}
 .drawer .close{float:right;border:0;background:#f1f5fa;border-radius:8px;width:30px;height:30px;cursor:pointer;color:#536273}
 .hint{font-size:11.5px;color:#93a0ae;margin-top:8px}
-@media (max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+.imp-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:12px}
+.imp-stats{display:flex;gap:8px;flex-wrap:wrap}
+.imp-stat{background:#f7fafd;border:1px solid #e6edf5;border-radius:9px;padding:6px 10px;font-size:12px;color:#546273}
+.imp-stat b{font-size:14px;color:var(--ink);margin-left:4px}
+.imp-actions{display:flex;gap:7px}
+.imp-actions button{border:1px solid #dfe8f2;background:#fff;color:#41525f;font-size:12px;padding:7px 12px;border-radius:8px;cursor:pointer}
+.imp-actions button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.imp-actions button:disabled{opacity:.45;cursor:not-allowed}
+.overall{height:6px;background:#eef3f9;border-radius:99px;overflow:hidden;margin:10px 0 14px}
+.overall div{height:100%;background:linear-gradient(90deg,#4b8ef7,#1f6feb);width:0;transition:width .15s}
+.imp td{vertical-align:middle}
+.imp .fname{font-weight:500;max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.imp .fmeta{color:#93a0ae;font-size:11px;margin-top:2px}
+.status{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:3px 8px;border-radius:999px;border:1px solid #e2e9f1;background:#f5f8fc;color:#55636f;white-space:nowrap}
+.status .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.status.s-parsing{background:#eef5ff;color:#1b5fc4;border-color:#d8e7ff}
+.status.s-transcribing{background:#f3efff;color:#6b46c1;border-color:#e4dbfa}
+.status.s-recognizing{background:#e9f8f6;color:#0f766e;border-color:#cfeee8}
+.status.s-completed{background:#eef8f2;color:#16794f;border-color:#d5ecdf}
+.status.s-archive{background:#fff6e8;color:#a86412;border-color:#f5e3c6}
+.status.s-failed{background:#fef3f2;color:#b42318;border-color:#f7d9d6}
+.status.s-cancelled{background:#f4f5f7;color:#6b7280;border-color:#e5e7eb}
+.pbar{height:5px;background:#eef3f9;border-radius:99px;overflow:hidden;min-width:90px}
+.pbar div{height:100%;background:#4b8ef7;width:0}
+.pbar.fail div{background:#e05252}
+.pbar.ok div{background:#2fa36b}
+.rowbtn{border:1px solid #dfe8f2;background:#fff;color:#3f5568;font-size:11px;padding:4px 9px;border-radius:6px;cursor:pointer}
+.rowbtn:hover{border-color:#b9d2f2;color:var(--blue)}
+.rowbtn.danger{color:#b42318;border-color:#f2d4d1}
+.err{color:#b42318;font-size:11.5px;line-height:1.5;max-width:260px}
+.banner{display:none;background:#eef5ff;border:1px solid #d8e7ff;color:#1b5fc4;border-radius:9px;padding:10px 13px;font-size:12.5px;margin-bottom:12px}
+.banner.on{display:block}
+.arch-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:12px}
+.arch-stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.arch-stat b{display:block;font-size:20px;margin-top:2px}
+.arch-stat span{font-size:11.5px;color:var(--muted)}
+.arch-tabs{display:flex;gap:6px;margin-bottom:12px}
+.arch-tab{border:1px solid #dfe8f2;background:#fff;color:#4a5a6a;font-size:12px;padding:6px 11px;border-radius:999px;cursor:pointer}
+.arch-tab.on{background:var(--bw);border-color:#cfe0f7;color:var(--blue);font-weight:600}
+.arch-bulk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:#f7fafd;border:1px dashed #dbe6f2;border-radius:10px;padding:10px;margin-bottom:8px}
+.arch-bulk label{font-size:12px;color:#4a5a6a;display:flex;align-items:center;gap:5px}
+.arch-bulk select,.arch-form select{border:1px solid #d9e2ec;border-radius:7px;padding:6px 8px;font-size:12px;background:#fff;max-width:170px}
+.arch-bulk button,.arch-form button{border:1px solid #dfe8f2;background:#fff;color:#3f5568;font-size:11.5px;padding:6px 10px;border-radius:7px;cursor:pointer}
+.arch-bulk button.primary,.arch-form button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.arch-bulk button:disabled,.arch-form button:disabled{opacity:.45;cursor:not-allowed}
+.arch-item{display:grid;grid-template-columns:24px minmax(0,1fr) 310px;gap:12px;padding:14px 0;border-bottom:1px solid #eef2f7}
+.arch-item:last-child{border-bottom:0}
+.arch-title{font-weight:600;font-size:13.5px;display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.arch-meta{font-size:11.5px;color:var(--muted);margin:4px 0;line-height:1.6}
+.arch-snippet{font-size:13px;line-height:1.6;color:#3c4a58}
+.arch-ids{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.arch-cands{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.cand{border:1px solid #dfe8f2;background:#f8fbff;border-radius:999px;padding:3px 9px;font-size:11px;cursor:pointer;color:#42627f}
+.cand.on{border-color:#9fc3f0;background:#eaf2ff;color:#1b5fc4;font-weight:600}
+.arch-form{display:flex;flex-direction:column;gap:6px}
+.arch-form .row{display:flex;gap:6px;flex-wrap:wrap}
+.arch-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+.arch-empty{border:1px dashed #dbe4ee;border-radius:10px;padding:26px;text-align:center;color:var(--muted);background:#fbfdff}
+.arch-hist{border-left:2px solid #dce8f6;margin:8px 0;padding:2px 0 2px 12px}
+.arch-hist .h{font-size:12px;font-weight:600;margin-bottom:2px}
+.arch-hist .m{font-size:11.5px;color:var(--muted);line-height:1.6}
+.modal{position:fixed;inset:0;background:rgba(15,23,32,.32);display:none;z-index:30}
+.modal.on{display:flex;align-items:center;justify-content:center}
+.modal-panel{width:430px;background:#fff;border-radius:12px;padding:18px;box-shadow:0 18px 50px rgba(20,40,70,.2)}
+.modal-panel h3{margin:0 0 12px;font-size:16px}
+.modal-panel label{display:block;font-size:11.5px;color:var(--muted);margin:8px 0 3px}
+.modal-panel input{width:100%;border:1px solid #d9e2ec;border-radius:8px;padding:8px 10px;font-size:13px}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+.modal-actions button{border:1px solid #dfe8f2;background:#fff;border-radius:8px;padding:7px 13px;font-size:12px;cursor:pointer}
+.modal-actions button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.diag-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.diag-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+.diag-head{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px}
+.diag-head b{font-size:14px}
+.diag-status{font-size:11px;padding:3px 9px;border-radius:999px;border:1px solid #e2e9f1;background:#f5f8fc;color:#55636f}
+.diag-status.ok{background:#eef8f2;color:#16794f;border-color:#d5ecdf}
+.diag-status.degraded{background:#fff6e8;color:#a86412;border-color:#f5e3c6}
+.diag-status.stopped{background:#f4f5f7;color:#6b7280;border-color:#e5e7eb}
+.diag-status.not_installed,.diag-status.not_configured{background:#fef3f2;color:#b42318;border-color:#f7d9d6}
+.diag-status.error{background:#fef3f2;color:#b42318;border-color:#f7d9d6}
+.diag-sum{font-size:13px;font-weight:500;line-height:1.5;margin-bottom:4px}
+.diag-detail{font-size:11.5px;color:var(--muted);line-height:1.6;word-break:break-all}
+.diag-help{font-size:11.5px;color:#4a5a6a;line-height:1.7;margin:8px 0 0 16px;padding:0}
+.diag-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.diag-actions button{border:1px solid #dfe8f2;background:#fff;color:#3f5568;font-size:11px;padding:5px 9px;border-radius:6px;cursor:pointer}
+.diag-actions button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.diag-actions button:disabled{opacity:.45;cursor:not-allowed}
+.diag-error{border:1px solid #f3d5d1;background:#fff8f7;border-radius:8px;padding:8px;font-size:11.5px;color:#8a2b22;margin-top:8px;white-space:pre-wrap;line-height:1.5}
+.diag-log{background:#0f1720;color:#cfe0f2;border-radius:8px;padding:10px;font-family:Consolas,monospace;font-size:11px;line-height:1.5;white-space:pre-wrap;max-height:320px;overflow:auto}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.arch-stats{grid-template-columns:repeat(2,1fr)}.arch-item{grid-template-columns:24px 1fr}.diag-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -87,7 +176,10 @@ h1{font-size:20px;margin:0 0 4px}.sub{color:var(--muted);font-size:12.5px;margin
       <button class="on" data-view="overview" data-testid="nav-overview"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>概览</button>
       <button data-view="qa" data-testid="nav-qa"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 9h8M8 13h5"/></svg>资料问答</button>
       <button data-view="customers" data-testid="nav-customers"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>客户与项目</button>
+      <button data-view="import" data-testid="nav-import"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>导入中心</button>
+      <button data-view="archive" data-testid="nav-archive" data-label="待归档"><svg viewBox="0 0 24 24"><path d="M4 7h16v13H4z"/><path d="M2 3h20v4H2z"/><path d="M10 11h4"/></svg>待归档<span class="tag warn" id="arch-nav-count" style="margin-left:auto">8</span></button>
       <button data-view="gaps" data-testid="nav-gaps"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>缺口与冲突<span class="tag warn" style="margin-left:auto">5</span></button>
+      <button data-view="diagnostics" data-testid="nav-diagnostics" data-label="本地诊断"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/><path d="m5 5 2.5 2.5M16.5 16.5 19 19M19 5l-2.5 2.5M7.5 16.5 5 19"/></svg>本地诊断</button>
     </nav>
     <div class="foot">本地规则原型<br>无模型调用 · 无网络请求<br>演示数据均为虚构</div>
   </aside>
@@ -133,10 +225,84 @@ h1{font-size:20px;margin:0 0 4px}.sub{color:var(--muted);font-size:12.5px;margin
           <table class="table" data-testid="req-table"><thead><tr><th>编号</th><th>需求</th><th>项目</th><th>状态</th><th>优先级</th><th>来源</th></tr></thead><tbody id="req-body"></tbody></table>
         </div>
       </section>
+      <section class="view" id="view-import">
+        <h1>导入中心</h1>
+        <div class="sub">每个文件独立任务：并发 2，单文件失败不阻塞其他文件；取消保留部分结果，刷新页面从检查点恢复。</div>
+        <div class="banner" id="imp-banner" data-testid="imp-banner"></div>
+        <div class="card">
+          <div class="imp-head">
+            <div class="imp-stats" data-testid="imp-stats">
+              <span class="imp-stat">总数<b id="imp-total" data-testid="imp-total">20</b></span>
+              <span class="imp-stat">处理中<b id="imp-running" data-testid="imp-running">0</b></span>
+              <span class="imp-stat">已完成<b id="imp-done" data-testid="imp-done">0</b></span>
+              <span class="imp-stat">待归档<b id="imp-archive" data-testid="imp-archive">0</b></span>
+              <span class="imp-stat">失败<b id="imp-failed" data-testid="imp-failed">0</b></span>
+              <span class="imp-stat">已取消<b id="imp-cancelled" data-testid="imp-cancelled">0</b></span>
+              <span class="imp-stat">预计剩余<b id="imp-eta" data-testid="imp-eta">--</b></span>
+            </div>
+            <div class="imp-actions">
+              <button class="primary" id="imp-start" data-testid="imp-start">开始批量导入</button>
+              <button id="imp-cancel-all" data-testid="imp-cancel-all">全部取消</button>
+              <button id="imp-reset" data-testid="imp-reset">重置演示</button>
+            </div>
+          </div>
+          <div class="overall"><div id="imp-overall" data-testid="imp-overall"></div></div>
+          <table class="table imp">
+            <thead><tr><th>文件</th><th>类型</th><th>大小</th><th>状态</th><th style="width:110px">进度</th><th>尝试</th><th>失败原因 / 说明</th><th>操作</th></tr></thead>
+            <tbody id="imp-body"></tbody>
+          </table>
+        </div>
+        <div class="hint">原始文件在任务开始前已登记哈希并只读保留：失败、取消、重试都不删除原件。演示按 90ms/格推进，并发 2。</div>
+        <div class="hint">导入中心的“待归档”只是任务状态；实际归属处理在独立界面 <button class="rowbtn" data-goto="archive" data-testid="goto-archive">待归档</button>，不要在这里直接改归属。</div>
+      </section>
+      <section class="view" id="view-archive">
+        <h1>待归档</h1>
+        <div class="sub">独立处理未匹配或多候选资料，与导入中心分开；确认后保留操作人、时间与来源。</div>
+        <div class="arch-stats">
+          <div class="arch-stat"><b id="arch-pending" data-testid="arch-pending">8</b><span>待处理</span></div>
+          <div class="arch-stat"><b id="arch-multi" data-testid="arch-multi">1</b><span>多候选</span></div>
+          <div class="arch-stat"><b id="arch-none" data-testid="arch-none">2</b><span>无匹配</span></div>
+          <div class="arch-stat"><b id="arch-archived" data-testid="arch-archived">0</b><span>已归档</span></div>
+          <div class="arch-stat"><b id="arch-ignored" data-testid="arch-ignored">1</b><span>已忽略</span></div>
+        </div>
+        <div class="card">
+          <div class="arch-tabs">
+            <button class="arch-tab on" data-tab="pending" data-testid="arch-tab-pending">待处理 <span id="arch-tab-pending-n">8</span></button>
+            <button class="arch-tab" data-tab="archived" data-testid="arch-tab-archived">已归档 <span id="arch-tab-archived-n">0</span></button>
+            <button class="arch-tab" data-tab="ignored" data-testid="arch-tab-ignored">已忽略 <span id="arch-tab-ignored-n">1</span></button>
+            <button class="arch-tab" id="arch-reset" data-testid="arch-reset" style="margin-left:auto">重置演示</button>
+          </div>
+          <div class="arch-bulk" id="arch-bulk">
+            <label><input type="checkbox" id="arch-select-all" data-testid="arch-select-all">全选当前</label>
+            <select id="arch-bulk-customer" data-testid="arch-bulk-customer"><option value="">批量客户</option></select>
+            <select id="arch-bulk-project" data-testid="arch-bulk-project"><option value="">不指定项目</option></select>
+            <select id="arch-bulk-owner" data-testid="arch-bulk-owner"></select>
+            <button class="primary" id="arch-bulk-confirm" data-testid="arch-bulk-confirm" disabled>批量确认</button>
+            <button id="arch-bulk-ignore" data-testid="arch-bulk-ignore">批量忽略</button>
+            <button id="arch-new-global" data-testid="arch-new-global">新建客户</button>
+            <span class="hint" id="arch-bulk-note" style="margin:0"></span>
+          </div>
+          <div id="arch-list" data-testid="arch-list"></div>
+        </div>
+        <div class="hint">匹配规则：手机号 / 邮箱 / 微信标识精确匹配优先；多候选或无匹配停留在本页，确认前不写客户档案。</div>
+      </section>
       <section class="view" id="view-gaps">
         <h1>缺口与冲突</h1>
         <div class="sub">按“是否阻塞范围 / 报价 / 工期”排序；每条都带双方证据，不做自动裁定。</div>
         <div class="card"><div id="gap-list" data-testid="gap-list"></div></div>
+      </section>
+      <section class="view" id="view-diagnostics">
+        <h1>本地诊断</h1>
+        <div class="sub">检查 Sidecar、微信引擎、ffmpeg、OCR 与 ASR 的真实状态；失败时给出原因、日志和修复步骤，不用“服务不可用”敷衍。</div>
+        <div class="banner" id="diag-banner" data-testid="diag-banner"></div>
+        <div class="card">
+          <div class="imp-head">
+            <div><b id="diag-overall" data-testid="diag-overall">尚未检测</b><div class="hint" id="diag-policy" style="margin-top:4px"></div></div>
+            <button class="primary" id="diag-refresh" data-testid="diag-refresh">重新检测</button>
+          </div>
+          <div class="diag-grid" id="diag-cards" data-testid="diag-cards"></div>
+        </div>
+        <div class="hint">诊断服务由本地 ops 服务提供：<code>python -m ops.server --port 8123</code>。不会自动无限拉起组件。</div>
       </section>
     </div>
   </div>
@@ -148,10 +314,49 @@ h1{font-size:20px;margin:0 0 4px}.sub{color:var(--muted);font-size:12.5px;margin
   <div class="kv"><span style="color:#8b97a5">定位符</span><br><span class="loc" id="d-loc"></span></div>
   <div class="hint">证据定位用于回到原文；原型不打开原始文件。</div>
 </div></div>
+<div class="modal" id="arch-modal" data-testid="arch-modal"><div class="modal-panel">
+  <h3>新建客户</h3>
+  <label>客户名称（必填）</label><input id="arch-new-name" data-testid="arch-new-name" placeholder="如：示例客户（虚构）">
+  <label>公司</label><input id="arch-new-company" data-testid="arch-new-company">
+  <label>手机号</label><input id="arch-new-phone" data-testid="arch-new-phone" placeholder="用于后续精确匹配">
+  <label>邮箱</label><input id="arch-new-email" data-testid="arch-new-email">
+  <label>微信标识</label><input id="arch-new-wechat" data-testid="arch-new-wechat">
+  <div class="modal-actions">
+    <button id="arch-new-cancel" data-testid="arch-new-cancel">取消</button>
+    <button class="primary" id="arch-new-submit" data-testid="arch-new-submit">创建并选中</button>
+  </div>
+</div></div>
+<div class="drawer" id="arch-drawer" data-testid="arch-drawer"><div class="panel">
+  <button class="close" id="arch-drawer-close" data-testid="arch-drawer-close">×</button>
+  <div class="tag blue">操作记录</div>
+  <h3 id="arch-drawer-title">记录</h3>
+  <div class="kv" id="arch-drawer-meta"></div>
+  <div id="arch-drawer-body"></div>
+</div></div>
+<div class="drawer" id="diag-drawer" data-testid="diag-drawer"><div class="panel">
+  <button class="close" id="diag-drawer-close" data-testid="diag-drawer-close">×</button>
+  <div class="tag blue">组件日志</div>
+  <h3 id="diag-drawer-title">日志</h3>
+  <div class="hint" id="diag-drawer-meta"></div>
+  <div class="diag-log" id="diag-drawer-body"></div>
+</div></div>
+<div class="drawer" id="imp-manual-drawer" data-testid="imp-manual-drawer"><div class="panel">
+  <button class="close" id="imp-manual-close" data-testid="imp-manual-close">×</button>
+  <div class="tag warn">人工兜底</div>
+  <h3 id="imp-manual-title">失败任务</h3>
+  <div class="kv" id="imp-manual-meta"></div>
+  <div class="diag-error" id="imp-manual-error"></div>
+  <div style="font-size:12px;line-height:1.8;margin:10px 0" id="imp-manual-help"></div>
+  <div class="arch-actions">
+    <button class="rowbtn" id="imp-manual-retry" data-testid="imp-manual-retry">重试</button>
+    <button class="rowbtn" id="imp-manual-export" data-testid="imp-manual-export">导出诊断</button>
+    <button class="rowbtn" id="imp-manual-mark" data-testid="imp-manual-mark">转人工处理</button>
+  </div>
+</div></div>
 <script>
 const CUSTOMERS=[
- {id:"c1",name:"青岚智能装备（虚构）",contact:"陈晓岚 · 信息化负责人",industry:"工业设备制造",last:"2026-10-16",tags:["重点客户","制造业"]},
- {id:"c2",name:"恒晟精工（虚构）",contact:"周明远 · 供应链总监",industry:"精密加工",last:"2026-10-09",tags:["预研"]}
+ {id:"c1",name:"青岚智能装备（虚构）",short:"青岚",aliases:["青岚","青岚装备"],contact:"陈晓岚 · 信息化负责人",industry:"工业设备制造",last:"2026-10-16",tags:["重点客户","制造业"],phone:"13800001024",email:"chen.xiaolan@example.com",wechat:"demo_qinglan_chen"},
+ {id:"c2",name:"恒晟精工（虚构）",short:"恒晟",aliases:["恒晟","恒晟精工"],contact:"周明远 · 供应链总监",industry:"精密加工",last:"2026-10-09",tags:["预研"],phone:"13900002048",email:"zhou.mingyuan@example.com",wechat:"demo_heng_zhou"}
 ];
 const PROJECTS=[
  {id:"p1",customerId:"c1",name:"设备巡检小程序（一期）",status:"进行中",budget:"8–10 万",due:"2026-11-15",progress:"需求已评审，报价待确认"},
@@ -341,7 +546,8 @@ document.querySelectorAll(".nav button").forEach(btn=>btn.addEventListener("clic
  document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));btn.classList.add("on");
  const v=btn.dataset.view;state.view=v;
  document.querySelectorAll(".view").forEach(s=>s.classList.remove("on"));el("view-"+v).classList.add("on");
- el("crumb").textContent=btn.textContent.trim().split("\n")[0];
+ el("crumb").textContent=btn.dataset.label||btn.textContent.trim().split("\n")[0];
+ if(v==="diagnostics")diagLoad();
 }));
 document.querySelectorAll(".chips button").forEach(b=>b.addEventListener("click",()=>{el("q").value=b.dataset.q;ask()}));
 el("ask").addEventListener("click",ask);
@@ -353,6 +559,615 @@ document.addEventListener("click",e=>{
 });
 el("drawer-close").addEventListener("click",()=>el("drawer").classList.remove("on"));
 el("drawer").addEventListener("click",e=>{if(e.target.id==="drawer")el("drawer").classList.remove("on")});
+const IMP_KEY="clientgraph.import.v1", IMP_RUNNING=["parsing","transcribing","recognizing"], IMP_MAX=2, IMP_TICK=90, IMP_MAX_ATTEMPTS=2;
+const IMP_STATUS={queued:"待处理",parsing:"解析中",transcribing:"转写中",recognizing:"识别中",completed:"已完成",pending_archive:"待归档",failed:"失败",cancelled:"已取消"};
+const IMP_CLASS={queued:"",parsing:"s-parsing",transcribing:"s-transcribing",recognizing:"s-recognizing",completed:"s-completed",pending_archive:"s-archive",failed:"s-failed",cancelled:"s-cancelled"};
+const IMP_TYPE={chat:"聊天",call:"通话",audio:"音频",video:"视频",pdf:"PDF",scan:"扫描件",docx:"Word",xlsx:"Excel",ppt:"PPT",image:"图片",zip:"压缩包",email:"邮件",other:"其他"};
+let impTasks=[], impTimer=null, impBatch=false;
+
+const IMP_UNITS={F03:[13,8],F04:[6,6],F05:[3,6],F06:[13,20],F07:[120,1.2],F11:[1,3],F12:[200,1.2],F16:[1,2],F17:[6,8]};
+function impSeed(){return [
+ {id:"F01",name:"微信聊天-青岚-0918.txt",type:"chat",size:"1.3 KB",customerId:"c1",expect:"completed",note:""},
+ {id:"F02",name:"微信聊天-恒晟-1002.txt",type:"chat",size:"0.9 KB",customerId:"c2",expect:"completed",note:""},
+ {id:"F03",name:"电话录音-0918-62分钟.m4a",type:"audio",size:"58.2 MB",customerId:"c1",expect:"completed",note:""},
+ {id:"F04",name:"电话录音-1005.mp3",type:"audio",size:"16.2 MB",customerId:"c2",expect:"completed",note:""},
+ {id:"F05",name:"未知号码录音-1007.amr",type:"audio",size:"4.1 MB",customerId:null,expect:"pending_archive",note:"未匹配到客户，原件保留，待人工归属"},
+ {id:"F06",name:"会议录屏-0925-2.1GB.mp4",type:"video",size:"2.1 GB",customerId:"c1",expect:"completed",note:""},
+ {id:"F07",name:"合同扫描件-损坏.pdf",type:"pdf",size:"820 KB",customerId:"c1",expect:"failed",note:""},
+ {id:"F08",name:"需求文档-v1.0.docx",type:"docx",size:"39.6 KB",customerId:"c1",expect:"completed",note:""},
+ {id:"F09",name:"报价单-第二轮.xlsx",type:"xlsx",size:"11.6 KB",customerId:"c1",expect:"completed",note:""},
+ {id:"F10",name:"方案汇报-v1.0.pptx",type:"ppt",size:"40.1 KB",customerId:"c1",expect:"completed",note:""},
+ {id:"F11",name:"合同首页.jpg",type:"image",size:"2.0 MB",customerId:"c1",expect:"completed",note:""},
+ {id:"F12",name:"扫描合同-200页.pdf",type:"pdf",size:"186 MB",customerId:"c1",expect:"completed",note:""},
+ {id:"F13",name:"客户资料包.zip",type:"zip",size:"88.3 MB",customerId:null,expect:"pending_archive",note:"压缩包已解压登记，未匹配客户，待人工归属"},
+ {id:"F14",name:"邮件-需求确认.eml",type:"email",size:"1.3 KB",customerId:"c1",expect:"completed",note:""},
+ {id:"F15",name:"邮件-供应链预研.eml",type:"email",size:"1.0 KB",customerId:"c2",expect:"completed",note:""},
+ {id:"F16",name:"聊天截图-0922.png",type:"image",size:"540 KB",customerId:"c1",expect:"completed",note:""},
+ {id:"F17",name:"通话录音-1012.m4a",type:"audio",size:"22.7 MB",customerId:"c1",expect:"completed",note:""},
+ {id:"F18",name:"巡检记录-0920.txt",type:"chat",size:"0.6 KB",customerId:"c1",expect:"completed",note:""},
+ {id:"F19",name:"微信聊天-青岚-0918-副本.txt",type:"chat",size:"1.3 KB",customerId:"c1",expect:"completed",note:"与 F01 内容哈希相同，跳过解析，原件保留"},
+ {id:"F20",name:"未命名文件.bin",type:"other",size:"3.2 MB",customerId:null,expect:"pending_archive",note:"暂不支持解析，原件保留，待人工处理"}
+].map((t,i)=>({...t,status:"queued",progress:0,attempts:0,error:null,checkpoint:0,cancelRequested:false,resumed:false,manual:false,originalRetained:true,startedAt:null,finishedAt:null,units:(IMP_UNITS[t.id]||[1,1])[0],rateSec:(IMP_UNITS[t.id]||[1,1])[1]}));}
+
+function impSave(){try{localStorage.setItem(IMP_KEY,JSON.stringify({tasks:impTasks,batchActive:impBatch,savedAt:Date.now()}));}catch(e){}}
+function impLoad(){try{return JSON.parse(localStorage.getItem(IMP_KEY)||"null");}catch(e){return null;}}
+
+function impStage(t,p){
+ if(t.type==="audio"||t.type==="video"){if(p<=25)return "parsing";if(p<=70)return "transcribing";return "recognizing";}
+ if(t.type==="scan"||t.type==="image"){if(p<=20)return "parsing";return "recognizing";}
+ if(p<=45)return "parsing";return "recognizing";
+}
+function impFmtSec(sec){
+ if(!isFinite(sec)||sec<=0)return "0 秒";
+ const s=Math.round(sec);
+ if(s<60)return `${s} 秒`;
+ const m=Math.floor(s/60),r=s%60;
+ if(m<60)return `${m} 分 ${r} 秒`;
+ return `${Math.floor(m/60)} 小时 ${m%60} 分`;
+}
+function impStageText(t){
+ if(t.status==="queued")return "等待调度";
+ if(t.status==="completed")return "处理完成";
+ if(t.status==="pending_archive")return "待人工归属";
+ if(t.status==="cancelled")return `已取消（${t.progress}%）`;
+ if(t.status==="failed")return `失败于 ${t.progress}%`;
+ const p=t.progress;
+ if(t.status==="parsing"){
+  const max=(t.type==="audio"||t.type==="video")?25:(t.type==="scan"||t.type==="image")?20:45;
+  return `解析文件 ${Math.min(100,Math.round(p/max*100))}%`;
+ }
+ if(t.status==="transcribing"){
+  const done=Math.min(t.units,Math.max(1,Math.ceil((p-25)/45*t.units)));
+  return `转写 ${done}/${t.units} 片`;
+ }
+ if(t.status==="recognizing"){
+  const done=Math.min(t.units,Math.max(1,Math.ceil((p-70)/30*t.units)));
+  if(t.type==="scan"||t.type==="image"||t.type==="pdf")return `OCR ${done}/${t.units} 页`;
+  return `识别与归属 ${Math.round(p)}%`;
+ }
+ return "";
+}
+function impEtaSec(t){
+ if(["completed","pending_archive","failed","cancelled"].includes(t.status))return 0;
+ return Math.max(1,Math.round((100-t.progress)/100*(t.units||1)*(t.rateSec||1)));
+}
+function impOverallEta(){
+ const active=impTasks.filter(t=>!["completed","pending_archive","failed","cancelled"].includes(t.status));
+ if(!active.length)return 0;
+ const total=active.reduce((n,t)=>n+impEtaSec(t),0);
+ return Math.ceil(total/IMP_MAX);
+}
+
+function impAdvance(t){
+ if(t.cancelRequested){
+  t.status="cancelled";t.checkpoint=t.progress;t.finishedAt=Date.now();
+  t.note=t.note||"用户取消，保留已完成部分与原件";return;
+ }
+ if(t.id==="F07"&&t.progress>=35){
+  t.progress=35;t.status="failed";t.checkpoint=0;t.finishedAt=Date.now();
+  t.error="E_CORRUPT：PDF 结构损坏，无法读取文本层（原件已保留）";return;
+ }
+ const step=9+(parseInt(t.id.slice(1),10)%4);
+ t.progress=Math.min(100,t.progress+step);
+ if(t.progress>=100){
+  t.progress=100;t.status=t.expect;t.finishedAt=Date.now();
+  if(t.status==="pending_archive"&&!t.note)t.note="未匹配到客户，原件保留，待人工归属";
+ }else{
+  t.status=impStage(t,t.progress);
+ }
+}
+
+function impTick(){
+ const running=impTasks.filter(t=>IMP_RUNNING.includes(t.status));
+ while(running.length<IMP_MAX){
+  const q=impTasks.find(t=>t.status==="queued"&&!t.cancelRequested);
+  if(!q)break;
+  q.status="parsing";q.startedAt=q.startedAt||Date.now();
+  if(!q.resumed)q.attempts+=1;
+  q.resumed=false;q.error=null;
+  running.push(q);
+ }
+ if(!running.length){
+  if(impTimer){clearInterval(impTimer);impTimer=null;}
+  impBatch=false;impSave();impRender();return;
+ }
+ running.forEach(impAdvance);
+ impSave();impRender();
+}
+
+function impSchedule(){
+ if(impTimer)return;
+ impBatch=true;
+ impTimer=setInterval(impTick,IMP_TICK);
+ impTick();
+}
+
+function impStart(){
+ if(!impTasks.some(t=>t.status==="queued"))return;
+ const b=el("imp-banner");b.classList.remove("on");
+ impSchedule();
+}
+
+function impCancel(id){
+ const t=impTasks.find(x=>x.id===id);if(!t)return;
+ if(t.status==="queued"){t.status="cancelled";t.finishedAt=Date.now();t.note=t.note||"用户取消，原件保留";}
+ else if(IMP_RUNNING.includes(t.status)){t.cancelRequested=true;}
+ impSave();impRender();
+}
+
+function impCancelAll(){
+ impTasks.forEach(t=>{
+  if(t.status==="queued"){t.status="cancelled";t.finishedAt=Date.now();t.note=t.note||"批量取消，原件保留";}
+  else if(IMP_RUNNING.includes(t.status)){t.cancelRequested=true;}
+ });
+ impSave();impRender();
+}
+
+function impRetry(id){
+ const t=impTasks.find(x=>x.id===id);if(!t)return;
+ if(!["failed","cancelled"].includes(t.status)||t.attempts>=IMP_MAX_ATTEMPTS)return;
+ const from=t.status==="cancelled"?t.checkpoint:0;
+ t.status="queued";t.progress=from;t.checkpoint=from;t.error=null;t.cancelRequested=false;t.resumed=false;t.manual=false;
+ t.note=from>0?"从检查点继续，原件保留":"重新排队，原件保留";
+ impSave();impRender();impSchedule();
+}
+
+function impReset(){
+ if(impTimer){clearInterval(impTimer);impTimer=null;}
+ try{localStorage.removeItem(IMP_KEY);}catch(e){}
+ impTasks=impSeed();impBatch=false;
+ el("imp-banner").classList.remove("on");
+ impSave();impRender();
+}
+
+function impRender(){
+ const c=s=>impTasks.filter(t=>t.status===s).length;
+ const running=IMP_RUNNING.reduce((n,s)=>n+c(s),0);
+ const done=c("completed"),arch=c("pending_archive"),failed=c("failed"),cancel=c("cancelled");
+ el("imp-total").textContent=impTasks.length;
+ el("imp-running").textContent=running;
+ el("imp-done").textContent=done;
+ el("imp-archive").textContent=arch;
+ el("imp-failed").textContent=failed;
+ el("imp-cancelled").textContent=cancel;
+ const avg=impTasks.length?Math.round(impTasks.reduce((n,t)=>n+t.progress,0)/impTasks.length):0;
+ el("imp-overall").style.width=avg+"%";
+ el("imp-eta").textContent=(running>0||impBatch)?impFmtSec(impOverallEta()):"--";
+ el("imp-body").innerHTML=impTasks.map(t=>{
+  const canCancel=t.status==="queued"||IMP_RUNNING.includes(t.status);
+  const canRetry=(t.status==="failed"||t.status==="cancelled")&&t.attempts<IMP_MAX_ATTEMPTS;
+  const barCls=t.status==="failed"?"fail":(t.status==="completed"||t.status==="pending_archive")?"ok":"";
+  const info=t.status==="failed"?`<div class="err">${esc(t.error||"")}</div>${t.manual?`<div class="hint" style="margin-top:0">已转人工，自动重试已停止</div>`:""}`:(t.note?`<div class="hint" style="margin-top:0">${esc(t.note)}</div>`:"—");
+  const eta=impEtaSec(t);
+  return `<tr data-testid="imp-row-${t.id}" data-status="${t.status}" data-progress="${t.progress}">
+   <td><div class="fname" title="${esc(t.name)}">${esc(t.name)}</div><div class="fmeta">${t.id} · 原件保留</div></td>
+   <td><span class="tag">${IMP_TYPE[t.type]||t.type}</span></td>
+   <td class="loc">${t.size}</td>
+   <td><span class="status ${IMP_CLASS[t.status]}" data-testid="imp-status-${t.id}"><span class="dot"></span>${IMP_STATUS[t.status]}</span></td>
+   <td><div class="pbar ${barCls}"><div style="width:${t.progress}%"></div></div><div class="hint" style="margin-top:2px">${t.progress}% · ${impStageText(t)}${eta?` · 剩 ${impFmtSec(eta)}`:""}</div></td>
+   <td>${t.attempts}/${IMP_MAX_ATTEMPTS}</td>
+   <td>${info}</td>
+   <td style="white-space:nowrap">${canCancel?`<button class="rowbtn danger" data-act="cancel" data-id="${t.id}">取消</button>`:canRetry?`<button class="rowbtn" data-act="retry" data-id="${t.id}">重试</button>`:""}${t.status==="failed"?` <button class="rowbtn" data-act="manual" data-id="${t.id}" data-testid="imp-manual-${t.id}">人工处理</button>`:""}${!canCancel&&!canRetry&&t.status!=="failed"?"—":""}</td>
+  </tr>`;
+ }).join("");
+ }
+
+let impManualId=null;
+function impOpenManual(id){
+ const t=impTasks.find(x=>x.id===id);if(!t)return;
+ impManualId=id;
+ el("imp-manual-title").textContent=t.name;
+ el("imp-manual-meta").innerHTML=`来源：${esc(t.type)} · ${esc(t.size)}<br>状态：${esc(IMP_STATUS[t.status]||t.status)} · 进度 ${t.progress}%<br>尝试：${t.attempts}/${IMP_MAX_ATTEMPTS} · 原件已保留`;
+ el("imp-manual-error").textContent=t.error||"未记录具体错误";
+ const code=(t.error||"").split("：")[0];
+ const tips={
+  E_CORRUPT:"原件可能损坏：用原工具重新导出，或保留原件改为人工补录。",
+  E_ASR_TIMEOUT:"转写超时：缩小切片、检查网络或切换语音模型；已完成片段仍保留。",
+  E_OCR_LOW:"OCR 置信度低：提高扫描分辨率、纠正倾斜后重跑，或人工校对。",
+  E_SEGMENT_FAILED:"切片失败：检查磁盘空间与 ffmpeg 日志，修复后只重跑失败片段。",
+  E_MODEL:"模型不可用：检查 API Key、余额与端点；可先切回 Mock 验证链路。"
+ };
+ el("imp-manual-help").textContent=tips[code]||"可重试、导出诊断交开发排查，或转人工处理并保留原件。";
+ el("imp-manual-drawer").classList.add("on");
+}
+el("imp-manual-close").addEventListener("click",()=>el("imp-manual-drawer").classList.remove("on"));
+el("imp-manual-retry").addEventListener("click",()=>{if(impManualId)impRetry(impManualId);el("imp-manual-drawer").classList.remove("on")});
+el("imp-manual-mark").addEventListener("click",()=>{const t=impTasks.find(x=>x.id===impManualId);if(t){t.manual=true;t.note="已转人工处理，自动重试已停止，原件保留";impSave();impRender()}el("imp-manual-drawer").classList.remove("on")});
+el("imp-manual-export").addEventListener("click",()=>{
+ const t=impTasks.find(x=>x.id===impManualId);if(!t)return;
+ const text=[`任务：${t.id} ${t.name}`,`类型：${t.type} ${t.size}`,`状态：${t.status} ${t.progress}%`,`尝试：${t.attempts}/${IMP_MAX_ATTEMPTS}`,`错误：${t.error||""}`,`阶段：${impStageText(t)}`,`导出时间：${new Date().toISOString()}`,`原始文件保留：是`].join("\n");
+ const blob=new Blob([text],{type:"text/plain;charset=utf-8"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`诊断-${t.id}.txt`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+});
+
+el("imp-body").addEventListener("click",e=>{
+ const b=e.target.closest("button[data-act]");if(!b)return;
+ if(b.dataset.act==="cancel")impCancel(b.dataset.id);
+ if(b.dataset.act==="retry")impRetry(b.dataset.id);
+ if(b.dataset.act==="manual")impOpenManual(b.dataset.id);
+});
+el("imp-start").addEventListener("click",impStart);
+el("imp-cancel-all").addEventListener("click",impCancelAll);
+el("imp-reset").addEventListener("click",impReset);
+
+(function impBoot(){
+ const saved=impLoad();
+ if(saved&&Array.isArray(saved.tasks)&&saved.tasks.length){
+  impTasks=saved.tasks;impBatch=!!saved.batchActive;
+  const bad=impTasks.filter(t=>IMP_RUNNING.includes(t.status));
+  if(bad.length){
+   bad.forEach(t=>{t.status="queued";t.resumed=true;t.note="应用重启：已从检查点恢复，原件保留";});
+   impBatch=true;
+   const b=el("imp-banner");
+   b.textContent=`检测到 ${bad.length} 个未完成任务，已恢复队列并从检查点继续（原始文件保留）。`;
+   b.classList.add("on");
+  }
+  if(impBatch&&impTasks.some(t=>t.status==="queued"))setTimeout(impSchedule,500);
+ }else{
+  impTasks=impSeed();
+ }
+ impRender();impSave();
+})();
+window.__imp={get tasks(){return impTasks;},start:impStart,cancel:impCancel,cancelAll:impCancelAll,retry:impRetry,reset:impReset,seed:impSeed,status:IMP_STATUS};
+
+const ARCHIVE_KEY="cgArchiveV1";
+const ARCHIVE_OWNERS=["王工（我）","李顾问","陈助理"];
+const ARCHIVE_OPERATOR="王工（我）";
+let ARCHIVE_ITEMS=[];
+let ARCHIVE_EXTRA=[];
+let archFilter="pending";
+let archSelected=new Set();
+let archBulkDraft={customerId:"",projectId:"",owner:ARCHIVE_OWNERS[0]};
+let archNewFor=null;
+
+function archSeed(){
+ return [
+  {id:"A01",title:"未知号码录音-1011.amr",type:"call",channel:"电话",file:"未知号码录音-1011.amr",receivedAt:"2026-10-11 18:42",snippet:"对方提到设备巡检和 120 台设备，未留姓名。",identifiers:{phone:"138-0000-1024"},status:"pending",draft:{},history:[]},
+  {id:"A02",title:"邮件-供应链协同咨询.eml",type:"email",channel:"邮件",file:"邮件-供应链协同咨询.eml",receivedAt:"2026-10-09 16:40",snippet:"想了解供应商门户与 ERP 对接，请安排交流。",identifiers:{email:"zhou.mingyuan@example.com"},status:"pending",draft:{},history:[]},
+  {id:"A03",title:"聊天截图-0922.png",type:"image",channel:"微信",file:"聊天截图-0922.png",receivedAt:"2026-09-22 09:25",snippet:"截图里显示了微信号和被截断的巡检需求。",identifiers:{wechat:"demo_qinglan_chen"},status:"pending",draft:{},history:[]},
+  {id:"A04",title:"聊天记录-混合号码.txt",type:"chat",channel:"微信",file:"聊天记录-混合号码.txt",receivedAt:"2026-10-10 11:02",snippet:"同一段对话里同时出现青岚的手机号和恒晟的邮箱。",identifiers:{phone:"13800001024",email:"zhou.mingyuan@example.com"},status:"pending",draft:{},history:[]},
+  {id:"A05",title:"扫描合同页-未知.pdf",type:"scan",channel:"扫描件",file:"扫描合同页-未知.pdf",receivedAt:"2026-10-16 14:08",snippet:"合同首页，只有项目名称，没有联系方式。",identifiers:{},status:"pending",draft:{},history:[]},
+  {id:"A06",title:"转发邮件-青岚项目.eml",type:"email",channel:"邮件",file:"转发邮件-青岚项目.eml",receivedAt:"2026-10-12 17:30",snippet:"正文提到青岚智能装备，但发件人不在客户库。",identifiers:{name:"青岚"},status:"pending",draft:{},history:[]},
+  {id:"A07",title:"微信聊天-新联系人.txt",type:"chat",channel:"微信",file:"微信聊天-新联系人.txt",receivedAt:"2026-10-13 10:05",snippet:"新联系人，只说了“后面再聊”，没有更多信息。",identifiers:{wechat:"wx_unknown_88"},status:"pending",draft:{},history:[]},
+  {id:"A08",title:"来电录音-1005.mp3",type:"call",channel:"电话",file:"来电录音-1005.mp3",receivedAt:"2026-10-05 09:12",snippet:"对方确认供应链协同的预研时间。",identifiers:{phone:"13900002048"},status:"pending",draft:{},history:[]},
+  {id:"A09",title:"私人号码录音-1008.amr",type:"call",channel:"电话",file:"私人号码录音-1008.amr",receivedAt:"2026-10-08 15:18",snippet:"与项目无关的私人通话。",identifiers:{phone:"13700009999"},status:"ignored",draft:{},history:[{action:"ignore",at:"2026-10-08T15:20:00+08:00",operator:ARCHIVE_OPERATOR,source:"电话 · 私人号码录音-1008.amr",detail:"人工忽略：与客户项目无关"}]}
+ ];
+}
+
+function archDigits(v){return String(v||"").replace(/\D/g,"")}
+function archNow(){return new Date().toISOString()}
+function archFmt(iso){try{return new Date(iso).toLocaleString("zh-CN",{hour12:false})}catch(e){return iso||""}}
+function archCustomer(id){return CUSTOMERS.find(c=>c.id===id)}
+function archProject(id){return PROJECTS.find(p=>p.id===id)}
+
+function archCandidates(item){
+ const out=[];
+ CUSTOMERS.forEach(c=>{
+  let hit=null;
+  if(item.identifiers.phone&&c.phone&&archDigits(item.identifiers.phone)===archDigits(c.phone))hit={method:"phone",label:"手机号",confidence:0.99,priority:100};
+  else if(item.identifiers.email&&c.email&&String(item.identifiers.email).toLowerCase()===String(c.email).toLowerCase())hit={method:"email",label:"邮箱",confidence:1,priority:100};
+  else if(item.identifiers.wechat&&c.wechat&&String(item.identifiers.wechat).toLowerCase()===String(c.wechat).toLowerCase())hit={method:"wechat",label:"微信",confidence:0.99,priority:100};
+  if(!hit){
+   const text=(item.snippet+" "+item.title+" "+(item.identifiers.name||"")).toLowerCase();
+   const names=[c.name,c.short].concat(c.aliases||[]).filter(Boolean);
+   if(names.some(n=>text.includes(String(n).toLowerCase())))hit={method:"name",label:"名称建议",confidence:0.7,priority:50};
+  }
+  if(hit)out.push({customerId:c.id,customerName:c.name,...hit});
+ });
+ const best={};out.forEach(x=>{if(!best[x.customerId]||best[x.customerId].priority<x.priority)best[x.customerId]=x});
+ return Object.values(best).sort((a,b)=>b.priority-a.priority);
+}
+function archMatch(item){
+ const candidates=archCandidates(item);
+ const exact=candidates.filter(c=>c.priority>=90);
+ const state=exact.length>1?"multi":exact.length===1?"exact":candidates.length?"suggested":"none";
+ const recommended=exact.length===1?exact[0]:null;
+ let recommendedProject="";
+ if(recommended){
+  const ps=PROJECTS.filter(p=>p.customerId===recommended.customerId);
+  if(ps.length===1)recommendedProject=ps[0].id;
+ }
+ return {candidates,exact,state,recommended,recommendedProject};
+}
+function archEnsureDraft(item){
+ if(!item.draft)item.draft={};
+ if(!item.draft.owner)item.draft.owner=ARCHIVE_OWNERS[0];
+ if(item.status==="pending"&&item.draft.customerId===undefined){
+  const m=archMatch(item);
+  item.draft.customerId=m.recommended?m.recommended.customerId:"";
+  item.draft.projectId=m.recommendedProject||"";
+ }
+}
+function archSave(){
+ try{localStorage.setItem(ARCHIVE_KEY,JSON.stringify({items:ARCHIVE_ITEMS,extraCustomers:ARCHIVE_EXTRA}))}catch(e){}
+}
+function archLoad(){
+ try{
+  const saved=JSON.parse(localStorage.getItem(ARCHIVE_KEY)||"null");
+  if(saved&&Array.isArray(saved.items)&&saved.items.length){
+   ARCHIVE_ITEMS=saved.items;ARCHIVE_EXTRA=saved.extraCustomers||[];
+   ARCHIVE_EXTRA.forEach(c=>{if(!CUSTOMERS.find(x=>x.id===c.id))CUSTOMERS.push(c)});
+   return true;
+  }
+ }catch(e){}
+ return false;
+}
+function archCounts(){
+ const pending=ARCHIVE_ITEMS.filter(i=>i.status==="pending");
+ return {
+  pending:pending.length,
+  multi:pending.filter(i=>archMatch(i).state==="multi").length,
+  none:pending.filter(i=>archMatch(i).state==="none").length,
+  archived:ARCHIVE_ITEMS.filter(i=>i.status==="archived").length,
+  ignored:ARCHIVE_ITEMS.filter(i=>i.status==="ignored").length
+ };
+}
+function archOptionsCustomer(selected){
+ return `<option value="">选择客户</option>`+CUSTOMERS.map(c=>`<option value="${c.id}" ${c.id===selected?"selected":""}>${esc(c.name)}</option>`).join("");
+}
+function archOptionsProject(customerId,selected){
+ const ps=PROJECTS.filter(p=>p.customerId===customerId);
+ return `<option value="">不指定项目</option>`+ps.map(p=>`<option value="${p.id}" ${p.id===selected?"selected":""}>${esc(p.name)}</option>`).join("");
+}
+function archOptionsOwner(selected){
+ return ARCHIVE_OWNERS.map(o=>`<option value="${o}" ${o===selected?"selected":""}>${esc(o)}</option>`).join("");
+}
+function archProjectRequired(customerId){return PROJECTS.some(p=>p.customerId===customerId)}
+function archBadge(item){
+ if(item.status==="archived")return `<span class="tag blue">已归档</span>`;
+ if(item.status==="ignored")return `<span class="tag">已忽略</span>`;
+ const m=archMatch(item);
+ if(m.state==="multi")return `<span class="tag danger">多候选 · ${m.exact.length}</span>`;
+ if(m.state==="exact")return `<span class="tag blue">精确匹配 · ${m.exact[0].label}</span>`;
+ if(m.state==="suggested")return `<span class="tag warn">名称建议</span>`;
+ return `<span class="tag">无匹配</span>`;
+}
+function archHistory(item){
+ if(!item.history||!item.history.length)return `<div class="hint">暂无操作记录</div>`;
+ const labels={archive:"确认归档",批量归档:"批量归档",ignore:"忽略",restore:"恢复",create_customer:"新建客户"};
+ return item.history.slice().reverse().map(h=>`<div class="arch-hist"><div class="h">${esc(labels[h.action]||h.action)} · ${esc(h.operator||"")}</div>
+  <div class="m">${esc(archFmt(h.at))}<br>来源：${esc(h.source||"")}<br>${esc(h.detail||"")}</div></div>`).join("");
+}
+function renderArchive(){
+ const c=archCounts();
+ ["pending","multi","none","archived","ignored"].forEach(k=>{el("arch-"+k).textContent=c[k]});
+ el("arch-nav-count").textContent=c.pending;
+ el("arch-tab-pending-n").textContent=c.pending;
+ el("arch-tab-archived-n").textContent=c.archived;
+ el("arch-tab-ignored-n").textContent=c.ignored;
+ document.querySelectorAll(".arch-tab[data-tab]").forEach(b=>b.classList.toggle("on",b.dataset.tab===archFilter));
+ el("arch-bulk").style.display=archFilter==="pending"?"flex":"none";
+ el("arch-bulk-customer").innerHTML=archOptionsCustomer(archBulkDraft.customerId);
+ el("arch-bulk-project").innerHTML=archOptionsProject(archBulkDraft.customerId,archBulkDraft.projectId);
+ el("arch-bulk-owner").innerHTML=archOptionsOwner(archBulkDraft.owner);
+ el("arch-bulk-confirm").disabled=!archBulkDraft.customerId||archSelected.size===0||(archProjectRequired(archBulkDraft.customerId)&&!archBulkDraft.projectId);
+ el("arch-bulk-note").textContent=archSelected.size?`已选 ${archSelected.size} 项`:"未选择";
+ el("arch-select-all").checked=archFilter==="pending"&&c.pending>0&&[...archSelected].length===c.pending;
+
+ const list=ARCHIVE_ITEMS.filter(i=>i.status===archFilter);
+ if(!list.length){el("arch-list").innerHTML=`<div class="arch-empty">当前分组没有资料。</div>`;return}
+ el("arch-list").innerHTML=list.map(item=>{
+  archEnsureDraft(item);
+  const d=item.draft||{};
+  if(item.status!=="pending"){
+   const target=item.archived||item.ignored||{};
+   const cust=target.customerId?archCustomer(target.customerId):null;
+   const proj=target.projectId?archProject(target.projectId):null;
+   return `<div class="arch-item" data-testid="arch-row-${item.id}" data-status="${item.status}">
+    <div></div>
+    <div><div class="arch-title">${archBadge(item)} ${esc(item.title)}</div>
+     <div class="arch-meta">来源：${esc(item.channel)} · ${esc(item.file)} · ${esc(item.receivedAt)}</div>
+     <div class="arch-snippet">${esc(item.snippet)}</div>
+     ${item.status==="archived"?`<div class="arch-meta">归档到：${esc(cust?cust.name:"-")} / ${esc(proj?proj.name:"不指定项目")} / ${esc(target.owner||"")}<br>操作人：${esc(target.operator||"")} · ${esc(archFmt(target.at))}</div>`:`<div class="arch-meta">忽略原因：${esc(target.reason||"人工忽略")} · 操作人：${esc(target.operator||"")} · ${esc(archFmt(target.at))}</div>`}
+    </div>
+    <div class="arch-form"><div class="arch-actions">
+      ${item.status==="ignored"?`<button data-restore="${item.id}" data-testid="arch-restore-${item.id}">恢复</button>`:""}
+      <button data-hist="${item.id}" data-testid="arch-history-${item.id}">记录</button>
+    </div></div></div>`;
+  }
+  const m=archMatch(item);
+  const cands=m.candidates.length?m.candidates.map(x=>`<button class="cand ${d.customerId===x.customerId?"on":""}" data-cand="${item.id}" data-cust="${x.customerId}" data-testid="arch-cand-${item.id}-${x.customerId}">${esc(x.customerName)} · ${esc(x.label)} ${Math.round(x.confidence*100)}%</button>`).join(""):`<span class="hint" style="margin:0">无候选，建议新建客户</span>`;
+  return `<div class="arch-item" data-testid="arch-row-${item.id}" data-status="pending">
+   <div><input type="checkbox" data-check="${item.id}" data-testid="arch-check-${item.id}" ${archSelected.has(item.id)?"checked":""}></div>
+   <div><div class="arch-title">${archBadge(item)} ${esc(item.title)}</div>
+    <div class="arch-meta">来源：${esc(item.channel)} · ${esc(item.file)} · ${esc(item.receivedAt)}</div>
+    <div class="arch-snippet">${esc(item.snippet)}</div>
+    <div class="arch-ids">${Object.entries(item.identifiers||{}).map(([k,v])=>`<span class="tag">${esc(k)}: ${esc(v)}</span>`).join("")||`<span class="tag">无标识</span>`}</div>
+    <div class="arch-cands">${cands}</div>
+   </div>
+   <div class="arch-form">
+    <div class="row"><select data-select="customer" data-id="${item.id}" data-testid="arch-customer-${item.id}">${archOptionsCustomer(d.customerId)}</select></div>
+    <div class="row"><select data-select="project" data-id="${item.id}" data-testid="arch-project-${item.id}" ${d.customerId?"":"disabled"}>${d.customerId?archOptionsProject(d.customerId,d.projectId):`<option value="">先选客户</option>`}</select></div>
+    <div class="row"><select data-select="owner" data-id="${item.id}" data-testid="arch-owner-${item.id}">${archOptionsOwner(d.owner)}</select></div>
+    <div class="arch-actions">
+      <button class="primary" data-confirm="${item.id}" data-testid="arch-confirm-${item.id}" ${(d.customerId&&(!archProjectRequired(d.customerId)||d.projectId))?"":"disabled"}>确认归档</button>
+      <button data-ignore="${item.id}" data-testid="arch-ignore-${item.id}">忽略</button>
+      <button data-new="${item.id}" data-testid="arch-new-${item.id}">新建客户</button>
+      <button data-hist="${item.id}" data-testid="arch-history-${item.id}">记录</button>
+    </div>
+   </div></div>`;
+ }).join("");
+}
+function archDoArchive(id,target,action){
+ const item=ARCHIVE_ITEMS.find(i=>i.id===id);if(!item)return;
+ const cust=archCustomer(target.customerId);if(!cust)return;
+ const proj=target.projectId?archProject(target.projectId):null;
+ const at=archNow();
+ item.status="archived";
+ item.archived={customerId:target.customerId,projectId:target.projectId||"",owner:target.owner||ARCHIVE_OWNERS[0],operator:ARCHIVE_OPERATOR,at,sourceFile:item.file,sourceChannel:item.channel};
+ item.history.push({action:action||"archive",at,operator:ARCHIVE_OPERATOR,source:`${item.channel} · ${item.file}`,detail:`归档到 ${cust.name} / ${proj?proj.name:"不指定项目"} / ${item.archived.owner}`});
+ archSelected.delete(id);archSave();renderArchive();
+}
+function archDoIgnore(id,reason,action){
+ const item=ARCHIVE_ITEMS.find(i=>i.id===id);if(!item)return;
+ const at=archNow();
+ item.status="ignored";
+ item.ignored={reason:reason||"人工忽略",operator:ARCHIVE_OPERATOR,at,sourceFile:item.file,sourceChannel:item.channel};
+ item.history.push({action:action||"ignore",at,operator:ARCHIVE_OPERATOR,source:`${item.channel} · ${item.file}`,detail:`忽略：${item.ignored.reason}`});
+ archSelected.delete(id);archSave();renderArchive();
+}
+function archDoRestore(id){
+ const item=ARCHIVE_ITEMS.find(i=>i.id===id);if(!item)return;
+ const at=archNow();
+ item.status="pending";
+ item.history.push({action:"restore",at,operator:ARCHIVE_OPERATOR,source:`${item.channel} · ${item.file}`,detail:"从忽略恢复为待处理"});
+ item.draft=item.draft||{};item.draft.owner=item.draft.owner||ARCHIVE_OWNERS[0];
+ archSave();renderArchive();
+}
+function archOpenHistory(id){
+ const item=ARCHIVE_ITEMS.find(i=>i.id===id);if(!item)return;
+ el("arch-drawer-title").textContent=item.title;
+ el("arch-drawer-meta").innerHTML=`来源：${esc(item.channel)} · ${esc(item.file)}<br>收到时间：${esc(item.receivedAt)}<br>状态：${esc(item.status)}`;
+ el("arch-drawer-body").innerHTML=archHistory(item);
+ el("arch-drawer").classList.add("on");
+}
+function archOpenNew(id){
+ archNewFor=id||null;
+ ["arch-new-name","arch-new-company","arch-new-phone","arch-new-email","arch-new-wechat"].forEach(x=>el(x).value="");
+ el("arch-modal").classList.add("on");
+ el("arch-new-name").focus();
+}
+function archCreateCustomer(){
+ const name=el("arch-new-name").value.trim();
+ if(!name){el("arch-new-name").focus();return}
+ const maxId=CUSTOMERS.reduce((n,c)=>Math.max(n,parseInt(String(c.id).replace(/\D/g,""),10)||0),0);
+ const c={id:"c"+(maxId+1),name,short:name.replace(/（.*/,""),aliases:[name],contact:"新建客户",industry:"未填写",last:"",tags:["待完善"],phone:archDigits(el("arch-new-phone").value),email:el("arch-new-email").value.trim(),wechat:el("arch-new-wechat").value.trim(),extra:true};
+ CUSTOMERS.push(c);ARCHIVE_EXTRA.push(c);
+ if(archNewFor){
+  const item=ARCHIVE_ITEMS.find(i=>i.id===archNewFor);
+  if(item){item.draft=item.draft||{};item.draft.customerId=c.id;item.draft.projectId="";item.history.push({action:"create_customer",at:archNow(),operator:ARCHIVE_OPERATOR,source:`${item.channel} · ${item.file}`,detail:`新建客户 ${c.name} 并选中`})}
+ }
+ archSave();el("arch-modal").classList.remove("on");archNewFor=null;renderArchive();renderCustomers();renderOverview();
+}
+function archResetDemo(){
+ try{localStorage.removeItem(ARCHIVE_KEY)}catch(e){}
+ for(let i=CUSTOMERS.length-1;i>=0;i--){if(CUSTOMERS[i].extra)CUSTOMERS.splice(i,1)}
+ ARCHIVE_ITEMS=archSeed();ARCHIVE_EXTRA=[];archSelected.clear();archBulkDraft={customerId:"",projectId:"",owner:ARCHIVE_OWNERS[0]};archFilter="pending";archSave();renderArchive();renderCustomers();renderOverview();
+ el("arch-modal").classList.remove("on");archNewFor=null;
+}
+document.querySelectorAll(".arch-tab[data-tab]").forEach(b=>b.addEventListener("click",()=>{archFilter=b.dataset.tab;archSelected.clear();renderArchive()}));
+el("arch-reset").addEventListener("click",archResetDemo);
+el("arch-select-all").addEventListener("change",e=>{
+ const ids=ARCHIVE_ITEMS.filter(i=>i.status==="pending").map(i=>i.id);
+ archSelected=e.target.checked?new Set(ids):new Set();renderArchive();
+});
+el("arch-bulk-customer").addEventListener("change",e=>{archBulkDraft.customerId=e.target.value;archBulkDraft.projectId="";renderArchive()});
+el("arch-bulk-project").addEventListener("change",e=>{archBulkDraft.projectId=e.target.value;renderArchive()});
+el("arch-bulk-owner").addEventListener("change",e=>{archBulkDraft.owner=e.target.value;renderArchive()});
+el("arch-bulk-confirm").addEventListener("click",()=>{
+ if(!archBulkDraft.customerId)return;
+ if(archProjectRequired(archBulkDraft.customerId)&&!archBulkDraft.projectId)return;
+ [...archSelected].forEach(id=>archDoArchive(id,archBulkDraft,"批量归档"));
+ archSelected.clear();renderArchive();
+});
+el("arch-bulk-ignore").addEventListener("click",()=>{
+ [...archSelected].forEach(id=>archDoIgnore(id,"批量忽略","批量忽略"));
+ archSelected.clear();renderArchive();
+});
+el("arch-new-global").addEventListener("click",()=>archOpenNew(null));
+el("arch-list").addEventListener("click",e=>{
+ const cand=e.target.closest("[data-cand]");
+ if(cand){const item=ARCHIVE_ITEMS.find(i=>i.id===cand.dataset.cand);if(item){item.draft.customerId=cand.dataset.cust;item.draft.projectId="";archSave();renderArchive()}return}
+ const confirm=e.target.closest("[data-confirm]");
+ if(confirm){const item=ARCHIVE_ITEMS.find(i=>i.id===confirm.dataset.confirm);if(item){archDoArchive(item.id,{customerId:item.draft.customerId,projectId:item.draft.projectId,owner:item.draft.owner},"archive")}return}
+ const ignore=e.target.closest("[data-ignore]");if(ignore){archDoIgnore(ignore.dataset.ignore,"人工忽略","ignore");return}
+ const restore=e.target.closest("[data-restore]");if(restore){archDoRestore(restore.dataset.restore);return}
+ const hist=e.target.closest("[data-hist]");if(hist){archOpenHistory(hist.dataset.hist);return}
+ const nw=e.target.closest("[data-new]");if(nw){archOpenNew(nw.dataset.new);return}
+});
+el("arch-list").addEventListener("change",e=>{
+ const sel=e.target.closest("[data-select]");
+ if(sel){const item=ARCHIVE_ITEMS.find(i=>i.id===sel.dataset.id);if(item){const map={customer:"customerId",project:"projectId",owner:"owner"};item.draft[map[sel.dataset.select]]=e.target.value;if(sel.dataset.select==="customer")item.draft.projectId="";archSave();renderArchive()}return}
+ const chk=e.target.closest("[data-check]");
+ if(chk){if(chk.checked)archSelected.add(chk.dataset.check);else archSelected.delete(chk.dataset.check);renderArchive()}
+});
+el("arch-new-cancel").addEventListener("click",()=>{el("arch-modal").classList.remove("on");archNewFor=null});
+el("arch-new-submit").addEventListener("click",archCreateCustomer);
+el("arch-drawer-close").addEventListener("click",()=>el("arch-drawer").classList.remove("on"));
+el("arch-drawer").addEventListener("click",e=>{if(e.target.id==="arch-drawer")el("arch-drawer").classList.remove("on")});
+document.querySelectorAll("[data-goto]").forEach(b=>b.addEventListener("click",()=>{const t=document.querySelector(`[data-view="${b.dataset.goto}"]`);if(t)t.click()}));
+
+if(!archLoad()){ARCHIVE_ITEMS=archSeed();archSave()}
+ARCHIVE_ITEMS.forEach(archEnsureDraft);
+renderArchive();
+window.__archive={get items(){return ARCHIVE_ITEMS},reset:archResetDemo,archive:archDoArchive,ignore:archDoIgnore,restore:archDoRestore,match:archMatch};
+
+const DIAG_LABEL={ok:"正常",degraded:"降级",stopped:"未启动",not_installed:"未安装",not_configured:"未配置",error:"异常"};
+let diagData=null;
+let diagLast={};
+function diagStatusLabel(s){return DIAG_LABEL[s]||s}
+function diagRender(){
+ const data=diagData;if(!data)return;
+ el("diag-overall").textContent=`总体：${diagStatusLabel(data.overall)}`;
+ const p=data.policy||{};
+ el("diag-policy").textContent=`最多 ${p.max_attempts||2} 次尝试 · 冷却 ${p.cooldown_s||3} 秒 · 端口冲突不重复拉起 · 失败可转文件导入 / Mock ASR`;
+ el("diag-cards").innerHTML=(data.components||[]).map(c=>{
+  const last=diagLast[c.id];
+  const actions=[];
+  if(c.startable)actions.push(`<button class="primary" data-diag-start="${c.id}" data-testid="diag-start-${c.id}" ${c.cooldown_s>0?"disabled":""}>${c.cooldown_s>0?`冷却 ${c.cooldown_s}s`:"启动"}</button>`);
+  actions.push(`<button data-diag-log="${c.id}" data-testid="diag-log-${c.id}">查看日志</button>`);
+  actions.push(`<button data-diag-recheck="${c.id}" data-testid="diag-recheck-${c.id}">重新检测</button>`);
+  const msg=last?`<div class="${last.ok?"hint":"diag-error"}">${esc(last.message||"")}${last.code?`（${esc(last.code)}）`:""}${last.retry_after_s?`<br>建议 ${last.retry_after_s} 秒后重试`:""}${last.log_tail?`<br><br>${esc(last.log_tail.slice(-500))}`:""}</div>`:"";
+  return `<div class="diag-card" data-testid="diag-card-${c.id}">
+   <div class="diag-head"><b>${esc(c.name)}</b><span class="diag-status ${c.status}" data-testid="diag-status-${c.id}">${diagStatusLabel(c.status)}</span></div>
+   <div class="diag-sum">${esc(c.summary)}</div>
+   <div class="diag-detail">${esc(c.detail)}<br>尝试 ${c.attempts||0} 次${c.cooldown_s?` · 冷却 ${c.cooldown_s}s`:""}</div>
+   <details><summary class="hint">帮助与修复</summary><ol class="diag-help">${(c.help||[]).map(h=>`<li>${esc(h)}</li>`).join("")}</ol></details>
+   <div class="diag-actions">${actions.join("")}</div>${msg}
+  </div>`;
+ }).join("");
+}
+async function diagLoad(){
+ const b=el("diag-banner");b.classList.remove("on");
+ try{
+  const resp=await fetch("/api/diagnostics",{cache:"no-store"});
+  if(!resp.ok)throw new Error("HTTP "+resp.status);
+  diagData=await resp.json();diagRender();
+ }catch(e){
+  diagData=null;
+  el("diag-overall").textContent="总体：诊断服务未连接";
+  el("diag-policy").textContent="";
+  el("diag-cards").innerHTML="";
+  b.classList.add("on");
+  b.innerHTML=`本地诊断服务未启动，当前无法读取真实状态。<br>在项目目录执行 <code>python -m ops.server --port 8123</code>，然后点击“重新检测”。<div class="hint">原因：${esc(e.message)}</div>`;
+ }
+}
+async function diagStart(id){
+ const btn=document.querySelector(`[data-diag-start="${id}"]`);
+ if(btn){btn.disabled=true;btn.textContent="启动中…"}
+ try{
+  const resp=await fetch(`/api/components/${id}/start`,{method:"POST"});
+  const data=await resp.json();
+  diagLast[id]=data;
+  await diagLoad();
+ }catch(e){
+  diagLast[id]={ok:false,message:"启动请求失败："+e.message};
+  diagRender();
+ }
+}
+async function diagLog(id){
+ try{
+  const resp=await fetch(`/api/components/${id}/log?lines=80`,{cache:"no-store"});
+  const data=await resp.json();
+  el("diag-drawer-title").textContent=`${id} 日志`;
+  el("diag-drawer-meta").textContent="仅显示本应用写入的日志尾部；不包含密钥。";
+  el("diag-drawer-body").textContent=data.content||"暂无日志";
+  el("diag-drawer").classList.add("on");
+ }catch(e){
+  el("diag-drawer-title").textContent=`${id} 日志`;
+  el("diag-drawer-body").textContent="读取失败："+e.message;
+  el("diag-drawer").classList.add("on");
+ }
+}
+document.addEventListener("click",e=>{
+ const s=e.target.closest("[data-diag-start]");if(s){diagStart(s.dataset.diagStart);return}
+ const l=e.target.closest("[data-diag-log]");if(l){diagLog(l.dataset.diagLog);return}
+ const r=e.target.closest("[data-diag-recheck]");if(r){diagLoad();return}
+});
+el("diag-refresh").addEventListener("click",diagLoad);
+el("diag-drawer-close").addEventListener("click",()=>el("diag-drawer").classList.remove("on"));
+el("diag-drawer").addEventListener("click",e=>{if(e.target.id==="diag-drawer")el("diag-drawer").classList.remove("on")});
+
 renderOverview();renderCustomers();renderGaps();
 window.__cg={ask,search,MATERIALS,GAPS,REQUIREMENTS,INDEX};
 </script>

@@ -1,0 +1,47 @@
+{
+  "schema": "clientgraph.archive.verify.v1",
+  "generated_at": "2026-11-06T05:41:00Z",
+  "environment": {
+    "platform": "Windows x64",
+    "browser": "Chromium 156",
+    "viewport": "996x938",
+    "url": "http://127.0.0.1:8123/index.html",
+    "storage": "localStorage"
+  },
+  "initial_counts": {
+    "pending": 8,
+    "multi": 1,
+    "none": 2,
+    "archived": 0,
+    "ignored": 1
+  },
+  "matching": {
+    "A01": {"state": "exact", "method": "phone", "customer": "c1"},
+    "A02": {"state": "exact", "method": "email", "customer": "c2", "recommended_project": "p3"},
+    "A03": {"state": "exact", "method": "wechat", "customer": "c1"},
+    "A04": {"state": "multi", "candidates": 2},
+    "A05": {"state": "none", "candidates": 0},
+    "A06": {"state": "suggested", "method": "name"},
+    "A07": {"state": "none", "candidates": 0},
+    "A08": {"state": "exact", "method": "phone", "customer": "c2"}
+  },
+  "checks": [
+    {"name": "single_confirm", "result": "pass", "detail": "A01 archived to c1/p1/王工（我）"},
+    {"name": "bulk_confirm", "result": "pass", "detail": "A02+A08 archived to c2/p3/李顾问, action=批量归档"},
+    {"name": "new_customer", "result": "pass", "detail": "c3 created, selected; history create_customer+archive"},
+    {"name": "ignore_restore", "result": "pass", "detail": "A07 ignored then restored to pending"},
+    {"name": "audit_fields", "result": "pass", "detail": "operator/time/source kept; drawer shows Chinese labels"},
+    {"name": "independent_view", "result": "pass", "detail": "archive controls in import view = 0"},
+    {"name": "persistence", "result": "pass", "detail": "reload keeps archived status and history"},
+    {"name": "project_required", "result": "pass", "detail": "c1 items require project before confirm"},
+    {"name": "console_clean", "result": "pass", "detail": "0 error / 0 warning"}
+  ],
+  "audit_sample": {
+    "action": "确认归档",
+    "operator": "王工（我）",
+    "source": "电话 · 未知号码录音-1011.amr",
+    "target": "青岚智能装备（虚构） / 设备巡检小程序（一期） / 王工（我）",
+    "time": "2026-11-06T05:40:21.987Z"
+  },
+  "all_passed": true
+}

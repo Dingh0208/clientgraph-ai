@@ -1,0 +1,45 @@
+{
+  "schema": "clientgraph.regression.v1",
+  "generated_at": "2026-11-06T06:15:00Z",
+  "rounds": ["09 import center", "10 long audio", "11 video/pdf/ocr", "12 documents", "13 archive", "14 performance/diagnostics", "15 evidence"],
+  "environment": {
+    "platform": "Windows x64",
+    "python": "3.12.13",
+    "ffmpeg": "7.1.1",
+    "browser": "Chromium 156",
+    "asr": "mock",
+    "ocr": "RapidOCR CPU"
+  },
+  "pipelines": {
+    "audio": {"passed": 7, "total": 7, "long": {"duration_ms": 3600039, "chunks": 12, "segments": 36, "processing_ms": 7093}, "short": {"duration_ms": 8000, "chunks": 1, "segments": 3, "processing_ms": 478}, "failures": ["E_EMPTY_AUDIO", "E_SEGMENT_FAILED", "E_ASR_TIMEOUT partial", "retry attempts [1,2,1]"]},
+    "media": {"passed": 8, "total": 8, "video": {"duration_ms": 6000, "segments": 3, "processing_ms": 581}, "text_pdf": {"pages": 2, "blocks": 4, "ocr_calls": 0, "processing_ms": 108}, "skew_ocr": {"blocks": 3, "avg_confidence": 0.9978, "processing_ms": 15979}, "mixed_ocr": {"blocks": 2, "avg_confidence": 0.9965}, "lowres": {"blocks": 0, "warning": "W_OCR_NO_TEXT"}, "ocr_failure": {"status": "partial", "page": 2, "code": "E_OCR_FAILED"}},
+    "documents": {"passed": 13, "total": 13, "docx": {"blocks": 5, "tables": 1, "ms": 28}, "xlsx": {"blocks": 6, "sheets": 2, "ms": 26}, "xls": {"blocks": 2, "ms": 54}, "pptx": {"blocks": 5, "slides": 3, "ms": 20}, "eml": {"blocks": 4, "ms": 7}, "chat_txt": {"messages": 4, "ms": 3}, "chat_html": {"messages": 3, "tables": 1, "ms": 5}, "chat_json": {"messages": 3, "ms": 5}, "failures": ["E_FILE_CORRUPT docx", "E_FILE_CORRUPT xlsx", "E_LEGACY_FORMAT doc", "E_LEGACY_FORMAT ppt"]},
+    "evidence": {"checks": 22, "fragments": 10, "items": 9, "merged_items": 1, "sources": 10}
+  },
+  "prototype": {
+    "import_batch": {"files": 20, "completed": 16, "pending_archive": 3, "failed": 1, "cancelled": 0},
+    "failed_task": {"id": "F07", "progress": 35, "code": "E_CORRUPT", "manual_marked": true},
+    "archive": {"initial": {"pending": 8, "multi": 1, "none": 2, "ignored": 1}, "after": {"pending": 5, "archived": 3, "ignored": 1}, "per_item": "A01 c1/p1", "bulk": "A02+A08 c2/p3", "restore": "A07 pending"},
+    "diagnostics": {"overall": "not_installed", "sidecar": "degraded", "wechat": "not_installed", "ffmpeg": "ok", "ocr": "not_installed", "asr": "degraded", "cards": 5, "help_items": 14},
+    "console_errors": 0
+  },
+  "failures": [
+    {"case": "audio empty", "code": "E_EMPTY_AUDIO"},
+    {"case": "audio slice", "code": "E_SEGMENT_FAILED"},
+    {"case": "audio timeout", "code": "E_ASR_TIMEOUT", "status": "partial"},
+    {"case": "video no audio", "code": "E_VIDEO_NO_AUDIO"},
+    {"case": "low-res OCR", "code": "W_OCR_NO_TEXT"},
+    {"case": "OCR engine failure", "code": "E_OCR_FAILED", "status": "partial"},
+    {"case": "corrupt docx", "code": "E_FILE_CORRUPT"},
+    {"case": "corrupt xlsx", "code": "E_FILE_CORRUPT"},
+    {"case": "legacy doc", "code": "E_LEGACY_FORMAT"},
+    {"case": "legacy ppt", "code": "E_LEGACY_FORMAT"},
+    {"case": "import corrupt pdf", "code": "E_CORRUPT", "progress": 35},
+    {"case": "sidecar port conflict", "code": "E_PORT_CONFLICT"},
+    {"case": "not configured", "code": "E_NOT_CONFIGURED"},
+    {"case": "start failed", "code": "E_START_FAILED", "retry_after_s": 3},
+    {"case": "cooldown", "code": "E_COOLDOWN"},
+    {"case": "max attempts", "code": "E_MAX_ATTEMPTS"}
+  ],
+  "all_passed": true
+}

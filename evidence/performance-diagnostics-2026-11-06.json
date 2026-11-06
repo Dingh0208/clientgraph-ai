@@ -1,0 +1,73 @@
+{
+  "schema": "clientgraph.performance_diagnostics.verify.v1",
+  "generated_at": "2026-11-06T06:00:00Z",
+  "environment": {
+    "platform": "Windows x64",
+    "browser": "Chromium 156",
+    "viewport": "996x938",
+    "ops_server": "http://127.0.0.1:8123",
+    "test_server": "http://127.0.0.1:8124"
+  },
+  "load": {
+    "batch_files": 20,
+    "large_file": "2.1 GB video",
+    "long_audio": "62 min / 13 chunks",
+    "ocr": "200 pages",
+    "failure": "corrupt PDF at 35%"
+  },
+  "progress_samples": [
+    {"at": "start", "overall_eta": "5 分 14 秒"},
+    {"at": "video 33%", "detail": "转写 3/13 片 · 剩 2 分 54 秒"},
+    {"at": "video 66%", "detail": "转写 12/13 片 · 剩 1 分 28 秒"},
+    {"at": "ocr 72%", "detail": "OCR 14/200 页 · 剩 1 分 7 秒"},
+    {"at": "final", "overall_eta": "28 秒"}
+  ],
+  "batch_result": {"completed": 16, "pending_archive": 3, "failed": 1, "cancelled": 0},
+  "failure": {
+    "task": "F07",
+    "progress": 35,
+    "code": "E_CORRUPT",
+    "message": "PDF 结构损坏，无法读取文本层（原件已保留）",
+    "manual_marked": true,
+    "note": "已转人工处理，自动重试已停止，原件保留",
+    "others_succeeded": 19
+  },
+  "diagnostics_default": {
+    "overall": "not_installed",
+    "components": {
+      "sidecar": "degraded",
+      "wechat": "not_installed",
+      "ffmpeg": "ok",
+      "ocr": "not_installed",
+      "asr": "degraded"
+    },
+    "sidecar_detail": "端口 8765 有进程，但 /health 返回 404；提示端口冲突，不重复拉起",
+    "ocr_detail": "缺少 PyMuPDF / Pillow / RapidOCR，给出 pip 安装命令",
+    "asr_detail": "Mock ASR，仅验证链路"
+  },
+  "manual_start": {
+    "component": "sidecar",
+    "before": "stopped",
+    "result": {"ok": true, "code": "OK", "message": "Sidecar 已启动并通过健康检查"},
+    "after": "ok",
+    "health": "{\"ok\": true, \"component\": \"fake-sidecar\"}",
+    "note": "使用 scripts/fake_sidecar.py 测试夹具，非产品组件"
+  },
+  "failure_policy": [
+    {"attempt": 1, "code": "E_START_FAILED", "retry_after_s": 3},
+    {"attempt": "immediate retry", "code": "E_COOLDOWN", "retry_after_s": 3},
+    {"attempt": 2, "code": "E_START_FAILED", "attempts": 2},
+    {"attempt": 3, "code": "E_MAX_ATTEMPTS"},
+    {"case": "port_conflict", "code": "E_PORT_CONFLICT"},
+    {"case": "not_configured", "code": "E_NOT_CONFIGURED"}
+  ],
+  "ui": {
+    "diagnostic_cards": 5,
+    "help_items": 14,
+    "start_buttons_visible": true,
+    "log_drawer": true,
+    "console_errors": 0,
+    "warnings": 0
+  },
+  "all_passed": true
+}

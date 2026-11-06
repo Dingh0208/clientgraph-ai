@@ -1,0 +1,323 @@
+{
+  "generated_at": "2026-11-06T06:09:58.642802+00:00",
+  "environment": {
+    "python": "3.12.13",
+    "platform": "win32"
+  },
+  "stats": {
+    "fragments": 10,
+    "items": 9,
+    "merged_items": 1,
+    "sources": 10,
+    "merge_window_seconds": 300,
+    "results": 9
+  },
+  "checks": {
+    "cross_source_merge": true,
+    "merged_sources_kept": true,
+    "merged_customer": true,
+    "merged_project": true,
+    "merged_asr_timestamp": true,
+    "time_not_merged": true,
+    "customer_not_merged": true,
+    "project_not_merged": true,
+    "similar_text_not_merged": true,
+    "ocr_page": true,
+    "ocr_confidence": true,
+    "ocr_bbox": true,
+    "ocr_image_ref": true,
+    "table_locator": true,
+    "table_no_confidence": true,
+    "email_customer": true,
+    "email_time": true,
+    "email_subject": true,
+    "required_fields": true,
+    "has_locator_or_page": true,
+    "hash_length": true,
+    "stable_ids": true
+  },
+  "all_passed": true,
+  "items": [
+    {
+      "id": "ev_eca88fd12cc9",
+      "text": "预算8万",
+      "source_type": "chat",
+      "source_file": "chat_similar.txt",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "occurred_at": "2026-09-22T09:19:30+08:00",
+      "page": null,
+      "timestamp": null,
+      "confidence": null,
+      "hash": "eca88fd12cc95b0670ceb038cb3b206080dd58c2aad812f5ad68c421ba9ab76d",
+      "sources": [
+        {
+          "type": "chat",
+          "file": "chat_similar.txt",
+          "locator": "chat://chat_similar.txt#msg=m001",
+          "hash": "1f4010f250a69002e1cf3c7bc662372c091c2d520473adb05ee765a65ed137a4"
+        }
+      ]
+    },
+    {
+      "id": "ev_ea549d5e6636",
+      "text": "预算大概8万左右",
+      "source_type": "chat",
+      "source_file": "chat_0922.txt",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "occurred_at": "2026-09-22T09:19:30+08:00",
+      "page": null,
+      "timestamp": {
+        "start_ms": 120000,
+        "end_ms": 125000
+      },
+      "confidence": null,
+      "hash": "ea549d5e663651eeacd0ea91bbc61b7cc3761c2f446ad6132a3e0464eb29f059",
+      "sources": [
+        {
+          "type": "asr",
+          "file": "call_0922.mp3",
+          "locator": "file://call_0922.mp3#t=120000-125000",
+          "hash": "37a7b7fbfd60be4c5926a7f628a6906b09aa4756bf337077b8ac08ced4af9603"
+        },
+        {
+          "type": "chat",
+          "file": "chat_0922.txt",
+          "locator": "chat://chat_0922.txt#msg=m001",
+          "hash": "def164d22f018224e0e2defa814ddfed7197b309948abd82122270b5c7c68fe5"
+        }
+      ]
+    },
+    {
+      "id": "ev_7fdd348b6e63",
+      "text": "预算大概8万左右",
+      "source_type": "chat",
+      "source_file": "chat_heng.txt",
+      "customer": {
+        "id": "c2",
+        "name": "恒晟精工（虚构）",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "project": {
+        "id": "p3",
+        "name": "供应链协同平台（预研）",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "occurred_at": "2026-09-22T09:19:30+08:00",
+      "page": null,
+      "timestamp": null,
+      "confidence": null,
+      "hash": "7fdd348b6e637c16335a667db6b3f4ec1efa4a42d8e5c89ec07a87a4f00d4a31",
+      "sources": [
+        {
+          "type": "chat",
+          "file": "chat_heng.txt",
+          "locator": "chat://chat_heng.txt#msg=m001",
+          "hash": "843e7b93b2bc0b18a755b8b41a8e44c5f58352b6e1ad36e20595d14911f6381e"
+        }
+      ]
+    },
+    {
+      "id": "ev_f80ceabd9ab5",
+      "text": "预算大概8万左右",
+      "source_type": "chat",
+      "source_file": "chat_p2.txt",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "project": {
+        "id": "p2",
+        "name": "售后工单系统升级",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "occurred_at": "2026-09-22T09:19:30+08:00",
+      "page": null,
+      "timestamp": null,
+      "confidence": null,
+      "hash": "f80ceabd9ab5ccd57dfcd1875d73253d1eab2050aa69f049b011412374869350",
+      "sources": [
+        {
+          "type": "chat",
+          "file": "chat_p2.txt",
+          "locator": "chat://chat_p2.txt#msg=m001",
+          "hash": "da311b59d8b5826a9bfb881f715bebc22c86684586eafbe137c14b6a3737fc79"
+        }
+      ]
+    },
+    {
+      "id": "ev_b5ea0125df05",
+      "text": "设备巡检每个车间不一样",
+      "source_type": "asr",
+      "source_file": "call_0922.mp3",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "occurred_at": "2026-09-22T09:20:00+08:00",
+      "page": null,
+      "timestamp": {
+        "start_ms": 840000,
+        "end_ms": 846000
+      },
+      "confidence": null,
+      "hash": "b5ea0125df054d3b718b92921b0524cd63bd51821a5be8ff0afd0cd6e3669f1b",
+      "sources": [
+        {
+          "type": "asr",
+          "file": "call_0922.mp3",
+          "locator": "file://call_0922.mp3#t=840000-846000",
+          "hash": "b0dc61249ee51949bef2f60c67090f684a5277a6131eb159250a44268ea55b31"
+        }
+      ]
+    },
+    {
+      "id": "ev_e55eedeb1329",
+      "text": "设备台账 | P0",
+      "source_type": "table",
+      "source_file": "req.docx",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "occurred_at": "2026-09-29T09:00:00+08:00",
+      "page": null,
+      "timestamp": null,
+      "confidence": null,
+      "hash": "e55eedeb1329a5a261fddacf3974baf7313b48b2abcf81d746a983573b77137c",
+      "sources": [
+        {
+          "type": "table",
+          "file": "req.docx",
+          "locator": "docx://req.docx#table=1&row=2",
+          "hash": "e2b28515fb2d2c10075bbf73d0f2127735c209d54b4c7e1ddd60a1ef6e766c4c"
+        }
+      ]
+    },
+    {
+      "id": "ev_89538bfac3e3",
+      "text": "请确认预算区间按 8–10 万准备",
+      "source_type": "email",
+      "source_file": "mail.eml",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）",
+        "method": "email",
+        "confidence": 1.0
+      },
+      "project": null,
+      "occurred_at": "2026-09-29T10:12:00+08:00",
+      "page": null,
+      "timestamp": null,
+      "confidence": null,
+      "hash": "89538bfac3e38ae1addc870f8861b6ff3eecd5201e99f8eb4b7e463490a44e60",
+      "sources": [
+        {
+          "type": "email",
+          "file": "mail.eml",
+          "locator": "mail://mail.eml#part=plain",
+          "hash": "86650c5eac4f8e493e96599e14e5b3512ffe33fe4224616d4a45ddaa56a5db86"
+        }
+      ]
+    },
+    {
+      "id": "ev_64450d9d0dea",
+      "text": "预算大概8万左右",
+      "source_type": "chat",
+      "source_file": "chat_1012.txt",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "project": {
+        "id": "p1",
+        "name": "设备巡检小程序（一期）",
+        "method": "manual",
+        "confidence": 1.0
+      },
+      "occurred_at": "2026-10-12T10:00:00+08:00",
+      "page": null,
+      "timestamp": null,
+      "confidence": null,
+      "hash": "64450d9d0dea586742509b294354a1141c22a9649d451f04bf7964c1e6e4a658",
+      "sources": [
+        {
+          "type": "chat",
+          "file": "chat_1012.txt",
+          "locator": "chat://chat_1012.txt#msg=m001",
+          "hash": "6813dc12afcdca7aa1e748701b21f4f1ca4e4b50a430b728810efa0899398630"
+        }
+      ]
+    },
+    {
+      "id": "ev_c28c8daacfea",
+      "text": "青岚智能装备 设备巡检报告",
+      "source_type": "ocr",
+      "source_file": "scan.pdf",
+      "customer": {
+        "id": "c1",
+        "name": "青岚智能装备（虚构）",
+        "method": "alias",
+        "confidence": 0.85
+      },
+      "project": null,
+      "occurred_at": null,
+      "page": 2,
+      "timestamp": null,
+      "confidence": 0.93,
+      "hash": "c28c8daacfeaeddc20b1df9e192833fe4a43cabb2054adef4ca4317283c6e930",
+      "sources": [
+        {
+          "type": "ocr",
+          "file": "scan.pdf",
+          "locator": "pdf://scan.pdf#page=2&bbox=10,20,100,50&ocr=1",
+          "hash": "c8e714f0a6ed33602f3daaf07d59ab4aec9d41437ae683e9a9f5f6a566adce4e"
+        }
+      ]
+    }
+  ]
+}

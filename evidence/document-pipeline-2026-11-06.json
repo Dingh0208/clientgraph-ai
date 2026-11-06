@@ -1,0 +1,514 @@
+{
+  "generated_at": "2026-11-06T06:09:43.160751+00:00",
+  "environment": {
+    "python": "3.12.13",
+    "platform": "win32"
+  },
+  "fixtures": {
+    "docx": {
+      "name": "req.docx",
+      "size": 37025
+    },
+    "xlsx": {
+      "name": "devices.xlsx",
+      "size": 5613
+    },
+    "xls": {
+      "name": "legacy.xls",
+      "size": 5632
+    },
+    "pptx": {
+      "name": "proposal.pptx",
+      "size": 34947
+    },
+    "eml": {
+      "name": "mail.eml",
+      "size": 828
+    },
+    "chat_txt": {
+      "name": "chat.txt",
+      "size": 283
+    },
+    "plain_txt": {
+      "name": "notes.txt",
+      "size": 127
+    },
+    "chat_html": {
+      "name": "chat.html",
+      "size": 433
+    },
+    "chat_json": {
+      "name": "chat.json",
+      "size": 278
+    },
+    "broken_docx": {
+      "name": "broken.docx",
+      "size": 2052
+    },
+    "broken_xlsx": {
+      "name": "broken.xlsx",
+      "size": 2052
+    },
+    "legacy_doc": {
+      "name": "legacy.doc",
+      "size": 516
+    },
+    "legacy_ppt": {
+      "name": "legacy.ppt",
+      "size": 516
+    }
+  },
+  "scenarios": [
+    {
+      "name": "DOCX 文本与表格",
+      "summary": {
+        "status": "completed",
+        "kind": "docx",
+        "blocks": 5,
+        "messages": 0,
+        "tables": 1,
+        "chars": 117,
+        "errors": [],
+        "warnings": [],
+        "meta": {
+          "title": "设备巡检需求说明",
+          "author": "王工",
+          "created": "2013-12-23 23:15:00+00:00",
+          "modified": "2013-12-23 23:15:00+00:00",
+          "paragraph_count": 3,
+          "table_count": 1
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "completed": true,
+        "text": true,
+        "table_rows": true,
+        "table_cols": true,
+        "table_cell": true,
+        "locator": true,
+        "unchanged": true,
+        "search": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "XLSX 多工作表与行列",
+      "summary": {
+        "status": "completed",
+        "kind": "xlsx",
+        "blocks": 6,
+        "messages": 0,
+        "tables": 2,
+        "chars": 93,
+        "errors": [],
+        "warnings": [],
+        "meta": {
+          "sheet_count": 2,
+          "sheets": [
+            {
+              "name": "设备清单",
+              "row_count": 4,
+              "col_count": 4,
+              "merged": [
+                "A5:B5"
+              ]
+            },
+            {
+              "name": "汇总",
+              "row_count": 2,
+              "col_count": 2,
+              "merged": []
+            }
+          ],
+          "formula_mode": "cached_values"
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "completed": true,
+        "sheets": true,
+        "rows": true,
+        "cols": true,
+        "cell_value": true,
+        "sheet_locator": true,
+        "merged": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "XLS 旧版表格",
+      "summary": {
+        "status": "completed",
+        "kind": "xls",
+        "blocks": 2,
+        "messages": 0,
+        "tables": 1,
+        "chars": 15,
+        "errors": [],
+        "warnings": [],
+        "meta": {
+          "sheet_count": 1,
+          "sheets": [
+            {
+              "name": "旧版清单",
+              "row_count": 2,
+              "col_count": 2
+            }
+          ],
+          "format": "xls"
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "completed": true,
+        "kind": true,
+        "rows": true,
+        "cell": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "PPTX 页码与表格",
+      "summary": {
+        "status": "completed",
+        "kind": "pptx",
+        "blocks": 5,
+        "messages": 0,
+        "tables": 1,
+        "chars": 51,
+        "errors": [],
+        "warnings": [],
+        "meta": {
+          "slide_count": 3,
+          "slides": [
+            {
+              "slide": 1,
+              "block_count": 1
+            },
+            {
+              "slide": 2,
+              "block_count": 2
+            },
+            {
+              "slide": 3,
+              "block_count": 2
+            }
+          ],
+          "title": null,
+          "author": null
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "completed": true,
+        "slides": true,
+        "slide_numbers": true,
+        "table": true,
+        "table_cols": true,
+        "notes": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "EML 邮件头与正文",
+      "summary": {
+        "status": "completed",
+        "kind": "eml",
+        "blocks": 4,
+        "messages": 0,
+        "tables": 0,
+        "chars": 30,
+        "errors": [],
+        "warnings": [],
+        "meta": {
+          "email": {
+            "from": [
+              "陈晓岚 <chen.xiaolan@example.com>"
+            ],
+            "to": [
+              "王工 <wang.gong@example.com>"
+            ],
+            "cc": [
+              "李副总 <li.fu@example.com>"
+            ],
+            "date": "2026-09-29T10:12:00+08:00",
+            "date_raw": "Tue, 29 Sep 2026 10:12:00 +0800",
+            "subject": "需求文档 v1.0 请确认",
+            "message_id": "<demo-001@example.com>",
+            "body_format": "plain",
+            "attachments": [
+              {
+                "filename": "巡检说明.txt",
+                "content_type": "text/plain",
+                "size_bytes": 12
+              }
+            ]
+          }
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "completed": true,
+        "from": true,
+        "to": true,
+        "date": true,
+        "subject": true,
+        "body": true,
+        "attachment": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "TXT 微信聊天导出",
+      "summary": {
+        "status": "completed",
+        "kind": "txt",
+        "blocks": 4,
+        "messages": 4,
+        "tables": 0,
+        "chars": 76,
+        "errors": [],
+        "warnings": [],
+        "meta": {
+          "encoding": "utf-8",
+          "line_count": 8,
+          "chat": {
+            "message_count": 4,
+            "participants": [
+              "陈晓岚",
+              "我"
+            ]
+          }
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "completed": true,
+        "messages": true,
+        "times": true,
+        "senders": true,
+        "chat_meta": true,
+        "locator": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "HTML 聊天导出与表格",
+      "summary": {
+        "status": "completed",
+        "kind": "html",
+        "blocks": 5,
+        "messages": 3,
+        "tables": 1,
+        "chars": 61,
+        "errors": [],
+        "warnings": [],
+        "meta": {
+          "encoding": "utf-8",
+          "title": "聊天记录",
+          "table_count": 1,
+          "chat": {
+            "message_count": 3,
+            "participants": [
+              "陈晓岚",
+              "我"
+            ]
+          }
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "completed": true,
+        "messages": true,
+        "times_senders": true,
+        "table_rows": true,
+        "table_cols": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "JSON 聊天导出",
+      "summary": {
+        "status": "completed",
+        "kind": "json",
+        "blocks": 3,
+        "messages": 3,
+        "tables": 0,
+        "chars": 34,
+        "errors": [],
+        "warnings": [],
+        "meta": {
+          "encoding": "utf-8",
+          "root_type": "dict",
+          "chat": {
+            "message_count": 3,
+            "participants": [
+              "陈晓岚",
+              "我"
+            ]
+          }
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "completed": true,
+        "messages": true,
+        "sender": true,
+        "ts": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "TXT 普通文本",
+      "summary": {
+        "status": "completed",
+        "kind": "txt",
+        "blocks": 3,
+        "messages": 0,
+        "tables": 0,
+        "chars": 51,
+        "errors": [],
+        "warnings": [],
+        "meta": {
+          "encoding": "utf-8",
+          "line_count": 3,
+          "chat": null
+        },
+        "source_unchanged": true
+      },
+      "checks": {
+        "completed": true,
+        "no_chat": true,
+        "blocks": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "损坏 DOCX",
+      "summary": {
+        "status": "failed",
+        "kind": "docx",
+        "blocks": 0,
+        "messages": 0,
+        "tables": 0,
+        "chars": 0,
+        "errors": [
+          {
+            "code": "E_FILE_CORRUPT",
+            "message": "DOCX 无法打开：Package not found at 'D:\\code\\clintGraph\\.temp\\document-verify\\source\\broken.docx'",
+            "hint": "请用 Word/WPS 打开后另存为新的 .docx；确认文件未加密或损坏。",
+            "recoverable": true
+          }
+        ],
+        "warnings": [],
+        "meta": {},
+        "source_unchanged": true
+      },
+      "checks": {
+        "failed": true,
+        "code": true,
+        "hint": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "损坏 XLSX",
+      "summary": {
+        "status": "failed",
+        "kind": "xlsx",
+        "blocks": 0,
+        "messages": 0,
+        "tables": 0,
+        "chars": 0,
+        "errors": [
+          {
+            "code": "E_FILE_CORRUPT",
+            "message": "XLSX 无法打开：File is not a zip file",
+            "hint": "请用 Excel/WPS 打开后另存为新的 .xlsx；确认文件未加密或损坏。",
+            "recoverable": true
+          }
+        ],
+        "warnings": [],
+        "meta": {},
+        "source_unchanged": true
+      },
+      "checks": {
+        "failed": true,
+        "code": true,
+        "hint": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "旧版 DOC",
+      "summary": {
+        "status": "failed",
+        "kind": "doc",
+        "blocks": 0,
+        "messages": 0,
+        "tables": 0,
+        "chars": 0,
+        "errors": [
+          {
+            "code": "E_LEGACY_FORMAT",
+            "message": "旧版 .doc 需要转换器才能解析",
+            "hint": "请用 Word/WPS 打开后另存为 .docx；或在安装 LibreOffice 后重试。",
+            "recoverable": true
+          }
+        ],
+        "warnings": [],
+        "meta": {},
+        "source_unchanged": true
+      },
+      "checks": {
+        "failed": true,
+        "code": true,
+        "hint": true
+      },
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "旧版 PPT",
+      "summary": {
+        "status": "failed",
+        "kind": "ppt",
+        "blocks": 0,
+        "messages": 0,
+        "tables": 0,
+        "chars": 0,
+        "errors": [
+          {
+            "code": "E_LEGACY_FORMAT",
+            "message": "旧版 .ppt 需要转换器才能解析",
+            "hint": "请用 Word/WPS 打开后另存为 .pptx；或在安装 LibreOffice 后重试。",
+            "recoverable": true
+          }
+        ],
+        "warnings": [],
+        "meta": {},
+        "source_unchanged": true
+      },
+      "checks": {
+        "failed": true,
+        "code": true,
+        "hint": true
+      },
+      "passed": true,
+      "error": null
+    }
+  ],
+  "all_passed": true
+}

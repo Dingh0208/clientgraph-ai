@@ -1,0 +1,342 @@
+{
+  "generated_at": "2026-11-06T06:08:26.808961+00:00",
+  "environment": {
+    "python": "3.12.13",
+    "ffmpeg": "ffmpeg version 7.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers",
+    "platform": "win32"
+  },
+  "fixtures": {
+    "long_1h": {
+      "file": "long_1h.mp3",
+      "size_bytes": 14400409,
+      "duration_ms": 3600039,
+      "sample_rate": 44100,
+      "channels": 2,
+      "codec": "mp3"
+    },
+    "mid_6m": {
+      "file": "mid_6m.mp3",
+      "size_bytes": 2160526,
+      "duration_ms": 360046,
+      "sample_rate": 44100,
+      "channels": 2,
+      "codec": "mp3"
+    },
+    "short_8s": {
+      "file": "short_8s.wav",
+      "size_bytes": 1536078,
+      "duration_ms": 8000,
+      "sample_rate": 48000,
+      "channels": 2,
+      "codec": "pcm_s16le"
+    },
+    "silent_5s": {
+      "file": "silent_5s.wav",
+      "size_bytes": 960078,
+      "duration_ms": 5000,
+      "sample_rate": 48000,
+      "channels": 2,
+      "codec": "pcm_s16le"
+    },
+    "empty_0b": {
+      "file": "empty_0b.wav",
+      "size_bytes": 0
+    }
+  },
+  "scenarios": [
+    {
+      "name": "一小时音频（12 段）",
+      "summary": {
+        "status": "completed",
+        "error": null,
+        "chunks": 12,
+        "segments": 36,
+        "duration_ms": 3600039,
+        "normalized": {
+          "path": "normalized.wav",
+          "sample_rate": 16000,
+          "channels": 1,
+          "codec": "pcm_s16le",
+          "duration_ms": 3600000,
+          "size_bytes": 115200078
+        },
+        "max_concurrency_observed": 2,
+        "diarization": {
+          "supported": false,
+          "status": "not_available",
+          "reason": "未配置支持说话人分离的 ASR 模型；所有片段标记 speaker_role=unknown，不推断说话人。"
+        },
+        "source_unchanged": true,
+        "failed_chunks": []
+      },
+      "checks": {
+        "status_completed": true,
+        "normalized_16k_mono": true,
+        "chunk_count_12": true,
+        "segment_count_36": true,
+        "max_concurrency_2": true,
+        "first_segment_at_zero": true,
+        "last_chunk_offset_3300s": true,
+        "segments_within_chunk_bounds": true,
+        "timestamps_sorted": true,
+        "source_unchanged": true,
+        "duration_about_1h": true,
+        "diarization_not_claimed": true,
+        "speaker_unknown": true,
+        "segment_source_kept": true
+      },
+      "details": {
+        "chunk_offsets": [
+          0,
+          300032,
+          600000,
+          900032,
+          1200000,
+          1500032,
+          1800000,
+          2100032,
+          2400000,
+          2700032,
+          3000000,
+          3300032
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "短音频（8 秒）",
+      "summary": {
+        "status": "completed",
+        "error": null,
+        "chunks": 1,
+        "segments": 3,
+        "duration_ms": 8000,
+        "normalized": {
+          "path": "normalized.wav",
+          "sample_rate": 16000,
+          "channels": 1,
+          "codec": "pcm_s16le",
+          "duration_ms": 8000,
+          "size_bytes": 256078
+        },
+        "max_concurrency_observed": 1,
+        "diarization": {
+          "supported": false,
+          "status": "not_available",
+          "reason": "未配置支持说话人分离的 ASR 模型；所有片段标记 speaker_role=unknown，不推断说话人。"
+        },
+        "source_unchanged": true,
+        "failed_chunks": []
+      },
+      "checks": {
+        "status_completed": true,
+        "single_chunk": true,
+        "three_segments": true,
+        "within_8s": true,
+        "normalized_16k_mono": true,
+        "source_unchanged": true
+      },
+      "details": {},
+      "passed": true
+    },
+    {
+      "name": "空音频（0 字节）",
+      "summary": {
+        "status": "failed",
+        "error": {
+          "code": "E_EMPTY_AUDIO",
+          "message": "输入文件为 0 字节"
+        },
+        "chunks": 0,
+        "segments": 0,
+        "duration_ms": null,
+        "normalized": null,
+        "max_concurrency_observed": 0,
+        "diarization": {
+          "supported": false,
+          "status": "not_available",
+          "reason": "未配置支持说话人分离的 ASR 模型；所有片段标记 speaker_role=unknown，不推断说话人。"
+        },
+        "source_unchanged": true,
+        "failed_chunks": null
+      },
+      "checks": {
+        "status_failed": true,
+        "error_empty_audio": true,
+        "no_chunks": true,
+        "source_unchanged": true
+      },
+      "details": {},
+      "passed": true
+    },
+    {
+      "name": "静音音频（无语音）",
+      "summary": {
+        "status": "completed",
+        "error": null,
+        "chunks": 1,
+        "segments": 0,
+        "duration_ms": 5000,
+        "normalized": {
+          "path": "normalized.wav",
+          "sample_rate": 16000,
+          "channels": 1,
+          "codec": "pcm_s16le",
+          "duration_ms": 5000,
+          "size_bytes": 160078
+        },
+        "max_concurrency_observed": 1,
+        "diarization": {
+          "supported": false,
+          "status": "not_available",
+          "reason": "未配置支持说话人分离的 ASR 模型；所有片段标记 speaker_role=unknown，不推断说话人。"
+        },
+        "source_unchanged": true,
+        "failed_chunks": []
+      },
+      "checks": {
+        "status_completed": true,
+        "single_chunk": true,
+        "zero_segments": true,
+        "empty_transcript_warning": true,
+        "source_unchanged": true
+      },
+      "details": {},
+      "passed": true
+    },
+    {
+      "name": "切片失败（第 2 段注入）",
+      "summary": {
+        "status": "failed",
+        "error": {
+          "code": "E_SEGMENT_FAILED",
+          "message": "模拟切片失败：第 2 个片段写入失败，已完成 1 个片段"
+        },
+        "chunks": 0,
+        "segments": 0,
+        "duration_ms": 360046,
+        "normalized": {
+          "path": "normalized.wav",
+          "sample_rate": 16000,
+          "channels": 1,
+          "codec": "pcm_s16le",
+          "duration_ms": 360000,
+          "size_bytes": 11520078
+        },
+        "max_concurrency_observed": 0,
+        "diarization": {
+          "supported": false,
+          "status": "not_available",
+          "reason": "未配置支持说话人分离的 ASR 模型；所有片段标记 speaker_role=unknown，不推断说话人。"
+        },
+        "source_unchanged": true,
+        "failed_chunks": null
+      },
+      "checks": {
+        "status_failed": true,
+        "error_segment_failed": true,
+        "message_mentions_injection": true,
+        "no_asr_result": true,
+        "source_unchanged": true,
+        "partial_chunk_kept": true,
+        "failed_chunk_removed": true
+      },
+      "details": {},
+      "passed": true
+    },
+    {
+      "name": "单片段超时（部分完成）",
+      "summary": {
+        "status": "partial",
+        "error": {
+          "code": "E_PARTIAL",
+          "message": "1 个片段失败，已保留其余片段结果，可重试失败片段"
+        },
+        "chunks": 3,
+        "segments": 6,
+        "duration_ms": 360046,
+        "normalized": {
+          "path": "normalized.wav",
+          "sample_rate": 16000,
+          "channels": 1,
+          "codec": "pcm_s16le",
+          "duration_ms": 360000,
+          "size_bytes": 11520078
+        },
+        "max_concurrency_observed": 2,
+        "diarization": {
+          "supported": false,
+          "status": "not_available",
+          "reason": "未配置支持说话人分离的 ASR 模型；所有片段标记 speaker_role=unknown，不推断说话人。"
+        },
+        "source_unchanged": true,
+        "failed_chunks": [
+          1
+        ]
+      },
+      "checks": {
+        "status_partial": true,
+        "one_failed_chunk": true,
+        "two_completed_chunks": true,
+        "timeout_error": true,
+        "six_segments_kept": true,
+        "other_chunks_untouched": true
+      },
+      "details": {
+        "timeout_stage": {
+          "failed_chunk": 1,
+          "segments_kept": 6
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "失败片段部分重试",
+      "summary": {
+        "status": "completed",
+        "error": null,
+        "chunks": 3,
+        "segments": 9,
+        "duration_ms": 360046,
+        "normalized": {
+          "path": "normalized.wav",
+          "sample_rate": 16000,
+          "channels": 1,
+          "codec": "pcm_s16le",
+          "duration_ms": 360000,
+          "size_bytes": 11520078
+        },
+        "max_concurrency_observed": 2,
+        "diarization": {
+          "supported": false,
+          "status": "not_available",
+          "reason": "未配置支持说话人分离的 ASR 模型；所有片段标记 speaker_role=unknown，不推断说话人。"
+        },
+        "source_unchanged": true,
+        "failed_chunks": []
+      },
+      "checks": {
+        "retry_completed": true,
+        "no_failed_left": true,
+        "nine_segments": true,
+        "retried_chunk_attempts_2": true,
+        "others_attempts_1": true,
+        "timestamps_preserved": true,
+        "diarization_not_claimed": true
+      },
+      "details": {
+        "retry_history": [
+          {
+            "at": "2026-11-06T06:08:26.807835+00:00",
+            "chunks": [
+              1
+            ],
+            "provider": "mock"
+          }
+        ]
+      },
+      "passed": true
+    }
+  ],
+  "all_passed": true
+}
