@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ClientGraph AI · 本地原型 v0.1.0</title>
+<title>ClientGraph AI · v0.5.0</title>
 <link rel="icon" href="data:,">
 <style>
 :root{--blue:#1f6feb;--bw:#e8f1ff;--ink:#1c2430;--muted:#6b7785;--line:#e3e9f0;--bg:#f6f9fc;--warn:#b45309;--danger:#b42318;--ok:#0f766e;--r:12px}
@@ -182,6 +182,26 @@ h1{font-size:20px;margin:0 0 4px}.sub{color:var(--muted);font-size:12.5px;margin
 .c360-item .m{font-size:11.5px;color:var(--muted);line-height:1.6}
 .c360-loc{font-family:Consolas,monospace;font-size:10.5px;color:#7d8a99;word-break:break-all}
 .c360-pill{display:inline-block;font-size:10.5px;padding:2px 7px;border-radius:999px;background:#f2f6fb;border:1px solid #e6edf5;color:#4a5a6a;margin-right:4px}
+.cl-filter{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.cl-filter select{border:1px solid #d9e2ec;border-radius:7px;padding:6px 8px;font-size:12px;background:#fff;max-width:190px}
+.cl-filter label{font-size:12px;color:#4a5a6a;display:flex;align-items:center;gap:5px}
+.cl-count{font-size:12px;color:var(--muted);margin-left:auto}
+.cl-row td{vertical-align:middle}
+.cl-row.unread{background:#fff8f7;color:#8a6b68}
+.cl-model{font-size:11px;color:#5b6b7b}
+.cl-footer{display:flex;gap:8px;align-items:center;margin-top:12px}
+.cl-footer button{border:0;border-radius:8px;padding:8px 14px;font-size:12px;cursor:pointer}
+.cl-footer button.primary{background:var(--blue);color:#fff}
+.cl-footer button:disabled{opacity:.45;cursor:not-allowed}
+.cl-banner{font-size:12px;color:#14724a}
+.cl-list{max-height:52vh;overflow:auto;border:1px solid var(--line);border-radius:8px}
+.cl-item{display:grid;grid-template-columns:1fr 90px 120px 70px;gap:8px;padding:9px 10px;border-bottom:1px solid #eef2f7;font-size:12px;line-height:1.6}
+.cl-item:last-child{border-bottom:0}
+.cl-item .head{font-weight:600}
+.cl-item .muted{color:var(--muted)}
+.cl-item .bad{color:#b42318}
+.cl-check{display:flex;align-items:center;gap:6px;font-size:12px;margin:12px 0}
+@media (max-width:1100px){.cl-item{grid-template-columns:1fr}}
 @media (max-width:1100px){.c360-grid{grid-template-columns:1fr}.c360-item{grid-template-columns:1fr}}
 @media (max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.arch-stats{grid-template-columns:repeat(2,1fr)}.arch-item{grid-template-columns:24px 1fr}.diag-grid{grid-template-columns:1fr}}
 </style>
@@ -189,15 +209,18 @@ h1{font-size:20px;margin:0 0 4px}.sub{color:var(--muted);font-size:12.5px;margin
 <body>
 <div class="app">
   <aside class="rail">
-    <div class="brand">ClientGraph AI<small>本地原型 v0.1.0</small></div>
+    <div class="brand">ClientGraph AI<small>v0.5.0</small></div>
     <nav class="nav">
       <button class="on" data-view="overview" data-testid="nav-overview"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>概览</button>
       <button data-view="qa" data-testid="nav-qa"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 9h8M8 13h5"/></svg>资料问答</button>
       <button data-view="customers" data-testid="nav-customers"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>客户与项目</button>
+      <button data-view="clarify" data-testid="nav-clarify" data-label="需求澄清"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>需求澄清</button>
       <button data-view="import" data-testid="nav-import"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>导入中心</button>
+      <button data-testid="nav-upload" onclick="location.href='/upload'"><svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M4 17v3h16v-3"/></svg>上传任务</button>
       <button data-view="archive" data-testid="nav-archive" data-label="待归档"><svg viewBox="0 0 24 24"><path d="M4 7h16v13H4z"/><path d="M2 3h20v4H2z"/><path d="M10 11h4"/></svg>待归档<span class="tag warn" id="arch-nav-count" style="margin-left:auto">8</span></button>
       <button data-view="gaps" data-testid="nav-gaps"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>缺口与冲突<span class="tag warn" style="margin-left:auto">5</span></button>
       <button data-view="diagnostics" data-testid="nav-diagnostics" data-label="本地诊断"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/><path d="m5 5 2.5 2.5M16.5 16.5 19 19M19 5l-2.5 2.5M7.5 16.5 5 19"/></svg>本地诊断</button>
+      <button data-testid="nav-settings" onclick="location.href='/settings'"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>设置</button>
     </nav>
     <div class="foot">本地规则原型<br>无模型调用 · 无网络请求<br>演示数据均为虚构</div>
   </aside>
@@ -241,6 +264,33 @@ h1{font-size:20px;margin:0 0 4px}.sub{color:var(--muted);font-size:12.5px;margin
         <div id="cust-cards" class="grid2"></div>
         <div class="card" style="margin-top:14px"><h3>需求清单</h3>
           <table class="table" data-testid="req-table"><thead><tr><th>编号</th><th>需求</th><th>项目</th><th>状态</th><th>优先级</th><th>来源</th></tr></thead><tbody id="req-body"></tbody></table>
+        </div>
+      </section>
+      <section class="view" id="view-clarify">
+        <h1>需求澄清</h1>
+        <div class="sub">选择要发送给模型的资料；客户/项目可为空，资料必须可读；发送前逐条人工确认，快照不修改原始导入记录。</div>
+        <div class="arch-tabs" id="cl-tabs">
+          <button class="arch-tab on" data-cl-scope="customer" data-testid="cl-tab-customer">客户</button>
+          <button class="arch-tab" data-cl-scope="project" data-testid="cl-tab-project">项目</button>
+          <button class="arch-tab" data-cl-scope="unfiled" data-testid="cl-tab-unfiled">未归档</button>
+          <button class="arch-tab" data-cl-scope="cross" data-testid="cl-tab-cross">跨项目</button>
+        </div>
+        <div class="card">
+          <div class="cl-filter">
+            <select id="cl-customer" data-testid="cl-customer"></select>
+            <select id="cl-project" data-testid="cl-project" style="display:none"></select>
+            <label><input type="checkbox" id="cl-all" data-testid="cl-all">全选当前筛选</label>
+            <span class="cl-count" id="cl-count" data-testid="cl-count"></span>
+          </div>
+          <table class="table">
+            <thead><tr><th style="width:28px"></th><th>资料</th><th>类型</th><th>客户</th><th>项目</th><th>可读性</th><th>片段</th></tr></thead>
+            <tbody id="cl-body" data-testid="cl-body"></tbody>
+          </table>
+        </div>
+        <div class="cl-footer">
+          <button class="primary" id="cl-open" data-testid="cl-open" disabled>确认选择并预览</button>
+          <button id="cl-run" data-testid="cl-run" disabled>开始分析</button>
+          <span class="cl-banner" id="cl-banner" data-testid="cl-banner"></span>
         </div>
       </section>
       <section class="view" id="view-customer360">
@@ -392,6 +442,18 @@ h1{font-size:20px;margin:0 0 4px}.sub{color:var(--muted);font-size:12.5px;margin
     <button class="rowbtn" id="imp-manual-mark" data-testid="imp-manual-mark">转人工处理</button>
   </div>
 </div></div>
+<div class="drawer" id="cl-drawer" data-testid="cl-drawer"><div class="panel">
+  <button class="close" id="cl-close" data-testid="cl-close">×</button>
+  <div class="tag blue">发送前确认</div>
+  <h3>核对资料范围</h3>
+  <div class="hint" id="cl-drawer-summary"></div>
+  <div class="cl-list" id="cl-drawer-list"></div>
+  <label class="cl-check"><input type="checkbox" id="cl-confirm-check" data-testid="cl-confirm-check">我已核对资料名称、归属、可读性和默认文本模型</label>
+  <div class="arch-actions">
+    <button class="primary" id="cl-confirm" data-testid="cl-confirm" disabled>确认并保存快照</button>
+    <button id="cl-cancel" data-testid="cl-cancel">取消</button>
+  </div>
+</div></div>
 <script>
 const CUSTOMERS=[
  {id:"c1",name:"青岚智能装备（虚构）",short:"青岚",aliases:["青岚","青岚装备"],contact:"陈晓岚 · 信息化负责人",industry:"工业设备制造",last:"2026-10-16",tags:["重点客户","制造业"],phone:"13800001024",email:"chen.xiaolan@example.com",wechat:"demo_qinglan_chen"},
@@ -405,7 +467,8 @@ const PROJECTS=[
 const TYPES={
  chat:{label:"微信聊天",icon:"💬"},call:{label:"电话转写",icon:"☎"},email:{label:"邮件",icon:"✉"},
  doc:{label:"会议纪要",icon:"▤"},docx:{label:"需求文档",icon:"▤"},quote:{label:"报价记录",icon:"▤"},
- scan:{label:"扫描件",icon:"▣"},xlsx:{label:"Excel 清单",icon:"▦"},ppt:{label:"PPT 方案",icon:"▤"},image:{label:"图片",icon:"◇"}
+ scan:{label:"扫描件",icon:"▣"},xlsx:{label:"Excel 清单",icon:"▦"},ppt:{label:"PPT 方案",icon:"▤"},image:{label:"图片",icon:"◇"},
+ pdf:{label:"PDF 文档",icon:"▤"}
 };
 const MATERIALS=[
  {id:"M01",type:"chat",title:"微信聊天 · 陈晓岚",customerId:"c1",projectId:"p1",date:"2026-09-22",locator:"chat://M01",blocks:[
@@ -473,15 +536,20 @@ const MATERIALS=[
   {id:"m12b1",at:"OCR",text:"图片未识别出可用文字，已保留原图；不参与问答检索"}]},
  {id:"M13",type:"chat",title:"售后工单需求-聊天",customerId:"c1",projectId:"p2",date:"2026-10-14",locator:"chat://M13",blocks:[
   {id:"m13b1",at:"10:20",text:"售后工单也想加审批，先记下来，等巡检一期做完再排"},
-  {id:"m13b2",at:"10:22",text:"这块预算还没定，先不动"}]}
+  {id:"m13b2",at:"10:22",text:"这块预算还没定，先不动"}]},
+ {id:"M14",type:"pdf",title:"未归档-产品手册.pdf",customerId:null,projectId:null,date:"",locator:"pdf://M14",blocks:[
+  {id:"m14b1",at:"第 1 页",text:"产品手册，尚未匹配客户与项目"}]},
+ {id:"M15",type:"pdf",title:"加密合同.pdf",customerId:"c1",projectId:"p1",date:"2026-10-20",readable:false,locator:"pdf://M15",blocks:[
+  {id:"m15b1",at:"第 1 页",text:"文件加密，无法读取正文"}]}
 ];
 const C360_TIMES={
  M01:"2026-09-22T09:14:00+08:00",M02:"2026-09-18T14:05:00+08:00",M03:"2026-09-25T14:00:00+08:00",
  M04:"2026-09-29T10:12:00+08:00",M05:"2026-09-29T09:00:00+08:00",M06:"2026-10-12T15:00:00+08:00",
  M07:"2026-10-16T14:08:00+08:00",M08:"2026-10-08T11:00:00+08:00",M09:"2026-09-30T09:30:00+08:00",
- M10:"2026-10-09T16:40:00+08:00",M11:"2026-10-10T11:02:00+08:00",M12:null,M13:"2026-10-14T10:20:00+08:00"
+ M10:"2026-10-09T16:40:00+08:00",M11:"2026-10-10T11:02:00+08:00",M12:null,M13:"2026-10-14T10:20:00+08:00",
+ M14:null,M15:"2026-10-20T10:00:00+08:00"
 };
-MATERIALS.forEach(m=>{m.occurredAt=Object.prototype.hasOwnProperty.call(C360_TIMES,m.id)?C360_TIMES[m.id]:null});
+MATERIALS.forEach(m=>{m.occurredAt=Object.prototype.hasOwnProperty.call(C360_TIMES,m.id)?C360_TIMES[m.id]:null;m.readable=m.readable!==false;m.blockCount=(m.blocks||[]).length});
 const REQUIREMENTS=[
  {id:"F1",title:"设备台账与二维码",projectId:"p1",status:"已确认",priority:"P0",source:"M05"},
  {id:"F2",title:"巡检计划",projectId:"p1",status:"已确认",priority:"P0",source:"M05"},
@@ -601,8 +669,8 @@ function openDrawer(mid,at){
  el("d-meta").innerHTML=`客户：${esc(custName(m.customerId))}<br>项目：${esc(projName(m.projectId))}<br>日期：${m.date}`;
  el("d-quote").textContent=b.text;el("d-loc").textContent=`${m.locator}#${b.at}`;el("drawer").classList.add("on");
 }
-document.querySelectorAll(".nav button").forEach(btn=>btn.addEventListener("click",()=>{
- document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("on"));btn.classList.add("on");
+document.querySelectorAll(".nav button[data-view]").forEach(btn=>btn.addEventListener("click",()=>{
+ document.querySelectorAll(".nav button[data-view]").forEach(b=>b.classList.remove("on"));btn.classList.add("on");
  const v=btn.dataset.view;state.view=v;
  document.querySelectorAll(".view").forEach(s=>s.classList.remove("on"));el("view-"+v).classList.add("on");
  el("crumb").textContent=btn.dataset.label||btn.textContent.trim().split("\n")[0];
@@ -1289,17 +1357,117 @@ function openCustomer360(cid){
  document.querySelectorAll(".view").forEach(s=>s.classList.remove("on"));
  el("view-customer360").classList.add("on");
  el("crumb").textContent="客户 360";
- document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("on",b.dataset.view==="customers"));
+ document.querySelectorAll(".nav button[data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view==="customers"));
 }
 function closeCustomer360(){
  document.querySelectorAll(".view").forEach(s=>s.classList.remove("on"));
  el("view-customers").classList.add("on");
  el("crumb").textContent="客户与项目";
- document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("on",b.dataset.view==="customers"));
+ document.querySelectorAll(".nav button[data-view]").forEach(b=>b.classList.toggle("on",b.dataset.view==="customers"));
 }
 el("c360-back").addEventListener("click",closeCustomer360);
 el("c360-timeline").addEventListener("click",e=>{const row=e.target.closest("[data-evidence-mid]");if(row)openDrawer(row.dataset.evidenceMid,row.dataset.at)});
 document.addEventListener("click",e=>{const b=e.target.closest("[data-open-cust]");if(b){e.preventDefault();e.stopPropagation();openCustomer360(b.dataset.openCust)}});
+
+const CLARIFY_MODEL="qwen3.8-flash（默认）";
+const CLARIFY_SNAP_KEY="cg" + ".clarify" + ".snapshots.v1";;
+let clarifyScope="customer";
+let clarifyCustomerId="c1";
+let clarifyProjectId="p1";
+let clarifySelected=new Set();
+let clarifySnapshot=null;
+
+function clCustomerName(id){const c=CUSTOMERS.find(x=>x.id===id);return c?c.name:"未归属"}
+function clProjectName(id){const p=PROJECTS.find(x=>x.id===id);return p?p.name:"未归属"}
+function clFiltered(){
+ if(clarifyScope==="customer")return MATERIALS.filter(m=>m.customerId===clarifyCustomerId);
+ if(clarifyScope==="project")return MATERIALS.filter(m=>m.projectId===clarifyProjectId);
+ if(clarifyScope==="unfiled")return MATERIALS.filter(m=>!m.customerId&&!m.projectId);
+ return MATERIALS.slice();
+}
+function clRender(){
+ document.querySelectorAll(".arch-tab[data-cl-scope]").forEach(b=>b.classList.toggle("on",b.dataset.clScope===clarifyScope));
+ el("cl-customer").style.display=clarifyScope==="customer"?"":"none";
+ el("cl-project").style.display=clarifyScope==="project"?"":"none";
+ el("cl-customer").innerHTML=CUSTOMERS.map(c=>`<option value="${c.id}" ${c.id===clarifyCustomerId?"selected":""}>${esc(c.name)}</option>`).join("");
+ el("cl-project").innerHTML=PROJECTS.map(p=>`<option value="${p.id}" ${p.id===clarifyProjectId?"selected":""}>${esc(p.customerId?custName(p.customerId):"")} · ${esc(p.name)}</option>`).join("");
+ const list=clFiltered();
+ const readable=list.filter(m=>m.readable);
+ const selectedReadable=readable.filter(m=>clarifySelected.has(m.id));
+ el("cl-all").checked=readable.length>0&&selectedReadable.length===readable.length;
+ el("cl-all").indeterminate=selectedReadable.length>0&&selectedReadable.length<readable.length;
+ el("cl-all").disabled=readable.length===0;
+ el("cl-count").textContent=`${clarifySelected.size} 已选 / ${list.length} 当前 / 不可读 ${list.filter(m=>!m.readable).length}`;
+ el("cl-open").disabled=clarifySelected.size===0;
+ el("cl-run").disabled=!clarifySnapshot;
+ el("cl-banner").textContent=clarifySnapshot?`已保存选择快照 ${clarifySnapshot.id} · ${clarifySnapshot.total} 份 · ${clarifySnapshot.model}`:"";
+ el("cl-body").innerHTML=list.map(m=>{
+  const checked=clarifySelected.has(m.id);
+  return `<tr class="cl-row ${m.readable?"":"unread"}" data-testid="cl-row-${m.id}">
+   <td><input type="checkbox" data-cl-check="${m.id}" data-testid="cl-check-${m.id}" ${checked?"checked":""} ${m.readable?"":"disabled"}></td>
+   <td><b>${esc(m.title)}</b><div class="hint" style="margin:0">${esc(m.id)} · ${esc(m.date||"时间未知")}</div></td>
+   <td>${esc((TYPES[m.type]||{}).label||m.type)}</td>
+   <td>${esc(m.customerId?clCustomerName(m.customerId):"未归属")}</td>
+   <td>${esc(m.projectId?clProjectName(m.projectId):"未归属")}</td>
+   <td>${m.readable?'<span class="tag blue">可读</span>':'<span class="tag danger">不可读</span>'}</td>
+   <td>${m.blocks.length}</td></tr>`;
+ }).join("");
+}
+function clToggleAll(checked){
+ clFiltered().filter(m=>m.readable).forEach(m=>{if(checked)clarifySelected.add(m.id);else clarifySelected.delete(m.id)});
+ clRender();
+}
+function clOpenConfirm(){
+ const items=MATERIALS.filter(m=>clarifySelected.has(m.id));
+ if(!items.length)return;
+ const bad=items.filter(m=>!m.readable);
+ const unassigned=items.filter(m=>!m.customerId||!m.projectId).length;
+ el("cl-drawer-summary").innerHTML=`共 <b>${items.length}</b> 份 · 可读 <b>${items.length-bad.length}</b> · 未归属 <b>${unassigned}</b> · 默认文本模型 <b>${esc(CLARIFY_MODEL)}</b>${bad.length?`<div class="bad">存在不可读资料，不能开始分析。</div>`:""}`;
+ el("cl-drawer-list").innerHTML=items.map(m=>`<div class="cl-item" data-testid="cl-confirm-item-${m.id}">
+  <div><b>${esc(m.title)}</b><div class="muted">${esc(m.id)} · ${esc((TYPES[m.type]||{}).label||m.type)}</div></div>
+  <div>${esc(m.customerId?clCustomerName(m.customerId):"未归属")}<br><span class="muted">${esc(m.projectId?clProjectName(m.projectId):"未归属")}</span></div>
+  <div>${m.readable?"可读":"不可读"} · ${m.blocks.length} 片段</div>
+  <div class="cl-model">${esc(CLARIFY_MODEL)}</div></div>`).join("");
+ el("cl-confirm-check").checked=false;
+ el("cl-confirm").disabled=true;
+ el("cl-drawer").classList.add("on");
+}
+function clSaveSnapshot(){
+ const items=MATERIALS.filter(m=>clarifySelected.has(m.id));
+ if(!items.length||items.some(m=>!m.readable)||!el("cl-confirm-check").checked)return;
+ const snapshot={
+  id:`SNAP-${Date.now()}`,
+  createdAt:new Date().toISOString(),
+  scope:clarifyScope,
+  filter:{customerId:clarifyScope==="customer"?clarifyCustomerId:null,
+          projectId:clarifyScope==="project"?clarifyProjectId:null},
+  model:CLARIFY_MODEL,
+  total:items.length,
+  items:items.map(m=>({
+   materialId:m.id,name:m.title,type:m.type,
+   customerId:m.customerId||null,projectId:m.projectId||null,
+   readable:m.readable!==false,blockCount:m.blocks.length,locator:m.locator,model:CLARIFY_MODEL
+  }))
+ };
+ try{const list=JSON.parse(localStorage.getItem(CLARIFY_SNAP_KEY)||"[]");list.push(snapshot);localStorage.setItem(CLARIFY_SNAP_KEY,JSON.stringify(list.slice(-20)))}catch(e){}
+ clarifySnapshot=snapshot;
+ el("cl-drawer").classList.remove("on");
+ clRender();
+}
+document.querySelectorAll(".arch-tab[data-cl-scope]").forEach(b=>b.addEventListener("click",()=>{clarifyScope=b.dataset.clScope;clRender()}));
+el("cl-customer").addEventListener("change",e=>{clarifyCustomerId=e.target.value;clRender()});
+el("cl-project").addEventListener("change",e=>{clarifyProjectId=e.target.value;clRender()});
+el("cl-all").addEventListener("change",e=>clToggleAll(e.target.checked));
+el("cl-body").addEventListener("change",e=>{const c=e.target.closest("[data-cl-check]");if(!c)return;if(c.checked)clarifySelected.add(c.dataset.clCheck);else clarifySelected.delete(c.dataset.clCheck);clRender()});
+el("cl-open").addEventListener("click",clOpenConfirm);
+el("cl-close").addEventListener("click",()=>el("cl-drawer").classList.remove("on"));
+el("cl-cancel").addEventListener("click",()=>el("cl-drawer").classList.remove("on"));
+el("cl-drawer").addEventListener("click",e=>{if(e.target.id==="cl-drawer")el("cl-drawer").classList.remove("on")});
+el("cl-confirm-check").addEventListener("change",e=>{el("cl-confirm").disabled=!e.target.checked});
+el("cl-confirm").addEventListener("click",clSaveSnapshot);
+el("cl-run").addEventListener("click",()=>{if(clarifySnapshot){el("cl-banner").textContent=`已按快照 ${clarifySnapshot.id} 进入模拟分析；原型不调用模型，原始导入记录未修改。`}});
+window.__clarify={get selected(){return [...clarifySelected]},get snapshot(){return clarifySnapshot},reset(){clarifySelected.clear();clarifySnapshot=null;localStorage.removeItem(CLARIFY_SNAP_KEY);clRender()},render:clRender};
+clRender();
 
 renderOverview();renderCustomers();renderGaps();
 window.__cg={ask,search,MATERIALS,GAPS,REQUIREMENTS,INDEX};

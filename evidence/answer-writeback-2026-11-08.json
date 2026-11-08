@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T12:11:48.075949+00:00",
+  "generated_at": "2026-11-08T12:07:57.414743+00:00",
   "schema": "clientgraph.answer_writeback.evidence.v1",
   "previews": {
     "create_requirement": {
@@ -128,8 +128,8 @@
     },
     "update_requirement": {
       "schema": "clientgraph.writeback_preview.v1",
-      "preview_id": "PV-f75e6299",
-      "created_at": "2026-11-08T12:11:48.069667+00:00",
+      "preview_id": "PV-2bb1bce0",
+      "created_at": "2026-11-08T12:07:57.414081+00:00",
       "action": "update_requirement",
       "target": {
         "kind": "requirement",
@@ -228,12 +228,12 @@
       "requires_confirmation": true,
       "confirmed": false,
       "writes": false,
-      "token": "sha256:3ae1a5b8c1ac313bd2073f044944040aecf0aba87169f642d993ed57f43a87f8"
+      "token": "sha256:1091c9dfa0404f0ec2c73aff7df6fc86d1e29b2236ad4ae92cbbc9208195d782"
     },
     "update_project": {
       "schema": "clientgraph.writeback_preview.v1",
-      "preview_id": "PV-ef178ef2",
-      "created_at": "2026-11-08T12:11:48.069667+00:00",
+      "preview_id": "PV-57cda333",
+      "created_at": "2026-11-08T12:07:57.414081+00:00",
       "action": "update_project",
       "target": {
         "kind": "project",
@@ -334,7 +334,7 @@
       "requires_confirmation": true,
       "confirmed": false,
       "writes": false,
-      "token": "sha256:03696cef9ff343a866bca820419dab474b13232a33aed357b8e40e15cf427db9"
+      "token": "sha256:bbbbad43cc0c78732a472c064f1ccad9bee4c2e969cd2e189ce5fd80574f4614"
     }
   },
   "operations": [
@@ -471,7 +471,7 @@
     },
     {
       "id": "W2",
-      "preview_id": "PV-f75e6299",
+      "preview_id": "PV-2bb1bce0",
       "action": "update_requirement",
       "customer_id": "c1",
       "project_id": "p1",
@@ -575,7 +575,7 @@
     },
     {
       "id": "W3",
-      "preview_id": "PV-ef178ef2",
+      "preview_id": "PV-57cda333",
       "action": "update_project",
       "customer_id": "c1",
       "project_id": "p1",

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClientGraph AI · 上传任务</title>
+<style>
+  :root{--blue:#2f6fed;--blue-weak:#e8f0ff;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--bg:#f5f7fb;--ok:#0f8a5f;--warn:#b7791f;--danger:#c0392b}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 "Microsoft YaHei","PingFang SC",sans-serif}
+  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:12px}
+  header h1{font-size:17px;margin:0;flex:1}
+  header a{color:var(--blue);font-size:12px;text-decoration:none}
+  main{max-width:1040px;margin:18px auto;padding:0 18px;display:grid;gap:14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+  .card h2{font-size:14px;margin:0 0 4px}
+  .hint{color:var(--muted);font-size:12px;margin:0 0 12px}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px}
+  .field{display:flex;flex-direction:column;gap:4px}
+  .field label{font-size:12px;color:var(--muted)}
+  input,select{border:1px solid var(--line);border-radius:8px;height:34px;padding:0 10px;font:inherit;background:#fff}
+  input:focus,select:focus{outline:2px solid var(--blue-weak);border-color:var(--blue)}
+  button{cursor:pointer;font:inherit;border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 12px}
+  button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+  button:disabled{opacity:.55;cursor:not-allowed}
+  .wechat{border:1px dashed var(--line);border-radius:10px;padding:10px;margin-top:10px;background:#fbfdff}
+  .wechat[hidden]{display:none}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+  .jobs{display:grid;gap:10px}
+  .job{border:1px solid var(--line);border-radius:10px;padding:12px}
+  .job-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .job-head b{font-size:13px}
+  .badge{font-size:11px;padding:2px 8px;border-radius:999px;background:#eef2f7;color:#42505f}
+  .badge.done{background:#e7f7ef;color:var(--ok)}
+  .badge.failed{background:#fdecea;color:var(--danger)}
+  .badge.running{background:#e8f0ff;color:var(--blue)}
+  .badge.skipped{background:#f7f3e8;color:var(--warn)}
+  .badge.cancelled{background:#f0f0f0;color:#666}
+  .stages{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+  .stage{font-size:11px;padding:3px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+  .stage.done{border-color:#bfe6d2;color:var(--ok)}
+  .stage.failed{border-color:#f3c6c1;color:var(--danger)}
+  .stage.running{border-color:#bdd0f8;color:var(--blue)}
+  .stage.skipped{border-color:#eadfc5;color:var(--warn)}
+  .stage.cancelled{color:#888}
+  .detail{font-size:12px;color:var(--muted);white-space:pre-wrap;word-break:break-word}
+  .err{color:var(--danger);font-size:12px}
+  .actions{display:flex;gap:8px;margin-top:8px}
+  .empty{color:var(--muted);font-size:13px;padding:10px 0}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>上传任务</h1>
+  <a href="/">返回工作台</a>
+</header>
+
+<main>
+  <section class="card">
+    <h2>上传文件 / 邮件 / 聊天</h2>
+    <p class="hint">单文件不超过 50 MB。支持文档、音频、图片、邮件与聊天导出；不接受可执行文件与压缩包。上传后由服务端分阶段处理，离开页面不会中断。</p>
+    <div class="grid">
+      <div class="field"><label for="source_type">来源类型</label>
+        <select id="source_type">
+          <option value="file">文件（文档/音频/图片）</option>
+          <option value="email">邮件（.eml）</option>
+          <option value="chat">聊天导出（txt/html/json/csv）</option>
+          <option value="wechat">微信导出（受选择范围限制）</option>
+        </select>
+      </div>
+      <div class="field"><label for="file">选择文件</label><input id="file" type="file"></div>
+      <div class="field"><label for="customer_id">客户编号（可选）</label><input id="customer_id" type="text" autocomplete="off"></div>
+      <div class="field"><label for="project_id">项目编号（可选）</label><input id="project_id" type="text" autocomplete="off"></div>
+    </div>
+
+    <div class="wechat" id="wechat-box" hidden>
+      <p class="hint" style="margin:0 0 8px">微信资料只能使用你在导入范围里已选择的会话与日期；服务端不会扫描微信数据库，也不会扩大范围。</p>
+      <div class="grid">
+        <div class="field"><label for="w_contact">联系人 ID</label><input id="w_contact" type="text" autocomplete="off"></div>
+        <div class="field"><label for="w_conversation">会话 ID</label><input id="w_conversation" type="text" autocomplete="off"></div>
+        <div class="field"><label for="w_from">开始日期</label><input id="w_from" type="date"></div>
+        <div class="field"><label for="w_to">结束日期</label><input id="w_to" type="date"></div>
+      </div>
+      <label style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px">
+        <input id="w_selected" type="checkbox"> 我确认只导入上述会话与日期范围
+      </label>
+    </div>
+
+    <div class="row">
+      <button class="primary" type="button" id="upload">开始上传</button>
+      <span class="detail" id="upload-msg" role="status"></span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>任务列表</h2>
+    <p class="hint">阶段：上传 → 解析 → 转写 → OCR → 匹配。刷新或重新进入本页后仍可查询；失败可重试，取消会保留已完成阶段的结果。</p>
+    <div class="jobs" id="jobs"><div class="empty">暂无任务</div></div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var statusText = {queued:"排队中", running:"处理中", completed:"已完成", partial:"部分完成", failed:"失败", cancelled:"已取消"};
+  var stageText = {pending:"待处理", running:"进行中", done:"已完成", failed:"失败", skipped:"跳过", cancelled:"已取消"};
+  var timer = null;
+
+  function msg(text, bad) {
+    var el = $("upload-msg");
+    el.textContent = text || "";
+    el.style.color = bad ? "#c0392b" : "#6b7280";
+  }
+
+  function syncSource() {
+    var wechat = $("source_type").value === "wechat";
+    $("wechat-box").hidden = !wechat;
+  }
+
+  function b64(text) {
+    var bytes = new TextEncoder().encode(text);
+    var binary = "";
+    for (var i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+    return btoa(binary);
+  }
+
+  function wechatScope() {
+    return {
+      selected_by_user: $("w_selected").checked,
+      contact_id: $("w_contact").value.trim(),
+      conversation_id: $("w_conversation").value.trim(),
+      date_from: $("w_from").value,
+      date_to: $("w_to").value
+    };
+  }
+
+  function upload() {
+    var file = $("file").files && $("file").files[0];
+    if (!file) { msg("请先选择文件", true); return; }
+    if (file.size > 50 * 1024 * 1024) { msg("文件超过 50 MB，已阻止上传", true); return; }
+    var type = $("source_type").value;
+    var headers = {
+      "X-File-Name": encodeURIComponent(file.name),
+      "X-Source-Type": type,
+      "X-Requested-With": "XMLHttpRequest"
+    };
+    var cid = $("customer_id").value.trim();
+    var pid = $("project_id").value.trim();
+    if (cid) headers["X-Customer-Id"] = cid;
+    if (pid) headers["X-Project-Id"] = pid;
+    if (type === "wechat") {
+      var scope = wechatScope();
+      if (!scope.selected_by_user || !scope.contact_id || !scope.conversation_id
+          || !scope.date_from || !scope.date_to) {
+        msg("微信资料必须填写并确认联系人、会话与日期范围", true);
+        return;
+      }
+      headers["X-Wechat-Scope"] = b64(JSON.stringify(scope));
+    }
+    $("upload").disabled = true;
+    msg("正在上传…");
+    var controller = new AbortController();
+    var timeout = setTimeout(function () { controller.abort(); }, 120000);
+    fetch("/api/uploads", {
+      method: "POST", credentials: "same-origin",
+      headers: headers, body: file, signal: controller.signal
+    }).then(function (response) {
+      return response.json().then(function (body) { return {ok: response.ok, body: body}; });
+    }).then(function (result) {
+      clearTimeout(timeout);
+      if (!result.ok) {
+        var error = (result.body && result.body.error) || {};
+        throw new Error((error.code ? error.code + "：" : "") + (error.message || "上传失败"));
+      }
+      var job = result.body;
+      msg(job.duplicate ? "同一文件已存在，返回原任务 " + job.id : "上传完成：" + job.id);
+      $("file").value = "";
+      loadJobs();
+    }).catch(function (e) {
+      clearTimeout(timeout);
+      msg(e.name === "AbortError" ? "上传超时或网络中断，请重试" : (e.message || "上传失败"), true);
+    }).then(function () {
+      $("upload").disabled = false;
+    });
+  }
+
+  function stageChip(stage) {
+    var cls = stage.status === "done" ? "done" : stage.status === "failed" ? "failed"
+      : stage.status === "running" ? "running" : stage.status === "skipped" ? "skipped"
+      : stage.status === "cancelled" ? "cancelled" : "";
+    var extra = stage.status === "skipped" && stage.reason ? "（" + stage.reason + "）" : "";
+    return '<span class="stage ' + cls + '" title="' + escapeHtml(stage.reason || "") + '">'
+      + escapeHtml(stage.label || stage.name) + " · " + stageText[stage.status]
+      + escapeHtml(extra) + "</span>";
+  }
+
+  function escapeHtml(text) {
+    return String(text == null ? "" : text).replace(/[&<>"']/g, function (ch) {
+      return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[ch];
+    });
+  }
+
+  function jobCard(job) {
+    var badge = job.status === "completed" ? "done" : job.status === "failed" ? "failed"
+      : job.status === "running" ? "running" : job.status === "partial" ? "skipped"
+      : job.status === "cancelled" ? "cancelled" : "";
+    var stages = (job.stages || []).map(stageChip).join("");
+    var detail = "";
+    if (job.result && job.result.parse) {
+      detail += "解析：" + (job.result.parse.chars || 0) + " 字"
+        + (job.result.parse.subject ? " · 主题：" + job.result.parse.subject : "") + "\n";
+      if (job.result.parse.preview) detail += job.result.parse.preview + "\n";
+    }
+    if (job.result && job.result.transcribe) detail += "转写：" + (job.result.transcribe.text || "") + "\n";
+    if (job.result && job.result.ocr) detail += "OCR：" + (job.result.ocr.text || "已处理") + "\n";
+    if (job.result && job.result.match) detail += "匹配：" + JSON.stringify(job.result.match) + "\n";
+    if (job.error) detail += "错误：" + job.error.code + " · " + job.error.message + "\n";
+    var actions = "";
+    if (["failed","partial","cancelled"].indexOf(job.status) >= 0) {
+      actions += '<button type="button" data-retry="' + job.id + '">重试</button>';
+    }
+    if (["queued","running"].indexOf(job.status) >= 0) {
+      actions += '<button type="button" data-cancel="' + job.id + '">取消</button>';
+    }
+    return '<div class="job" data-job="' + job.id + '">'
+      + '<div class="job-head"><b>' + escapeHtml(job.file_name) + "</b>"
+      + '<span class="badge ' + badge + '">' + (statusText[job.status] || job.status) + "</span>"
+      + '<span class="detail">' + escapeHtml(job.source_type) + " · " + Math.ceil((job.size || 0) / 1024) + " KB"
+      + (job.duplicate ? " · 重复提交" : "") + "</span></div>"
+      + '<div class="stages">' + stages + "</div>"
+      + '<div class="detail">' + escapeHtml(detail) + "</div>"
+      + '<div class="actions">' + actions + "</div></div>";
+  }
+
+  function render(jobs) {
+    var box = $("jobs");
+    if (!jobs.length) { box.innerHTML = '<div class="empty">暂无任务</div>'; return; }
+    box.innerHTML = jobs.map(jobCard).join("");
+    box.querySelectorAll("[data-retry]").forEach(function (button) {
+      button.addEventListener("click", function () { act(button.dataset.retry, "retry"); });
+    });
+    box.querySelectorAll("[data-cancel]").forEach(function (button) {
+      button.addEventListener("click", function () { act(button.dataset.cancel, "cancel"); });
+    });
+  }
+
+  function act(id, action) {
+    fetch("/api/jobs/" + encodeURIComponent(id) + "/" + action, {
+      method: "POST", credentials: "same-origin",
+      headers: {"X-Requested-With": "XMLHttpRequest"}
+    }).then(function (response) {
+      return response.json().then(function (body) { return {ok:response.ok, body:body}; });
+    }).then(function (result) {
+      if (!result.ok) {
+        var error = (result.body && result.body.error) || {};
+        msg((error.code || "操作失败") + "：" + (error.message || ""), true);
+      }
+      loadJobs();
+    }).catch(function () { msg("操作失败，请稍后重试", true); });
+  }
+
+  function loadJobs() {
+    fetch("/api/jobs", {credentials:"same-origin", cache:"no-store"})
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (data) {
+        render(data.jobs || []);
+        var active = (data.jobs || []).some(function (j) { return j.status === "queued" || j.status === "running"; });
+        if (active && !timer) {
+          timer = setInterval(loadJobs, 2000);
+        } else if (!active && timer) {
+          clearInterval(timer); timer = null;
+        }
+      })
+      .catch(function () { /* 页面保持可用，下一次轮询会重试 */ });
+  }
+
+  $("source_type").addEventListener("change", syncSource);
+  $("upload").addEventListener("click", upload);
+  syncSource();
+  loadJobs();
+})();
+</script>
+</body>
+</html>

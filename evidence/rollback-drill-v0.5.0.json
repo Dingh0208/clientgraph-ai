@@ -1,0 +1,55 @@
+{
+  "schema": "clientgraph.rollback_drill.evidence.v1",
+  "generated_at": "2026-11-08T13:52:59.795951+00:00",
+  "target": "local-windows-single-user",
+  "steps": [
+    {
+      "step": "deploy",
+      "version": "0.5.0",
+      "health": 200,
+      "build_id": "223ac2617119ec17"
+    },
+    {
+      "step": "stop",
+      "service": "clientgraph-ops",
+      "port": 8140
+    },
+    {
+      "step": "swap",
+      "from": "0.5.0",
+      "to": "0.4.0",
+      "version_file": "0.4.0"
+    },
+    {
+      "step": "rollback_health",
+      "status": 200,
+      "service": "clientgraph-ops",
+      "version": "0.4.0"
+    },
+    {
+      "step": "stop",
+      "service": "clientgraph-ops",
+      "port": 8140
+    },
+    {
+      "step": "redeploy",
+      "version": "0.5.0",
+      "artifact": "clientgraph-ai-0.5.0"
+    },
+    {
+      "step": "restored_health",
+      "status": 200,
+      "version": "0.5.0",
+      "build_id": "223ac2617119ec17"
+    }
+  ],
+  "checks": {
+    "rollback_health_ok": true,
+    "version_file_rolled_back": true,
+    "restored_version_ok": true,
+    "restored_build_ok": true,
+    "browser_visible_after_restore": true
+  },
+  "all_passed": true,
+  "note": "本地部署目录切换；未使用数据库，配置目录保持不变"
+}

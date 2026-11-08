@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClientGraph AI · 设置</title>
+<style>
+  :root{--blue:#2f6fed;--blue-weak:#e8f0ff;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--bg:#f5f7fb;--ok:#0f8a5f;--danger:#c0392b}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.6 "Microsoft YaHei","PingFang SC",sans-serif}
+  header{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:12px 24px;display:flex;align-items:center;gap:12px}
+  header h1{font-size:17px;margin:0;flex:1}
+  header .who{color:var(--muted);font-size:12px}
+  main{max-width:960px;margin:20px auto 96px;padding:0 20px;display:grid;gap:14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+  .card h2{font-size:14px;margin:0 0 4px}
+  .card .hint{color:var(--muted);font-size:12px;margin:0 0 12px}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px}
+  .field{display:flex;flex-direction:column;gap:4px}
+  .field label{font-size:12px;color:var(--muted)}
+  input[type=text],input[type=email],input[type=password],input[type=time],select{height:34px;border:1px solid var(--line);border-radius:8px;padding:0 10px;font:inherit;background:#fff}
+  input:focus,select:focus{outline:2px solid var(--blue-weak);border-color:var(--blue)}
+  .row{display:flex;align-items:center;gap:8px}
+  .inline{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .check{display:flex;align-items:center;gap:6px;font-size:13px}
+  .keyline{display:flex;gap:8px;align-items:center}
+  .keyline input{flex:1}
+  .status{font-size:12px;color:var(--muted)}
+  .status.ok{color:var(--ok)}
+  .status.bad{color:var(--danger)}
+  button{cursor:pointer;font:inherit;border-radius:8px;border:1px solid var(--line);background:#fff;padding:6px 12px}
+  button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+  button:disabled{opacity:.55;cursor:not-allowed}
+  footer{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 24px;display:flex;gap:10px;align-items:center}
+  footer .msg{flex:1;font-size:12px;color:var(--muted)}
+  footer .msg.bad{color:var(--danger)}
+  footer .msg.ok{color:var(--ok)}
+  .version{font-size:12px;color:var(--muted);display:grid;grid-template-columns:120px 1fr;gap:4px 10px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>设置</h1>
+  <span class="who" id="auth-mode">单人使用</span>
+  <button type="button" id="logout" hidden>退出登录</button>
+</header>
+
+<main>
+  <section class="card">
+    <h2>个人信息</h2>
+    <p class="hint">只保存在本机服务端；不会写入浏览器存储或 URL。</p>
+    <div class="grid">
+      <div class="field"><label for="display_name">显示名称</label><input id="display_name" type="text" autocomplete="off"></div>
+      <div class="field"><label for="email">邮箱</label><input id="email" type="email" autocomplete="off"></div>
+      <div class="field"><label for="timezone">时区</label><input id="timezone" type="text" autocomplete="off"></div>
+      <div class="field"><label for="language">界面语言</label>
+        <select id="language"><option value="zh-CN">简体中文</option><option value="en-US">English</option></select>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>导入偏好</h2>
+    <p class="hint">只影响新建导入任务，不改动已有资料与原件。</p>
+    <div class="grid">
+      <div class="field"><label for="default_customer_id">默认客户编号</label><input id="default_customer_id" type="text" autocomplete="off"></div>
+      <div class="field"><label for="default_project_id">默认项目编号</label><input id="default_project_id" type="text" autocomplete="off"></div>
+      <div class="field"><label for="duplicate_policy">重复资料处理</label>
+        <select id="duplicate_policy"><option value="ask">每次询问</option><option value="skip">跳过重复</option><option value="merge">合并证据</option></select>
+      </div>
+      <div class="field"><label for="date_format">日期格式</label>
+        <select id="date_format"><option value="YYYY-MM-DD">YYYY-MM-DD</option><option value="YYYY/MM/DD">YYYY/MM/DD</option></select>
+      </div>
+      <label class="check"><input type="checkbox" id="auto_archive"> 导入完成后自动进入待归档</label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>默认文本 / 语音模型</h2>
+    <p class="hint">密钥只保存在服务端安全配置；页面只显示“已配置”，不会回显密钥。留空表示不修改；测试按钮检查已保存配置。</p>
+    <div class="grid">
+      <div class="field"><label for="text_model">文本模型</label><input id="text_model" type="text" autocomplete="off"></div>
+      <div class="field"><label for="speech_model">语音模型</label><input id="speech_model" type="text" autocomplete="off"></div>
+      <div class="field"><label for="text_base_url">文本接口地址</label><input id="text_base_url" type="text" autocomplete="off" placeholder="https://..."></div>
+      <div class="field"><label for="speech_base_url">语音接口地址</label><input id="speech_base_url" type="text" autocomplete="off" placeholder="https://..."></div>
+    </div>
+    <div class="field" style="margin-top:10px">
+      <label for="text_api_key">文本模型密钥</label>
+      <div class="keyline"><input id="text_api_key" type="password" autocomplete="new-password" placeholder="留空表示不修改">
+        <button type="button" id="test-text">检查配置</button>
+        <button type="button" id="probe-text">探测接口</button></div>
+      <span class="status" id="text-key-status">未加载</span>
+      <span class="status" id="text-test-result"></span>
+    </div>
+    <div class="field" style="margin-top:10px">
+      <label for="speech_api_key">语音模型密钥</label>
+      <div class="keyline"><input id="speech_api_key" type="password" autocomplete="new-password" placeholder="留空表示不修改">
+        <button type="button" id="test-speech">检查配置</button>
+        <button type="button" id="probe-speech">探测接口</button></div>
+      <span class="status" id="speech-key-status">未加载</span>
+      <span class="status" id="speech-test-result"></span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>通知</h2>
+    <p class="hint">只影响本机提醒；应用退出后不发送，也不会伪造发送记录。</p>
+    <div class="inline">
+      <label class="check"><input type="checkbox" id="desktop"> 桌面通知</label>
+      <label class="check"><input type="checkbox" id="daily_digest"> 每日摘要</label>
+      <label class="check"><input type="checkbox" id="overdue_only"> 只提醒逾期</label>
+      <div class="field"><label for="digest_time">摘要时间</label><input id="digest_time" type="time"></div>
+      <div class="field"><label for="quiet_hours">免打扰时段</label><input id="quiet_hours" type="text" placeholder="22:00-08:00"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>隐私与备份</h2>
+    <p class="hint">备份只导出设置，不含密码、会话密钥与模型密钥。</p>
+    <div class="inline">
+      <label class="check"><input type="checkbox" id="backup_enabled"> 启用自动备份</label>
+      <label class="check"><input type="checkbox" id="external_hide_internal"> 对外导出默认隐藏内部理由与证据</label>
+      <div class="field"><label for="backup_dir">备份目录</label><input id="backup_dir" type="text" autocomplete="off"></div>
+      <div class="field"><label for="retention_days">保留天数</label><input id="retention_days" type="number" min="1" max="3650"></div>
+      <button type="button" id="backup">导出设置备份</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>版本信息</h2>
+    <div class="version">
+      <span>应用版本</span><span id="ver-app">-</span>
+      <span>配置结构</span><span id="ver-schema">-</span>
+      <span>配置文件</span><span id="ver-path">-</span>
+      <span>访问模式</span><span id="ver-auth">单人使用</span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <button class="primary" type="button" id="save">保存设置</button>
+  <button type="button" id="reload">重新载入</button>
+  <span class="msg" id="msg" role="status"></span>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var modelState = { text: false, speech: false };
+  var dirty = false;
+
+  function setMsg(text, kind) {
+    var el = $("msg");
+    el.textContent = text || "";
+    el.className = "msg" + (kind ? " " + kind : "");
+  }
+
+  function setStatus(id, text, kind) {
+    var el = $(id);
+    el.textContent = text || "";
+    el.className = "status" + (kind ? " " + kind : "");
+  }
+
+  function markDirty() { dirty = true; }
+
+  function fill(data) {
+    var p = data.profile || {}, i = data["import"] || {}, m = data.models || {};
+    var n = data.notifications || {}, v = data.privacy || {};
+    $("display_name").value = p.display_name || "";
+    $("email").value = p.email || "";
+    $("timezone").value = p.timezone || "";
+    $("language").value = p.language || "zh-CN";
+    $("default_customer_id").value = i.default_customer_id || "";
+    $("default_project_id").value = i.default_project_id || "";
+    $("duplicate_policy").value = i.duplicate_policy || "ask";
+    $("auto_archive").checked = !!i.auto_archive;
+    $("date_format").value = i.date_format || "YYYY-MM-DD";
+    $("text_model").value = m.text_model || "";
+    $("speech_model").value = m.speech_model || "";
+    $("text_base_url").value = m.text_base_url || "";
+    $("speech_base_url").value = m.speech_base_url || "";
+    $("desktop").checked = !!n.desktop;
+    $("daily_digest").checked = !!n.daily_digest;
+    $("digest_time").value = n.digest_time || "09:00";
+    $("quiet_hours").value = n.quiet_hours || "22:00-08:00";
+    $("overdue_only").checked = !!n.overdue_only;
+    $("backup_enabled").checked = !!v.backup_enabled;
+    $("backup_dir").value = v.backup_dir || "";
+    $("retention_days").value = v.retention_days || 90;
+    $("external_hide_internal").checked = v.external_hide_internal !== false;
+    $("text_api_key").value = "";
+    $("speech_api_key").value = "";
+    modelState.text = !!(m.text_key && m.text_key.configured);
+    modelState.speech = !!(m.speech_key && m.speech_key.configured);
+    setStatus("text-key-status", modelState.text ? "已配置（服务端）" : "未配置", modelState.text ? "ok" : "");
+    setStatus("speech-key-status", modelState.speech ? "已配置（服务端）" : "未配置", modelState.speech ? "ok" : "");
+    var ver = data.version || {};
+    $("ver-app").textContent = ver.app || "-";
+    $("ver-schema").textContent = "v" + (ver.schema || 1);
+    $("ver-path").textContent = ver.config_path || "-";
+    $("ver-auth").textContent = ver.auth_mode === "single_owner" ? "单人使用" : (ver.auth_mode || "-");
+    $("auth-mode").textContent = $("ver-auth").textContent;
+    dirty = false;
+  }
+
+  function load() {
+    setMsg("正在载入设置…");
+    fetch("/api/settings", { credentials: "same-origin", cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (data) { fill(data); setMsg(""); })
+      .catch(function () { setMsg("设置载入失败，请检查登录状态或服务是否运行", "bad"); });
+    fetch("/api/auth/session", { credentials: "same-origin", cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (s) {
+        $("logout").hidden = !s.auth_required;
+        if (s.auth_required) $("auth-mode").textContent = "单人使用 · 已登录";
+      })
+      .catch(function () {});
+  }
+
+  function payload() {
+    var data = {
+      profile: {
+        display_name: $("display_name").value.trim(),
+        email: $("email").value.trim(),
+        timezone: $("timezone").value.trim(),
+        language: $("language").value
+      },
+      "import": {
+        default_customer_id: $("default_customer_id").value.trim(),
+        default_project_id: $("default_project_id").value.trim(),
+        duplicate_policy: $("duplicate_policy").value,
+        auto_archive: $("auto_archive").checked,
+        date_format: $("date_format").value
+      },
+      models: {
+        text_model: $("text_model").value.trim(),
+        speech_model: $("speech_model").value.trim(),
+        text_base_url: $("text_base_url").value.trim(),
+        speech_base_url: $("speech_base_url").value.trim()
+      },
+      notifications: {
+        desktop: $("desktop").checked,
+        daily_digest: $("daily_digest").checked,
+        digest_time: $("digest_time").value || "09:00",
+        quiet_hours: $("quiet_hours").value.trim(),
+        overdue_only: $("overdue_only").checked
+      },
+      privacy: {
+        backup_enabled: $("backup_enabled").checked,
+        backup_dir: $("backup_dir").value.trim(),
+        retention_days: parseInt($("retention_days").value || "90", 10),
+        external_hide_internal: $("external_hide_internal").checked
+      }
+    };
+    var tk = $("text_api_key").value;
+    var sk = $("speech_api_key").value;
+    if (tk) data.text_api_key = tk;
+    if (sk) data.speech_api_key = sk;
+    return data;
+  }
+
+  function save() {
+    setMsg("正在保存…");
+    fetch("/api/settings", {
+      method: "PUT",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest" },
+      body: JSON.stringify(payload())
+    }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, body: j }; }); })
+      .then(function (res) {
+        if (!res.ok) {
+          var err = (res.body && res.body.error) || {};
+          throw new Error(err.message || "保存失败");
+        }
+        fill(res.body);
+        setMsg("已保存；未触发邮件拉取或模型调用", "ok");
+      })
+      .catch(function (e) { setMsg(e.message || "保存失败", "bad"); });
+  }
+
+  function testModel(target, live) {
+    var out = target === "text" ? "text-test-result" : "speech-test-result";
+    setStatus(out, live ? "正在探测接口地址（不会调用模型）…" : "正在检查配置…");
+    fetch("/api/settings/test", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest" },
+      body: JSON.stringify({ target: target, live: !!live })
+    }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, body: j }; }); })
+      .then(function (res) {
+        var b = res.body || {};
+        var text = (b.message || b.code || "未知结果") + (b.key_configured ? "（密钥已配置）" : "（未配置密钥）");
+        if (live && b.network_attempted) text += "；仅探测接口，未调用模型";
+        setStatus(out, text, res.ok ? "ok" : "bad");
+      })
+      .catch(function () { setStatus(out, "检查失败", "bad"); });
+  }
+
+  $("save").addEventListener("click", save);
+  $("reload").addEventListener("click", load);
+  $("test-text").addEventListener("click", function () { testModel("text", false); });
+  $("probe-text").addEventListener("click", function () { testModel("text", true); });
+  $("test-speech").addEventListener("click", function () { testModel("speech", false); });
+  $("probe-speech").addEventListener("click", function () { testModel("speech", true); });
+  $("backup").addEventListener("click", function () { window.location.assign("/api/settings/backup"); });
+  $("logout").addEventListener("click", function () {
+    fetch("/api/auth/logout", {
+      method: "POST", credentials: "same-origin",
+      headers: { "X-Requested-With": "XMLHttpRequest" }
+    }).then(function () { window.location.assign("/login"); });
+  });
+  document.querySelectorAll("input,select").forEach(function (el) {
+    el.addEventListener("change", markDirty);
+    el.addEventListener("input", markDirty);
+  });
+  window.addEventListener("beforeunload", function (e) {
+    if (dirty) { e.preventDefault(); e.returnValue = ""; }
+  });
+
+  load();
+})();
+</script>
+</body>
+</html>

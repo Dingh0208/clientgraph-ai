@@ -11,3 +11,11 @@ __pycache__/
 *.pyc
 .venv/
 demo-data/
+.env
+secure.json
+ops-config/
+data/
+*.db
+*.sqlite
+*.sqlite3
+*.v1.bak

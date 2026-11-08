@@ -1,0 +1,79 @@
+{
+  "schema": "clientgraph.deployment.evidence.v1",
+  "generated_at": "2026-11-08T13:50:43.372522+00:00",
+  "base": "http://127.0.0.1:8140",
+  "health": {
+    "ok": true,
+    "service": "clientgraph-ops",
+    "auth_required": false,
+    "version": "0.5.0",
+    "build_id": "223ac2617119ec17",
+    "commit": "unknown",
+    "built_at": "2026-11-08T13:48:44.758428+00:00"
+  },
+  "version": {
+    "version": "0.5.0",
+    "build_id": "223ac2617119ec17",
+    "commit": "unknown",
+    "built_at": "2026-11-08T13:48:44.758428+00:00"
+  },
+  "performance": {
+    "health_ms": {
+      "p50": 15.0,
+      "p95": 23.96,
+      "max": 27.84,
+      "samples": 30
+    },
+    "single_health_ms": 50.99,
+    "version_ms": 7.23
+  },
+  "browser": {
+    "title": "ClientGraph AI · v0.5.0",
+    "version_visible": true,
+    "version_text": "v0.5.0",
+    "load_ms": 265.59,
+    "console_errors": [],
+    "pageerrors": [],
+    "screenshot": null
+  },
+  "diagnostics": {
+    "status": 200,
+    "elapsed_ms": 2307.65,
+    "components": [
+      {
+        "id": "sidecar",
+        "status": "degraded",
+        "reason": ""
+      },
+      {
+        "id": "wechat",
+        "status": "not_installed",
+        "reason": ""
+      },
+      {
+        "id": "ffmpeg",
+        "status": "ok",
+        "reason": ""
+      },
+      {
+        "id": "ocr",
+        "status": "not_installed",
+        "reason": ""
+      },
+      {
+        "id": "asr",
+        "status": "degraded",
+        "reason": ""
+      }
+    ]
+  },
+  "checks": {
+    "health_ok": true,
+    "version_match": true,
+    "build_match": true,
+    "health_public": true,
+    "browser_version_visible": true,
+    "browser_console_clean": true
+  },
+  "all_passed": true
+}

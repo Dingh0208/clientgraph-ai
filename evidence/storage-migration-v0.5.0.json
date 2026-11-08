@@ -1,0 +1,49 @@
+{
+  "schema": "clientgraph.storage_migration.evidence.v1",
+  "checks": {
+    "secure_migrated": true,
+    "job_migrated": true,
+    "secret_unchanged": true,
+    "version_2": true,
+    "settings_kept": true,
+    "job_schema": true,
+    "backups": true,
+    "report_no_secret": true,
+    "idempotent_secure": true,
+    "idempotent_jobs": true
+  },
+  "first": {
+    "schema": "clientgraph.storage_migration.v2",
+    "started_at": "2026-11-08T13:48:18.548364+00:00",
+    "config_dir": "C:\\Users\\111\\AppData\\Local\\Temp\\cg-migrate-vehlmq2o",
+    "secure": "migrated",
+    "jobs": {
+      "scanned": 1,
+      "migrated": 1,
+      "skipped": 0,
+      "backed_up": 1
+    },
+    "from_version": 1,
+    "to_version": 2,
+    "status": "ok",
+    "secure_backup": "secure.v1.bak.json",
+    "finished_at": "2026-11-08T13:48:18.588080+00:00"
+  },
+  "second": {
+    "schema": "clientgraph.storage_migration.v2",
+    "started_at": "2026-11-08T13:48:18.632378+00:00",
+    "config_dir": "C:\\Users\\111\\AppData\\Local\\Temp\\cg-migrate-vehlmq2o",
+    "secure": "already_current",
+    "jobs": {
+      "scanned": 1,
+      "migrated": 0,
+      "skipped": 1,
+      "backed_up": 0
+    },
+    "from_version": 2,
+    "to_version": 2,
+    "status": "ok",
+    "finished_at": "2026-11-08T13:48:18.632881+00:00"
+  },
+  "all_passed": true
+}

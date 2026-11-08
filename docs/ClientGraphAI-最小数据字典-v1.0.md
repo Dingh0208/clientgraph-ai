@@ -316,7 +316,9 @@ flowchart LR
 | current_version | INTEGER | 是 | 当前版本号 |
 | source_communication_id | TEXT | 否 | 来源沟通 |
 | source_question_id | TEXT | 否 | 来源澄清问题 |
+| source_answer_id | TEXT | 否 | 来源澄清回答（回写时必填） |
 | source_excerpt | TEXT | 否 | 原文摘录 |
+| priority_source | TEXT | 否 | 优先级来源：requirement_rule / human，不继承问题优先级 |
 | origin | TEXT | 是 | ai / human / clarification |
 | review_state | TEXT | 是 | pending / confirmed / rejected |
 | confirmed_at | DATETIME | 否 | 人工确认时间 |
@@ -325,7 +327,8 @@ flowchart LR
 
 - **归属**：必须属于一个项目；跨项目不合并。
 - **状态**：新建默认“待确认”（人工直接录入可显式确认）；“已取消”保留历史，不做物理删除。
-- **来源**：AI 抽取必须同时写 `source_communication_id` 与 `evidence`；澄清回写写 `source_question_id`。
+- **来源**：AI 抽取必须同时写 `source_communication_id` 与 `evidence`；澄清回写写 `source_question_id`、`source_answer_id` 与回答证据。
+- **优先级**：P0/P1/P2 由需求自身规则判断，不继承澄清问题优先级；规则见《回答回写 v1.0》。
 - **删除**：仅误建且无版本引用时软删；正常结束用“已取消”。
 - **人工确认**：待确认→已确认、优先级调整、取消都需 `confirmed_at`。
 
@@ -431,7 +434,7 @@ flowchart LR
 |---|---|---|---|
 | id | TEXT | 是 | 主键 |
 | name | TEXT | 是 | 默认“客户/项目 + 日期”，可改 |
-| status | TEXT | 是 | draft/analyzing/partial/active/completed/failed/archived |
+| status | TEXT | 是 | draft/analyzing/partial/incomplete/completed/archived |
 | scope_json | JSON | 是 | 选中的客户/项目/未归属范围快照 |
 | model_json | JSON | 是 | 本次模型与关键参数快照 |
 | language | TEXT | 是 | 默认 zh-CN |
@@ -443,8 +446,8 @@ flowchart LR
 | archived_at / deleted_at | DATETIME | 否 | — |
 
 - **归属**：不绑定单一客户，归属体现在 `clarification_sources` 与问题分区。
-- **状态**：`active` 表示未完成；`partial` 表示部分批次成功；`completed` 由全部问题有结论自动判定。
-- **删除**：只删工作单，原始资料、快照以外的源数据保留；删除前确认。
+- **状态**：`draft` 草稿；`analyzing` 分析中；`partial` 部分完成（已有部分问题有结论）；`incomplete` 未完成（分析结束但仍有问题未处理，含批次失败）；`completed` 全部问题已回答或不适用；`archived` 归档默认隐藏，可恢复。
+- **删除**：只删工作单（软删），原始资料、快照以外的源数据保留；删除前确认。归档与删除都可追溯，归档可恢复。
 - **人工确认**：发送分析前必须 `confirmed_scope_at`；回写另计。
 
 ### 3.12 问题 `clarification_questions`
@@ -459,7 +462,7 @@ flowchart LR
 | priority | TEXT | 是 | must_confirm / important / later |
 | text | TEXT | 是 | 对外问题文本 |
 | rationale | TEXT | 否 | 内部提问理由 |
-| conclusion_type | TEXT | 是 | fact / inference / gap / conflict / custom |
+| conclusion_type | TEXT | 是 | fact / inference / unknown（冲突作为独立 conflict 记录，问题侧标 unknown 并保留双方证据） |
 | confidence | REAL | 否 | 模型置信度 |
 | status | TEXT | 是 | pending / asked / answered / not_applicable / deleted |
 | parent_question_id | TEXT | 否 | 追问来源 |
@@ -471,6 +474,7 @@ flowchart LR
 - **归属**：必须属于一个澄清单；客户/项目可空，空即“未归属”，拆分只改归属不重生成。
 - **删除**：`status=deleted` 软删，保留用于指标统计；删除视为处理结论。
 - **人工确认**：编辑、调优先级、标不适用、新增自定义问题都置 `human_edited=1`；删除需二次确认。
+- **三档优先级**：`must_confirm` 阻塞范围/报价/工期，`important` 影响方案或成本，`later` 可留到交付和运维；判定与置信度规则见《问题优先级-v1.0.md》。
 
 ### 3.13 回答 `clarification_answers`
 
@@ -573,7 +577,7 @@ flowchart LR
 | 风险 | open / mitigated / accepted / closed |
 | 冲突 | open / resolved / ignored |
 | 待办 | todo / doing / done / cancelled |
-| 澄清单 | draft / analyzing / partial / active / completed / failed / archived |
+| 澄清单 | draft / analyzing / partial / incomplete / completed / archived |
 | 问题 | pending / asked / answered / not_applicable / deleted |
 | 回答 | none / previewed / saved / failed |
 

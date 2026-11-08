@@ -1,0 +1,339 @@
+{
+  "schema": "clientgraph.web_regression_matrix.v1",
+  "run_id": "WEB-MATRIX-2026-11-08",
+  "generated_at": "2026-11-08T13:43:23.842491+00:00",
+  "base_url": "http://127.0.0.1:63620",
+  "auth": "single-owner password",
+  "browsers": {
+    "chromium": {
+      "available": true,
+      "version": "156.0.8078.4",
+      "engine": "Chromium"
+    },
+    "firefox": {
+      "available": false,
+      "error": "Firefox 未安装；记录人工步骤"
+    },
+    "webkit": {
+      "available": false,
+      "error": "WebKit 未安装；记录人工步骤"
+    },
+    "edge": {
+      "available": true,
+      "version": "156.0.4314.58",
+      "checks": {
+        "login": true,
+        "nav_overview": true,
+        "nav_qa": true,
+        "nav_customers": true,
+        "nav_clarify": true,
+        "nav_import": true,
+        "nav_archive": true,
+        "nav_gaps": true,
+        "nav_diagnostics": true,
+        "settings": true,
+        "upload": true
+      },
+      "console_errors": [],
+      "pageerrors": []
+    },
+    "chrome": {
+      "available": true,
+      "version": "156.0.8078.74",
+      "checks": {
+        "login": true,
+        "nav_overview": true,
+        "nav_qa": true,
+        "nav_customers": true,
+        "nav_clarify": true,
+        "nav_import": true,
+        "nav_archive": true,
+        "nav_gaps": true,
+        "nav_diagnostics": true,
+        "settings": true,
+        "upload": true
+      },
+      "console_errors": [],
+      "pageerrors": []
+    }
+  },
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 800,
+      "overflow_px": {
+        "overview": 0,
+        "qa": 0,
+        "customers": 0,
+        "clarify": 0,
+        "import": 0,
+        "archive": 0,
+        "gaps": 0,
+        "diagnostics": 0
+      },
+      "max_overflow": 0
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "overflow_px": {
+        "overview": 0,
+        "qa": 0,
+        "customers": 0,
+        "clarify": 0,
+        "import": 0,
+        "archive": 0,
+        "gaps": 0,
+        "diagnostics": 0
+      },
+      "max_overflow": 0
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow_px": {
+        "overview": 570,
+        "qa": 570,
+        "customers": 570,
+        "clarify": 570,
+        "import": 570,
+        "archive": 570,
+        "gaps": 570,
+        "diagnostics": 570
+      },
+      "max_overflow": 570
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "settings_overflow_px": 22,
+      "upload_overflow_px": 0,
+      "max_overflow": 22
+    }
+  ],
+  "cases": [
+    {
+      "id": "A1",
+      "module": "权限",
+      "title": "错误密码被拒绝",
+      "status": "pass",
+      "detail": "密码不正确",
+      "states": {}
+    },
+    {
+      "id": "A2",
+      "module": "权限",
+      "title": "正确密码登录",
+      "status": "pass",
+      "detail": true,
+      "states": {}
+    },
+    {
+      "id": "A3",
+      "module": "权限",
+      "title": "退出后回到登录页",
+      "status": "pass",
+      "detail": "redirected to /login",
+      "states": {}
+    },
+    {
+      "id": "B1",
+      "module": "概览",
+      "title": "首页指标与客户列表",
+      "status": "pass",
+      "detail": "customers=2",
+      "states": {}
+    },
+    {
+      "id": "C1",
+      "module": "搜索",
+      "title": "正常关键词检索",
+      "status": "pass",
+      "detail": "检索到 4 条依据，按匹配度排序；“预算”。原型只做摘录，不做结论生成。\n💬 微信聊天\n微信聊天 · 陈晓岚\n·\n2026-09-22\nchat://M01#0",
+      "states": {}
+    },
+    {
+      "id": "C2",
+      "module": "搜索",
+      "title": "无结果问题不崩溃",
+      "status": "pass",
+      "detail": "未在工作台资料中找到依据。\n已检索 15 份资料、55 个片段；建议换用客户姓名、设备、预算、巡检等关键词。\n原型不推测、不补写；找不到就明确返回未知。",
+      "states": {}
+    },
+    {
+      "id": "C3",
+      "module": "搜索",
+      "title": "空输入不崩溃",
+      "status": "pass",
+      "detail": "未在工作台资料中找到依据。\n已检索 15 份资料、55 个片段；建议换用客户姓名、设备、预算、巡检等关键词。\n原型不推测、不补写；找不到就明确返回未知。",
+      "states": {}
+    },
+    {
+      "id": "D1",
+      "module": "项目",
+      "title": "客户/项目/需求清单",
+      "status": "pass",
+      "detail": "requirements=7",
+      "states": {}
+    },
+    {
+      "id": "D2",
+      "module": "客户360",
+      "title": "打开客户 360 并返回",
+      "status": "pass",
+      "detail": "opened and returned",
+      "states": {}
+    },
+    {
+      "id": "E1",
+      "module": "澄清",
+      "title": "选材与确认抽屉取消",
+      "status": "pass",
+      "detail": "selected=12 已选 / 13 当前 / 不可读 1",
+      "states": {}
+    },
+    {
+      "id": "E2",
+      "module": "澄清",
+      "title": "刷新后选材页面仍可用",
+      "status": "pass",
+      "detail": "reloaded",
+      "states": {}
+    },
+    {
+      "id": "F1",
+      "module": "导入",
+      "title": "批量导入出现完成与失败",
+      "status": "pass",
+      "detail": "done=10, failed=1",
+      "states": {}
+    },
+    {
+      "id": "F2",
+      "module": "导入",
+      "title": "失败任务重试与重置",
+      "status": "pass",
+      "detail": "reset",
+      "states": {}
+    },
+    {
+      "id": "G1",
+      "module": "归档",
+      "title": "待归档忽略与恢复",
+      "status": "pass",
+      "detail": "rows 8 -> 8",
+      "states": {}
+    },
+    {
+      "id": "H1",
+      "module": "诊断",
+      "title": "诊断刷新与单项复检",
+      "status": "pass",
+      "detail": "cards=5",
+      "states": {}
+    },
+    {
+      "id": "I1",
+      "module": "设置",
+      "title": "设置加载、校验失败、保存、测试",
+      "status": "pass",
+      "detail": "validation, save, test, reload",
+      "states": {}
+    },
+    {
+      "id": "J1",
+      "module": "上传",
+      "title": "文本上传完成与阶段展示",
+      "status": "pass",
+      "detail": "jobs=1, stages=5",
+      "states": {}
+    },
+    {
+      "id": "J2",
+      "module": "上传",
+      "title": "类型拒绝与刷新后任务保留",
+      "status": "pass",
+      "detail": "E_FILE_TYPE：file 不接受 .exe 文件",
+      "states": {}
+    },
+    {
+      "id": "K1",
+      "module": "权限",
+      "title": "重新登录后状态保持",
+      "status": "pass",
+      "detail": "re-login ok",
+      "states": {}
+    }
+  ],
+  "console": {
+    "resource_errors": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 400 (Bad Request)"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 400 (Bad Request)"
+      },
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 415 (Unsupported Media Type)"
+      }
+    ],
+    "unexpected_console_errors": [],
+    "pageerrors": [],
+    "expected_http_errors": [
+      {
+        "status": 401,
+        "url": "http://127.0.0.1:63620/api/auth/login",
+        "method": "POST"
+      },
+      {
+        "status": 400,
+        "url": "http://127.0.0.1:63620/api/settings",
+        "method": "PUT"
+      },
+      {
+        "status": 400,
+        "url": "http://127.0.0.1:63620/api/settings/test",
+        "method": "POST"
+      },
+      {
+        "status": 415,
+        "url": "http://127.0.0.1:63620/api/uploads",
+        "method": "POST"
+      }
+    ],
+    "unexpected_http_errors": []
+  },
+  "network": {
+    "requests": 57,
+    "suspicious_urls": [],
+    "model_key_leaks": 0,
+    "cross_customer_api_calls": 0
+  },
+  "limitations": [
+    "Firefox/WebKit 未安装，未做真实引擎回归；提供人工步骤。",
+    "390×844 视口存在横向溢出（主工作台约 570 px、设置页约 22 px），移动端布局未完全适配；1024 与 1280 无溢出。",
+    "需求演化、待办模块没有独立 Web 页面；矩阵标记为 UI 未提供，后端已有验证。",
+    "解析阶段在导入中心以状态文本展示，未提供独立解析详情页。",
+    "上传任务页的取消/重试依赖服务端任务状态；测试覆盖文本任务与类型拒绝。"
+  ],
+  "manual_steps": [
+    "Edge: 用 Edge 打开 http://127.0.0.1:8123/，按 A1–K1 顺序执行；Edge 为 Chromium 内核，预期一致。",
+    "Firefox: 安装 Firefox 后打开同一地址，重点复核登录、搜索、澄清抽屉、导入进度、设置保存。",
+    "Safari: macOS 上用 Safari 打开，复核 390×844 视口与文件上传；Safari 不支持部分 Blob/下载行为时记录差异。",
+    "无 Web 页面的模块：需求演化、待办按 docs/验收矩阵-v0.4.0.md 的 Python 证据复核，人工记录 UI 缺失。"
+  ],
+  "summary": {
+    "cases": 19,
+    "passed": 19,
+    "failed": 0,
+    "console_errors": 0,
+    "pageerrors": 0
+  }
+}

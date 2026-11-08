@@ -1,0 +1,30 @@
+{
+  "schema": "clientgraph.deployment_migration.evidence.v1",
+  "generated_at": "2026-11-08T13:52:59.795951+00:00",
+  "target": "local-windows-single-user",
+  "database": "none (JSON state stores; no relational database)",
+  "migration": {
+    "schema": "clientgraph.storage_migration.v2",
+    "started_at": "2026-11-08T13:49:09.961078+00:00",
+    "config_dir": "<deploy>/config",
+    "secure": "migrated",
+    "jobs": {
+      "scanned": 0,
+      "migrated": 0,
+      "skipped": 0,
+      "backed_up": 0
+    },
+    "from_version": 1,
+    "to_version": 2,
+    "status": "ok",
+    "secure_backup": "secure.v1.bak.json",
+    "finished_at": "2026-11-08T13:49:09.984024+00:00"
+  },
+  "checks": {
+    "secure_migrated": true,
+    "to_version": true,
+    "status": true,
+    "backup_created": true
+  },
+  "all_passed": true
+}
