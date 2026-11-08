@@ -1,0 +1,238 @@
+{
+  "generated_at": "2026-11-06T10:29:47.415690+00:00",
+  "dimensions": [
+    {
+      "id": "goals",
+      "order": 1,
+      "label": "业务目标/指标"
+    },
+    {
+      "id": "users",
+      "order": 2,
+      "label": "用户与流程"
+    },
+    {
+      "id": "scope",
+      "order": 3,
+      "label": "一期范围"
+    },
+    {
+      "id": "platform",
+      "order": 4,
+      "label": "平台与交互"
+    },
+    {
+      "id": "migration",
+      "order": 5,
+      "label": "数据迁移"
+    },
+    {
+      "id": "interfaces",
+      "order": 6,
+      "label": "接口与第三方"
+    },
+    {
+      "id": "governance",
+      "order": 7,
+      "label": "权限/安全/合规"
+    },
+    {
+      "id": "quality",
+      "order": 8,
+      "label": "性能/可靠性"
+    },
+    {
+      "id": "commercial",
+      "order": 9,
+      "label": "工期/预算/合同"
+    },
+    {
+      "id": "delivery",
+      "order": 10,
+      "label": "验收/上线/运维/售后"
+    }
+  ],
+  "shown": [
+    "goals",
+    "users",
+    "scope",
+    "platform",
+    "governance",
+    "commercial",
+    "delivery"
+  ],
+  "hidden": [
+    "migration",
+    "interfaces",
+    "quality"
+  ],
+  "questions": [
+    {
+      "id": "Q1",
+      "dimension": "goals",
+      "dimension_label": "业务目标/指标",
+      "field": "metrics",
+      "field_label": "衡量指标",
+      "text": "请问一期用哪些指标衡量目标达成？",
+      "reason": "资料未提及",
+      "priority": "must_confirm"
+    },
+    {
+      "id": "Q2",
+      "dimension": "scope",
+      "dimension_label": "一期范围",
+      "field": "scope_out",
+      "field_label": "本期不包含",
+      "text": "请问哪些功能明确不在一期范围？",
+      "reason": "资料未提及",
+      "priority": "must_confirm"
+    },
+    {
+      "id": "Q3",
+      "dimension": "platform",
+      "dimension_label": "平台与交互",
+      "field": "interaction",
+      "field_label": "交互规范",
+      "text": "请问有没有必须遵循的交互或界面规范？",
+      "reason": "资料未提及",
+      "priority": "must_confirm"
+    },
+    {
+      "id": "Q4",
+      "dimension": "governance",
+      "dimension_label": "权限/安全/合规",
+      "field": "security",
+      "field_label": "安全要求",
+      "text": "请问对数据加密、审计或脱敏有什么要求？",
+      "reason": "资料未提及",
+      "priority": "important"
+    },
+    {
+      "id": "Q5",
+      "dimension": "governance",
+      "dimension_label": "权限/安全/合规",
+      "field": "compliance",
+      "field_label": "合规要求",
+      "text": "请问项目需要满足哪些行业合规要求？",
+      "reason": "资料未提及",
+      "priority": "important"
+    },
+    {
+      "id": "Q6",
+      "dimension": "delivery",
+      "dimension_label": "验收/上线/运维/售后",
+      "field": "acceptance",
+      "field_label": "验收标准",
+      "text": "请问一期以哪些可验证条件作为验收标准？",
+      "reason": "资料未提及",
+      "priority": "important"
+    },
+    {
+      "id": "Q7",
+      "dimension": "delivery",
+      "dimension_label": "验收/上线/运维/售后",
+      "field": "launch",
+      "field_label": "上线批准",
+      "text": "请问上线需要谁批准？",
+      "reason": "资料未提及",
+      "priority": "important"
+    },
+    {
+      "id": "Q8",
+      "dimension": "delivery",
+      "dimension_label": "验收/上线/运维/售后",
+      "field": "ops",
+      "field_label": "运维责任",
+      "text": "请问上线后由谁负责日常运维？",
+      "reason": "资料未提及",
+      "priority": "important"
+    },
+    {
+      "id": "Q9",
+      "dimension": "delivery",
+      "dimension_label": "验收/上线/运维/售后",
+      "field": "after_sales",
+      "field_label": "质保期",
+      "text": "请问质保期多长？",
+      "reason": "资料未提及",
+      "priority": "important"
+    },
+    {
+      "id": "Q10",
+      "dimension": "delivery",
+      "dimension_label": "验收/上线/运维/售后",
+      "field": "support",
+      "field_label": "售后响应",
+      "text": "请问售后响应时限是多少？",
+      "reason": "资料未提及",
+      "priority": "important"
+    }
+  ],
+  "stats": {
+    "shown_dimensions": 7,
+    "hidden_dimensions": 3,
+    "clear_dimensions": 2,
+    "questions": 10
+  },
+  "with_gap": {
+    "shown": [
+      "goals",
+      "users",
+      "scope",
+      "platform",
+      "migration",
+      "governance",
+      "commercial",
+      "delivery"
+    ],
+    "question": [
+      {
+        "id": "Q4",
+        "dimension": "migration",
+        "dimension_label": "数据迁移",
+        "field": "migration_source",
+        "field_label": "来源系统",
+        "text": "请问需要迁移的历史数据来自哪个系统？",
+        "reason": "客户提到旧系统，但未说明来源",
+        "priority": "important"
+      }
+    ],
+    "hidden": [
+      "interfaces",
+      "quality"
+    ]
+  },
+  "filled_metrics": [
+    "请问哪些功能明确不在一期范围？",
+    "请问有没有必须遵循的交互或界面规范？",
+    "请问对数据加密、审计或脱敏有什么要求？",
+    "请问项目需要满足哪些行业合规要求？",
+    "请问一期以哪些可验证条件作为验收标准？",
+    "请问上线需要谁批准？",
+    "请问上线后由谁负责日常运维？",
+    "请问质保期多长？",
+    "请问售后响应时限是多少？"
+  ],
+  "checks": {
+    "dimension_order": true,
+    "hidden_irrelevant": true,
+    "users_clear": true,
+    "no_contract_question": true,
+    "question_count": true,
+    "question_ids": true,
+    "polite": true,
+    "one_question_mark": true,
+    "single_topic": true,
+    "concise": true,
+    "has_reason": true,
+    "no_duplicate": true,
+    "gap_shows_migration": true,
+    "gap_question": true,
+    "gap_reason": true,
+    "gap_hidden_count": true,
+    "filled_removes_question": true,
+    "goals_still_shown": true,
+    "goals_clear": true
+  },
+  "all_passed": true
+}

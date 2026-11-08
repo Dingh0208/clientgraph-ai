@@ -1,0 +1,913 @@
+{
+  "generated_at": "2026-11-08T12:11:48.075949+00:00",
+  "schema": "clientgraph.answer_writeback.evidence.v1",
+  "previews": {
+    "create_requirement": {
+      "schema": "clientgraph.writeback_preview.v1",
+      "preview_id": "PV-6e87a901",
+      "created_at": "2026-11-08T09:00:00+08:00",
+      "action": "create_requirement",
+      "target": {
+        "kind": "requirement",
+        "customer_id": "c1",
+        "customer_name": "青岚能装备（虚构）",
+        "project_id": "p1",
+        "project_name": "设备巡检小程序（一期）",
+        "requirement_id": null,
+        "requirement_title": null
+      },
+      "target_fingerprint": "506a18f38b4cca38a1c63319fbddba9e9541c3c24d6d13eb8d9c6d78e457adae",
+      "answer": {
+        "id": "A1",
+        "question_id": "Q2",
+        "question_text": "请问上线日期是什么？",
+        "question_priority": "must_confirm",
+        "text": "上线日期定在 2026-12-15，由李工负责",
+        "answered_at": "2026-11-07T10:00:00+08:00",
+        "operator": "张总",
+        "evidence": [
+          {
+            "text": "上线日期定在 2026-12-15，由李工负责",
+            "file": "微信聊天-2026-11-07.txt",
+            "source_type": "chat",
+            "locator": "msg 201",
+            "occurred_at": "2026-11-07"
+          }
+        ]
+      },
+      "fields": [
+        {
+          "field": "title",
+          "label": "标题",
+          "before": null,
+          "after": "上线日期：2026-12-15",
+          "supported_by": "上线日期定在 2026-12-15，由李工负责",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "description",
+          "label": "描述",
+          "before": null,
+          "after": "上线日期定在 2026-12-15，由李工负责",
+          "supported_by": "上线日期定在 2026-12-15，由李工负责",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "due_text",
+          "label": "截止时间",
+          "before": null,
+          "after": "2026-12-15",
+          "supported_by": "2026-12-15",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "owner",
+          "label": "负责人",
+          "before": null,
+          "after": "李工",
+          "supported_by": "李工",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        }
+      ],
+      "skipped": [
+        {
+          "field": "status",
+          "label": "状态",
+          "reason": "状态不自动回填；新需求固定待确认"
+        }
+      ],
+      "suggested_priority": {
+        "value": "P1",
+        "label": "P1 核心需求",
+        "basis": "属于正常一期需求，未出现硬约束或延后信号",
+        "source": "requirement_rule",
+        "independent_of_question_priority": true,
+        "question_priority_ignored": "must_confirm"
+      },
+      "new_requirement": {
+        "status": "待确认",
+        "priority": "P1",
+        "review_state": "pending"
+      },
+      "requires_confirmation": true,
+      "confirmed": false,
+      "writes": false,
+      "token": "sha256:81e72390fb90ce5e3a87edac950bfe70a144b6027d464d4f81d197b99b3d88f5"
+    },
+    "update_requirement": {
+      "schema": "clientgraph.writeback_preview.v1",
+      "preview_id": "PV-f75e6299",
+      "created_at": "2026-11-08T12:11:48.069667+00:00",
+      "action": "update_requirement",
+      "target": {
+        "kind": "requirement",
+        "customer_id": "c1",
+        "customer_name": "青岚能装备（虚构）",
+        "project_id": "p1",
+        "project_name": "设备巡检小程序（一期）",
+        "requirement_id": "R1",
+        "requirement_title": "设备巡检小程序"
+      },
+      "target_fingerprint": "5542d1ba490adb81cef1c8932bb7ad73f04b779366110cc7f8a2f55c2d35aae2",
+      "answer": {
+        "id": "A1",
+        "question_id": "Q2",
+        "question_text": "请问上线日期是什么？",
+        "question_priority": "must_confirm",
+        "text": "上线日期定在 2026-12-15，由李工负责",
+        "answered_at": "2026-11-07T10:00:00+08:00",
+        "operator": "张总",
+        "evidence": [
+          {
+            "text": "上线日期定在 2026-12-15，由李工负责",
+            "file": "微信聊天-2026-11-07.txt",
+            "source_type": "chat",
+            "locator": "msg 201",
+            "occurred_at": "2026-11-07"
+          }
+        ]
+      },
+      "fields": [
+        {
+          "field": "description",
+          "label": "描述",
+          "before": "设备台账与扫码巡检",
+          "after": "上线日期定在 2026-12-15，由李工负责",
+          "supported_by": "上线日期定在 2026-12-15，由李工负责",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "due_text",
+          "label": "截止时间",
+          "before": null,
+          "after": "2026-12-15",
+          "supported_by": "2026-12-15",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "owner",
+          "label": "负责人",
+          "before": "张工",
+          "after": "李工",
+          "supported_by": "李工",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        }
+      ],
+      "skipped": [
+        {
+          "field": "status",
+          "label": "状态",
+          "reason": "状态不自动回填；新需求固定待确认"
+        }
+      ],
+      "suggested_priority": {
+        "value": "P1",
+        "label": "P1 核心需求",
+        "basis": "属于正常一期需求，未出现硬约束或延后信号",
+        "source": "requirement_rule",
+        "independent_of_question_priority": true,
+        "question_priority_ignored": "must_confirm"
+      },
+      "new_requirement": null,
+      "requires_confirmation": true,
+      "confirmed": false,
+      "writes": false,
+      "token": "sha256:3ae1a5b8c1ac313bd2073f044944040aecf0aba87169f642d993ed57f43a87f8"
+    },
+    "update_project": {
+      "schema": "clientgraph.writeback_preview.v1",
+      "preview_id": "PV-ef178ef2",
+      "created_at": "2026-11-08T12:11:48.069667+00:00",
+      "action": "update_project",
+      "target": {
+        "kind": "project",
+        "customer_id": "c1",
+        "customer_name": "青岚能装备（虚构）",
+        "project_id": "p1",
+        "project_name": "设备巡检小程序（一期）",
+        "requirement_id": null,
+        "requirement_title": null
+      },
+      "target_fingerprint": "506a18f38b4cca38a1c63319fbddba9e9541c3c24d6d13eb8d9c6d78e457adae",
+      "answer": {
+        "id": "A4",
+        "question_id": "Q9",
+        "question_text": "请问预算是什么？",
+        "question_priority": "important",
+        "text": "预算改成 12 万，2026-12-20 上线，平台还是微信小程序，一期不包含报表",
+        "answered_at": "2026-11-07T10:00:00+08:00",
+        "operator": "张总",
+        "evidence": [
+          {
+            "text": "预算改成 12 万，2026-12-20 上线，平台还是微信小程序，一期不包含报表",
+            "file": "微信聊天-2026-11-07.txt",
+            "source_type": "chat",
+            "locator": "msg 204",
+            "occurred_at": "2026-11-07"
+          }
+        ]
+      },
+      "fields": [
+        {
+          "field": "budget",
+          "label": "预算",
+          "before": {
+            "amount": 80000,
+            "raw": "8 万"
+          },
+          "after": {
+            "amount": 120000,
+            "raw": "12 万"
+          },
+          "supported_by": "12 万",
+          "evidence": [
+            {
+              "text": "预算改成 12 万，2026-12-20 上线，平台还是微信小程序，一期不包含报表",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 204",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "schedule",
+          "label": "工期",
+          "before": "2026-11-30",
+          "after": "2026-12-20",
+          "supported_by": "2026-12-20",
+          "evidence": [
+            {
+              "text": "预算改成 12 万，2026-12-20 上线，平台还是微信小程序，一期不包含报表",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 204",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "scope_out",
+          "label": "本期不包含",
+          "before": [],
+          "after": [
+            "报表"
+          ],
+          "supported_by": "报表",
+          "evidence": [
+            {
+              "text": "预算改成 12 万，2026-12-20 上线，平台还是微信小程序，一期不包含报表",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 204",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        }
+      ],
+      "skipped": [],
+      "suggested_priority": {
+        "value": "P1",
+        "label": "P1 核心需求",
+        "basis": "属于正常一期需求，未出现硬约束或延后信号",
+        "source": "requirement_rule",
+        "independent_of_question_priority": true,
+        "question_priority_ignored": "important"
+      },
+      "new_requirement": null,
+      "requires_confirmation": true,
+      "confirmed": false,
+      "writes": false,
+      "token": "sha256:03696cef9ff343a866bca820419dab474b13232a33aed357b8e40e15cf427db9"
+    }
+  },
+  "operations": [
+    {
+      "id": "W1",
+      "preview_id": "PV-6e87a901",
+      "action": "create_requirement",
+      "customer_id": "c1",
+      "project_id": "p1",
+      "requirement_id": "R2",
+      "question_id": "Q2",
+      "answer_id": "A1",
+      "question_text": "请问上线日期是什么？",
+      "answer_text": "上线日期定在 2026-12-15，由李工负责",
+      "answer_at": "2026-11-07T10:00:00+08:00",
+      "evidence": [
+        {
+          "text": "上线日期定在 2026-12-15，由李工负责",
+          "file": "微信聊天-2026-11-07.txt",
+          "source_type": "chat",
+          "locator": "msg 201",
+          "occurred_at": "2026-11-07"
+        }
+      ],
+      "changes": [
+        {
+          "field": "title",
+          "label": "标题",
+          "before": null,
+          "after": "上线日期：2026-12-15",
+          "supported_by": "上线日期定在 2026-12-15，由李工负责",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "description",
+          "label": "描述",
+          "before": null,
+          "after": "上线日期定在 2026-12-15，由李工负责",
+          "supported_by": "上线日期定在 2026-12-15，由李工负责",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "due_text",
+          "label": "截止时间",
+          "before": null,
+          "after": "2026-12-15",
+          "supported_by": "2026-12-15",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "owner",
+          "label": "负责人",
+          "before": null,
+          "after": "李工",
+          "supported_by": "李工",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        }
+      ],
+      "priority": {
+        "value": "P1",
+        "label": "P1 核心需求",
+        "basis": "属于正常一期需求，未出现硬约束或延后信号",
+        "source": "requirement_rule",
+        "independent_of_question_priority": true,
+        "question_priority_ignored": "must_confirm"
+      },
+      "status_after": "待确认",
+      "confirmed_by": "老板",
+      "confirmed_at": "2026-11-08T09:05:00+08:00",
+      "target_before": null,
+      "target_after": {
+        "id": "R2",
+        "customer_id": "c1",
+        "project_id": "p1",
+        "title": "上线日期：2026-12-15",
+        "description": "上线日期定在 2026-12-15，由李工负责",
+        "status": "待确认",
+        "priority": "P1",
+        "priority_source": "requirement_rule",
+        "due_text": "2026-12-15",
+        "owner": "李工",
+        "current_version": 1,
+        "origin": "clarification",
+        "review_state": "pending",
+        "confirmed_at": null,
+        "source_question_id": "Q2",
+        "source_answer_id": "A1",
+        "source_excerpt": "上线日期定在 2026-12-15，由李工负责",
+        "evidence": [
+          {
+            "text": "上线日期定在 2026-12-15，由李工负责",
+            "file": "微信聊天-2026-11-07.txt",
+            "source_type": "chat",
+            "locator": "msg 201",
+            "occurred_at": "2026-11-07"
+          }
+        ],
+        "created_at": "2026-11-08T09:05:00+08:00",
+        "updated_at": "2026-11-08T09:05:00+08:00"
+      },
+      "applied": true
+    },
+    {
+      "id": "W2",
+      "preview_id": "PV-f75e6299",
+      "action": "update_requirement",
+      "customer_id": "c1",
+      "project_id": "p1",
+      "requirement_id": "R1",
+      "question_id": "Q2",
+      "answer_id": "A1",
+      "question_text": "请问上线日期是什么？",
+      "answer_text": "上线日期定在 2026-12-15，由李工负责",
+      "answer_at": "2026-11-07T10:00:00+08:00",
+      "evidence": [
+        {
+          "text": "上线日期定在 2026-12-15，由李工负责",
+          "file": "微信聊天-2026-11-07.txt",
+          "source_type": "chat",
+          "locator": "msg 201",
+          "occurred_at": "2026-11-07"
+        }
+      ],
+      "changes": [
+        {
+          "field": "description",
+          "label": "描述",
+          "before": "设备台账与扫码巡检",
+          "after": "上线日期定在 2026-12-15，由李工负责",
+          "supported_by": "上线日期定在 2026-12-15，由李工负责",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "due_text",
+          "label": "截止时间",
+          "before": null,
+          "after": "2026-12-15",
+          "supported_by": "2026-12-15",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "owner",
+          "label": "负责人",
+          "before": "张工",
+          "after": "李工",
+          "supported_by": "李工",
+          "evidence": [
+            {
+              "text": "上线日期定在 2026-12-15，由李工负责",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 201",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        }
+      ],
+      "priority": null,
+      "status_after": "已确认",
+      "confirmed_by": "老板",
+      "confirmed_at": "2026-11-08T09:10:00+08:00",
+      "target_before": {
+        "id": "R1",
+        "customer_id": "c1",
+        "project_id": "p1",
+        "title": "设备巡检小程序",
+        "description": "设备台账与扫码巡检",
+        "status": "已确认",
+        "priority": "P1",
+        "due_text": null,
+        "owner": "张工",
+        "current_version": 1,
+        "review_state": "confirmed"
+      },
+      "target_after": {
+        "id": "R1",
+        "customer_id": "c1",
+        "project_id": "p1",
+        "title": "设备巡检小程序",
+        "description": "上线日期定在 2026-12-15，由李工负责",
+        "status": "已确认",
+        "priority": "P1",
+        "due_text": "2026-12-15",
+        "owner": "李工",
+        "current_version": 2,
+        "review_state": "confirmed",
+        "updated_at": "2026-11-08T09:10:00+08:00"
+      },
+      "applied": true
+    },
+    {
+      "id": "W3",
+      "preview_id": "PV-ef178ef2",
+      "action": "update_project",
+      "customer_id": "c1",
+      "project_id": "p1",
+      "requirement_id": null,
+      "question_id": "Q9",
+      "answer_id": "A4",
+      "question_text": "请问预算是什么？",
+      "answer_text": "预算改成 12 万，2026-12-20 上线，平台还是微信小程序，一期不包含报表",
+      "answer_at": "2026-11-07T10:00:00+08:00",
+      "evidence": [
+        {
+          "text": "预算改成 12 万，2026-12-20 上线，平台还是微信小程序，一期不包含报表",
+          "file": "微信聊天-2026-11-07.txt",
+          "source_type": "chat",
+          "locator": "msg 204",
+          "occurred_at": "2026-11-07"
+        }
+      ],
+      "changes": [
+        {
+          "field": "budget",
+          "label": "预算",
+          "before": {
+            "amount": 80000,
+            "raw": "8 万"
+          },
+          "after": {
+            "amount": 120000,
+            "raw": "12 万"
+          },
+          "supported_by": "12 万",
+          "evidence": [
+            {
+              "text": "预算改成 12 万，2026-12-20 上线，平台还是微信小程序，一期不包含报表",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 204",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "schedule",
+          "label": "工期",
+          "before": "2026-11-30",
+          "after": "2026-12-20",
+          "supported_by": "2026-12-20",
+          "evidence": [
+            {
+              "text": "预算改成 12 万，2026-12-20 上线，平台还是微信小程序，一期不包含报表",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 204",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        },
+        {
+          "field": "scope_out",
+          "label": "本期不包含",
+          "before": [],
+          "after": [
+            "报表"
+          ],
+          "supported_by": "报表",
+          "evidence": [
+            {
+              "text": "预算改成 12 万，2026-12-20 上线，平台还是微信小程序，一期不包含报表",
+              "file": "微信聊天-2026-11-07.txt",
+              "source_type": "chat",
+              "locator": "msg 204",
+              "occurred_at": "2026-11-07"
+            }
+          ]
+        }
+      ],
+      "priority": null,
+      "status_after": null,
+      "confirmed_by": "老板",
+      "confirmed_at": "2026-11-08T09:15:00+08:00",
+      "target_before": {
+        "id": "p1",
+        "customer_id": "c1",
+        "name": "设备巡检小程序（一期）",
+        "budget": {
+          "amount": 80000,
+          "raw": "8 万"
+        },
+        "schedule": "2026-11-30",
+        "platform": "微信小程序",
+        "scope_in": [
+          "扫码巡检"
+        ],
+        "scope_out": [],
+        "owner": "王工"
+      },
+      "target_after": {
+        "id": "p1",
+        "customer_id": "c1",
+        "name": "设备巡检小程序（一期）",
+        "budget": {
+          "amount": 120000,
+          "raw": "12 万"
+        },
+        "schedule": "2026-12-20",
+        "platform": "微信小程序",
+        "scope_in": [
+          "扫码巡检"
+        ],
+        "scope_out": [
+          "报表"
+        ],
+        "owner": "王工",
+        "updated_at": "2026-11-08T09:15:00+08:00"
+      },
+      "applied": true
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "customer_id": "c1",
+      "project_id": "p1",
+      "title": "设备巡检小程序",
+      "description": "上线日期定在 2026-12-15，由李工负责",
+      "status": "已确认",
+      "priority": "P1",
+      "due_text": "2026-12-15",
+      "owner": "李工",
+      "current_version": 2,
+      "review_state": "confirmed",
+      "updated_at": "2026-11-08T09:10:00+08:00"
+    },
+    {
+      "id": "R2",
+      "customer_id": "c1",
+      "project_id": "p1",
+      "title": "上线日期：2026-12-15",
+      "description": "上线日期定在 2026-12-15，由李工负责",
+      "status": "待确认",
+      "priority": "P1",
+      "priority_source": "requirement_rule",
+      "due_text": "2026-12-15",
+      "owner": "李工",
+      "current_version": 1,
+      "origin": "clarification",
+      "review_state": "pending",
+      "confirmed_at": null,
+      "source_question_id": "Q2",
+      "source_answer_id": "A1",
+      "source_excerpt": "上线日期定在 2026-12-15，由李工负责",
+      "evidence": [
+        {
+          "text": "上线日期定在 2026-12-15，由李工负责",
+          "file": "微信聊天-2026-11-07.txt",
+          "source_type": "chat",
+          "locator": "msg 201",
+          "occurred_at": "2026-11-07"
+        }
+      ],
+      "created_at": "2026-11-08T09:05:00+08:00",
+      "updated_at": "2026-11-08T09:05:00+08:00"
+    }
+  ],
+  "versions": [
+    {
+      "id": "V1",
+      "requirement_id": "R1",
+      "version": 1,
+      "content_json": {
+        "id": "R1",
+        "customer_id": "c1",
+        "project_id": "p1",
+        "title": "设备巡检小程序",
+        "description": "设备台账与扫码巡检",
+        "status": "已确认",
+        "priority": "P1",
+        "due_text": null,
+        "owner": "张工",
+        "current_version": 1,
+        "review_state": "confirmed"
+      }
+    },
+    {
+      "id": "V2",
+      "requirement_id": "R2",
+      "version": 1,
+      "content_json": {
+        "id": "R2",
+        "customer_id": "c1",
+        "project_id": "p1",
+        "title": "上线日期：2026-12-15",
+        "description": "上线日期定在 2026-12-15，由李工负责",
+        "status": "待确认",
+        "priority": "P1",
+        "priority_source": "requirement_rule",
+        "due_text": "2026-12-15",
+        "owner": "李工",
+        "current_version": 1,
+        "origin": "clarification",
+        "review_state": "pending",
+        "confirmed_at": null,
+        "source_question_id": "Q2",
+        "source_answer_id": "A1",
+        "source_excerpt": "上线日期定在 2026-12-15，由李工负责",
+        "evidence": [
+          {
+            "text": "上线日期定在 2026-12-15，由李工负责",
+            "file": "微信聊天-2026-11-07.txt",
+            "source_type": "chat",
+            "locator": "msg 201",
+            "occurred_at": "2026-11-07"
+          }
+        ],
+        "created_at": "2026-11-08T09:05:00+08:00",
+        "updated_at": "2026-11-08T09:05:00+08:00"
+      },
+      "change_reason": "由澄清回答创建",
+      "source_question_id": "Q2",
+      "source_answer_id": "A1",
+      "adopted_at": "2026-11-08T09:05:00+08:00",
+      "created_at": "2026-11-08T09:05:00+08:00"
+    },
+    {
+      "id": "V3",
+      "requirement_id": "R1",
+      "version": 2,
+      "content_json": {
+        "id": "R1",
+        "customer_id": "c1",
+        "project_id": "p1",
+        "title": "设备巡检小程序",
+        "description": "上线日期定在 2026-12-15，由李工负责",
+        "status": "已确认",
+        "priority": "P1",
+        "due_text": "2026-12-15",
+        "owner": "李工",
+        "current_version": 2,
+        "review_state": "confirmed",
+        "updated_at": "2026-11-08T09:10:00+08:00"
+      },
+      "change_reason": "由澄清回答更新：描述、截止时间、负责人",
+      "source_question_id": "Q2",
+      "source_answer_id": "A1",
+      "adopted_at": "2026-11-08T09:10:00+08:00",
+      "created_at": "2026-11-08T09:10:00+08:00"
+    }
+  ],
+  "project": {
+    "id": "p1",
+    "customer_id": "c1",
+    "name": "设备巡检小程序（一期）",
+    "budget": {
+      "amount": 1,
+      "raw": "12 万"
+    },
+    "schedule": "2026-12-20",
+    "platform": "微信小程序",
+    "scope_in": [
+      "扫码巡检"
+    ],
+    "scope_out": [
+      "报表"
+    ],
+    "owner": "王工",
+    "updated_at": "2026-11-08T09:15:00+08:00"
+  },
+  "checks": {
+    "target_required": true,
+    "target_mismatch": true,
+    "requirement_missing": true,
+    "answer_needs_evidence": true,
+    "create_action": true,
+    "create_target_names": true,
+    "create_status_pending": true,
+    "create_fields_supported": true,
+    "create_title": true,
+    "create_due": true,
+    "create_owner": true,
+    "create_no_status_field": true,
+    "create_skipped_status": true,
+    "create_evidence": true,
+    "create_not_written": true,
+    "create_priority_p1": true,
+    "vague_no_due": true,
+    "vague_skip_reason": true,
+    "partial_date_not_written": true,
+    "priority_p2_ignores_question": true,
+    "priority_p0_ignores_question": true,
+    "priority_rule_flag": true,
+    "priority_p1_default": true,
+    "update_action": true,
+    "update_fields": true,
+    "update_no_status_priority": true,
+    "update_before_after": true,
+    "update_evidence": true,
+    "update_no_new_requirement": true,
+    "update_priority_unchanged_in_fields": true,
+    "noop_empty": true,
+    "project_fields": true,
+    "project_budget": true,
+    "project_schedule": true,
+    "project_scope_out": true,
+    "project_platform_unchanged": true,
+    "project_scope_in_unchanged": true,
+    "project_no_requirement_fields": true,
+    "confirm_required": true,
+    "nothing_written": true,
+    "confirmer_required": true,
+    "preview_tampered": true,
+    "token_mismatch": true,
+    "stale_target": true,
+    "stale_not_written": true,
+    "new_requirement_saved": true,
+    "new_requirement_meta": true,
+    "new_requirement_fields": true,
+    "new_requirement_version": true,
+    "operation_snapshot": true,
+    "operation_counted": true,
+    "duplicate_blocked": true,
+    "update_saved": true,
+    "update_untouched": true,
+    "update_version": true,
+    "old_version_intact": true,
+    "update_operation_before": true,
+    "update_status_snapshot": true,
+    "project_saved": true,
+    "project_untouched": true,
+    "project_snapshot": true,
+    "snapshot_isolated": true,
+    "no_status_prefill": true,
+    "status_kept": true
+  },
+  "all_passed": true
+}

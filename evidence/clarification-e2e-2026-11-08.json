@@ -1,0 +1,681 @@
+{
+  "schema": "clientgraph.clarification_e2e.v1",
+  "run_id": "CLARIFY-E2E-2026-11-08",
+  "started_at": "2026-11-08T09:00:00+00:00",
+  "finished_at": "2026-11-08T09:45:00+00:00",
+  "environment": {
+    "platform": "Windows",
+    "python": "3.12.13",
+    "pdf_engine": "Edge headless"
+  },
+  "data_note": "全部客户、项目、资料均为虚构演示数据",
+  "steps": [
+    {
+      "seq": 1,
+      "at": "2026-11-08T09:00:00+00:00",
+      "phase": "选材确认",
+      "action": "选择 2 个客户 / 2 个项目 / 3 份资料，建单",
+      "status": "pass",
+      "detail": {
+        "record_id": "CR1",
+        "sources": 3
+      }
+    },
+    {
+      "seq": 2,
+      "at": "2026-11-08T09:01:00+00:00",
+      "phase": "选材确认",
+      "action": "确认发送范围，记录 confirmed_scope_at",
+      "status": "pass",
+      "detail": {
+        "confirmed_scope_at": "2026-11-08T09:01:00+00:00"
+      }
+    },
+    {
+      "seq": 3,
+      "at": "2026-11-08T09:02:00+00:00",
+      "phase": "分批分析",
+      "action": "按 20 字上限拆成 3 批，只分析本轮资料",
+      "status": "pass",
+      "detail": {
+        "batches": [
+          "R1-B1",
+          "R1-B2",
+          "R1-B3"
+        ],
+        "status": "analyzing"
+      }
+    },
+    {
+      "seq": 4,
+      "at": "2026-11-08T09:03:00+00:00",
+      "phase": "证据问题",
+      "action": "3 批共生成 5 个问题，含 ASR 低置信度与工期冲突",
+      "status": "pass",
+      "detail": {
+        "questions": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4",
+          "Q5"
+        ],
+        "status": "incomplete"
+      }
+    },
+    {
+      "seq": 5,
+      "at": "2026-11-08T09:04:00+00:00",
+      "phase": "回答",
+      "action": "5 个问题全部标记已问",
+      "status": "pass",
+      "detail": {
+        "status": "incomplete"
+      }
+    },
+    {
+      "seq": 6,
+      "at": "2026-11-08T09:05:00+00:00",
+      "phase": "冲突",
+      "action": "工期冲突双方证据保留，回答后仍未自动裁定",
+      "status": "pass",
+      "detail": {
+        "question": "Q3",
+        "status": "partial"
+      }
+    },
+    {
+      "seq": 7,
+      "at": "2026-11-08T09:06:00+00:00",
+      "phase": "手动追问",
+      "action": "老板点击后生成 1 个待问子问题",
+      "status": "pass",
+      "detail": {
+        "child": "Q6",
+        "parent": "Q1"
+      }
+    },
+    {
+      "seq": 8,
+      "at": "2026-11-08T09:07:00+00:00",
+      "phase": "回写预览",
+      "action": "展示标题/描述两项变更与证据，状态待确认",
+      "status": "pass",
+      "detail": {
+        "fields": [
+          "title",
+          "description"
+        ],
+        "priority": "P1"
+      }
+    },
+    {
+      "seq": 9,
+      "at": "2026-11-08T09:08:00+00:00",
+      "phase": "回写保存",
+      "action": "人工确认后创建需求 R1 与版本 V1",
+      "status": "pass",
+      "detail": {
+        "requirement": "R1",
+        "version": 1
+      }
+    },
+    {
+      "seq": 10,
+      "at": "2026-11-08T09:09:00+00:00",
+      "phase": "历史",
+      "action": "同一需求追加版本 V2，V1 内容保持不变",
+      "status": "pass",
+      "detail": {
+        "version": 2
+      }
+    },
+    {
+      "seq": 11,
+      "at": "2026-11-08T09:10:00+00:00",
+      "phase": "回写保存",
+      "action": "更新项目工期，预算等其他字段保持原值",
+      "status": "pass",
+      "detail": {
+        "project": "p1"
+      }
+    },
+    {
+      "seq": 12,
+      "at": "2026-11-08T09:11:00+00:00",
+      "phase": "增量分析",
+      "action": "追加资料只分析新增 1 份，Q5 仍待回答，状态保持部分完成",
+      "status": "pass",
+      "detail": {
+        "round": 2,
+        "status": "partial"
+      }
+    },
+    {
+      "seq": 13,
+      "at": "2026-11-08T09:12:00+00:00",
+      "phase": "选材确认",
+      "action": "不可读资料阻止发送",
+      "status": "pass",
+      "detail": {
+        "expected": "E_UNREADABLE",
+        "actual": "E_UNREADABLE"
+      }
+    },
+    {
+      "seq": 14,
+      "at": "2026-11-08T09:13:00+00:00",
+      "phase": "失败重试",
+      "action": "模型批次超时，工作单保留失败原因",
+      "status": "fail",
+      "detail": {
+        "batch": "R1-B1",
+        "code": "E_MODEL_TIMEOUT"
+      }
+    },
+    {
+      "seq": 15,
+      "at": "2026-11-08T09:14:00+00:00",
+      "phase": "手动追问",
+      "action": "未回答不能生成追问",
+      "status": "pass",
+      "detail": {
+        "expected": "E_NOT_ANSWERED",
+        "actual": "E_NOT_ANSWERED"
+      }
+    },
+    {
+      "seq": 16,
+      "at": "2026-11-08T09:15:00+00:00",
+      "phase": "失败重试",
+      "action": "失败批次重置为待执行，保留错误历史",
+      "status": "pass",
+      "detail": {
+        "batch": "R1-B1",
+        "batch_errors": 1
+      }
+    },
+    {
+      "seq": 17,
+      "at": "2026-11-08T09:16:00+00:00",
+      "phase": "回写预览",
+      "action": "未确认不能保存",
+      "status": "pass",
+      "detail": {
+        "expected": "E_CONFIRM_REQUIRED",
+        "actual": "E_CONFIRM_REQUIRED"
+      }
+    },
+    {
+      "seq": 18,
+      "at": "2026-11-08T09:17:00+00:00",
+      "phase": "回写预览",
+      "action": "预览被修改后拒绝保存",
+      "status": "pass",
+      "detail": {
+        "expected": "E_PREVIEW_TAMPERED",
+        "actual": "E_PREVIEW_TAMPERED"
+      }
+    },
+    {
+      "seq": 19,
+      "at": "2026-11-08T09:18:00+00:00",
+      "phase": "回写预览",
+      "action": "目标记录变化后拒绝保存",
+      "status": "pass",
+      "detail": {
+        "expected": "E_TARGET_CHANGED",
+        "actual": "E_TARGET_CHANGED"
+      }
+    },
+    {
+      "seq": 20,
+      "at": "2026-11-08T09:19:00+00:00",
+      "phase": "回写预览",
+      "action": "同一预览不能重复保存",
+      "status": "pass",
+      "detail": {
+        "expected": "E_ALREADY_APPLIED",
+        "actual": "E_ALREADY_APPLIED"
+      }
+    },
+    {
+      "seq": 21,
+      "at": "2026-11-08T09:20:00+00:00",
+      "phase": "回答",
+      "action": "补答最后的验收问题，状态转为已完成",
+      "status": "pass",
+      "detail": {
+        "question": "Q5",
+        "status": "completed"
+      }
+    },
+    {
+      "seq": 22,
+      "at": "2026-11-08T09:21:00+00:00",
+      "phase": "对外导出",
+      "action": "内部/对外文本与 Word、PDF 均生成，对外版隐藏理由与证据",
+      "status": "pass",
+      "detail": {
+        "docx_internal": "D:\\code\\clintGraph\\.temp\\e2e-exports\\澄清记录-内部.docx",
+        "docx_external": "D:\\code\\clintGraph\\.temp\\e2e-exports\\澄清记录-对外.docx",
+        "pdf": "D:\\code\\clintGraph\\.temp\\e2e-exports\\澄清记录-对外.pdf",
+        "pdf_size": 116407
+      }
+    },
+    {
+      "seq": 23,
+      "at": "2026-11-08T09:22:00+00:00",
+      "phase": "生命周期",
+      "action": "归档/恢复/复制草稿/删除保留资料冒烟通过",
+      "status": "pass",
+      "detail": {
+        "archived": true,
+        "restored": true,
+        "copy": "CR4"
+      }
+    }
+  ],
+  "failures": [
+    {
+      "id": "F1",
+      "phase": "选材确认",
+      "action": "不可读资料阻止发送",
+      "expected_code": "E_UNREADABLE",
+      "observed_code": "E_UNREADABLE",
+      "recovered_by": "保留工作单作为失败样本，不删除",
+      "step": 13,
+      "retained": true,
+      "at": "2026-11-08T09:13:00+00:00"
+    },
+    {
+      "id": "F2",
+      "phase": "失败重试",
+      "action": "模型批次超时",
+      "expected_code": "E_MODEL_TIMEOUT",
+      "observed_code": "E_MODEL_TIMEOUT",
+      "recovered_by": "retry_failed 重置失败批次后重新完成",
+      "step": 14,
+      "retained": true,
+      "at": "2026-11-08T09:14:00+00:00"
+    },
+    {
+      "id": "F3",
+      "phase": "手动追问",
+      "action": "未回答不能生成追问",
+      "expected_code": "E_NOT_ANSWERED",
+      "observed_code": "E_NOT_ANSWERED",
+      "recovered_by": "先完成回答再生成追问",
+      "step": 15,
+      "retained": true,
+      "at": "2026-11-08T09:15:00+00:00"
+    },
+    {
+      "id": "F4",
+      "phase": "回写预览",
+      "action": "未确认不能保存",
+      "expected_code": "E_CONFIRM_REQUIRED",
+      "observed_code": "E_CONFIRM_REQUIRED",
+      "recovered_by": "演示环境拒绝写入，数据零变化",
+      "step": 17,
+      "retained": true,
+      "at": "2026-11-08T09:17:00+00:00"
+    },
+    {
+      "id": "F5",
+      "phase": "回写预览",
+      "action": "预览被修改后拒绝保存",
+      "expected_code": "E_PREVIEW_TAMPERED",
+      "observed_code": "E_PREVIEW_TAMPERED",
+      "recovered_by": "重新生成预览",
+      "step": 18,
+      "retained": true,
+      "at": "2026-11-08T09:18:00+00:00"
+    },
+    {
+      "id": "F6",
+      "phase": "回写预览",
+      "action": "目标记录变化后拒绝保存",
+      "expected_code": "E_TARGET_CHANGED",
+      "observed_code": "E_TARGET_CHANGED",
+      "recovered_by": "重新预览",
+      "step": 19,
+      "retained": true,
+      "at": "2026-11-08T09:19:00+00:00"
+    },
+    {
+      "id": "F7",
+      "phase": "回写预览",
+      "action": "同一预览不能重复保存",
+      "expected_code": "E_ALREADY_APPLIED",
+      "observed_code": "E_ALREADY_APPLIED",
+      "recovered_by": "使用新的预览",
+      "step": 20,
+      "retained": true,
+      "at": "2026-11-08T09:20:00+00:00"
+    }
+  ],
+  "records": [
+    {
+      "id": "CR1",
+      "name": "巡检与供应链澄清（虚构演示）",
+      "status": "completed",
+      "status_label": "已完成",
+      "status_history": [
+        {
+          "status": "draft",
+          "at": "2026-11-08T09:00:00+00:00",
+          "reason": "created"
+        },
+        {
+          "status": "analyzing",
+          "at": "2026-11-08T09:00:00+00:00",
+          "reason": "derived"
+        },
+        {
+          "status": "incomplete",
+          "at": "2026-11-08T09:00:00+00:00",
+          "reason": "derived"
+        },
+        {
+          "status": "partial",
+          "at": "2026-11-08T09:00:00+00:00",
+          "reason": "derived"
+        },
+        {
+          "status": "analyzing",
+          "at": "2026-11-08T09:00:00+00:00",
+          "reason": "derived"
+        },
+        {
+          "status": "partial",
+          "at": "2026-11-08T09:00:00+00:00",
+          "reason": "derived"
+        },
+        {
+          "status": "completed",
+          "at": "2026-11-08T09:00:00+00:00",
+          "reason": "derived"
+        },
+        {
+          "status": "archived",
+          "at": "2026-11-08T09:40:00+00:00",
+          "reason": "archived"
+        },
+        {
+          "status": "completed",
+          "at": "2026-11-08T09:41:00+00:00",
+          "reason": "restored"
+        }
+      ],
+      "error_message": null,
+      "questions": 7,
+      "open": 0,
+      "deleted_at": null
+    },
+    {
+      "id": "CR2",
+      "name": "青岚能装备（虚构）、设备巡检小程序（一期） 2026-11-08",
+      "status": "draft",
+      "status_label": "草稿",
+      "status_history": [
+        {
+          "status": "draft",
+          "at": "2026-11-08T09:25:00+00:00",
+          "reason": "created"
+        }
+      ],
+      "error_message": "E_UNREADABLE: 资料不可读：损坏的合同.pdf",
+      "questions": 0,
+      "open": 0,
+      "deleted_at": null
+    },
+    {
+      "id": "CR3",
+      "name": "青岚能装备（虚构）、设备巡检小程序（一期） 2026-11-08",
+      "status": "completed",
+      "status_label": "已完成",
+      "status_history": [
+        {
+          "status": "draft",
+          "at": "2026-11-08T09:27:00+00:00",
+          "reason": "created"
+        },
+        {
+          "status": "analyzing",
+          "at": "2026-11-08T09:00:00+00:00",
+          "reason": "derived"
+        },
+        {
+          "status": "incomplete",
+          "at": "2026-11-08T09:00:00+00:00",
+          "reason": "derived"
+        },
+        {
+          "status": "analyzing",
+          "at": "2026-11-08T09:31:00+00:00",
+          "reason": "derived"
+        },
+        {
+          "status": "incomplete",
+          "at": "2026-11-08T09:00:00+00:00",
+          "reason": "derived"
+        },
+        {
+          "status": "completed",
+          "at": "2026-11-08T09:00:00+00:00",
+          "reason": "derived"
+        }
+      ],
+      "error_message": null,
+      "questions": 1,
+      "open": 0,
+      "deleted_at": null
+    },
+    {
+      "id": "CR4",
+      "name": "巡检与供应链澄清（虚构演示）（副本）",
+      "status": "draft",
+      "status_label": "草稿",
+      "status_history": [
+        {
+          "status": "draft",
+          "at": "2026-11-08T09:42:00+00:00",
+          "reason": "created"
+        },
+        {
+          "status": "draft",
+          "at": "2026-11-08T09:43:00+00:00",
+          "reason": "deleted"
+        }
+      ],
+      "error_message": null,
+      "questions": 7,
+      "open": 7,
+      "deleted_at": "2026-11-08T09:43:00+00:00"
+    }
+  ],
+  "writeback": {
+    "requirements": [
+      {
+        "id": "R1",
+        "customer_id": "c1",
+        "project_id": "p1",
+        "title": "本期包含：扫码巡检与异常上报",
+        "description": "扫码巡检与异常上报",
+        "status": "待确认",
+        "priority": "P1",
+        "priority_source": "requirement_rule",
+        "due_text": "2026-12-01",
+        "owner": null,
+        "current_version": 2,
+        "origin": "clarification",
+        "review_state": "pending",
+        "confirmed_at": null,
+        "source_question_id": "Q1",
+        "source_answer_id": "A1",
+        "source_excerpt": "扫码巡检与异常上报",
+        "evidence": [
+          {
+            "text": "扫码巡检",
+            "file": "微信聊天-2026-11-07.txt",
+            "source_type": "chat",
+            "locator": "chat://m1#msg=2",
+            "occurred_at": "2026-11-07"
+          }
+        ],
+        "created_at": "2026-11-08T09:15:00+00:00",
+        "updated_at": "2026-11-08T09:17:00+00:00"
+      },
+      {
+        "id": "R2",
+        "customer_id": "c1",
+        "project_id": "p1",
+        "title": "本期包含：设备编号、照片、描述",
+        "description": "设备编号、照片、描述",
+        "status": "待确认",
+        "priority": "P1",
+        "priority_source": "requirement_rule",
+        "due_text": null,
+        "owner": null,
+        "current_version": 1,
+        "origin": "clarification",
+        "review_state": "pending",
+        "confirmed_at": null,
+        "source_question_id": "Q1",
+        "source_answer_id": "A1",
+        "source_excerpt": "设备编号、照片、描述",
+        "evidence": [
+          {
+            "text": "设备编号、照片、描述",
+            "file": "微信聊天-2026-11-07.txt",
+            "source_type": "chat",
+            "locator": "chat://m5#1",
+            "occurred_at": "2026-11-07"
+          }
+        ],
+        "created_at": "2026-11-08T09:37:00+00:00",
+        "updated_at": "2026-11-08T09:37:00+00:00"
+      }
+    ],
+    "versions": [
+      {
+        "id": "V1",
+        "requirement_id": "R1",
+        "version": 1,
+        "change_reason": "由澄清回答创建",
+        "adopted_at": "2026-11-08T09:15:00+00:00"
+      },
+      {
+        "id": "V2",
+        "requirement_id": "R1",
+        "version": 2,
+        "change_reason": "由澄清回答更新：截止时间",
+        "adopted_at": "2026-11-08T09:17:00+00:00"
+      },
+      {
+        "id": "V3",
+        "requirement_id": "R2",
+        "version": 1,
+        "change_reason": "由澄清回答创建",
+        "adopted_at": "2026-11-08T09:37:00+00:00"
+      }
+    ],
+    "operations": [
+      {
+        "id": "W1",
+        "action": "create_requirement",
+        "requirement_id": "R1",
+        "confirmed_by": "老板",
+        "confirmed_at": "2026-11-08T09:15:00+00:00"
+      },
+      {
+        "id": "W2",
+        "action": "update_requirement",
+        "requirement_id": "R1",
+        "confirmed_by": "老板",
+        "confirmed_at": "2026-11-08T09:17:00+00:00"
+      },
+      {
+        "id": "W3",
+        "action": "update_project",
+        "requirement_id": null,
+        "confirmed_by": "老板",
+        "confirmed_at": "2026-11-08T09:19:00+00:00"
+      },
+      {
+        "id": "W4",
+        "action": "create_requirement",
+        "requirement_id": "R2",
+        "confirmed_by": "老板",
+        "confirmed_at": "2026-11-08T09:37:00+00:00"
+      }
+    ]
+  },
+  "exports": {
+    "docx_internal": {
+      "name": "澄清记录-内部.docx",
+      "bytes": 2815
+    },
+    "docx_external": {
+      "name": "澄清记录-对外.docx",
+      "bytes": 2500
+    },
+    "pdf": {
+      "name": "澄清记录-对外.pdf",
+      "bytes": 116407
+    },
+    "note": "导出产物在 .temp/e2e-exports，不纳入版本库"
+  },
+  "checks": {
+    "selection_sources": true,
+    "initial_draft": true,
+    "scope_confirmed": true,
+    "batch_split": true,
+    "analyzing": true,
+    "incomplete_after_batches": true,
+    "question_count_5": true,
+    "partial_with_open_q5": true,
+    "conflict_kept": true,
+    "no_auto_followup": true,
+    "followup_pending": true,
+    "preview_supported_only": true,
+    "preview_pending_status": true,
+    "preview_priority": true,
+    "requirement_created": true,
+    "update_only_due": true,
+    "version_appended": true,
+    "project_schedule_only": true,
+    "project_updated": true,
+    "incremental_added": true,
+    "status_not_revived": true,
+    "incremental_only_new": true,
+    "still_open_q5": true,
+    "failure_case_1": true,
+    "bad_record_kept": true,
+    "failed_status": true,
+    "failure_case_3": true,
+    "retry_pending": true,
+    "retry_completed": true,
+    "failure_case_4": true,
+    "no_write_without_confirm": true,
+    "failure_case_5": true,
+    "failure_case_6": true,
+    "retry_writeback_saved": true,
+    "failure_case_7": true,
+    "completed_after_all": true,
+    "internal_has_reason": true,
+    "internal_has_evidence": true,
+    "external_hides_internal": true,
+    "external_keeps_answer": true,
+    "group_by_project": true,
+    "docx_internal": true,
+    "docx_external": true,
+    "pdf_valid": true,
+    "archive_hidden": true,
+    "restore_completed": true,
+    "copy_draft": true,
+    "delete_keeps_sources": true
+  },
+  "all_passed": true
+}

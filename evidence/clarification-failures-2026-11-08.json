@@ -1,0 +1,84 @@
+{
+  "schema": "clientgraph.clarification_failures.v1",
+  "run_id": "CLARIFY-E2E-2026-11-08",
+  "note": "失败案例全部保留，不删除；用于回归对照",
+  "cases": [
+    {
+      "id": "F1",
+      "phase": "选材确认",
+      "action": "不可读资料阻止发送",
+      "expected_code": "E_UNREADABLE",
+      "observed_code": "E_UNREADABLE",
+      "recovered_by": "保留工作单作为失败样本，不删除",
+      "step": 13,
+      "retained": true,
+      "at": "2026-11-08T09:13:00+00:00"
+    },
+    {
+      "id": "F2",
+      "phase": "失败重试",
+      "action": "模型批次超时",
+      "expected_code": "E_MODEL_TIMEOUT",
+      "observed_code": "E_MODEL_TIMEOUT",
+      "recovered_by": "retry_failed 重置失败批次后重新完成",
+      "step": 14,
+      "retained": true,
+      "at": "2026-11-08T09:14:00+00:00"
+    },
+    {
+      "id": "F3",
+      "phase": "手动追问",
+      "action": "未回答不能生成追问",
+      "expected_code": "E_NOT_ANSWERED",
+      "observed_code": "E_NOT_ANSWERED",
+      "recovered_by": "先完成回答再生成追问",
+      "step": 15,
+      "retained": true,
+      "at": "2026-11-08T09:15:00+00:00"
+    },
+    {
+      "id": "F4",
+      "phase": "回写预览",
+      "action": "未确认不能保存",
+      "expected_code": "E_CONFIRM_REQUIRED",
+      "observed_code": "E_CONFIRM_REQUIRED",
+      "recovered_by": "演示环境拒绝写入，数据零变化",
+      "step": 17,
+      "retained": true,
+      "at": "2026-11-08T09:17:00+00:00"
+    },
+    {
+      "id": "F5",
+      "phase": "回写预览",
+      "action": "预览被修改后拒绝保存",
+      "expected_code": "E_PREVIEW_TAMPERED",
+      "observed_code": "E_PREVIEW_TAMPERED",
+      "recovered_by": "重新生成预览",
+      "step": 18,
+      "retained": true,
+      "at": "2026-11-08T09:18:00+00:00"
+    },
+    {
+      "id": "F6",
+      "phase": "回写预览",
+      "action": "目标记录变化后拒绝保存",
+      "expected_code": "E_TARGET_CHANGED",
+      "observed_code": "E_TARGET_CHANGED",
+      "recovered_by": "重新预览",
+      "step": 19,
+      "retained": true,
+      "at": "2026-11-08T09:19:00+00:00"
+    },
+    {
+      "id": "F7",
+      "phase": "回写预览",
+      "action": "同一预览不能重复保存",
+      "expected_code": "E_ALREADY_APPLIED",
+      "observed_code": "E_ALREADY_APPLIED",
+      "recovered_by": "使用新的预览",
+      "step": 20,
+      "retained": true,
+      "at": "2026-11-08T09:20:00+00:00"
+    }
+  ]
+}

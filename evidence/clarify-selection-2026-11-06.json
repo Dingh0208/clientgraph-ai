@@ -1,0 +1,82 @@
+{
+  "schema": "clientgraph.clarify_selection.verify.v1",
+  "generated_at": "2026-11-06T09:42:00Z",
+  "environment": {
+    "platform": "Windows x64",
+    "browser": "Chromium 156",
+    "viewport": "996x938",
+    "storage": "localStorage"
+  },
+  "materials": {
+    "total": 15,
+    "readable": 14,
+    "unreadable": ["M15"]
+  },
+  "customer_view": {
+    "customer": "c1",
+    "rows": 13,
+    "unreadable": 1,
+    "select_all_selected": 12,
+    "m15_selected": false,
+    "count_text": "12 已选 / 13 当前 / 不可读 1"
+  },
+  "confirmation": {
+    "rows": 12,
+    "summary": "共 12 份 · 可读 12 · 未归属 0 · 默认文本模型 qwen3.8-flash（默认）",
+    "first_item": {
+      "materialId": "M01",
+      "type": "chat",
+      "customer": "c1",
+      "project": "p1",
+      "readable": true,
+      "blocks": 7,
+      "model": "qwen3.8-flash（默认）"
+    },
+    "confirm_disabled_before_check": true,
+    "confirm_enabled_after_check": true
+  },
+  "snapshot": {
+    "total": 12,
+    "model": "qwen3.8-flash（默认）",
+    "items": ["M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08", "M09", "M11", "M12", "M13"],
+    "unreadable": 0,
+    "stored_count": 1
+  },
+  "project_view": {
+    "project": "p2",
+    "selected_after_add": 12,
+    "has_m13": true
+  },
+  "unfiled_view": {
+    "rows": 1,
+    "material": "M14",
+    "customer": null,
+    "project": null,
+    "readable": true,
+    "snapshot": {
+      "total": 1,
+      "customer_id": null,
+      "project_id": null,
+      "blocks": 1
+    }
+  },
+  "cross_project_view": {
+    "rows": 15,
+    "m15_disabled": true
+  },
+  "original_records_unchanged": true,
+  "console_errors": 0,
+  "checks": [
+    "per_item_checkbox",
+    "select_all_current_filter",
+    "unreadable_disabled",
+    "confirmation_lists_fields",
+    "manual_confirmation_required",
+    "snapshot_saved",
+    "empty_customer_project_allowed",
+    "cross_project_rows",
+    "originals_unchanged",
+    "console_clean"
+  ],
+  "all_passed": true
+}

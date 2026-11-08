@@ -1,0 +1,217 @@
+{
+  "generated_at": "2026-11-08T12:11:54.639142+00:00",
+  "schema": "clientgraph.clarification_records.evidence.v1",
+  "records": [
+    {
+      "id": "CR1",
+      "name": "青岚能装备（虚构）、设备巡检小程序（一期） 2026-11-06",
+      "status": "completed",
+      "status_label": "已完成",
+      "customers": [
+        {
+          "id": "c1",
+          "name": "青岚能装备（虚构）"
+        }
+      ],
+      "projects": [
+        {
+          "id": "p1",
+          "name": "设备巡检小程序（一期）"
+        }
+      ],
+      "questions": 4,
+      "open": 0,
+      "resolved": 4,
+      "created_at": "2026-11-06T09:00:00+08:00",
+      "updated_at": "2026-11-08T09:00:00+00:00",
+      "archived_at": null,
+      "deleted_at": null
+    },
+    {
+      "id": "CR2",
+      "name": "恒晟精工（虚构）、供应链协同平台（预研） 2026-11-07",
+      "status": "incomplete",
+      "status_label": "未完成",
+      "customers": [
+        {
+          "id": "c2",
+          "name": "恒晟精工（虚构）"
+        }
+      ],
+      "projects": [
+        {
+          "id": "p3",
+          "name": "供应链协同平台（预研）"
+        }
+      ],
+      "questions": 1,
+      "open": 1,
+      "resolved": 0,
+      "created_at": "2026-11-07T09:00:00+08:00",
+      "updated_at": "2026-11-08T10:00:00+08:00",
+      "archived_at": null,
+      "deleted_at": "2026-11-08T10:00:00+08:00"
+    },
+    {
+      "id": "CR3",
+      "name": "恒晟精工（虚构）、供应链协同平台（预研） 2026-11-07（副本）",
+      "status": "analyzing",
+      "status_label": "分析中",
+      "customers": [
+        {
+          "id": "c2",
+          "name": "恒晟精工（虚构）"
+        }
+      ],
+      "projects": [
+        {
+          "id": "p3",
+          "name": "供应链协同平台（预研）"
+        }
+      ],
+      "questions": 1,
+      "open": 1,
+      "resolved": 0,
+      "created_at": "2026-11-08T09:00:00+08:00",
+      "updated_at": "2026-11-08T09:00:00+00:00",
+      "archived_at": null,
+      "deleted_at": null
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "record_id": "CR1",
+      "source_id": "m1",
+      "name": "微信聊天-巡检",
+      "type": "chat",
+      "locator": "chat://m1",
+      "text": "一期先做扫码巡检与异常上报",
+      "sha256": "aaa",
+      "readable": true,
+      "customer_id": null,
+      "project_id": null,
+      "analyzed": true,
+      "round": 1,
+      "created_at": "2026-11-06T09:00:00+08:00",
+      "record_deleted": false
+    },
+    {
+      "id": "S2",
+      "record_id": "CR2",
+      "source_id": "m2",
+      "name": "邮件-供应链",
+      "type": "email",
+      "locator": "mail://m2",
+      "text": "供应链协同需要对接 ERP 接口",
+      "sha256": "bbb",
+      "readable": true,
+      "customer_id": null,
+      "project_id": null,
+      "analyzed": true,
+      "round": 1,
+      "created_at": "2026-11-07T09:00:00+08:00",
+      "record_deleted": true
+    },
+    {
+      "id": "S3",
+      "record_id": "CR3",
+      "source_id": "m2",
+      "name": "邮件-供应链",
+      "type": "email",
+      "locator": "mail://m2",
+      "text": "供应链协同需要对接 ERP 接口",
+      "sha256": "bbb",
+      "readable": true,
+      "customer_id": null,
+      "project_id": null,
+      "analyzed": true,
+      "round": 1,
+      "created_at": "2026-11-08T09:00:00+08:00",
+      "record_deleted": false
+    },
+    {
+      "id": "S4",
+      "record_id": "CR1",
+      "source_id": "m3",
+      "name": "会议纪要-补充",
+      "type": "doc",
+      "locator": "doc://m3",
+      "text": "补充：报表放到二期再做",
+      "sha256": "ccc",
+      "readable": true,
+      "customer_id": null,
+      "project_id": null,
+      "analyzed": true,
+      "round": 2,
+      "created_at": "2026-11-08T09:20:00+08:00",
+      "record_deleted": false
+    }
+  ],
+  "internal_text": "青岚能装备（虚构）、设备巡检小程序（一期） 2026-11-06\n状态：已完成 ｜ 生成日期：2026-11-08 ｜ 范围：客户：青岚能装备（虚构）、项目：设备巡检小程序（一期）\n客户：青岚能装备（虚构）\n项目：设备巡检小程序（一期）\n1. 请问一期必须包含哪些功能？（必须先确认）\n回答（2026-11-06T11:00:00+08:00，甲方）：扫码巡检、异常上报\n提问理由：资料未提及\n证据：微信聊天.txt · chat://m1#msg=1 · 一期先做扫码巡检\n2. 请问本期不包含哪些功能？（必须先确认）\n处理：不适用（客户确认本期不做报表）\n提问理由：资料未提及\n证据：微信聊天.txt · chat://m1#msg=1 · 一期先做扫码巡检\n3. 请问上线日期是哪一天？（必须先确认）\n回答（2026-11-06T11:30:00+08:00，甲方）：2026-12-15\n提问理由：资料未提及\n证据：微信聊天.txt · chat://m1#msg=1 · 一期先做扫码巡检\n4. 请问报表是否放到二期？（必须先确认）\n回答（2026-11-08T09:40:00+08:00，甲方）：报表放二期\n提问理由：资料未提及\n证据：微信聊天.txt · chat://m1#msg=1 · 一期先做扫码巡检",
+  "external_text": "青岚能装备（虚构）、设备巡检小程序（一期） 2026-11-06\n状态：已完成 ｜ 生成日期：2026-11-08 ｜ 范围：客户：青岚能装备（虚构）、项目：设备巡检小程序（一期）\n客户：青岚能装备（虚构）\n项目：设备巡检小程序（一期）\n1. 请问一期必须包含哪些功能？（必须先确认）\n回答（2026-11-06T11:00:00+08:00，甲方）：扫码巡检、异常上报\n2. 请问本期不包含哪些功能？（必须先确认）\n处理：不适用\n3. 请问上线日期是哪一天？（必须先确认）\n回答（2026-11-06T11:30:00+08:00，甲方）：2026-12-15\n4. 请问报表是否放到二期？（必须先确认）\n回答（2026-11-08T09:40:00+08:00，甲方）：报表放二期",
+  "exports": {
+    "docx_internal": "D:\\code\\clientgraph-ai-release\\.temp\\exports\\巡检澄清单-内部.docx",
+    "docx_external": "D:\\code\\clientgraph-ai-release\\.temp\\exports\\巡检澄清单-对外.docx",
+    "pdf_external": "D:\\code\\clientgraph-ai-release\\.temp\\exports\\巡检澄清单-对外.pdf"
+  },
+  "checks": {
+    "scope_required": true,
+    "draft_status": true,
+    "default_name": true,
+    "scope_confirm_required": true,
+    "analyzing_status": true,
+    "batch_created": true,
+    "incomplete_after_analysis": true,
+    "three_questions": true,
+    "asked_still_incomplete": true,
+    "partial_after_one_answer": true,
+    "still_partial": true,
+    "completed_status": true,
+    "asked_unanswered_incomplete": true,
+    "filter_customer": true,
+    "filter_project": true,
+    "filter_date": true,
+    "filter_unanswered": true,
+    "filter_completed": true,
+    "copy_draft": true,
+    "copy_name": true,
+    "copy_questions_pending": true,
+    "copy_sources": true,
+    "copy_no_effect_on_source": true,
+    "archived_status": true,
+    "archived_hidden": true,
+    "archived_visible": true,
+    "restored_status": true,
+    "append_dedupe": true,
+    "append_added": true,
+    "append_no_auto_status": true,
+    "incremental_round": true,
+    "incremental_only_new": true,
+    "incremental_partial": true,
+    "incremental_completed": true,
+    "copy_unconfirmed": true,
+    "copy_analyzing": true,
+    "nothing_to_analyze": true,
+    "delete_confirm": true,
+    "deleted_hidden": true,
+    "deleted_visible": true,
+    "sources_kept": true,
+    "source_marked_deleted": true,
+    "deleted_cannot_archive": true,
+    "internal_has_reason": true,
+    "internal_has_evidence": true,
+    "external_hides_reason": true,
+    "external_hides_evidence": true,
+    "external_keeps_content": true,
+    "group_by_customer": true,
+    "group_by_project": true,
+    "docx_structure": true,
+    "docx_internal": true,
+    "docx_external": true,
+    "pdf_created": true,
+    "pdf_header": true,
+    "status_labels": true
+  },
+  "all_passed": true
+}

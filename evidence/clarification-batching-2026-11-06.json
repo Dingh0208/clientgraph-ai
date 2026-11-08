@@ -1,0 +1,324 @@
+{
+  "generated_at": "2026-11-08T12:07:57.654130+00:00",
+  "planner": {
+    "batches": [
+      {
+        "id": "B1",
+        "chars": 1200,
+        "materials": [
+          "M01"
+        ]
+      },
+      {
+        "id": "B2",
+        "chars": 1900,
+        "materials": [
+          "M02",
+          "M03"
+        ]
+      }
+    ]
+  },
+  "full_run": {
+    "progress": {
+      "completed": 2,
+      "total": 2,
+      "status": "completed",
+      "text": "2/2"
+    },
+    "questions": [
+      {
+        "id": "Q1",
+        "key": "budget",
+        "text": "一期预算上限是多少？",
+        "value": "8 万",
+        "values": [
+          "8 万",
+          "10 万"
+        ],
+        "priority": "must_confirm",
+        "category": "预算",
+        "conclusion_type": "gap",
+        "confidence": 0.8,
+        "status": "must_confirm",
+        "evidence": [
+          {
+            "material_id": "M01",
+            "locator": "chat://M01",
+            "excerpt": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+          },
+          {
+            "material_id": "M03",
+            "locator": "chat://M03",
+            "excerpt": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+          }
+        ],
+        "batch_ids": [
+          "B1",
+          "B2"
+        ],
+        "merged_count": 2,
+        "answer": null,
+        "resolution_required": true,
+        "conflict_ids": [
+          "CF1"
+        ]
+      },
+      {
+        "id": "Q2",
+        "key": "scope",
+        "text": "一期范围包含哪些？",
+        "value": "5 项",
+        "values": [
+          "5 项"
+        ],
+        "priority": "must_confirm",
+        "category": "范围",
+        "conclusion_type": "gap",
+        "confidence": 0.8,
+        "status": "must_confirm",
+        "evidence": [
+          {
+            "material_id": "M02",
+            "locator": "chat://M02",
+            "excerpt": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+          }
+        ],
+        "batch_ids": [
+          "B2"
+        ],
+        "merged_count": 1,
+        "answer": null,
+        "resolution_required": false,
+        "conflict_ids": []
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "CF1",
+        "question_id": "Q1",
+        "old_value": "8 万",
+        "new_value": "10 万",
+        "old_evidence": [
+          {
+            "material_id": "M01",
+            "locator": "chat://M01",
+            "excerpt": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+          },
+          {
+            "material_id": "M03",
+            "locator": "chat://M03",
+            "excerpt": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+          }
+        ],
+        "new_evidence": [
+          {
+            "material_id": "M03",
+            "locator": "chat://M03",
+            "excerpt": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+          }
+        ],
+        "status": "must_confirm",
+        "resolution": null,
+        "overwrite": false,
+        "created_at": "2026-11-06T10:00:00+00:00"
+      }
+    ]
+  },
+  "cancel": {
+    "progress": {
+      "completed": 1,
+      "total": 2,
+      "status": "cancelled",
+      "text": "1/2"
+    },
+    "answers": {
+      "Q1": {
+        "question_id": "Q1",
+        "text": "预算 8 万已确认",
+        "operator": "王工（我）",
+        "at": "2026-11-06T10:00:00+00:00"
+      }
+    },
+    "statuses": [
+      "completed",
+      "cancelled"
+    ]
+  },
+  "retry": {
+    "progress": {
+      "completed": 2,
+      "total": 2,
+      "status": "completed",
+      "text": "2/2"
+    },
+    "errors": [
+      {
+        "batch_id": "B2",
+        "code": "E_MODEL_TIMEOUT",
+        "message": "批次 B2 超时"
+      }
+    ],
+    "retried_batches": 1,
+    "model": "qwen3.8-flash"
+  },
+  "append": {
+    "stats": {
+      "materials": 4,
+      "batches": 4,
+      "completed_batches": 4,
+      "questions": 2,
+      "answers": 1,
+      "conflicts": 1,
+      "appended_materials": 2,
+      "new_batches": 2,
+      "retried_batches": 0,
+      "errors": 0
+    },
+    "conflicts": [
+      {
+        "id": "CF1",
+        "question_id": "Q1",
+        "old_value": "8 万",
+        "new_value": "10 万",
+        "old_evidence": [
+          {
+            "material_id": "M01",
+            "locator": "chat://M01",
+            "excerpt": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+          },
+          {
+            "material_id": "M03",
+            "locator": "chat://M03",
+            "excerpt": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+          }
+        ],
+        "new_evidence": [
+          {
+            "material_id": "M03",
+            "locator": "chat://M03",
+            "excerpt": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+          }
+        ],
+        "status": "must_confirm",
+        "resolution": null,
+        "overwrite": false,
+        "created_at": "2026-11-06T10:00:00+00:00"
+      }
+    ],
+    "questions": [
+      {
+        "id": "Q1",
+        "key": "budget",
+        "text": "一期预算上限是多少？",
+        "value": "8 万",
+        "values": [
+          "8 万",
+          "10 万"
+        ],
+        "priority": "must_confirm",
+        "category": "预算",
+        "conclusion_type": "gap",
+        "confidence": 0.8,
+        "status": "conflict",
+        "evidence": [
+          {
+            "material_id": "M01",
+            "locator": "chat://M01",
+            "excerpt": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+          },
+          {
+            "material_id": "M03",
+            "locator": "chat://M03",
+            "excerpt": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+          }
+        ],
+        "batch_ids": [
+          "B1",
+          "B3"
+        ],
+        "merged_count": 2,
+        "answer": {
+          "question_id": "Q1",
+          "text": "预算 8 万已确认",
+          "operator": "王工（我）",
+          "at": "2026-11-06T10:00:00+00:00"
+        },
+        "resolution_required": true,
+        "conflict_ids": [
+          "CF1"
+        ]
+      },
+      {
+        "id": "Q2",
+        "key": "scope",
+        "text": "一期范围包含哪些？",
+        "value": "5 项",
+        "values": [
+          "5 项"
+        ],
+        "priority": "must_confirm",
+        "category": "范围",
+        "conclusion_type": "gap",
+        "confidence": 0.8,
+        "status": "must_confirm",
+        "evidence": [
+          {
+            "material_id": "M02",
+            "locator": "chat://M02",
+            "excerpt": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+          },
+          {
+            "material_id": "M04",
+            "locator": "chat://M04",
+            "excerpt": "甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲甲"
+          }
+        ],
+        "batch_ids": [
+          "B2",
+          "B4"
+        ],
+        "merged_count": 2,
+        "answer": null,
+        "resolution_required": false,
+        "conflict_ids": []
+      }
+    ]
+  },
+  "oversized": {
+    "completed": 3,
+    "total": 3,
+    "status": "completed",
+    "text": "3/3"
+  },
+  "checks": {
+    "batch_count": true,
+    "batch_limits": true,
+    "batch_materials": true,
+    "oversized_split": true,
+    "unreadable_rejected": true,
+    "run_completed": true,
+    "run_questions": true,
+    "run_conflict": true,
+    "conflict_old_value": true,
+    "cancel_progress": true,
+    "cancel_kept_questions": true,
+    "cancel_kept_answer": true,
+    "cancel_remaining": true,
+    "failure_progress": true,
+    "failure_recorded": true,
+    "retry_completed": true,
+    "retry_kept_questions": true,
+    "retry_same_model": true,
+    "append_only_new": true,
+    "append_index": true,
+    "append_conflict": true,
+    "append_old_answer": true,
+    "append_no_new_question": true,
+    "append_new_batch_only": true,
+    "dedupe_questions": true,
+    "dedupe_evidence": true,
+    "oversized_batches": true
+  },
+  "all_passed": true
+}

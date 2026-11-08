@@ -1,9 +1,9 @@
 # ClientGraph AI
 
-> 版本：v0.3.0 · 2026-11-06
-> 形态：本地单文件原型 + 本地 Python 分析流水线 + 本地诊断服务
+> 版本：v0.4.0 · 2026-11-08
+> 形态：本地单文件原型 + 本地 Python 分析流水线 + 需求澄清工作单
 
-ClientGraph AI 面向单人多项目的软件公司经营者，把分散的客户资料聚合成可追溯的工作台：**客户 360、需求抽取与版本、冲突、待办与提醒、关系图、全局搜索**。
+ClientGraph AI 面向单人多项目的软件公司经营者，把分散的客户资料聚合成可追溯的工作台：**客户 360、需求抽取与版本、冲突、待办与提醒、关系图、全局搜索、需求澄清**。
 
 本仓库是产品原型与可验证的本地分析代码，不是生产系统。
 
@@ -13,7 +13,7 @@ ClientGraph AI 面向单人多项目的软件公司经营者，把分散的客�
 
 | 模块 | 路径 | 能力 |
 |---|---|---|
-| 交互原型 | `prototype/index.html` | 概览、问答、客户 360、导入、待归档、诊断 |
+| 交互原型 | `prototype/index.html` | 概览、问答、客户 360、导入、待归档、诊断、需求澄清选材 |
 | 客户 360 | `customer360/` | 身份、项目、需求、风险、待办、时间线、证据、提醒 |
 | 需求抽取 | `extraction/` | 项目/阶段/需求/提出人/负责人/截止/预算/验收/待确认 |
 | 版本演化 | `requirement_history/` | 追加式版本，首次出现/修改/确认/取消，前后证据 |
@@ -24,25 +24,38 @@ ClientGraph AI 面向单人多项目的软件公司经营者，把分散的客�
 | 证据归一 | `evidence_layer/` | 统一证据字段与跨来源合并 |
 | 解析 | `audio_pipeline/`、`media_pipeline/`、`document_pipeline/` | 音频、视频、PDF/OCR、Office/邮件/聊天 |
 | 诊断 | `ops/` | Sidecar/微信/ffmpeg/OCR/ASR 检测与启动策略 |
+| **需求澄清** | `clarification/` | 选材、分批、证据问题、三档优先级、状态、追问、工作单生命周期、导出 |
+| **回答回写** | `writeback/` | 目标选择、字段预览、人工确认、需求版本与操作快照 |
 
-## 2. v0.3.0 集成回归
+## 2. v0.4.0 需求澄清闭环
 
-两个客户（青岚、恒晟）、三个项目、多来源数据：
+```
+选材确认 → 分批分析 → 证据问题 → 冲突 → 回答 → 手动追问
+        → 回写预览 → 人工确认 → 版本历史 → 增量分析 → 失败重试 → 对外导出
+```
 
-| 检查 | 结果 |
-|---|---|
-| 客户 360 | c1 2 项目/2 需求/1 风险/3 待办；c2 1 项目/2 需求/1 风险/1 待办 |
-| 时间线 | 倒序，缺失时间排最后 |
-| 需求抽取 | c1 设备台账；c2 供应链协同；无串线 |
-| 版本演化 | 3 个项目版本；预算 8 万→10 万、工期 11-15→12-01 |
-| 冲突 | 2 个，分属 p1/p3，均 `must_confirm` |
-| 待办 | 4 条；完成 T1 不影响 T3 |
-| 通知 | 到期与无跟进提醒；应用退出不伪造已发送 |
-| 关系图 | 27 节点/23 边；无 c1→p3、c2→p1 |
-| 全局搜索 | 小程序开发仅 c1；供应链仅 c2；逾期 T1/T3 |
-| 检查 | 29 项全部通过 |
+关键约束：
 
-详见 `docs/RELEASE-NOTES-v0.3.0.md` 与 `evidence/integration-v0.3.0-2026-11-06.json`。
+- 已问未答不算完成；已回答或不适用才形成结论；
+- 冲突保留双方证据，不自动裁定；
+- 追问只在老板点击“基于回答生成追问”时生成；
+- 回写只预填回答明确支持的字段，新需求默认“待确认”；
+- 需求 P0/P1/P2 独立判断，不继承问题优先级；
+- 保存必须人工确认，保留版本与 before/after 操作快照；
+- 对外版隐藏提问理由、证据与内部置信度。
+
+回归结果：
+
+| 套件 | 检查数 | 结果 |
+|---|---|---|
+| 端到端连续回归 | 48（23 步） | 全部通过 |
+| 问题计划与优先级 | 52 | 全部通过 |
+| 问题状态 | 57 | 全部通过 |
+| 回答回写 | 64 | 全部通过 |
+| 工作单生命周期 | 56 | 全部通过 |
+| 澄清分批 | 27 | 全部通过 |
+
+失败案例 7 个全部保留：不可读资料、批次超时、未回答追问、未确认保存、预览篡改、目标变化、重复提交。详见 `docs/失败案例-v0.4.0.md`。
 
 ## 3. 快速开始
 
@@ -63,6 +76,12 @@ pip install -r document_pipeline/requirements.txt
 
 ```bash
 python scripts/verify_integration_v030.py
+python scripts/verify_clarification_e2e.py
+python scripts/verify_question_plan.py
+python scripts/verify_question_status.py
+python scripts/verify_writeback.py
+python scripts/verify_clarification_records.py
+python scripts/verify_clarification_batching.py
 python scripts/verify_extraction.py
 python scripts/verify_requirement_history.py
 python scripts/verify_conflicts.py
@@ -73,33 +92,28 @@ python scripts/verify_unified_search.py
 
 ## 5. 关键限制
 
-- ASR 为 Mock；Qwen 未联调。
-- OCR 依赖本地 RapidOCR，CPU 单页约 3–19 秒。
-- `.doc`/`.ppt` 依赖 LibreOffice；压缩包/微信数据库未解析。
-- 2.1 GB / 200 页 OCR 为界面模拟，不是真实吞吐。
-- 通知策略已实现，真实 Windows Toast 需桌面端接入。
-- 关系图为 JSON，无可视化画布。
-- 搜索意图为规则识别，换问法可能落关键词兜底。
-- 单机单用户，无账号/权限/云同步。
+- 单机单用户；无账号、权限、云同步。
+- 澄清工作单目前为内存对象，未接 SQLite；关键操作尚未接到原型按钮。
+- 问题、优先级、字段识别均为规则，不按行业细分；复杂句式会漏识别。
+- ASR 为 Mock；Qwen 未联调。OCR 依赖本地 RapidOCR。
+- PDF 导出依赖本机 Edge/Chrome；Word 为零依赖 OOXML。
+- 对外导出只做内容裁剪，不替代人工脱敏审查。
 
-完整清单见 `docs/已知限制-v1.0.md`。
+完整清单见 `docs/已知限制-v0.4.0.md`。
 
 ## 6. 文档
 
-- `docs/数据模型-v0.3.0.md`
-- `docs/搜索测试矩阵-v1.0.md`
-- `docs/失败案例-v0.3.0.md`
-- `docs/RELEASE-NOTES-v0.3.0.md`
-- `docs/客户360-v1.0.md`
-- `docs/需求抽取-v1.0.md`
-- `docs/需求版本历史-v1.0.md`
-- `docs/冲突检测-v1.0.md`
-- `docs/待办与提醒-v1.0.md`
-- `docs/关系视图-v1.0.md`
-- `docs/统一检索-v1.0.md`
-- `docs/解析矩阵-v1.0.md`
-- `docs/性能记录-v1.0.md`
-- `docs/已知限制-v1.0.md`
+- `docs/PRD摘要-v0.4.0.md`
+- `docs/需求澄清助手-API与流程-v1.0.md`
+- `docs/验收矩阵-v0.4.0.md`
+- `docs/测试记录-v0.4.0.md`
+- `docs/失败案例-v0.4.0.md`
+- `docs/已知限制-v0.4.0.md`
+- `docs/RELEASE-NOTES-v0.4.0.md`
+- `docs/问题计划-v1.0.md`、`docs/问题优先级-v1.0.md`、`docs/问题状态-v1.0.md`
+- `docs/回答回写-v1.0.md`、`docs/澄清单生命周期-v1.0.md`
+- `docs/需求澄清选材-v1.0.md`、`docs/澄清分批处理-v1.0.md`
+- `docs/RELEASE-NOTES-v0.3.0.md`（历史）
 
 ## 7. 许可
 
